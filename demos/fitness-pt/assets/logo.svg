@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <!-- Outer circle - navy -->
+  <circle cx="24" cy="24" r="23" fill="#1d3557"/>
+  <!-- Inner ring accent -->
+  <circle cx="24" cy="24" r="20" fill="none" stroke="#e63946" stroke-width="1.5" opacity="0.3"/>
+  <!-- Dumbbell bar -->
+  <rect x="12" y="22.5" width="24" height="3" rx="1.5" fill="#e63946"/>
+  <!-- Left weight plates -->
+  <rect x="10" y="17" width="4" height="14" rx="2" fill="#e63946"/>
+  <rect x="7" y="19" width="3.5" height="10" rx="1.5" fill="#ff5a67"/>
+  <!-- Right weight plates -->
+  <rect x="34" y="17" width="4" height="14" rx="2" fill="#e63946"/>
+  <rect x="37.5" y="19" width="3.5" height="10" rx="1.5" fill="#ff5a67"/>
+  <!-- Power spark / lightning accent -->
+  <path d="M22 10 L25 10 L23.5 14 L26 14 L21 21 L22.5 16 L20 16 Z" fill="#ffffff" opacity="0.9"/>
+</svg>

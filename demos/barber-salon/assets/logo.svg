@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="56" fill="#1a1a2e" stroke="#c9a96e" stroke-width="3"/>
+  <!-- Scissors -->
+  <!-- Left blade -->
+  <ellipse cx="44" cy="52" rx="6" ry="18" transform="rotate(-25 44 52)" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+  <!-- Right blade -->
+  <ellipse cx="76" cy="52" rx="6" ry="18" transform="rotate(25 76 52)" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+  <!-- Left handle -->
+  <ellipse cx="38" cy="78" rx="9" ry="7" transform="rotate(-15 38 78)" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+  <!-- Right handle -->
+  <ellipse cx="82" cy="78" rx="9" ry="7" transform="rotate(15 82 78)" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+  <!-- Pivot point -->
+  <circle cx="60" cy="62" r="3.5" fill="#c9a96e"/>
+  <!-- Connecting lines left -->
+  <line x1="44" y1="68" x2="40" y2="72" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Connecting lines right -->
+  <line x1="76" y1="68" x2="80" y2="72" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="60" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#c9a96e" letter-spacing="2">SCHNITTWERK</text>
+</svg>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Websites — 10 Premium Business Templates</title>
+    <meta name="description" content="10 kostenlose, professionelle Demo-Websites für kleine Unternehmen in Deutschland. Statisch, schnell, DSGVO-ready.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --text: #1a1a2e;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 12px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+        .header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+        .header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .lang-switch {
+            display: inline-flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .lang-switch span { color: var(--muted); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .card-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+        .card-body h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+        .card-body .type {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+        .card-body p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .card-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .card-links a {
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            border: 1px solid var(--accent);
+            transition: background 0.15s, color 0.15s;
+        }
+        .card-links a:first-child {
+            background: var(--accent);
+            color: #fff;
+        }
+        .card-links a:first-child:hover {
+            background: var(--accent-hover);
+            text-decoration: none;
+        }
+        .card-links a:last-child:hover {
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--muted); }
+        .footer a:hover { color: var(--accent); }
+
+        @media (max-width: 400px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" style="position:absolute;left:-9999px;top:0;padding:0.5rem;background:var(--accent);color:#fff;z-index:100;" onfocus="this.style.left='0';" onblur="this.style.left='-9999px';">Zum Inhalt springen</a>
+
+    <header class="header">
+        <h1>10 Demo Business Websites</h1>
+        <p>Premium-Vorlagen für kleine Unternehmen in Deutschland. Statisch, schnell, mobilfreundlich und DSGVO-ready. Keine externen Abhängigkeiten.</p>
+        <div class="lang-switch">
+            <span>Sprache:</span>
+            <strong>DE</strong>
+            <span>|</span>
+            <span>EN (see individual demos)</span>
+        </div>
+    </header>
+
+    <main id="main" class="grid" role="main">
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #8B4513, #D4A574);" aria-label="Café & Restaurant Vorschau">
+                <!-- Thumbnail placeholder — replace with screenshot -->
+                Café & Restaurant
+            </div>
+            <div class="card-body">
+                <h2>Café Goldstück</h2>
+                <p class="type">Café / Restaurant</p>
+                <p>Gemütliches Café mit hausgemachten Kuchen, Frühstück und saisonaler Speisekarte. Warme Farben, einladend.</p>
+                <div class="card-links">
+                    <a href="demos/cafe-restaurant/">DE Version</a>
+                    <a href="demos/cafe-restaurant/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a3a5c, #f5a623);" aria-label="Elektriker Vorschau">
+                Elektriker
+            </div>
+            <div class="card-body">
+                <h2>Blitz Elektrotechnik</h2>
+                <p class="type">Elektriker</p>
+                <p>Zuverlässige Elektroinstallationen, Smart-Home-Lösungen und 24h-Notdienst. Professionell und vertrauenswürdig.</p>
+                <div class="card-links">
+                    <a href="demos/electrician/">DE Version</a>
+                    <a href="demos/electrician/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #2a7a6a, #a7d7c5);" aria-label="Physiotherapie Vorschau">
+                Physiotherapie
+            </div>
+            <div class="card-body">
+                <h2>Praxis Bewegungszeit</h2>
+                <p class="type">Physiotherapie</p>
+                <p>Ganzheitliche Physiotherapie mit modernen Behandlungsmethoden. Ruhig, heilend, professionell.</p>
+                <div class="card-links">
+                    <a href="demos/physiotherapy/">DE Version</a>
+                    <a href="demos/physiotherapy/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a1a2e, #c9a96e);" aria-label="Friseur/Barbershop Vorschau">
+                Friseur / Barbershop
+            </div>
+            <div class="card-body">
+                <h2>Schnittwerk Barbershop</h2>
+                <p class="type">Friseur / Barbershop</p>
+                <p>Klassische Herrenhaarschnitte und moderne Styles. Dunkel, elegant, maskulin.</p>
+                <div class="card-links">
+                    <a href="demos/barber-salon/">DE Version</a>
+                    <a href="demos/barber-salon/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a2744, #5b7fa5);" aria-label="Steuerberater Vorschau">
+                Steuerberater
+            </div>
+            <div class="card-body">
+                <h2>Kanzlei Finanzklar</h2>
+                <p class="type">Steuerberater</p>
+                <p>Kompetente Steuerberatung für Unternehmen und Privatpersonen. Seriös, vertrauenswürdig, klar.</p>
+                <div class="card-links">
+                    <a href="demos/tax-advisor/">DE Version</a>
+                    <a href="demos/tax-advisor/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #e63946, #1d3557);" aria-label="Fitness/Personal Training Vorschau">
+                Fitness / Personal Training
+            </div>
+            <div class="card-body">
+                <h2>PowerHouse Fitness</h2>
+                <p class="type">Fitnessstudio / Personal Training</p>
+                <p>Individuelles Training und Gruppenkurse. Energetisch, motivierend, ergebnisorientiert.</p>
+                <div class="card-links">
+                    <a href="demos/fitness-pt/">DE Version</a>
+                    <a href="demos/fitness-pt/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #0a2463, #3e92cc);" aria-label="Immobilienmakler Vorschau">
+                Immobilienmakler
+            </div>
+            <div class="card-body">
+                <h2>Heimwert Immobilien</h2>
+                <p class="type">Immobilienmakler</p>
+                <p>Professionelle Immobilienvermittlung mit persönlicher Beratung. Modern, vertrauenswürdig, kompetent.</p>
+                <div class="card-links">
+                    <a href="demos/real-estate/">DE Version</a>
+                    <a href="demos/real-estate/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #6b21a8, #ec4899);" aria-label="Event DJ Vorschau">
+                Event DJ / Hochzeit
+            </div>
+            <div class="card-body">
+                <h2>DJ Momentum</h2>
+                <p class="type">Event DJ / Hochzeit</p>
+                <p>Professioneller DJ-Service für Hochzeiten, Firmenevents und private Feiern. Dynamisch, stimmungsvoll.</p>
+                <div class="card-links">
+                    <a href="demos/event-dj/">DE Version</a>
+                    <a href="demos/event-dj/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #c0392b, #2c3e50);" aria-label="KFZ Werkstatt Vorschau">
+                KFZ Werkstatt
+            </div>
+            <div class="card-body">
+                <h2>AutoFix Werkstatt</h2>
+                <p class="type">KFZ Werkstatt</p>
+                <p>Meisterbetrieb für alle Marken. TÜV-Vorbereitung, Reparaturen und Wartung. Zuverlässig, fair, transparent.</p>
+                <div class="card-links">
+                    <a href="demos/auto-repair/">DE Version</a>
+                    <a href="demos/auto-repair/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #0d9488, #f59e0b);" aria-label="Coaching/Beratung Vorschau">
+                Coaching / Beratung
+            </div>
+            <div class="card-body">
+                <h2>Klarvision Coaching</h2>
+                <p class="type">Coaching / Beratung</p>
+                <p>Persönliches und berufliches Coaching für nachhaltige Veränderung. Warm, professionell, inspirierend.</p>
+                <div class="card-links">
+                    <a href="demos/coaching/">DE Version</a>
+                    <a href="demos/coaching/en.html">EN Version</a>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="footer">
+        <p>Demo-Vorlagen &mdash; Alle rechtlichen Texte sind Platzhalter und müssen von einem Anwalt geprüft werden.</p>
+        <p style="margin-top:0.5rem;"><a href="README.md">Dokumentation</a> · <a href="LEGAL_TEMPLATE.md">Rechtliche Hinweise</a></p>
+    </footer>
+</body>
+</html>
