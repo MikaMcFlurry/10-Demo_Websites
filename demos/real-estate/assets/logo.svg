@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="hg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3c34"/>
+      <stop offset="100%" style="stop-color:#2a5c4a"/>
+    </linearGradient>
+  </defs>
+  <!-- House body -->
+  <rect x="50" y="95" width="100" height="75" rx="4" fill="#1a3c34"/>
+  <!-- Roof -->
+  <polygon points="100,30 35,95 165,95" fill="#1a3c34"/>
+  <polygon points="100,45 50,95 150,95" fill="#2a5c4a"/>
+  <!-- Door -->
+  <rect x="82" y="120" width="36" height="50" rx="3" fill="#c5975b"/>
+  <rect x="86" y="124" width="28" height="20" rx="2" fill="#1a3c34" opacity="0.3"/>
+  <!-- Window left -->
+  <rect x="56" y="108" width="22" height="22" rx="2" fill="#c5975b" opacity="0.8"/>
+  <line x1="67" y1="108" x2="67" y2="130" stroke="#1a3c34" stroke-width="1.5"/>
+  <line x1="56" y1="119" x2="78" y2="119" stroke="#1a3c34" stroke-width="1.5"/>
+  <!-- Window right -->
+  <rect x="122" y="108" width="22" height="22" rx="2" fill="#c5975b" opacity="0.8"/>
+  <line x1="133" y1="108" x2="133" y2="130" stroke="#1a3c34" stroke-width="1.5"/>
+  <line x1="122" y1="119" x2="144" y2="119" stroke="#1a3c34" stroke-width="1.5"/>
+  <!-- Key -->
+  <circle cx="155" cy="155" r="14" fill="none" stroke="#c5975b" stroke-width="4"/>
+  <line x1="165" y1="165" x2="185" y2="185" stroke="#c5975b" stroke-width="4" stroke-linecap="round"/>
+  <line x1="178" y1="178" x2="178" y2="185" stroke="#c5975b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="182" y1="182" x2="182" y2="188" stroke="#c5975b" stroke-width="3" stroke-linecap="round"/>
+  <!-- Chimney -->
+  <rect x="120" y="42" width="16" height="35" fill="#1a3c34"/>
+</svg>

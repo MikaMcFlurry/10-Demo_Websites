@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .gear{fill:#2d2d2d}.wrench{fill:#e63946}
+    </style>
+  </defs>
+  <!-- Outer Gear -->
+  <path class="gear" d="M100 20a80 80 0 1 0 0 160 80 80 0 0 0 0-160zm0 140a60 60 0 1 1 0-120 60 60 0 0 1 0 120z"/>
+  <!-- Gear teeth -->
+  <rect class="gear" x="92" y="8" width="16" height="24" rx="3"/>
+  <rect class="gear" x="92" y="168" width="16" height="24" rx="3"/>
+  <rect class="gear" x="8" y="92" width="24" height="16" rx="3"/>
+  <rect class="gear" x="168" y="92" width="24" height="16" rx="3"/>
+  <rect class="gear" x="32" y="28" width="16" height="24" rx="3" transform="rotate(45 40 40)"/>
+  <rect class="gear" x="152" y="148" width="16" height="24" rx="3" transform="rotate(45 160 160)"/>
+  <rect class="gear" x="152" y="28" width="16" height="24" rx="3" transform="rotate(-45 160 40)"/>
+  <rect class="gear" x="32" y="148" width="16" height="24" rx="3" transform="rotate(-45 40 160)"/>
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="35" fill="#2d2d2d" opacity="0.15"/>
+  <!-- Wrench -->
+  <g transform="translate(100,100) rotate(-45) translate(-100,-100)">
+    <rect class="wrench" x="60" y="92" width="80" height="16" rx="4"/>
+    <circle cx="60" cy="100" r="20" fill="none" stroke="#e63946" stroke-width="8"/>
+    <rect class="wrench" x="132" y="86" width="20" height="12" rx="2" transform="rotate(15 142 92)"/>
+    <rect class="wrench" x="132" y="102" width="20" height="12" rx="2" transform="rotate(-15 142 108)"/>
+  </g>
+</svg>
