@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Goldstück — Cozy Café & Restaurant in Your City</title>
-    <meta name="description" content="Café Goldstück: Homemade cakes, breakfast, lunch specials and seasonal delicacies. Visit us in a cozy atmosphere.">
+    <title>Café Goldstück — Cozy Café & Restaurant</title>
+    <meta name="description" content="Café Goldstück: Homemade cakes, fresh breakfast and seasonal lunch specials. Enjoy artisan coffee culture in a warm, welcoming setting.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Café Goldstück — Café & Restaurant">
-    <meta property="og:description" content="Homemade cakes, breakfast and seasonal specialties in a cozy atmosphere.">
+    <meta property="og:description" content="Homemade cakes, fresh breakfast and seasonal lunch specials in a warm, welcoming atmosphere.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/hero.jpg">
     <link rel="stylesheet" href="assets/styles.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Restaurant",
         "name": "Café Goldstück",
-        "description": "Cozy café & restaurant with homemade cakes, breakfast and seasonal menu.",
+        "description": "Cozy café & restaurant serving homemade cakes, fresh breakfast and seasonal lunch specials.",
         "url": "https://example.com/demos/cafe-restaurant/en.html",
         "telephone": "[PHONE]",
         "email": "[EMAIL]",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "[STREET ADDRESS]",
+            "streetAddress": "[STREET]",
             "addressLocality": "[CITY]",
-            "postalCode": "[POSTAL CODE]",
+            "postalCode": "[ZIP]",
             "addressCountry": "DE"
         },
         "servesCuisine": "Café, Breakfast, Cakes",
@@ -32,7 +33,8 @@
             {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
             {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00"},
             {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "16:00"}
-        ]
+        ],
+        "image": "assets/hero.jpg"
     }
     </script>
 </head>
@@ -41,15 +43,17 @@
 
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a href="#" class="nav-logo" aria-label="Café Goldstück Home">
-                <svg width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#6b3a2a"/><path d="M14 28c0-6 4-12 10-12s10 6 10 12" stroke="#D4A574" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M12 28h24" stroke="#D4A574" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="1.5" fill="#D4A574"/></svg>
-                Café Goldstück
-            </a>
-            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+            <div class="nav-brand">
+                <a href="#" aria-label="Café Goldstück Home">
+                    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#5C3D2E"/><path d="M14 28c0-6 4-12 10-12s10 6 10 12" stroke="#C17F59" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M12 28h24" stroke="#C17F59" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="1.5" fill="#C17F59"/></svg>
+                    Café Goldstück
+                </a>
+            </div>
+            <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
-            <ul class="nav-links" id="nav-menu" role="menubar">
-                <li><a href="#services" role="menuitem">Menu</a></li>
+            <ul class="nav-links-row" role="menubar">
+                <li><a href="#menu" role="menuitem">Menu</a></li>
                 <li><a href="#about" role="menuitem">About</a></li>
                 <li><a href="#gallery" role="menuitem">Gallery</a></li>
                 <li><a href="#reviews" role="menuitem">Reviews</a></li>
@@ -61,77 +65,70 @@
     </nav>
 
     <main id="main">
-        <section class="hero">
-            <h1>Welcome to Café Goldstück</h1>
-            <p>Homemade cakes, fresh breakfast and seasonal specialties — in an atmosphere that invites you to linger.</p>
-            <a href="#contact" class="hero-cta">Reserve a Table</a>
+        <section class="hero" aria-label="Welcome">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <span class="hero-label">Serving your city since 2012</span>
+                    <h1>Where Coffee Becomes a Ceremony</h1>
+                    <p>Homemade cakes, fresh breakfast and seasonal lunch specials — in a space that invites you to slow down and stay a while.</p>
+                    <a href="#contact" class="hero-cta">Reserve a Table</a>
+                </div>
+                <div class="hero-image" role="img" aria-label="Café interior"></div>
+            </div>
         </section>
 
-        <section id="services" class="section">
+        <section id="menu" class="section">
             <div class="container">
-                <h2 class="section-title">Our Offerings</h2>
-                <p class="section-subtitle">From morning to evening — something for every taste.</p>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#9749;</div>
-                        <h3>Breakfast & Brunch</h3>
-                        <p>Fresh rolls, eggs your way, granola bowls and more. Daily from 8–11:30 AM.</p>
+                <span class="section-label">What we serve</span>
+                <h2 class="section-title">Our Menu</h2>
+                <div class="section-divider"></div>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-img" role="img" aria-label="Breakfast"></div>
+                        <div class="menu-card-body">
+                            <h3>Breakfast &amp; Brunch</h3>
+                            <p>Fresh rolls, eggs your way, granola bowls and house-made jams. Served daily from 8 to 11:30 am.</p>
+                            <span class="menu-card-price">from €8.50</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#127856;</div>
-                        <h3>Homemade Cakes</h3>
-                        <p>Our pastry chef bakes fresh daily: cheesecake, apple strudel, chocolate cake and seasonal creations.</p>
+                    <div class="menu-card">
+                        <div class="menu-card-img" role="img" aria-label="Cakes"></div>
+                        <div class="menu-card-body">
+                            <h3>Homemade Cakes</h3>
+                            <p>Cheesecake, apple strudel, chocolate torte and seasonal creations — freshly baked in-house every morning.</p>
+                            <span class="menu-card-price">from €4.20</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#127869;</div>
-                        <h3>Lunch Specials</h3>
-                        <p>Changing daily dishes with regional ingredients. Also vegetarian and vegan. Mon–Fri 11:30 AM–2 PM.</p>
+                    <div class="menu-card">
+                        <div class="menu-card-img" role="img" aria-label="Lunch"></div>
+                        <div class="menu-card-body">
+                            <h3>Lunch Specials</h3>
+                            <p>Rotating daily dishes made with regional ingredients. Vegetarian and vegan options always available.</p>
+                            <span class="menu-card-price">from €10.90</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#9749;</div>
-                        <h3>Coffee Specialties</h3>
-                        <p>Hand-brewed filter coffee, espresso, cappuccino and cold brew — with beans from a local roastery.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#127870;</div>
-                        <h3>Catering & Events</h3>
-                        <p>Company breakfasts, birthdays or private celebrations — we also cater off-site.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon" aria-hidden="true">&#127793;</div>
-                        <h3>Seasonal Specials</h3>
-                        <p>Asparagus in spring, pumpkin in autumn, mulled wine in winter — always something new.</p>
+                    <div class="menu-card">
+                        <div class="menu-card-img" role="img" aria-label="Coffee"></div>
+                        <div class="menu-card-body">
+                            <h3>Artisan Coffee</h3>
+                            <p>Hand-brewed filter coffee, velvety cappuccino, golden espresso — single-origin beans from a local roastery.</p>
+                            <span class="menu-card-price">from €2.80</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section section-alt">
+        <section id="about" class="section section-cream">
             <div class="container">
-                <h2 class="section-title">About Us</h2>
-                <p class="section-subtitle">Your favorite café in the heart of the city since 2015.</p>
                 <div class="about-grid">
-                    <div class="about-img-placeholder" aria-label="Placeholder image of café interior">
-                        [Image: Cozy café interior — insert hero.jpg here]
-                    </div>
+                    <div class="about-img" role="img" aria-label="Our team"></div>
                     <div class="about-content">
-                        <h3>Family Business with Heart</h3>
-                        <p>Café Goldstück is a family-run café focused on quality, sustainability and hospitality. Our ingredients come from the region — fresh, seasonal, honest.</p>
-                        <p>We believe that great coffee and a warm smile make all the difference. Whether alone with a book, working, or with friends — you are welcome here.</p>
-                        <div class="trust-badges">
-                            <div class="trust-badge">
-                                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
-                                Regional Ingredients
-                            </div>
-                            <div class="trust-badge">
-                                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
-                                Freshly Baked Daily
-                            </div>
-                            <div class="trust-badge">
-                                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
-                                Family Friendly
-                            </div>
-                        </div>
+                        <span class="section-label">Our Story</span>
+                        <h3>A Place Built on Heart and Craft</h3>
+                        <p>In 2012, the Meier family opened Café Goldstück with a simple idea: honest food, thoughtful details, and an atmosphere where everyone feels at home.</p>
+                        <p>Today we bake fresh every day, source ingredients from regional producers, and roast our coffee in collaboration with a local artisan roastery.</p>
+                        <p class="about-quote">"Great food starts where great ingredients and passion come together."</p>
                     </div>
                 </div>
             </div>
@@ -139,38 +136,40 @@
 
         <section id="gallery" class="section">
             <div class="container">
+                <span class="section-label">Impressions</span>
                 <h2 class="section-title">Gallery</h2>
-                <p class="section-subtitle">A glimpse into our café.</p>
+                <div class="section-divider"></div>
                 <div class="gallery-grid">
-                    <div class="gallery-placeholder">[Image 1: Interior]</div>
-                    <div class="gallery-placeholder">[Image 2: Cake display]</div>
-                    <div class="gallery-placeholder">[Image 3: Breakfast plate]</div>
-                    <div class="gallery-placeholder">[Image 4: Latte art]</div>
-                    <div class="gallery-placeholder">[Image 5: Terrace]</div>
-                    <div class="gallery-placeholder">[Image 6: Team]</div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 1"></div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 2"></div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 3"></div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 4"></div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 5"></div>
+                    <div class="gallery-item" role="img" aria-label="Café impression 6"></div>
                 </div>
             </div>
         </section>
 
-        <section id="reviews" class="section section-alt">
+        <section id="reviews" class="section section-cream">
             <div class="container">
-                <h2 class="section-title">What Our Guests Say</h2>
-                <p class="section-subtitle">Real reviews from satisfied visitors.</p>
-                <div class="reviews">
-                    <div class="review">
+                <span class="section-label">What our guests say</span>
+                <h2 class="section-title">Reviews</h2>
+                <div class="section-divider"></div>
+                <div class="reviews-grid">
+                    <div class="review-card">
                         <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p>"The best cheesecake in town! Plus a perfect cappuccino. We come every weekend."</p>
-                        <div class="review-author">— Sabine M., Google Review</div>
+                        <p class="review-text">The best cheesecake in town — and don't get me started on the cappuccino! You instantly feel at home here.</p>
+                        <span class="review-author">— Sabine M.</span>
                     </div>
-                    <div class="review">
+                    <div class="review-card">
                         <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p>"Cozy atmosphere, friendly staff and the breakfast is a dream. Absolutely recommended!"</p>
-                        <div class="review-author">— Thomas K., Regular Guest</div>
+                        <p class="review-text">Wonderful daily lunch specials, always fresh, always delicious. The staff is warm and attentive.</p>
+                        <span class="review-author">— Thomas K.</span>
                     </div>
-                    <div class="review">
+                    <div class="review-card">
                         <div class="review-stars" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-                        <p>"Great café for working. WiFi, good coffee, quiet corners. Only the lunch specials sometimes run out fast."</p>
-                        <div class="review-author">— Lisa F., Google Review</div>
+                        <p class="review-text">Beautiful ambiance, perfect for a quiet weekend breakfast. The rolls are heavenly.</p>
+                        <span class="review-author">— Lisa W.</span>
                     </div>
                 </div>
             </div>
@@ -178,61 +177,65 @@
 
         <section id="faq" class="section">
             <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Find answers to the most common questions.</p>
+                <span class="section-label">Common questions</span>
+                <h2 class="section-title">FAQ</h2>
+                <div class="section-divider"></div>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">Can I reserve a table?</button>
-                        <div class="faq-answer"><p>Yes, we accept reservations by phone or email. On weekends, we recommend reserving, especially for groups of 4 or more.</p></div>
+                        <button class="faq-question" aria-expanded="false">Can I reserve a table?<span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" role="region"><p>Yes, by phone or through our contact form. We recommend booking ahead for weekends, as we tend to fill up quickly.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">Are there vegan and gluten-free options?</button>
-                        <div class="faq-answer"><p>Yes! We offer daily vegan and gluten-free cakes as well as breakfast options. Feel free to ask us — we'll advise you personally.</p></div>
+                        <button class="faq-question" aria-expanded="false">Do you offer vegan or gluten-free options?<span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" role="region"><p>Absolutely. Our menu clearly marks all vegan and gluten-free dishes. Just ask our team for personal recommendations.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">Do you offer catering?</button>
-                        <div class="faq-answer"><p>Yes, we cater for corporate events, birthdays and private celebrations. Contact us for a custom quote.</p></div>
+                        <button class="faq-question" aria-expanded="false">Do you offer catering?<span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" role="region"><p>We offer catering for small events up to 30 guests. We don't have a regular delivery service, but cakes can be pre-ordered for pickup.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">Is there WiFi in the café?</button>
-                        <div class="faq-answer"><p>Yes, free WiFi is available for all guests. You can get the password at the counter.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">Is the café wheelchair accessible?</button>
-                        <div class="faq-answer"><p>Yes, our café has step-free access and an accessible restroom.</p></div>
+                        <button class="faq-question" aria-expanded="false">Is the café wheelchair accessible?<span class="faq-icon" aria-hidden="true">+</span></button>
+                        <div class="faq-answer" role="region"><p>Yes, our ground floor is step-free and includes an accessible restroom.</p></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section section-alt">
+        <section id="contact" class="section section-cream">
             <div class="container">
+                <span class="section-label">Get in touch</span>
                 <h2 class="section-title">Contact</h2>
-                <p class="section-subtitle">We look forward to your visit or your message.</p>
+                <div class="section-divider"></div>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3>Visit Us</h3>
-                        <p><strong>Address:</strong><br>[STREET ADDRESS], [POSTAL CODE CITY]</p>
-                        <p><strong>Phone:</strong><br><a href="tel:[PHONE]">[PHONE]</a></p>
-                        <p><strong>Email:</strong><br><a href="mailto:[EMAIL]">[EMAIL]</a></p>
-                        <p><strong>Opening Hours:</strong><br>Mon–Fri: 8:00 AM–6:00 PM<br>Sat: 9:00 AM–5:00 PM<br>Sun: 10:00 AM–4:00 PM</p>
-                        <p style="margin-top:1rem;"><a href="https://www.google.com/maps/search/[STREET+ADDRESS]+[POSTAL+CODE+CITY]" target="_blank" rel="noopener">&#10132; View on Google Maps</a></p>
+                        <h3>How to Find Us</h3>
+                        <p><strong>Café Goldstück</strong></p>
+                        <p>[Street Number]<br>[Zip City]</p>
+                        <p>Phone: <a href="tel:+49000000000">[PHONE]</a></p>
+                        <p>Email: <a href="mailto:info@example.com">[EMAIL]</a></p>
+                        <div class="contact-hours">
+                            <h4>Opening Hours</h4>
+                            <p>Mon – Fri: 8:00 am – 6:00 pm</p>
+                            <p>Sat: 9:00 am – 5:00 pm</p>
+                            <p>Sun: 10:00 am – 4:00 pm</p>
+                        </div>
+                        <p style="margin-top:1rem;font-size:0.9rem"><a href="https://maps.google.com" target="_blank" rel="noopener">View on Google Maps &#8599;</a></p>
                     </div>
-                    <form class="contact-form" data-mailto="[EMAIL]" aria-label="Contact form">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required autocomplete="name">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required autocomplete="email">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject">
-                            <option>Table Reservation</option>
-                            <option>Catering Inquiry</option>
+                    <form class="contact-form" data-mailto="info@example.com">
+                        <label for="name-en">Name</label>
+                        <input type="text" id="name-en" name="name" required>
+                        <label for="email-en">Email</label>
+                        <input type="email" id="email-en" name="email" required>
+                        <label for="subject-en">Subject</label>
+                        <select id="subject-en" name="subject">
+                            <option>Reservation</option>
+                            <option>Catering inquiry</option>
+                            <option>General question</option>
                             <option>Feedback</option>
-                            <option>Other</option>
                         </select>
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <p class="form-note">* Required fields. Your data is used only to process your inquiry. <a href="#" data-legal="datenschutz">Privacy Policy</a></p>
+                        <label for="message-en">Message</label>
+                        <textarea id="message-en" name="message" rows="5" required></textarea>
+                        <p class="form-note">Your data will only be used to process your inquiry.</p>
                         <button type="submit">Send Message</button>
                     </form>
                 </div>
@@ -240,93 +243,99 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h4>Café Goldstück</h4>
-                    <p>Your cozy café in the heart of the city. Fresh, regional, made with love.</p>
+                    <p class="footer-brand">Café Goldstück</p>
+                    <p>Your cozy café & restaurant — since 2012. Homemade, regional, with love.</p>
                 </div>
                 <div>
-                    <h4>Opening Hours</h4>
-                    <p>Mon–Fri: 8:00 AM–6:00 PM<br>Sat: 9:00 AM–5:00 PM<br>Sun: 10:00 AM–4:00 PM</p>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
                 <div>
                     <h4>Contact</h4>
-                    <p>[STREET ADDRESS]<br>[POSTAL CODE CITY]<br><a href="tel:[PHONE]">[PHONE]</a><br><a href="mailto:[EMAIL]">[EMAIL]</a></p>
+                    <p>[Street Number]</p>
+                    <p>[Zip City]</p>
+                    <p><a href="tel:+49000000000">[PHONE]</a></p>
                 </div>
                 <div>
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#" data-legal="impressum">Legal Notice</a></li>
+                        <li><a href="#" data-legal="impressum">Impressum</a></li>
                         <li><a href="#" data-legal="datenschutz">Privacy Policy</a></li>
-                        <li><a href="#" data-legal="cookies">Cookie Policy</a></li>
+                        <li><a href="#" data-legal="cookies">Cookies</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Café Goldstück. All rights reserved. | <a href="index.html">Deutsche Version</a></p>
+                <p>&copy; 2025 Café Goldstück. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Legal Modals -->
-    <div class="legal-section" id="impressum" role="dialog" aria-labelledby="impressum-title" aria-modal="true">
-        <div class="legal-content">
+    <div class="legal-overlay" id="impressum" role="dialog" aria-label="Legal Notice">
+        <div class="legal-box">
             <button class="legal-close" aria-label="Close">&times;</button>
-            <h2 id="impressum-title">Legal Notice (Impressum)</h2>
-            <div class="legal-disclaimer">⚠ This is a placeholder. All information must be replaced with real business data and reviewed by a legal professional.</div>
-            <h3>Information according to § 5 TMG</h3>
-            <p>[COMPANY NAME]<br>[OWNER]<br>[STREET ADDRESS]<br>[POSTAL CODE CITY]</p>
+            <h2>Impressum (Legal Notice)</h2>
+            <div class="legal-disclaimer">Note: These legal texts are templates and must be reviewed by a legal professional before publishing.</div>
+            <h3>Information pursuant to § 5 TMG</h3>
+            <p>[Full Name / Company]<br>[Street Number]<br>[Zip City]</p>
             <h3>Contact</h3>
             <p>Phone: [PHONE]<br>Email: [EMAIL]</p>
             <h3>VAT ID</h3>
-            <p>VAT identification number according to § 27a UStG: [VAT-ID]</p>
-            <h3>EU Dispute Resolution</h3>
-            <p>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+            <p>VAT identification number pursuant to § 27a UStG: [VAT-ID]</p>
+            <h3>Responsible for content pursuant to § 55 Abs. 2 RStV</h3>
+            <p>[Full Name]<br>[Address]</p>
+            <h3>Dispute Resolution</h3>
+            <p>The European Commission provides a platform for online dispute resolution (OS). We are not obliged or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+            <h3>Liability for Content</h3>
+            <p>As a service provider, we are responsible for our own content on these pages under general law pursuant to § 7 (1) TMG. According to §§ 8-10 TMG, however, we are not obligated to monitor transmitted or stored third-party information.</p>
         </div>
     </div>
 
-    <div class="legal-section" id="datenschutz" role="dialog" aria-labelledby="datenschutz-title" aria-modal="true">
-        <div class="legal-content">
+    <div class="legal-overlay" id="datenschutz" role="dialog" aria-label="Privacy Policy">
+        <div class="legal-box">
             <button class="legal-close" aria-label="Close">&times;</button>
-            <h2 id="datenschutz-title">Privacy Policy</h2>
-            <div class="legal-disclaimer">⚠ This is a placeholder. This privacy policy must be adapted to your actual data processing and reviewed by a legal professional.</div>
-            <h3>1. Controller</h3>
-            <p>[COMPANY NAME], [STREET ADDRESS], [POSTAL CODE CITY]<br>Email: [EMAIL], Phone: [PHONE]</p>
-            <h3>2. Data Collection</h3>
-            <p>When visiting our website, information is automatically transmitted by your browser (IP address, date/time, browser type). This data is stored in server log files.</p>
-            <h3>3. Contact Form</h3>
-            <p>When you contact us via the contact form, your details (name, email, message) are stored to process your inquiry. We do not share this data without your consent. Legal basis: Art. 6(1)(b) GDPR.</p>
-            <h3>4. Cookies</h3>
-            <p>This website uses only technically necessary cookies (e.g., cookie consent status). Analytics or tracking cookies are not used unless you actively consent.</p>
+            <h2>Privacy Policy (Datenschutzerklärung)</h2>
+            <div class="legal-disclaimer">Note: These legal texts are templates and must be reviewed by a legal professional before publishing.</div>
+            <h3>1. Privacy at a Glance</h3>
+            <p>The following information provides a simple overview of what happens to your personal data when you visit this website.</p>
+            <h3>2. General Information</h3>
+            <p>Data processing on this website is carried out by the website operator. You can find contact details in the legal notice of this website.</p>
+            <h3>3. Data Collection on This Website</h3>
+            <p>Your data is collected when you provide it to us (e.g. via the contact form). Other data is collected automatically by our IT systems when you visit the website.</p>
+            <h3>4. Hosting</h3>
+            <p>This website is hosted by an external service provider (GitHub Pages). Personal data collected on this website is stored on the host's servers.</p>
             <h3>5. Your Rights</h3>
-            <p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection. Contact us at [EMAIL].</p>
+            <p>You have the right to free information about your stored personal data, its origin and recipients, and the purpose of data processing, as well as the right to correction or deletion of this data at any time.</p>
         </div>
     </div>
 
-    <div class="legal-section" id="cookies" role="dialog" aria-labelledby="cookies-title" aria-modal="true">
-        <div class="legal-content">
+    <div class="legal-overlay" id="cookies" role="dialog" aria-label="Cookie Policy">
+        <div class="legal-box">
             <button class="legal-close" aria-label="Close">&times;</button>
-            <h2 id="cookies-title">Cookie Policy</h2>
-            <div class="legal-disclaimer">⚠ This is a placeholder. Must be adapted to actual cookies used and legally reviewed.</div>
-            <h3>What are cookies?</h3>
-            <p>Cookies are small text files stored on your device when you visit a website.</p>
-            <h3>Which cookies do we use?</h3>
-            <p><strong>Necessary cookies:</strong> Cookie consent status (stores your cookie preference). Without these cookies, the website cannot function properly.</p>
-            <p><strong>Analytics cookies:</strong> [Placeholder — Only activate if an analytics tool is used. Consent required.]</p>
-            <h3>How can you manage cookies?</h3>
-            <p>You can block or delete cookies in your browser settings. Note that blocking all cookies may affect website functionality.</p>
+            <h2>Cookie Policy</h2>
+            <div class="legal-disclaimer">Note: These legal texts are templates and must be reviewed by a legal professional before publishing.</div>
+            <h3>What Are Cookies?</h3>
+            <p>Cookies are small text files stored on your device. They cause no harm and contain no viruses.</p>
+            <h3>Which Cookies Do We Use?</h3>
+            <p>This website only uses technically necessary cookies or local storage values to save your cookie preference. No tracking, analytics or advertising cookies are used.</p>
+            <h3>Your Settings</h3>
+            <p>Since we do not use non-essential cookies, separate consent is not required. You can manage or delete cookies in your browser settings at any time.</p>
         </div>
     </div>
 
-    <div class="cookie-banner" role="alert" aria-label="Cookie notice">
+    <div class="cookie-banner" role="status" aria-label="Cookie notice">
         <div class="cookie-inner">
-            <p>We only use technically necessary cookies to ensure the functionality of this website. <a href="#" data-legal="cookies">Learn more</a></p>
-            <div class="cookie-btns">
-                <button class="cookie-accept">Accept</button>
-                <button class="cookie-decline">Necessary Only</button>
-            </div>
+            <p>This website does not use tracking cookies. Only a technically necessary storage value remembers this notice. <a href="#" data-legal="cookies">Learn more</a></p>
+            <button class="cookie-btn">Got it</button>
         </div>
     </div>
 
