@@ -1,0 +1,224 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: 'Mara Delacroix',
+    title: 'Creative Director',
+    bio: 'Mara founded Lumen Atelier in Paris in 2017 after a decade leading design at cultural institutions and independent publishing houses. Her work focuses on the relationship between editorial rigour and visual intelligence — how the discipline of language thinking can produce more considered, more durable visual form.',
+    initial: 'M',
+  },
+  {
+    name: 'Tom Wilder',
+    title: 'Strategy Director',
+    bio: 'Tom joined Lumen in 2019, bringing a background in brand strategy and anthropology. He leads discovery and positioning work — the phase that precedes all design — with the conviction that good design strategy begins with genuine curiosity about how people actually experience the world.',
+    initial: 'T',
+  },
+  {
+    name: 'Yuki Sato',
+    title: 'Design Lead',
+    bio: 'Yuki trained in Tokyo and studied at the Royal College of Art before joining Lumen in 2021. Her practice spans print and screen with equal fluency; she brings particular depth in typography, grid systems, and the translation of editorial logic across publication formats.',
+    initial: 'Y',
+  },
+];
+
+const services = [
+  {
+    name: 'Brand Identity',
+    description: 'Foundational visual language — wordmark, typographic system, colour architecture, and the full range of expressions that allow a brand to speak coherently across every context.',
+  },
+  {
+    name: 'Editorial Systems',
+    description: 'Design systems for publications and long-form content — grid architecture, typographic hierarchy, template libraries, and the editorial logic that holds it all together.',
+  },
+  {
+    name: 'Digital Experiences',
+    description: 'Web design and interactive environments built for reading, discovery, and depth — digital spaces that honour the content they house rather than competing with it.',
+  },
+  {
+    name: 'Campaign Design',
+    description: 'Integrated campaign work across digital, print, and environmental formats — with narrative architecture built before a single asset is designed.',
+  },
+];
+
+const clients = [
+  'Atheneum Cultural Center',
+  'Folio Publishing House',
+  'Meridian Magazine',
+  'Aurox Beverages',
+  'Solara Energy',
+  'Harto Collective',
+  'Institut du Monde Arabe',
+  'Veau & Compagnie',
+  'Noctua Press',
+  'Parallax Architecture',
+  'Strata Gallery',
+  'Oleum Collective',
+];
+
+const recognition = [
+  { award: 'D&AD Yellow Pencil', category: 'Graphic Design — Typography', year: '2024' },
+  { award: 'Communication Arts', category: 'Design Annual — Editorial', year: '2024' },
+  { award: 'Creative Review Annual', category: 'Brand Identity', year: '2023' },
+  { award: 'European Design Awards', category: 'Silver — Print', year: '2023' },
+  { award: "It's Nice That Designers", category: 'Studio of the Year, shortlist', year: '2023' },
+  { award: 'Type Directors Club', category: 'Certificate of Typographic Excellence', year: '2022' },
+  { award: 'Graphis Platinum', category: 'Annual Reports & Design Systems', year: '2022' },
+];
+---
+
+<BaseLayout
+  title="Studio"
+  description="Lumen Atelier is an editorial digital studio founded in Paris in 2017. We build brand identities, editorial systems, and digital experiences."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-16 border-b border-hairline">
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Est. 2017 — Paris &amp; London</p>
+    <h1 class="text-5xl lg:text-7xl xl:text-8xl font-serif font-normal text-ink leading-none tracking-tight">
+      Lumen Atelier
+    </h1>
+  </section>
+
+  <!-- Studio philosophy -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="lg:grid lg:grid-cols-[400px_1fr] lg:gap-20 xl:gap-32">
+      <div class="mb-12 lg:mb-0">
+        <h2 class="text-2xl lg:text-3xl font-serif font-normal text-ink mb-6">Our practice</h2>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">
+          Philosophy &amp; approach
+        </p>
+      </div>
+      <div class="space-y-6 font-sans text-base text-ink leading-relaxed max-w-2xl">
+        <p>
+          Lumen Atelier was founded on a conviction that is simple to state and difficult to enact:
+          that visual form is never neutral. Every typographic choice, every layout decision, every
+          colour carries meaning — and that meaning either serves the content or competes with it.
+          Our work begins with the question of what needs to be communicated, and builds the
+          visual language from that answer outward.
+        </p>
+        <p>
+          We are an editorial studio in the literal sense: we think about design the way editors
+          think about text. Knowing what to include means knowing what to exclude. The quality of
+          a page is as much a function of what isn't on it as what is. We apply this editorial
+          sensibility to every discipline we practise — from brand identity to digital experience,
+          from printed matter to spatial environments.
+        </p>
+        <p>
+          We work with a small number of clients at any one time, and we take work only when we
+          believe we can do it well. This means we decline more than we accept. It also means that
+          the work we do produce reflects our full attention and the full depth of what we know.
+          We are not interested in output for its own sake. We are interested in communication
+          that earns the attention it asks for.
+        </p>
+        <p>
+          The studio operates between Paris and London, and works internationally. Our clients
+          include cultural institutions, literary publishers, independent consumer brands, and
+          organisations in the early stages of defining what they believe and how they want to
+          be seen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="flex items-baseline justify-between mb-12 border-b border-hairline pb-6">
+        <h2 class="text-3xl lg:text-4xl font-serif font-normal text-ink">The team</h2>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">{team.length} people</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        {team.map((member) => (
+          <div>
+            <!-- Avatar -->
+            <div
+              class="w-16 h-16 rounded-full bg-hairline flex items-center justify-center mb-6"
+              aria-hidden="true"
+            >
+              <span class="font-serif text-2xl text-subtle font-normal">{member.initial}</span>
+            </div>
+            <h3 class="font-serif text-xl font-normal text-ink mb-1">{member.name}</h3>
+            <p class="text-xs tracking-widest uppercase text-accent font-sans mb-5">{member.title}</p>
+            <p class="text-sm font-sans text-subtle leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="border-t border-hairline bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <h2 class="text-3xl lg:text-4xl font-serif font-normal text-paper mb-12">What we do</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-paper/10">
+        {services.map((service) => (
+          <div class="bg-ink p-8 lg:p-10">
+            <h3 class="font-serif text-xl font-normal text-paper mb-4">{service.name}</h3>
+            <p class="text-sm font-sans text-paper/70 leading-relaxed">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="lg:grid lg:grid-cols-[300px_1fr] lg:gap-20">
+        <div class="mb-10 lg:mb-0">
+          <h2 class="text-2xl lg:text-3xl font-serif font-normal text-ink mb-4">Clients</h2>
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Selected, by category</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {clients.map((client) => (
+            <p class="text-sm font-sans text-ink py-3 border-b border-hairline">{client}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recognition -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="lg:grid lg:grid-cols-[300px_1fr] lg:gap-20">
+        <div class="mb-10 lg:mb-0">
+          <h2 class="text-2xl lg:text-3xl font-serif font-normal text-ink mb-4">Recognition</h2>
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Awards &amp; features</p>
+        </div>
+        <div class="space-y-0">
+          {recognition.map((item) => (
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-4 border-b border-hairline gap-1 sm:gap-6">
+              <div>
+                <p class="text-sm font-sans font-medium text-ink">{item.award}</p>
+                <p class="text-xs font-sans text-subtle mt-0.5">{item.category}</p>
+              </div>
+              <p class="text-xs font-sans text-subtle shrink-0">{item.year}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+      <div class="max-w-xl">
+        <h2 class="text-4xl lg:text-5xl font-serif font-normal text-ink mb-6 leading-tight">
+          Work with us
+        </h2>
+        <p class="font-sans text-base text-subtle leading-relaxed mb-8">
+          We're currently accepting new commissions for 2025. If you have a project that needs
+          the kind of attention we bring, we'd like to hear about it.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-ink transition-colors duration-200"
+        >
+          Start a conversation
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

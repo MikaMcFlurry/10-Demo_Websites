@@ -1,0 +1,195 @@
+:root {
+  --paper: #FAF7F2;
+  --ink: #141312;
+  --subtle: #6E6760;
+  --hairline: #E7DED3;
+  --accent: #C45D3D;
+  --accent-2: #2E4AD9;
+  --highlight: #D9B65E;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.font-serif {
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr min(72ch, 100%) 1fr;
+}
+
+.editorial-grid > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  grid-column: 1 / -1;
+}
+
+/* Prose styles for markdown content */
+.prose {
+  max-width: 68ch;
+  color: var(--ink);
+}
+
+.prose p {
+  margin-bottom: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.prose h2 {
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.prose h3 {
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.375rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  color: var(--subtle);
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--ink);
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:focus-within {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.5rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--accent);
+  color: var(--paper);
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 3rem 0;
+}
+
+/* Selection */
+::selection {
+  background: var(--highlight);
+  color: var(--ink);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

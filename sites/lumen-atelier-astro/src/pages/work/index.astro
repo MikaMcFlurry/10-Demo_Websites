@@ -1,0 +1,165 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const projects = allProjects.sort((a, b) => b.data.year - a.data.year);
+
+const filterTags = ['branding', 'editorial', 'digital', 'campaign', 'packaging', 'identity', 'web', 'spatial'];
+---
+
+<BaseLayout
+  title="Work"
+  description="Selected projects from Lumen Atelier — brand identities, editorial systems, digital experiences, and campaign design."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12 border-b border-hairline">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+      <div>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">Portfolio</p>
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none mb-6">
+          Work
+        </h1>
+        <p class="text-base text-subtle font-sans leading-relaxed max-w-lg">
+          Eight years of practice across brand identity, editorial systems, digital experience,
+          and campaign design — for cultural institutions, emerging consumer brands, and
+          organisations with something specific to say.
+        </p>
+      </div>
+      <div class="shrink-0">
+        <p class="text-4xl font-serif font-normal text-ink">{projects.length}</p>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans mt-1">Projects</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter bar -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-6 border-b border-hairline">
+    <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Filter projects by discipline">
+      <button
+        type="button"
+        data-filter="all"
+        class="project-filter-btn text-xs font-sans tracking-wide px-4 py-2 border border-ink bg-ink text-paper transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        aria-pressed="true"
+      >
+        All
+      </button>
+      {filterTags.map((tag) => (
+        <button
+          type="button"
+          data-filter={tag}
+          class="project-filter-btn text-xs font-sans tracking-wide px-4 py-2 border border-hairline text-subtle hover:border-ink hover:text-ink transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent capitalize"
+          aria-pressed="false"
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Projects grid -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <p
+      id="project-count"
+      class="text-xs font-sans tracking-wide text-subtle uppercase mb-10"
+      aria-live="polite"
+    >
+      Showing {projects.length} of {projects.length} projects
+    </p>
+    <div
+      id="projects-grid"
+      class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14"
+    >
+      {projects.map((project, i) => (
+        <div
+          class="project-item"
+          data-tags={project.data.tags.join(',')}
+        >
+          <ProjectCard
+            title={project.data.title}
+            client={project.data.client}
+            year={project.data.year}
+            tags={project.data.tags}
+            slug={project.slug}
+            excerpt={project.data.excerpt}
+            featured={project.data.featured}
+            index={i}
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="no-results" class="hidden py-20 text-center">
+      <p class="font-serif text-2xl text-ink mb-3">No projects found</p>
+      <p class="text-subtle font-sans text-sm">Try a different filter.</p>
+    </div>
+  </section>
+
+  <!-- Studio note -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="max-w-xl">
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">Note on selection</p>
+        <p class="font-sans text-base text-subtle leading-relaxed">
+          The projects shown here represent a selection of studio work. Certain client
+          relationships involve confidentiality agreements; for a complete portfolio review
+          including sensitive work, please contact us directly.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block mt-6 text-sm font-sans text-accent hover:text-ink transition-colors duration-200 underline underline-offset-4"
+        >
+          Request full portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBtns = Array.from(document.querySelectorAll('.project-filter-btn')) as HTMLButtonElement[];
+  const projectItems = Array.from(document.querySelectorAll('.project-item')) as HTMLElement[];
+  const projectCount = document.getElementById('project-count');
+  const noResults = document.getElementById('no-results');
+  const total = projectItems.length;
+
+  function filterProjects(filter: string) {
+    let visible = 0;
+
+    projectItems.forEach((item) => {
+      const tags = (item.dataset.tags || '').split(',');
+      const show = filter === 'all' || tags.includes(filter);
+      item.style.display = show ? 'block' : 'none';
+      if (show) visible++;
+    });
+
+    if (projectCount) {
+      projectCount.textContent = `Showing ${visible} of ${total} projects`;
+    }
+    if (noResults) {
+      noResults.classList.toggle('hidden', visible > 0);
+    }
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'all';
+
+      filterBtns.forEach((b) => {
+        const active = b.dataset.filter === filter;
+        b.setAttribute('aria-pressed', String(active));
+        if (active) {
+          b.classList.remove('border-hairline', 'text-subtle');
+          b.classList.add('border-ink', 'bg-ink', 'text-paper');
+        } else {
+          b.classList.remove('border-ink', 'bg-ink', 'text-paper');
+          b.classList.add('border-hairline', 'text-subtle');
+        }
+      });
+
+      filterProjects(filter);
+    });
+  });
+</script>

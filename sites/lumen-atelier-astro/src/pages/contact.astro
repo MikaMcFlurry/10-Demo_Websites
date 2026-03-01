@@ -1,0 +1,337 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const projectTypes = [
+  'Brand Identity',
+  'Editorial System',
+  'Digital Experience',
+  'Campaign Design',
+  'Packaging',
+  'Spatial / Environmental',
+  'Strategy Only',
+  'Other',
+];
+
+const budgetRanges = [
+  'Under £15,000',
+  '£15,000 — £30,000',
+  '£30,000 — £60,000',
+  '£60,000 — £100,000',
+  '£100,000+',
+  'Not sure yet',
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Start a project with Lumen Atelier. We take on a limited number of new commissions each year."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12 border-b border-hairline">
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">New work</p>
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none mb-6">
+      Contact
+    </h1>
+    <p class="text-lg text-subtle font-sans leading-relaxed max-w-xl">
+      We take on a limited number of new commissions each year. Tell us about your project and
+      we'll respond within two working days.
+    </p>
+  </section>
+
+  <!-- Contact content -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="lg:grid lg:grid-cols-[1fr_340px] lg:gap-16 xl:gap-24">
+
+      <!-- Contact form -->
+      <div>
+        <h2 class="text-2xl font-serif font-normal text-ink mb-8">New business enquiry</h2>
+        <form
+          action="#"
+          method="post"
+          class="space-y-8"
+          aria-label="Project enquiry form"
+          novalidate
+        >
+          <!-- Name + Email row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label
+                for="name"
+                class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+              >
+                Your name <span class="text-accent" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+                class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200"
+                placeholder="Full name"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+              >
+                Email address <span class="text-accent" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+                class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200"
+                placeholder="you@company.com"
+              />
+            </div>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <label
+              for="company"
+              class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+            >
+              Organisation / Company
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              autocomplete="organization"
+              class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200"
+              placeholder="Where you work"
+            />
+          </div>
+
+          <!-- Project type -->
+          <div>
+            <label
+              for="project-type"
+              class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+            >
+              Project type <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <div class="relative">
+              <select
+                id="project-type"
+                name="project-type"
+                required
+                class="w-full appearance-none bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink focus:outline-none focus:border-ink transition-colors duration-200 cursor-pointer pr-10"
+              >
+                <option value="" disabled selected>Select a discipline</option>
+                {projectTypes.map((type) => (
+                  <option value={type.toLowerCase().replace(/\s+/g, '-')}>{type}</option>
+                ))}
+              </select>
+              <span
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-subtle pointer-events-none text-xs"
+                aria-hidden="true"
+              >
+                &#8595;
+              </span>
+            </div>
+          </div>
+
+          <!-- Budget -->
+          <div>
+            <label
+              for="budget"
+              class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+            >
+              Approximate budget
+            </label>
+            <div class="relative">
+              <select
+                id="budget"
+                name="budget"
+                class="w-full appearance-none bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink focus:outline-none focus:border-ink transition-colors duration-200 cursor-pointer pr-10"
+              >
+                <option value="" disabled selected>Select a range</option>
+                {budgetRanges.map((range) => (
+                  <option value={range}>{range}</option>
+                ))}
+              </select>
+              <span
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-subtle pointer-events-none text-xs"
+                aria-hidden="true"
+              >
+                &#8595;
+              </span>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div>
+            <label
+              for="timeline"
+              class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+            >
+              Ideal start date
+            </label>
+            <input
+              type="text"
+              id="timeline"
+              name="timeline"
+              class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200"
+              placeholder="e.g. Q2 2025, as soon as possible, flexible"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label
+              for="message"
+              class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2"
+            >
+              Tell us about the project <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200 resize-vertical"
+              placeholder="What are you trying to communicate? Who is the audience? What does success look like?"
+            ></textarea>
+            <p class="text-xs text-subtle font-sans mt-2">
+              The more specific you can be, the better our response will be.
+            </p>
+          </div>
+
+          <!-- Submit -->
+          <div>
+            <button
+              type="submit"
+              class="inline-block bg-accent text-paper px-8 py-3.5 text-sm font-sans font-medium tracking-wide hover:bg-ink transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              Send enquiry
+            </button>
+            <p class="text-xs text-subtle font-sans mt-4">
+              We respond to all enquiries within two working days.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Studio info sidebar -->
+      <aside class="mt-16 lg:mt-0">
+        <div class="space-y-10">
+
+          <!-- General contact -->
+          <div class="border-b border-hairline pb-8">
+            <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-5">General</h2>
+            <div class="space-y-3 text-sm font-sans">
+              <div>
+                <p class="text-subtle text-xs tracking-wide mb-1">Studio</p>
+                <a
+                  href="mailto:hello@lumenatelier.studio"
+                  class="text-ink hover:text-accent transition-colors duration-200"
+                >
+                  hello@lumenatelier.studio
+                </a>
+              </div>
+              <div>
+                <p class="text-subtle text-xs tracking-wide mb-1">Response time</p>
+                <p class="text-ink">2 working days</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- New business -->
+          <div class="border-b border-hairline pb-8">
+            <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-5">New business enquiries</h2>
+            <a
+              href="mailto:work@lumenatelier.studio"
+              class="text-sm font-sans text-ink hover:text-accent transition-colors duration-200"
+            >
+              work@lumenatelier.studio
+            </a>
+            <p class="text-xs text-subtle font-sans mt-3 leading-relaxed">
+              For project briefs, RFPs, or initial conversations about a potential commission.
+            </p>
+          </div>
+
+          <!-- Press -->
+          <div class="border-b border-hairline pb-8">
+            <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-5">Press &amp; editorial</h2>
+            <a
+              href="mailto:press@lumenatelier.studio"
+              class="text-sm font-sans text-ink hover:text-accent transition-colors duration-200"
+            >
+              press@lumenatelier.studio
+            </a>
+            <p class="text-xs text-subtle font-sans mt-3 leading-relaxed">
+              For interview requests, image licensing, and editorial features.
+            </p>
+          </div>
+
+          <!-- Locations -->
+          <div class="border-b border-hairline pb-8">
+            <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-5">Studios</h2>
+            <div class="space-y-4 text-sm font-sans">
+              <div>
+                <p class="font-medium text-ink">Paris</p>
+                <p class="text-subtle">14 Rue de la Roquette, 75011</p>
+                <a
+                  href="/map"
+                  class="text-xs text-accent hover:text-ink transition-colors duration-200 mt-1 block"
+                >
+                  View on map &rarr;
+                </a>
+              </div>
+              <div>
+                <p class="font-medium text-ink">London</p>
+                <p class="text-subtle">7 Vyner Street, E2 9DG</p>
+                <a
+                  href="/map"
+                  class="text-xs text-accent hover:text-ink transition-colors duration-200 mt-1 block"
+                >
+                  View on map &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-5">Follow</h2>
+            <div class="space-y-2 text-sm font-sans">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-ink hover:text-accent transition-colors duration-200"
+                aria-label="Lumen Atelier on Instagram (opens in new tab)"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-ink hover:text-accent transition-colors duration-200"
+                aria-label="Lumen Atelier on LinkedIn (opens in new tab)"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://are.na"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-ink hover:text-accent transition-colors duration-200"
+                aria-label="Lumen Atelier on Are.na (opens in new tab)"
+              >
+                Are.na
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

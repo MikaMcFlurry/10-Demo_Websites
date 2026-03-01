@@ -1,0 +1,178 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import JournalCard from '@/components/JournalCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 3);
+
+const allJournal = await getCollection('journal');
+const latestJournal = allJournal
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="An Editorial Digital Studio"
+  description="Lumen Atelier is an editorial digital studio crafting brand identities, editorial systems, and digital experiences for organisations that believe in the quality of communication."
+>
+  <!-- Hero -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-28 lg:pb-32">
+    <div class="max-w-5xl">
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-8">
+        Paris &amp; London — Est. 2017
+      </p>
+      <h1 class="text-5xl lg:text-7xl xl:text-8xl font-serif font-normal text-ink leading-none tracking-tight mb-8">
+        An editorial<br />digital studio.
+      </h1>
+      <p class="text-lg lg:text-xl text-subtle leading-relaxed max-w-2xl mb-12 font-sans">
+        We build brand identities, editorial systems, and digital experiences — for organisations
+        that believe the quality of communication reflects the quality of thought.
+      </p>
+      <div class="flex flex-wrap items-center gap-6">
+        <a
+          href="/work"
+          class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-ink transition-colors duration-200"
+        >
+          View our work
+        </a>
+        <a
+          href="/journal"
+          class="inline-block text-sm font-sans text-ink hover:text-accent transition-colors duration-200 underline underline-offset-4"
+        >
+          Read the journal
+        </a>
+      </div>
+    </div>
+    <div class="border-b border-hairline my-16 lg:my-20" aria-hidden="true"></div>
+    <!-- Studio credentials row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {[
+        { label: 'Projects completed', value: '80+' },
+        { label: 'Years in practice', value: '8' },
+        { label: 'Countries worked in', value: '14' },
+        { label: 'Award recognitions', value: '22' },
+      ].map((stat) => (
+        <div>
+          <p class="text-3xl lg:text-4xl font-serif font-normal text-ink mb-1">{stat.value}</p>
+          <p class="text-xs font-sans tracking-wide text-subtle uppercase">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="flex items-baseline justify-between mb-12 border-b border-hairline pb-6">
+      <h2 class="text-3xl lg:text-4xl font-serif font-normal text-ink">Selected Work</h2>
+      <a
+        href="/work"
+        class="text-sm font-sans text-subtle hover:text-accent transition-colors duration-200"
+        aria-label="View all work"
+      >
+        View all work &rarr;
+      </a>
+    </div>
+    {featuredProjects.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        {featuredProjects.map((project, i) => (
+          <ProjectCard
+            title={project.data.title}
+            client={project.data.client}
+            year={project.data.year}
+            tags={project.data.tags}
+            slug={project.slug}
+            excerpt={project.data.excerpt}
+            featured={project.data.featured}
+            index={i}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-subtle font-sans">No featured projects yet.</p>
+    )}
+  </section>
+
+  <!-- Studio Statement -->
+  <section class="bg-ink text-paper py-24 lg:py-32 my-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-3xl lg:text-5xl font-serif font-normal leading-tight mb-10 text-paper">
+          "Design is thinking made visible — we take that responsibility seriously."
+        </p>
+        <div class="border-t border-paper/20 pt-10 max-w-2xl mx-auto">
+          <p class="text-paper/70 font-sans text-base leading-relaxed">
+            Lumen Atelier was founded on a conviction that visual form is never neutral. Every
+            typographic choice, every composition decision, every piece of colour carries meaning.
+            Our work begins with editorial rigour: understanding what needs to be said, to whom,
+            and with what authority — before a single pixel is placed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journal -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <div class="flex items-baseline justify-between mb-12 border-b border-hairline pb-6">
+      <div>
+        <h2 class="text-3xl lg:text-4xl font-serif font-normal text-ink">From the Journal</h2>
+        <p class="text-subtle text-sm font-sans mt-2">Writing on design, brand, and visual thinking.</p>
+      </div>
+      <a
+        href="/journal"
+        class="text-sm font-sans text-subtle hover:text-accent transition-colors duration-200 shrink-0"
+        aria-label="Read all journal entries"
+      >
+        Read all &rarr;
+      </a>
+    </div>
+    <div class="max-w-3xl">
+      {latestJournal.map((entry) => (
+        <JournalCard
+          title={entry.data.title}
+          date={entry.data.date}
+          excerpt={entry.data.excerpt}
+          tags={entry.data.tags}
+          readingTime={entry.data.readingTime}
+          slug={entry.slug}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-2xl">
+        <p class="text-xs tracking-widest uppercase text-paper/50 font-sans mb-6">New work</p>
+        <h2 class="text-4xl lg:text-6xl font-serif font-normal text-paper leading-tight mb-8">
+          Start a project
+        </h2>
+        <p class="text-paper/70 font-sans text-lg leading-relaxed mb-10">
+          We take on a limited number of new commissions each year. If you have a project in mind —
+          a brand to build, a publication to design, a digital experience to create — we'd like to
+          hear about it.
+        </p>
+        <div class="flex flex-wrap items-center gap-6">
+          <a
+            href="/contact"
+            class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-paper hover:text-ink transition-colors duration-200"
+          >
+            Get in touch
+          </a>
+          <a
+            href="mailto:hello@lumenatelier.studio"
+            class="text-sm font-sans text-paper/70 hover:text-paper transition-colors duration-200"
+          >
+            hello@lumenatelier.studio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

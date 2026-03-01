@@ -1,0 +1,356 @@
+---
+// Gallery items — 24 total (8 Photography, 8 Typography, 4 Spatial, 4 Digital)
+const galleryItems = [
+  // Photography (8)
+  { id: 1, category: 'photography', caption: 'Atheneum exterior at dusk, eastern facade', color: '#C8B8A2' },
+  { id: 2, category: 'photography', caption: 'Solara rooftop array, Brussels installation', color: '#B8C4A8' },
+  { id: 3, category: 'photography', caption: 'Folio Publishing reading room interior', color: '#A8B4C8' },
+  { id: 4, category: 'photography', caption: 'Harto Collective — opening night, Vienna', color: '#C4A8B8' },
+  { id: 5, category: 'photography', caption: 'Meridian editorial team, Paris studio', color: '#C8C0A8' },
+  { id: 6, category: 'photography', caption: 'Aurox fermentation facility, Dordogne', color: '#A8C4B8' },
+  { id: 7, category: 'photography', caption: 'Atheneum courtyard, north wing detail', color: '#C4B8A8' },
+  { id: 8, category: 'photography', caption: 'Folio — long-form reading series', color: '#B8A8C4' },
+
+  // Typography (8)
+  { id: 9, category: 'typography', caption: 'Type specimen — Harto Collective logotype study', color: '#E7DED3' },
+  { id: 10, category: 'typography', caption: 'Meridian Magazine headline grid, issue 47', color: '#DED3E7' },
+  { id: 11, category: 'typography', caption: 'Aurox label typesetting — botanical series', color: '#D3E7DE' },
+  { id: 12, category: 'typography', caption: 'Folio — editorial hierarchy, long-form spreads', color: '#E7D3D3' },
+  { id: 13, category: 'typography', caption: 'Lumen type exploration — serif weight study', color: '#D3D3E7' },
+  { id: 14, category: 'typography', caption: 'Harto exhibition title lettering, laser-cut steel', color: '#E7E3D3' },
+  { id: 15, category: 'typography', caption: 'Meridian — cover type, condensed setting', color: '#D3E7E3' },
+  { id: 16, category: 'typography', caption: 'Solara campaign type — motion storyboard frames', color: '#E3D3E7' },
+
+  // Spatial (4)
+  { id: 17, category: 'spatial', caption: 'Atheneum Building C — wayfinding installation', color: '#9CA8B4' },
+  { id: 18, category: 'spatial', caption: 'Atheneum courtyard — floor typography, aerial view', color: '#A4B49C' },
+  { id: 19, category: 'spatial', caption: 'Harto Vienna — exhibition entrance lettering', color: '#B49CA4' },
+  { id: 20, category: 'spatial', caption: 'Folio — retail experience, flagship Marais', color: '#9CA4B4' },
+
+  // Digital (4)
+  { id: 21, category: 'digital', caption: 'Solara campaign — motion design frame grid', color: '#6E7A8C' },
+  { id: 22, category: 'digital', caption: 'Folio website — reading environment, dark mode', color: '#7A8C6E' },
+  { id: 23, category: 'digital', caption: 'Harto digital identity — responsive grid system', color: '#8C6E7A' },
+  { id: 24, category: 'digital', caption: 'Aurox social media system — template library', color: '#6E8C7A' },
+];
+
+const categories = ['All', 'Photography', 'Typography', 'Spatial', 'Digital'];
+
+// Varied aspect ratios for masonry feel
+const aspectRatios = [
+  'aspect-[4/3]', 'aspect-[3/4]', 'aspect-square', 'aspect-[16/9]',
+  'aspect-[3/4]', 'aspect-[4/3]', 'aspect-[16/9]', 'aspect-square',
+  'aspect-[4/3]', 'aspect-square', 'aspect-[3/4]', 'aspect-[4/3]',
+  'aspect-[16/9]', 'aspect-[3/4]', 'aspect-square', 'aspect-[4/3]',
+  'aspect-[3/4]', 'aspect-[4/3]', 'aspect-square', 'aspect-[16/9]',
+  'aspect-[4/3]', 'aspect-[3/4]', 'aspect-[16/9]', 'aspect-square',
+];
+---
+
+<div class="gallery-wrapper">
+  <!-- Filter buttons -->
+  <div class="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter gallery by category">
+    {categories.map((cat) => (
+      <button
+        type="button"
+        data-filter={cat.toLowerCase()}
+        class={`gallery-filter-btn text-sm font-sans px-4 py-2 border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+          cat === 'All'
+            ? 'bg-ink text-paper border-ink'
+            : 'bg-transparent text-subtle border-hairline hover:border-ink hover:text-ink'
+        }`}
+        aria-pressed={cat === 'All' ? 'true' : 'false'}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <!-- Gallery count -->
+  <p class="text-xs text-subtle mb-6 font-sans tracking-wide" id="gallery-count" aria-live="polite">
+    Showing {galleryItems.length} of {galleryItems.length} works
+  </p>
+
+  <!-- Masonry grid (CSS columns) -->
+  <div
+    id="gallery-grid"
+    class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4"
+    aria-label="Gallery grid"
+  >
+    {galleryItems.map((item, i) => (
+      <div
+        class="gallery-item break-inside-avoid cursor-pointer group focus-visible:outline-none"
+        data-category={item.category}
+        data-id={item.id}
+        data-caption={item.caption}
+        tabindex="0"
+        role="button"
+        aria-label={`View: ${item.caption}`}
+      >
+        <div
+          class="relative overflow-hidden"
+          style={`background-color: ${item.color};`}
+        >
+          <!-- Colored rectangle representing the image -->
+          <div class={`w-full ${aspectRatios[i]}`}></div>
+          <!-- Category badge -->
+          <div class="absolute top-3 left-3">
+            <span class="text-xs font-sans tracking-wide text-ink/60 bg-paper/80 px-2 py-0.5 uppercase">
+              {item.category}
+            </span>
+          </div>
+          <!-- Hover overlay with caption -->
+          <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/60 transition-colors duration-300 flex items-end">
+            <div class="p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 w-full">
+              <p class="text-paper text-xs leading-relaxed font-sans">
+                {item.caption}
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-subtle mt-2 font-sans leading-snug line-clamp-2 px-0.5">
+          {item.caption}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 bg-ink/95 hidden items-center justify-center"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image lightbox"
+  aria-hidden="true"
+>
+  <div class="relative w-full max-w-4xl mx-auto px-6 py-16">
+    <!-- Close button -->
+    <button
+      id="lightbox-close"
+      type="button"
+      aria-label="Close lightbox"
+      class="absolute top-4 right-6 text-paper/70 hover:text-paper text-3xl leading-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper"
+    >
+      &times;
+    </button>
+
+    <!-- Navigation -->
+    <button
+      id="lightbox-prev"
+      type="button"
+      aria-label="Previous image"
+      class="absolute left-4 top-1/2 -translate-y-1/2 text-paper/70 hover:text-paper transition-colors duration-200 text-2xl px-2 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper"
+    >
+      &#8592;
+    </button>
+    <button
+      id="lightbox-next"
+      type="button"
+      aria-label="Next image"
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-paper/70 hover:text-paper transition-colors duration-200 text-2xl px-2 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper"
+    >
+      &#8594;
+    </button>
+
+    <!-- Lightbox content -->
+    <div class="text-center">
+      <div
+        id="lightbox-image"
+        class="w-full max-h-[60vh] mx-auto mb-6"
+        style="min-height: 300px;"
+      ></div>
+      <p id="lightbox-caption" class="text-paper font-serif italic text-lg mb-2"></p>
+      <p id="lightbox-category" class="text-paper/50 text-xs font-sans tracking-widest uppercase"></p>
+      <p id="lightbox-counter" class="text-paper/40 text-xs font-sans mt-4"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item')) as HTMLElement[];
+  const filterBtns = Array.from(document.querySelectorAll('.gallery-filter-btn')) as HTMLButtonElement[];
+  const galleryCount = document.getElementById('gallery-count');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxCategory = document.getElementById('lightbox-category');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+
+  let currentFilter = 'all';
+  let currentIndex = 0;
+  let visibleItems: HTMLElement[] = [];
+  let lastFocused: HTMLElement | null = null;
+
+  // Extract item data
+  function getItemData(el: HTMLElement) {
+    return {
+      id: el.dataset.id || '',
+      caption: el.dataset.caption || '',
+      category: el.dataset.category || '',
+      color: (el.querySelector('div[style]') as HTMLElement)?.style?.backgroundColor || '#E7DED3',
+    };
+  }
+
+  // Filter gallery
+  function filterGallery(filter: string) {
+    currentFilter = filter;
+    visibleItems = [];
+
+    galleryItems.forEach((item) => {
+      const cat = item.dataset.category || '';
+      const show = filter === 'all' || cat === filter;
+      item.style.display = show ? 'block' : 'none';
+      if (show) visibleItems.push(item);
+    });
+
+    const total = galleryItems.length;
+    const shown = visibleItems.length;
+    if (galleryCount) {
+      galleryCount.textContent = `Showing ${shown} of ${total} works`;
+    }
+  }
+
+  // Open lightbox
+  function openLightbox(index: number) {
+    if (!lightbox || !visibleItems.length) return;
+    currentIndex = index;
+    lastFocused = document.activeElement as HTMLElement;
+
+    const item = visibleItems[currentIndex];
+    const data = getItemData(item);
+
+    if (lightboxImage) {
+      lightboxImage.style.backgroundColor = data.color;
+      lightboxImage.style.aspectRatio = '4/3';
+    }
+    if (lightboxCaption) lightboxCaption.textContent = data.caption;
+    if (lightboxCategory) lightboxCategory.textContent = data.category;
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+    }
+
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Focus the close button
+    lightboxClose?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocused?.focus();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % visibleItems.length;
+    openLightbox(currentIndex);
+  }
+
+  // Event listeners: filter buttons
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'all';
+      filterBtns.forEach((b) => {
+        const isActive = b.dataset.filter === filter;
+        b.setAttribute('aria-pressed', String(isActive));
+        if (isActive) {
+          b.classList.remove('bg-transparent', 'text-subtle', 'border-hairline');
+          b.classList.add('bg-ink', 'text-paper', 'border-ink');
+        } else {
+          b.classList.remove('bg-ink', 'text-paper', 'border-ink');
+          b.classList.add('bg-transparent', 'text-subtle', 'border-hairline');
+        }
+      });
+      filterGallery(filter);
+    });
+  });
+
+  // Event listeners: gallery items
+  galleryItems.forEach((item, i) => {
+    // Initialize visibleItems
+    visibleItems.push(item);
+
+    item.addEventListener('click', () => {
+      const idx = visibleItems.indexOf(item);
+      if (idx !== -1) openLightbox(idx);
+    });
+
+    item.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1) openLightbox(idx);
+      }
+    });
+  });
+
+  // Lightbox controls
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', showPrev);
+  lightboxNext?.addEventListener('click', showNext);
+
+  // Click outside lightbox content to close
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || lightbox.getAttribute('aria-hidden') === 'true') return;
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        showPrev();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        showNext();
+        break;
+    }
+  });
+
+  // Focus trap in lightbox
+  lightbox?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(
+      lightbox.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => !el.hasAttribute('disabled'));
+
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>

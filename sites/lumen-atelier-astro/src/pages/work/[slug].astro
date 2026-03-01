@@ -1,0 +1,219 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project, allProjects: projects },
+  }));
+}
+
+const { project, allProjects } = Astro.props;
+const { Content } = await project.render();
+
+const { title, client, year, roles, tags, excerpt, outcomes, testimonial } = project.data;
+
+// Related projects: same tags, excluding current
+const related = allProjects
+  .filter((p) => p.slug !== project.slug)
+  .filter((p) => p.data.tags.some((t) => tags.includes(t)))
+  .slice(0, 2);
+
+// If not enough related by tag, fill with any other projects
+const otherProjects = allProjects
+  .filter((p) => p.slug !== project.slug && !related.find((r) => r.slug === p.slug));
+
+const relatedProjects = [...related, ...otherProjects].slice(0, 2);
+
+// Gradient for hero image placeholder
+const gradientStyles = [
+  'linear-gradient(135deg, rgba(196,93,61,0.15) 0%, rgba(217,182,94,0.25) 100%)',
+  'linear-gradient(135deg, rgba(46,74,217,0.12) 0%, rgba(196,93,61,0.10) 100%)',
+  'linear-gradient(135deg, rgba(217,182,94,0.18) 0%, rgba(231,222,211,0.8) 100%)',
+];
+const heroGradient = gradientStyles[title.charCodeAt(0) % gradientStyles.length];
+---
+
+<BaseLayout title={title} description={excerpt}>
+  <!-- Back navigation -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8">
+    <a
+      href="/work"
+      class="inline-flex items-center gap-2 text-xs font-sans tracking-wide text-subtle hover:text-accent transition-colors duration-200"
+      aria-label="Back to all work"
+    >
+      <span aria-hidden="true">&larr;</span> All work
+    </a>
+  </div>
+
+  <!-- Project hero -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-10 pb-12">
+    <div class="max-w-4xl">
+      <!-- Client / year meta -->
+      <div class="flex items-center gap-4 mb-6">
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">{client}</p>
+        <span class="text-hairline" aria-hidden="true">&middot;</span>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">{year}</p>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-4xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none tracking-tight mb-8">
+        {title}
+      </h1>
+
+      <!-- Excerpt -->
+      <p class="text-lg text-subtle font-sans leading-relaxed max-w-2xl mb-8">
+        {excerpt}
+      </p>
+
+      <!-- Roles -->
+      <div class="flex flex-wrap gap-2">
+        {roles.map((role) => (
+          <span class="text-xs font-sans tracking-wide text-ink border border-ink px-3 py-1">
+            {role}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero image placeholder -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 mb-16">
+    <div
+      class="relative w-full aspect-[16/9] overflow-hidden"
+      style={`background: ${heroGradient};`}
+      aria-hidden="true"
+    >
+      <span
+        class="absolute inset-0 flex items-center justify-center font-serif text-[20vw] font-normal select-none"
+        style="color: rgba(20,19,18,0.06); letter-spacing: -0.05em;"
+      >
+        {client.charAt(0).toUpperCase()}
+      </span>
+    </div>
+  </section>
+
+  <!-- Content + sidebar -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 mb-20">
+    <div class="lg:grid lg:grid-cols-[1fr_280px] lg:gap-16 xl:gap-24">
+      <!-- Body content -->
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+
+      <!-- Sidebar: tags + metadata -->
+      <aside class="mt-12 lg:mt-0 space-y-10 text-sm font-sans">
+        <div>
+          <h2 class="text-xs tracking-widest uppercase text-subtle mb-4">Disciplines</h2>
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="text-xs font-sans text-subtle border border-hairline px-2 py-0.5 tracking-wide">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs tracking-widest uppercase text-subtle mb-4">Scope</h2>
+          <ul class="space-y-1.5">
+            {roles.map((role) => (
+              <li class="text-sm text-ink">{role}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xs tracking-widest uppercase text-subtle mb-4">Year</h2>
+          <p class="text-sm text-ink">{year}</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs tracking-widest uppercase text-subtle mb-4">Client</h2>
+          <p class="text-sm text-ink">{client}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  {outcomes && outcomes.length > 0 && (
+    <section class="border-t border-b border-hairline bg-paper">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">Outcomes</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {outcomes.map((outcome) => (
+            <div class="border-l-2 border-accent pl-6">
+              <p class="text-3xl lg:text-4xl font-serif font-normal text-accent mb-1">
+                {outcome.value}
+              </p>
+              <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-2">
+                {outcome.metric}
+              </p>
+              <p class="text-sm text-subtle font-sans leading-relaxed">
+                {outcome.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Testimonial -->
+  {testimonial && (
+    <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+      <div class="max-w-3xl mx-auto">
+        <blockquote class="font-serif text-2xl lg:text-3xl font-normal text-ink leading-relaxed mb-8 italic">
+          &ldquo;{testimonial.quote}&rdquo;
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <div
+            class="w-10 h-10 rounded-full bg-hairline flex items-center justify-center text-sm font-serif text-subtle shrink-0"
+            aria-hidden="true"
+          >
+            {testimonial.author.charAt(0)}
+          </div>
+          <div>
+            <p class="text-sm font-sans font-medium text-ink">{testimonial.author}</p>
+            <p class="text-xs font-sans text-subtle">{testimonial.title}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related projects -->
+  {relatedProjects.length > 0 && (
+    <section class="border-t border-hairline">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <div class="flex items-baseline justify-between mb-10">
+          <h2 class="text-2xl lg:text-3xl font-serif font-normal text-ink">More work</h2>
+          <a
+            href="/work"
+            class="text-sm font-sans text-subtle hover:text-accent transition-colors duration-200"
+          >
+            View all &rarr;
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {relatedProjects.map((rp, i) => (
+            <ProjectCard
+              title={rp.data.title}
+              client={rp.data.client}
+              year={rp.data.year}
+              tags={rp.data.tags}
+              slug={rp.slug}
+              excerpt={rp.data.excerpt}
+              featured={rp.data.featured}
+              index={i + 3}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
