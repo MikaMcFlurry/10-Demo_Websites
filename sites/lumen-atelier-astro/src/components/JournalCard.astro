@@ -1,0 +1,72 @@
+---
+export interface Props {
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+  readingTime: number;
+  slug: string;
+}
+
+const { title, date, excerpt, tags, readingTime, slug } = Astro.props;
+
+// Format date
+const dateObj = new Date(date);
+const formattedDate = dateObj.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+// Short month format
+const shortDate = dateObj.toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article class="group border-b border-hairline py-8 first:pt-0 last:border-b-0">
+  <a
+    href={`/journal/${slug}`}
+    class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+  >
+    <!-- Meta row -->
+    <div class="flex items-center gap-4 mb-3">
+      <time
+        datetime={date}
+        class="text-xs font-sans tracking-wide text-subtle uppercase"
+      >
+        {shortDate}
+      </time>
+      <span class="text-hairline" aria-hidden="true">·</span>
+      <span class="text-xs font-sans text-subtle">{readingTime} min read</span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-serif font-normal text-xl lg:text-2xl text-ink group-hover:text-accent transition-colors duration-200 leading-tight mb-3">
+      {title}
+    </h3>
+
+    <!-- Excerpt -->
+    <p class="text-subtle text-sm leading-relaxed mb-4 line-clamp-3">
+      {excerpt}
+    </p>
+
+    <!-- Tags + read link -->
+    <div class="flex items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-2">
+        {tags.slice(0, 3).map((tag) => (
+          <span class="text-xs font-sans text-subtle border border-hairline px-2 py-0.5 tracking-wide">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <span
+        class="text-xs font-sans text-accent font-medium tracking-wide shrink-0 group-hover:underline underline-offset-2"
+        aria-hidden="true"
+      >
+        Read &rarr;
+      </span>
+    </div>
+  </a>
+</article>

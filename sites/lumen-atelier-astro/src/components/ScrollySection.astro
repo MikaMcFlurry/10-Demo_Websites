@@ -1,0 +1,115 @@
+---
+export interface ScrollyStep {
+  heading: string;
+  body: string;
+  note?: string;
+}
+
+export interface Props {
+  steps: ScrollyStep[];
+  title?: string;
+}
+
+const { steps, title = 'Process' } = Astro.props;
+---
+
+<section class="scrolly-section relative my-16 lg:my-24" aria-label={`${title} process`}>
+  {title && (
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">{title}</p>
+  )}
+
+  <div class="lg:flex lg:gap-16">
+    <!-- Progress indicators (desktop sidebar) -->
+    <div class="hidden lg:flex flex-col items-center gap-0 pt-2 w-8 shrink-0">
+      <div class="sticky top-28 flex flex-col items-center gap-4">
+        {steps.map((_, i) => (
+          <button
+            type="button"
+            class={`scrolly-dot w-2.5 h-2.5 rounded-full border-2 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              i === 0
+                ? 'bg-accent border-accent scale-125'
+                : 'bg-transparent border-hairline'
+            }`}
+            data-dot={i}
+            aria-label={`Step ${i + 1}: ${_.heading}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Steps content -->
+    <div class="flex-1 space-y-0">
+      {steps.map((step, i) => (
+        <div
+          class="scrolly-step border-t border-hairline py-10 lg:py-12 lg:flex lg:gap-10"
+          data-step={i}
+        >
+          <!-- Step number + heading -->
+          <div class="lg:w-64 shrink-0 mb-6 lg:mb-0">
+            <div class="flex items-center gap-3 mb-3">
+              <span
+                class="font-serif text-4xl lg:text-5xl font-normal leading-none"
+                style="color: var(--hairline);"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h3 class="font-serif text-xl lg:text-2xl text-ink font-normal leading-tight">
+              {step.heading}
+            </h3>
+          </div>
+
+          <!-- Body text + note -->
+          <div class="flex-1">
+            <p class="text-ink/80 leading-relaxed text-base lg:text-lg mb-4">{step.body}</p>
+            {step.note && (
+              <div class="border-l-2 border-accent pl-4 mt-6">
+                <p class="text-subtle text-sm italic font-serif leading-relaxed">{step.note}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // IntersectionObserver for scrolly highlighting
+  const steps = Array.from(document.querySelectorAll('.scrolly-step')) as HTMLElement[];
+  const dots = Array.from(document.querySelectorAll('.scrolly-dot')) as HTMLButtonElement[];
+
+  if (steps.length && dots.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = parseInt((entry.target as HTMLElement).dataset.step || '0', 10);
+            dots.forEach((dot, i) => {
+              if (i === idx) {
+                dot.classList.remove('bg-transparent', 'border-hairline');
+                dot.classList.add('bg-accent', 'border-accent', 'scale-125');
+              } else {
+                dot.classList.remove('bg-accent', 'border-accent', 'scale-125');
+                dot.classList.add('bg-transparent', 'border-hairline');
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-30% 0px -50% 0px',
+        threshold: 0,
+      }
+    );
+
+    steps.forEach((step) => observer.observe(step));
+
+    // Dot click scrolls to step
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        steps[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  }
+</script>
