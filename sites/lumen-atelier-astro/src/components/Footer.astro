@@ -1,0 +1,115 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { href: '/work', label: 'Work' },
+  { href: '/studio', label: 'Studio' },
+  { href: '/journal', label: 'Journal' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/map', label: 'Map' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/styleguide', label: 'Style Guide' },
+];
+
+const socialLinks = [
+  { href: 'https://instagram.com', label: 'Instagram' },
+  { href: 'https://linkedin.com', label: 'LinkedIn' },
+  { href: 'https://are.na', label: 'Are.na' },
+];
+---
+
+<footer class="border-t border-hairline mt-24 bg-paper" aria-label="Site footer">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <!-- Top section: Logo + tagline -->
+    <div class="mb-12 lg:mb-16">
+      <a
+        href="/"
+        class="font-serif italic text-2xl text-ink hover:text-accent transition-colors duration-200 block mb-3"
+        aria-label="Lumen Atelier — Home"
+      >
+        Lumen Atelier
+      </a>
+      <p class="text-subtle text-sm max-w-xs leading-relaxed">
+        An editorial digital studio crafting brand stories, experiences, and visual systems.
+      </p>
+    </div>
+
+    <!-- Main footer grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 pb-12 border-b border-hairline">
+      <!-- Studio info -->
+      <div>
+        <h2 class="text-xs tracking-widest uppercase text-subtle mb-5 font-sans font-medium">Studio</h2>
+        <address class="not-italic text-sm text-ink leading-loose">
+          Based in Paris &amp; London<br />
+          Available globally<br />
+          <a
+            href="mailto:hello@lumenatelier.studio"
+            class="text-accent hover:text-ink transition-colors duration-200 underline underline-offset-2"
+          >
+            hello@lumenatelier.studio
+          </a>
+        </address>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h2 class="text-xs tracking-widest uppercase text-subtle mb-5 font-sans font-medium">Navigation</h2>
+        <nav aria-label="Footer navigation">
+          <ul class="space-y-2">
+            {quickLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-ink hover:text-accent transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Social + contact -->
+      <div>
+        <h2 class="text-xs tracking-widest uppercase text-subtle mb-5 font-sans font-medium">Elsewhere</h2>
+        <nav aria-label="Social media links">
+          <ul class="space-y-2">
+            {socialLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-ink hover:text-accent transition-colors duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${link.label} (opens in new tab)`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div class="mt-8">
+          <a
+            href="/contact"
+            class="inline-block text-sm font-medium bg-accent text-paper px-5 py-2.5 hover:bg-ink transition-colors duration-200"
+          >
+            Start a project
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="text-xs text-subtle">
+        &copy; {currentYear} Lumen Atelier. All work is original.
+      </p>
+      <p class="text-xs text-subtle italic font-serif">
+        "Great design earns its place on the page."
+      </p>
+    </div>
+  </div>
+</footer>

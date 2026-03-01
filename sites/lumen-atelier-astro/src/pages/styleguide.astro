@@ -1,0 +1,331 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import JournalCard from '@/components/JournalCard.astro';
+
+const palette = [
+  { name: 'paper', hex: '#FAF7F2', textColor: 'text-ink', border: 'border border-hairline', label: 'Background / Paper' },
+  { name: 'ink', hex: '#141312', textColor: 'text-paper', border: '', label: 'Primary text / Ink' },
+  { name: 'subtle', hex: '#6E6760', textColor: 'text-paper', border: '', label: 'Secondary text / Subtle' },
+  { name: 'hairline', hex: '#E7DED3', textColor: 'text-ink', border: '', label: 'Borders / Hairline' },
+  { name: 'accent', hex: '#C45D3D', textColor: 'text-paper', border: '', label: 'CTA / Accent (Terracotta)' },
+  { name: 'accent-2', hex: '#2E4AD9', textColor: 'text-paper', border: '', label: 'Secondary accent (Blue)' },
+  { name: 'highlight', hex: '#D9B65E', textColor: 'text-ink', border: '', label: 'Highlight / Warm gold' },
+];
+
+const sampleProject = {
+  title: 'Brand Identity for Harto Collective',
+  client: 'Harto Collective',
+  year: 2024,
+  tags: ['branding', 'identity', 'systems'],
+  slug: 'brand-identity-harto',
+  excerpt: 'A comprehensive visual language built for a contemporary arts collective that needed to speak across mediums without losing coherence or character.',
+  featured: true,
+  index: 0,
+};
+
+const sampleJournal = {
+  title: 'Typography as Editorial Voice: How Type Choices Shape Reading Experience',
+  date: '2024-06-15',
+  excerpt: 'Typography is not the packaging for ideas — it is the inflection of them. The typeface you choose, the size you set, the space you leave: these are editorial acts as significant as the words themselves.',
+  tags: ['typography', 'editorial', 'design'],
+  readingTime: 8,
+  slug: 'typography-as-editorial-voice',
+};
+---
+
+<BaseLayout
+  title="Style Guide"
+  description="Design system reference for Lumen Atelier — colour, typography, components, and spacing."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12 border-b border-hairline">
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">Design system</p>
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none mb-4">
+      Style Guide
+    </h1>
+    <p class="text-base text-subtle font-sans max-w-lg">
+      The visual design system of Lumen Atelier — colour palette, type scale, UI elements,
+      spacing, and component reference.
+    </p>
+  </section>
+
+  <!-- Colour palette -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 border-b border-hairline">
+    <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-8">Colour palette</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      {palette.map((color) => (
+        <div>
+          <div
+            class={`w-full aspect-square mb-3 ${color.border}`}
+            style={`background-color: ${color.hex};`}
+            aria-hidden="true"
+          >
+            <div class={`h-full flex flex-col justify-end p-4 ${color.textColor}`}>
+              <p class="text-xs font-sans tracking-wide opacity-70">{color.name}</p>
+            </div>
+          </div>
+          <p class="text-sm font-sans font-medium text-ink">{color.hex}</p>
+          <p class="text-xs font-sans text-subtle mt-0.5">{color.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Typography scale -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 border-b border-hairline">
+    <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">Typography scale</h2>
+
+    <div class="space-y-10">
+      <!-- Display -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Display serif</p>
+          <p class="text-xs font-sans text-subtle">text-7xl / xl:text-8xl · font-serif</p>
+        </div>
+        <p class="text-6xl lg:text-8xl font-serif font-normal text-ink leading-none tracking-tight">
+          An editorial studio.
+        </p>
+      </div>
+
+      <!-- H1 -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Heading 1 — serif</p>
+          <p class="text-xs font-sans text-subtle">text-4xl / lg:text-5xl · font-serif</p>
+        </div>
+        <h3 class="text-4xl lg:text-5xl font-serif font-normal text-ink leading-tight">
+          Selected Work — 2024
+        </h3>
+      </div>
+
+      <!-- H2 -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Heading 2 — serif</p>
+          <p class="text-xs font-sans text-subtle">text-2xl / lg:text-3xl · font-serif</p>
+        </div>
+        <h3 class="text-2xl lg:text-3xl font-serif font-normal text-ink leading-tight">
+          The Brief: Coherence Without Erasure
+        </h3>
+      </div>
+
+      <!-- Pull quote -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Pull quote / blockquote</p>
+          <p class="text-xs font-sans text-subtle">text-xl / lg:text-2xl · font-serif · italic</p>
+        </div>
+        <blockquote class="font-serif text-xl lg:text-2xl font-normal text-ink leading-relaxed italic border-l-2 border-accent pl-6">
+          &ldquo;Design is thinking made visible — we take that responsibility seriously.&rdquo;
+        </blockquote>
+      </div>
+
+      <!-- Body -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Body text — sans</p>
+          <p class="text-xs font-sans text-subtle">text-base · font-sans · leading-relaxed</p>
+        </div>
+        <p class="text-base font-sans text-ink leading-relaxed max-w-2xl">
+          We build brand identities, editorial systems, and digital experiences for organisations
+          that believe the quality of communication reflects the quality of thought. Every
+          typographic choice, every layout decision, every colour carries meaning — and that
+          meaning either serves the content or competes with it.
+        </p>
+      </div>
+
+      <!-- Small / caption -->
+      <div class="pb-8 border-b border-hairline">
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Small / Caption</p>
+          <p class="text-xs font-sans text-subtle">text-sm · font-sans · text-subtle</p>
+        </div>
+        <p class="text-sm font-sans text-subtle leading-relaxed">
+          Harto Collective — Brand Identity System, 2024. Delivered across print, digital, and
+          environmental formats. All rights reserved.
+        </p>
+      </div>
+
+      <!-- Label / meta -->
+      <div>
+        <div class="flex items-baseline justify-between mb-3">
+          <p class="text-xs tracking-widest uppercase text-subtle font-sans">Label / meta text</p>
+          <p class="text-xs font-sans text-subtle">text-xs · tracking-widest · uppercase</p>
+        </div>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">
+          Paris &amp; London — Est. 2017 — Available globally
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Elements -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 border-b border-hairline">
+    <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">UI elements</h2>
+
+    <!-- Buttons -->
+    <div class="mb-12">
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Buttons</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="#"
+          class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-ink transition-colors duration-200"
+          aria-label="Primary button example"
+        >
+          Primary (Accent)
+        </a>
+        <a
+          href="#"
+          class="inline-block border border-ink text-ink px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-ink hover:text-paper transition-colors duration-200"
+          aria-label="Secondary button example"
+        >
+          Secondary (Ink outline)
+        </a>
+        <a
+          href="#"
+          class="inline-block text-sm font-sans text-ink hover:text-accent transition-colors duration-200 underline underline-offset-4"
+          aria-label="Ghost link example"
+        >
+          Ghost / Text link
+        </a>
+        <a
+          href="#"
+          class="inline-block text-sm font-sans text-accent hover:text-ink transition-colors duration-200"
+          aria-label="Accent link example"
+        >
+          Accent link &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Tags / badges -->
+    <div class="mb-12">
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Tags / Badges</p>
+      <div class="flex flex-wrap gap-2">
+        {['branding', 'editorial', 'digital', 'campaign', 'typography', 'spatial'].map((tag) => (
+          <span class="text-xs font-sans text-subtle border border-hairline px-2 py-0.5 tracking-wide">
+            {tag}
+          </span>
+        ))}
+        <span class="text-xs font-sans text-ink border border-ink px-3 py-1 tracking-wide">
+          Active filter
+        </span>
+        <span class="text-xs font-sans text-paper bg-ink px-3 py-1 tracking-wide">
+          Selected
+        </span>
+      </div>
+    </div>
+
+    <!-- Form elements -->
+    <div class="mb-12 max-w-xl">
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Form elements</p>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2" for="sg-input">
+            Text input
+          </label>
+          <input
+            type="text"
+            id="sg-input"
+            class="w-full bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-ink placeholder-subtle/60 focus:outline-none focus:border-ink transition-colors duration-200"
+            placeholder="Placeholder text"
+          />
+        </div>
+        <div>
+          <label class="block text-xs tracking-widest uppercase text-subtle font-sans mb-2" for="sg-select">
+            Select
+          </label>
+          <div class="relative">
+            <select
+              id="sg-select"
+              class="w-full appearance-none bg-transparent border border-hairline px-4 py-3 text-sm font-sans text-subtle focus:outline-none focus:border-ink transition-colors duration-200 pr-10"
+            >
+              <option>Select an option</option>
+              <option>Brand Identity</option>
+              <option>Editorial System</option>
+            </select>
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-subtle pointer-events-none text-xs" aria-hidden="true">&#8595;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal rules / dividers -->
+    <div class="mb-12">
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Dividers</p>
+      <div class="space-y-4">
+        <hr class="border-t border-hairline" />
+        <div class="border-l-2 border-accent pl-4">
+          <p class="text-sm font-sans text-subtle">Border-left accent rule</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing scale -->
+    <div>
+      <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-6">Spacing scale</p>
+      <div class="flex items-end gap-4">
+        {[1, 2, 4, 6, 8, 10, 12, 16, 20].map((n) => (
+          <div class="flex flex-col items-center gap-1">
+            <div
+              class="bg-accent/40"
+              style={`width: ${n * 4}px; height: ${n * 4}px;`}
+              aria-hidden="true"
+            ></div>
+            <span class="text-xs font-sans text-subtle">{n}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Components in use -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 border-b border-hairline">
+    <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">ProjectCard component</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl">
+      <ProjectCard
+        title={sampleProject.title}
+        client={sampleProject.client}
+        year={sampleProject.year}
+        tags={sampleProject.tags}
+        slug={sampleProject.slug}
+        excerpt={sampleProject.excerpt}
+        featured={sampleProject.featured}
+        index={sampleProject.index}
+      />
+      <ProjectCard
+        title="Digital Campaign for Solara Energy"
+        client="Solara Energy"
+        year={2023}
+        tags={['campaign', 'digital', 'motion']}
+        slug="digital-campaign-solara"
+        excerpt="A pan-European digital campaign repositioning Solara from utility provider to domestic energy partner — across 8 markets, 4 languages, and 12 digital formats."
+        featured={false}
+        index={1}
+      />
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <h2 class="text-xs tracking-widest uppercase text-subtle font-sans mb-10">JournalCard component</h2>
+    <div class="max-w-2xl">
+      <JournalCard
+        title={sampleJournal.title}
+        date={sampleJournal.date}
+        excerpt={sampleJournal.excerpt}
+        tags={sampleJournal.tags}
+        readingTime={sampleJournal.readingTime}
+        slug={sampleJournal.slug}
+      />
+      <JournalCard
+        title="White Space as Content: The Editorial Power of What Isn't There"
+        date="2024-05-28"
+        excerpt="In a media environment that optimizes relentlessly for density, choosing emptiness is a radical editorial act. White space is not the absence of content — it is the presence of confidence."
+        tags={['editorial', 'layout', 'design']}
+        readingTime={6}
+        slug="white-space-as-content"
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Gallery from '@/components/Gallery.astro';
+
+const typeSpecimens = [
+  { name: 'Freight Display', classification: 'Serif · Display', use: 'Headline setting, editorial titles' },
+  { name: 'Canela', classification: 'Serif · Text & Display', use: 'Brand identity, print editorial' },
+  { name: 'Reckless Neue', classification: 'Serif · Display', use: 'Campaign headlines, large-scale' },
+  { name: 'Neue Haas Grotesk', classification: 'Sans-serif · Text', use: 'UI, body copy, wayfinding' },
+  { name: 'Graphik', classification: 'Sans-serif · Text', use: 'Brand communications, packaging' },
+  { name: 'ABC Arizona', classification: 'Serif · Text', use: 'Long-form editorial, publication body' },
+  { name: 'Larish Neue', classification: 'Serif · Display', use: 'Logotypes, display headlines' },
+  { name: 'Suisse Int\'l', classification: 'Sans-serif · Text', use: 'Design systems, UI components' },
+];
+---
+
+<BaseLayout
+  title="Gallery"
+  description="A visual archive of studio work, process, and reference from Lumen Atelier."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12 border-b border-hairline">
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">Visual archive</p>
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none mb-6">
+      Gallery
+    </h1>
+    <p class="text-lg text-subtle font-sans leading-relaxed max-w-xl">
+      A visual archive of studio work, process, and reference. Use the filters to navigate
+      by category — photography, typography, spatial, and digital.
+    </p>
+  </section>
+
+  <!-- Gallery component -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-12 lg:py-16">
+    <Gallery />
+  </section>
+
+  <!-- Type specimens -->
+  <section class="border-t border-hairline">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="flex items-baseline justify-between mb-12 border-b border-hairline pb-6">
+        <h2 class="text-3xl lg:text-4xl font-serif font-normal text-ink">Selected type specimens</h2>
+        <p class="text-xs tracking-widest uppercase text-subtle font-sans">Typefaces in use</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        {typeSpecimens.map((specimen, i) => (
+          <div
+            class={`p-8 lg:p-10 border-b border-hairline ${i % 2 === 0 ? 'md:border-r' : ''}`}
+          >
+            <!-- Large type display -->
+            <div
+              class="text-5xl lg:text-6xl font-serif font-normal text-ink mb-6 leading-none overflow-hidden"
+              aria-hidden="true"
+              style="font-family: Georgia, 'Times New Roman', serif;"
+            >
+              Aa
+            </div>
+            <h3 class="font-serif text-xl font-normal text-ink mb-1">{specimen.name}</h3>
+            <p class="text-xs tracking-widest uppercase text-accent font-sans mb-3">
+              {specimen.classification}
+            </p>
+            <p class="text-sm font-sans text-subtle leading-relaxed">{specimen.use}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Archive note -->
+  <section class="border-t border-hairline bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="max-w-2xl">
+        <p class="text-xs tracking-widest uppercase text-paper/50 font-sans mb-6">About this archive</p>
+        <p class="font-serif text-xl lg:text-2xl font-normal text-paper leading-relaxed mb-8">
+          The gallery documents studio work, process imagery, and the visual references that
+          inform our practice. It is updated irregularly as projects are completed and archived.
+        </p>
+        <a
+          href="/work"
+          class="inline-block text-sm font-sans font-medium text-paper border border-paper/30 px-6 py-3 hover:border-paper hover:bg-paper/10 transition-colors duration-200"
+        >
+          View full project case studies
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

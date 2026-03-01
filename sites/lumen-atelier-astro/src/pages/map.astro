@@ -1,0 +1,202 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const locations = [
+  {
+    city: 'Paris',
+    address: '14 Rue de la Roquette',
+    district: '11th arrondissement',
+    area: 'Bastille — Oberkampf',
+    description: 'Our principal studio, established in 2017. Located in a converted atelier space in the 11th arrondissement — a neighbourhood known for its concentration of independent design practices, small-scale fabrication, and cultural venues.',
+    metro: 'Bastille (lines 1, 5, 8) or Voltaire (line 9)',
+    nearest: 'Passage Thiéré and the Place de la Bastille',
+    openingHours: [
+      { day: 'Monday — Thursday', hours: '09:00 — 18:30' },
+      { day: 'Friday', hours: '09:00 — 17:00' },
+      { day: 'Saturday — Sunday', hours: 'By appointment' },
+    ],
+    contact: 'paris@lumenatelier.studio',
+    mapColor: '#C8B8A2',
+    dotColor: '#C45D3D',
+  },
+  {
+    city: 'London',
+    address: '7 Vyner Street',
+    district: 'Bethnal Green, E2',
+    area: 'Bethnal Green — Cambridge Heath',
+    description: 'Our London studio, opened in 2021. Vyner Street in Bethnal Green is one of London\'s most active creative corridors, home to galleries, studios, and the kind of material culture that informs the best design thinking. We share the building with a bookbinder and a type foundry.',
+    metro: 'Cambridge Heath (Overground) or Bethnal Green (Central line)',
+    nearest: 'Victoria Park and the Bethnal Green Museum of Childhood',
+    openingHours: [
+      { day: 'Tuesday — Thursday', hours: '10:00 — 18:00' },
+      { day: 'Friday', hours: '10:00 — 16:00' },
+      { day: 'Monday, Saturday, Sunday', hours: 'Remote only' },
+    ],
+    contact: 'london@lumenatelier.studio',
+    mapColor: '#A8B4C8',
+    dotColor: '#2E4AD9',
+  },
+];
+---
+
+<BaseLayout
+  title="Map"
+  description="Find Lumen Atelier in Paris and London. Studio addresses, opening hours, and directions."
+>
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12 border-b border-hairline">
+    <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-4">Find us</p>
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-ink leading-none mb-6">
+      Map
+    </h1>
+    <p class="text-lg text-subtle font-sans leading-relaxed max-w-xl">
+      Find us in Paris and London. Both studios are open to visitors by prior arrangement;
+      we recommend contacting us before arriving to ensure someone is in.
+    </p>
+  </section>
+
+  <!-- Location cards -->
+  {locations.map((loc, i) => (
+    <section class={`${i > 0 ? 'border-t border-hairline' : ''}`}>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24">
+          <!-- Location info -->
+          <div>
+            <div class="flex items-baseline gap-4 mb-8">
+              <h2 class="text-3xl lg:text-4xl font-serif font-normal text-ink">{loc.city}</h2>
+              <span class="text-xs tracking-widest uppercase text-subtle font-sans">{loc.district}</span>
+            </div>
+
+            <address class="not-italic mb-8">
+              <p class="font-serif text-xl font-normal text-ink mb-1">{loc.address}</p>
+              <p class="text-sm font-sans text-subtle">{loc.district}</p>
+            </address>
+
+            <p class="font-sans text-base text-ink leading-relaxed mb-8 max-w-md">
+              {loc.description}
+            </p>
+
+            <div class="space-y-6 text-sm font-sans">
+              <div>
+                <p class="text-xs tracking-widest uppercase text-subtle mb-2">Getting here</p>
+                <p class="text-ink leading-relaxed">{loc.metro}</p>
+                <p class="text-subtle mt-1">Near: {loc.nearest}</p>
+              </div>
+
+              <div>
+                <p class="text-xs tracking-widest uppercase text-subtle mb-3">Opening hours</p>
+                <div class="space-y-1.5">
+                  {loc.openingHours.map((oh) => (
+                    <div class="flex justify-between gap-8 py-1.5 border-b border-hairline last:border-b-0">
+                      <span class="text-subtle">{oh.day}</span>
+                      <span class="text-ink">{oh.hours}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs tracking-widest uppercase text-subtle mb-2">Studio email</p>
+                <a
+                  href={`mailto:${loc.contact}`}
+                  class="text-accent hover:text-ink transition-colors duration-200 underline underline-offset-2"
+                >
+                  {loc.contact}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <div class="mt-12 lg:mt-0">
+            <div
+              class="relative w-full aspect-square overflow-hidden"
+              style={`background-color: ${loc.mapColor};`}
+              aria-label={`Approximate map location for ${loc.city} studio`}
+              role="img"
+            >
+              <!-- Grid lines (map feel) -->
+              <div class="absolute inset-0" style="
+                background-image:
+                  linear-gradient(rgba(20,19,18,0.08) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(20,19,18,0.08) 1px, transparent 1px);
+                background-size: 48px 48px;
+              " aria-hidden="true"></div>
+
+              <!-- Cross streets (horizontal + vertical lines) -->
+              <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full h-px bg-ink/20"></div>
+              </div>
+              <div class="absolute inset-0 flex justify-center" aria-hidden="true">
+                <div class="h-full w-px bg-ink/20"></div>
+              </div>
+
+              <!-- Location marker -->
+              <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                aria-hidden="true"
+              >
+                <div
+                  class="w-5 h-5 rounded-full border-2 border-paper shadow-md"
+                  style={`background-color: ${loc.dotColor};`}
+                ></div>
+                <div
+                  class="absolute top-6 left-1/2 -translate-x-1/2 bg-paper text-ink text-xs font-sans px-2 py-1 whitespace-nowrap shadow-sm"
+                >
+                  Lumen Atelier {loc.city}
+                </div>
+              </div>
+
+              <!-- Area label -->
+              <div class="absolute top-4 left-4">
+                <p class="text-xs font-sans tracking-wide text-ink/60 bg-paper/70 px-2 py-1">
+                  {loc.area}
+                </p>
+              </div>
+            </div>
+
+            <!-- Directions note -->
+            <div class="mt-6 p-5 border border-hairline">
+              <p class="text-xs tracking-widest uppercase text-subtle font-sans mb-3">
+                How to find us
+              </p>
+              <p class="text-sm font-sans text-ink leading-relaxed">
+                {loc.city === 'Paris'
+                  ? 'From Bastille station, walk east along the Rue de la Roquette for approximately five minutes. The studio entrance is marked with a small brass plaque. Ring the bell on the left and take the stairs to the second floor.'
+                  : 'From Cambridge Heath station, cross the footbridge and head south on Vyner Street. The building is a converted Victorian workshop with steel windows; the studio is on the ground floor to the rear. A small Lumen Atelier sign is on the door.'
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- General contact note -->
+  <section class="border-t border-hairline bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="max-w-2xl">
+        <p class="text-xs tracking-widest uppercase text-paper/50 font-sans mb-6">Before you visit</p>
+        <p class="font-serif text-xl lg:text-2xl font-normal text-paper leading-relaxed mb-8">
+          We welcome visitors, but ask that you make contact in advance. Both studios run active
+          projects and schedules vary week to week.
+        </p>
+        <div class="flex flex-wrap gap-6">
+          <a
+            href="/contact"
+            class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-paper hover:text-ink transition-colors duration-200"
+          >
+            Get in touch
+          </a>
+          <a
+            href="mailto:hello@lumenatelier.studio"
+            class="inline-block text-sm font-sans text-paper/70 hover:text-paper transition-colors duration-200 pt-3"
+          >
+            hello@lumenatelier.studio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
