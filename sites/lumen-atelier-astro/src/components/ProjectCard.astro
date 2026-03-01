@@ -43,10 +43,11 @@ const bgColors = [
   'background: linear-gradient(135deg, rgba(231,222,211,0.9) 0%, rgba(217,182,94,0.18) 100%)',
 ];
 const bgStyle = bgColors[index % bgColors.length];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <article class={`group ${featured ? 'featured-card' : ''}`} data-tags={tags.join(',')}>
-  <a href={`/work/${slug}`} class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+  <a href={`${base}/work/${slug}`} class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
     <!-- Image placeholder -->
     <div
       class="relative aspect-[4/3] overflow-hidden mb-5"

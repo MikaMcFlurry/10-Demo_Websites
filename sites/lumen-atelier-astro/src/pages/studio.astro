@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const team = [
   {
     name: 'Mara Delacroix',
@@ -213,7 +214,7 @@ const recognition = [
           the kind of attention we bring, we'd like to hear about it.
         </p>
         <a
-          href="/contact"
+          href={`${base}/contact`}
           class="inline-block bg-accent text-paper px-8 py-3 text-sm font-sans font-medium tracking-wide hover:bg-ink transition-colors duration-200"
         >
           Start a conversation

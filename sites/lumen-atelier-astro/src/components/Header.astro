@@ -1,11 +1,13 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const navLinks = [
-  { href: '/work', label: 'Work' },
-  { href: '/studio', label: 'Studio' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/map', label: 'Map' },
-  { href: '/contact', label: 'Contact' },
+  { href: `${base}/work`, label: 'Work' },
+  { href: `${base}/studio`, label: 'Studio' },
+  { href: `${base}/journal`, label: 'Journal' },
+  { href: `${base}/gallery`, label: 'Gallery' },
+  { href: `${base}/map`, label: 'Map' },
+  { href: `${base}/contact`, label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -20,7 +22,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
       <a
-        href="/"
+        href={base || '/'}
         class="font-serif italic text-xl lg:text-2xl text-ink hover:text-accent transition-colors duration-200 tracking-tight"
         aria-label="Lumen Atelier — Home"
       >
