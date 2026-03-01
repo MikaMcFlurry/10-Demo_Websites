@@ -1,0 +1,136 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JournalCard from '@/components/JournalCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry, allEntries: entries },
+  }));
+}
+
+const { entry, allEntries } = Astro.props;
+const { Content } = await entry.render();
+const { title, date, excerpt, tags, readingTime } = entry.data;
+
+// Other entries for "More from the journal"
+const moreEntries = allEntries
+  .filter((e) => e.slug !== entry.slug)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const dateObj = new Date(date);
+const formattedDate = dateObj.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={excerpt}>
+  <!-- Back -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-8">
+    <a
+      href="/journal"
+      class="inline-flex items-center gap-2 text-xs font-sans tracking-wide text-subtle hover:text-accent transition-colors duration-200"
+    >
+      <span aria-hidden="true">&larr;</span> Journal
+    </a>
+  </div>
+
+  <!-- Article header -->
+  <header class="max-w-3xl mx-auto px-6 lg:px-10 pt-10 pb-12">
+    <!-- Meta -->
+    <div class="flex flex-wrap items-center gap-4 mb-8">
+      <time
+        datetime={date}
+        class="text-xs font-sans tracking-wide text-subtle uppercase"
+      >
+        {formattedDate}
+      </time>
+      <span class="text-hairline" aria-hidden="true">&middot;</span>
+      <span class="text-xs font-sans text-subtle">{readingTime} min read</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-4xl lg:text-5xl xl:text-6xl font-serif font-normal text-ink leading-tight tracking-tight mb-8">
+      {title}
+    </h1>
+
+    <!-- Excerpt / standfirst -->
+    <p class="text-lg font-serif italic text-subtle leading-relaxed border-l-2 border-accent pl-6">
+      {excerpt}
+    </p>
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mt-8">
+      {tags.map((tag) => (
+        <span class="text-xs font-sans text-subtle border border-hairline px-2 py-0.5 tracking-wide capitalize">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </header>
+
+  <!-- Divider -->
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    <hr class="border-t border-hairline my-2" />
+  </div>
+
+  <!-- Article body -->
+  <article class="max-w-3xl mx-auto px-6 lg:px-10 py-12 lg:py-16">
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <!-- Author note -->
+  <div class="max-w-3xl mx-auto px-6 lg:px-10 pb-16">
+    <div class="border-t border-hairline pt-8 flex items-start gap-4">
+      <div
+        class="w-10 h-10 rounded-full bg-hairline flex items-center justify-center shrink-0"
+        aria-hidden="true"
+      >
+        <span class="font-serif text-sm text-subtle">LA</span>
+      </div>
+      <div>
+        <p class="text-sm font-sans font-medium text-ink mb-1">Lumen Atelier</p>
+        <p class="text-xs font-sans text-subtle leading-relaxed">
+          An editorial digital studio based in Paris and London. We write about design, brand,
+          and visual thinking.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- More from the journal -->
+  {moreEntries.length > 0 && (
+    <section class="border-t border-hairline bg-paper">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <div class="flex items-baseline justify-between mb-10">
+          <h2 class="text-2xl lg:text-3xl font-serif font-normal text-ink">More from the journal</h2>
+          <a
+            href="/journal"
+            class="text-sm font-sans text-subtle hover:text-accent transition-colors duration-200"
+          >
+            All entries &rarr;
+          </a>
+        </div>
+        <div class="max-w-3xl">
+          {moreEntries.map((e) => (
+            <JournalCard
+              title={e.data.title}
+              date={e.data.date}
+              excerpt={e.data.excerpt}
+              tags={e.data.tags}
+              readingTime={e.data.readingTime}
+              slug={e.slug}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
