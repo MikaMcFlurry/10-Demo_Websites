@@ -130,15 +130,6 @@ function ReportDrawer({ report, onClose }: ReportDrawerProps) {
         </div>
       </aside>
 
-      <style jsx global>{`
-        @keyframes slide-in-right {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        .animate-slide-in-right {
-          animation: slide-in-right 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-      `}</style>
     </div>
   )
 }
