@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [claude/create-three-demo-sites-T1HN9]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -65,9 +65,11 @@ jobs:
       - name: Copy Lumen Atelier output
         run: cp -r sites/lumen-atelier-astro/dist ./pages-dist/lumen-atelier
 
-      # ── Root index ─────────────────────────────────────────────────────────
-      - name: Copy root index
-        run: cp index.html ./pages-dist/index.html
+      # ── Root index + static demo sites ────────────────────────────────────
+      - name: Copy root index and demos
+        run: |
+          cp index.html ./pages-dist/index.html
+          cp -r demos ./pages-dist/demos
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
