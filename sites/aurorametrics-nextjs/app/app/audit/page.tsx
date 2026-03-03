@@ -175,7 +175,7 @@ export default function AuditPage() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
           { label: 'Total Events', value: AUDIT_LOG.length, color: 'text-am-text' },
-          { label: 'Unique Users', value: [...new Set(AUDIT_LOG.map((e) => e.userId))].length, color: 'text-accent1' },
+          { label: 'Unique Users', value: Array.from(new Set(AUDIT_LOG.map((e) => e.userId))).length, color: 'text-accent1' },
           { label: 'Today', value: AUDIT_LOG.filter((e) => e.timestamp.startsWith('2025-07-15')).length, color: 'text-good' },
           { label: 'This Week', value: AUDIT_LOG.filter((e) => new Date(e.timestamp) >= new Date('2025-07-09')).length, color: 'text-muted' },
         ].map((s) => (
