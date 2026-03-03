@@ -53,10 +53,10 @@
         <div>
           <h3 class="text-sm font-semibold text-sun uppercase tracking-widest mb-4">Legal</h3>
           <ul class="space-y-2.5">
-            <li v-for="link in legalLinks" :key="link.to">
-              <NuxtLink :to="link.to" class="text-sm text-moss hover:text-cream transition-colors">
+            <li v-for="link in legalLinks" :key="link.label">
+              <a href="#" class="text-sm text-moss hover:text-cream transition-colors" @click.prevent>
                 {{ link.label }}
-              </NuxtLink>
+              </a>
             </li>
           </ul>
           <div class="mt-6 p-3 bg-leaf/20 rounded-lg">

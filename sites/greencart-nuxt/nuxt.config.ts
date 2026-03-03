@@ -35,7 +35,6 @@ export default defineNuxtConfig({
         ...CATEGORIES.map((c) => `/category/${c.slug}`),
         ...PRODUCTS.map((p) => `/product/${p.slug}`),
       ],
-      ignore: ['/privacy', '/terms', '/shipping', '/returns'],
     },
   },
   runtimeConfig: {
