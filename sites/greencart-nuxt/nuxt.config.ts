@@ -1,3 +1,6 @@
+import { PRODUCTS } from './data/products'
+import { CATEGORIES } from './data/categories'
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
@@ -22,6 +25,17 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'manifest', href: '/manifest.json' },
+      ],
+    },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/orders',
+        ...CATEGORIES.map((c) => `/category/${c.slug}`),
+        ...PRODUCTS.map((p) => `/product/${p.slug}`),
       ],
     },
   },
