@@ -235,7 +235,7 @@ export default function ReportsPage() {
           { label: 'Total Reports', value: reports.length },
           { label: 'Scheduled', value: reports.filter((r) => r.schedule).length },
           { label: 'Run Today', value: reports.filter((r) => r.lastRun.startsWith('2025-07-15')).length },
-          { label: 'Contributors', value: [...new Set(reports.map((r) => r.createdBy))].length },
+          { label: 'Contributors', value: Array.from(new Set(reports.map((r) => r.createdBy))).length },
         ].map((s) => (
           <div key={s.label} className="bg-surface border border-border rounded-xl px-4 py-3">
             <div className="text-xs text-muted mb-1">{s.label}</div>
