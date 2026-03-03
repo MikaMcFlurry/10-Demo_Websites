@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Gallery from '@/components/Gallery.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const typeSpecimens = [
   { name: 'Freight Display', classification: 'Serif · Display', use: 'Headline setting, editorial titles' },
   { name: 'Canela', classification: 'Serif · Text & Display', use: 'Brand identity, print editorial' },
@@ -77,7 +78,7 @@ const typeSpecimens = [
           inform our practice. It is updated irregularly as projects are completed and archived.
         </p>
         <a
-          href="/work"
+          href={`${base}/work`}
           class="inline-block text-sm font-sans font-medium text-paper border border-paper/30 px-6 py-3 hover:border-paper hover:bg-paper/10 transition-colors duration-200"
         >
           View full project case studies

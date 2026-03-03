@@ -12,6 +12,7 @@ const {
   title,
   description = 'An editorial digital studio crafting brand stories, experiences, and visual systems.',
 } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} — Lumen Atelier</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   </head>
   <body class="bg-paper text-ink font-sans">
     <a

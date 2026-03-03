@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     strict: true,
   },
   app: {
+    baseURL: '/10-Demo_Websites/greencart',
     head: {
       title: 'GreenCart — Low-Impact Everyday Goods',
       meta: [

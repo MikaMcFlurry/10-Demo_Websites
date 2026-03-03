@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const projectTypes = [
   'Brand Identity',
   'Editorial System',
@@ -278,7 +279,7 @@ const budgetRanges = [
                 <p class="font-medium text-ink">Paris</p>
                 <p class="text-subtle">14 Rue de la Roquette, 75011</p>
                 <a
-                  href="/map"
+                  href={`${base}/map`}
                   class="text-xs text-accent hover:text-ink transition-colors duration-200 mt-1 block"
                 >
                   View on map &rarr;
@@ -288,7 +289,7 @@ const budgetRanges = [
                 <p class="font-medium text-ink">London</p>
                 <p class="text-subtle">7 Vyner Street, E2 9DG</p>
                 <a
-                  href="/map"
+                  href={`${base}/map`}
                   class="text-xs text-accent hover:text-ink transition-colors duration-200 mt-1 block"
                 >
                   View on map &rarr;

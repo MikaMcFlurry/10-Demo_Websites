@@ -142,6 +142,52 @@
         @media (max-width: 400px) {
             .grid { grid-template-columns: 1fr; }
         }
+
+        .featured-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2rem;
+        }
+        .featured-section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .featured-card {
+            display: block;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .featured-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
+        .featured-card .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            margin-bottom: 0.9rem;
+            background: #eff6ff;
+            color: var(--accent);
+        }
+        .featured-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
+        .featured-card p  { font-size: 0.875rem; color: #475569; line-height: 1.55; }
+        .featured-card .arrow { margin-top: 1rem; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
     </style>
 </head>
 <body>
@@ -157,6 +203,30 @@
             <span>EN (see individual demos)</span>
         </div>
     </header>
+
+    <section class="featured-section" aria-label="Featured demo sites">
+        <h2>Featured — Live on GitHub Pages</h2>
+        <div class="featured-grid">
+            <a class="featured-card" href="./greencart/">
+                <span class="badge">Nuxt 3</span>
+                <h3>GreenCart</h3>
+                <p>Sustainable e-commerce storefront with transparent sourcing and low-impact everyday goods.</p>
+                <p class="arrow">View site &rarr;</p>
+            </a>
+            <a class="featured-card" href="./aurorametrics/">
+                <span class="badge">Next.js</span>
+                <h3>AuroraMetrics</h3>
+                <p>Analytics dashboard with real-time charts, team management, audit logs, and pricing pages.</p>
+                <p class="arrow">View site &rarr;</p>
+            </a>
+            <a class="featured-card" href="./lumen-atelier/">
+                <span class="badge">Astro</span>
+                <h3>Lumen Atelier</h3>
+                <p>Editorial digital studio portfolio with project case studies, journal, gallery, and contact.</p>
+                <p class="arrow">View site &rarr;</p>
+            </a>
+        </div>
+    </section>
 
     <main id="main" class="grid" role="main">
 

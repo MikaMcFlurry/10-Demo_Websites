@@ -1,14 +1,15 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const quickLinks = [
-  { href: '/work', label: 'Work' },
-  { href: '/studio', label: 'Studio' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/map', label: 'Map' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/styleguide', label: 'Style Guide' },
+  { href: `${base}/work`, label: 'Work' },
+  { href: `${base}/studio`, label: 'Studio' },
+  { href: `${base}/journal`, label: 'Journal' },
+  { href: `${base}/gallery`, label: 'Gallery' },
+  { href: `${base}/map`, label: 'Map' },
+  { href: `${base}/contact`, label: 'Contact' },
+  { href: `${base}/styleguide`, label: 'Style Guide' },
 ];
 
 const socialLinks = [
@@ -23,7 +24,7 @@ const socialLinks = [
     <!-- Top section: Logo + tagline -->
     <div class="mb-12 lg:mb-16">
       <a
-        href="/"
+        href={base || '/'}
         class="font-serif italic text-2xl text-ink hover:text-accent transition-colors duration-200 block mb-3"
         aria-label="Lumen Atelier — Home"
       >
@@ -93,7 +94,7 @@ const socialLinks = [
 
         <div class="mt-8">
           <a
-            href="/contact"
+            href={`${base}/contact`}
             class="inline-block text-sm font-medium bg-accent text-paper px-5 py-2.5 hover:bg-ink transition-colors duration-200"
           >
             Start a project

@@ -1,0 +1,91 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master, claude/create-three-demo-sites-T1HN9]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create output directory
+        run: mkdir -p ./pages-dist
+
+      # ── GreenCart (Nuxt 3) ─────────────────────────────────────────────────
+      - name: Install GreenCart dependencies
+        working-directory: sites/greencart-nuxt
+        run: npm install
+
+      - name: Build GreenCart
+        working-directory: sites/greencart-nuxt
+        run: npm run generate
+
+      - name: Copy GreenCart output
+        run: cp -r sites/greencart-nuxt/.output/public ./pages-dist/greencart
+
+      # ── AuroraMetrics (Next.js) ────────────────────────────────────────────
+      - name: Install AuroraMetrics dependencies
+        working-directory: sites/aurorametrics-nextjs
+        run: npm install
+
+      - name: Build AuroraMetrics
+        working-directory: sites/aurorametrics-nextjs
+        run: npm run build
+
+      - name: Copy AuroraMetrics output
+        run: cp -r sites/aurorametrics-nextjs/out ./pages-dist/aurorametrics
+
+      # ── Lumen Atelier (Astro) ──────────────────────────────────────────────
+      - name: Install Lumen Atelier dependencies
+        working-directory: sites/lumen-atelier-astro
+        run: npm install
+
+      - name: Build Lumen Atelier
+        working-directory: sites/lumen-atelier-astro
+        run: npm run build
+
+      - name: Copy Lumen Atelier output
+        run: cp -r sites/lumen-atelier-astro/dist ./pages-dist/lumen-atelier
+
+      # ── Root index + static demo sites ────────────────────────────────────
+      - name: Copy root index and demos
+        run: |
+          cp index.html ./pages-dist/index.html
+          cp -r demos ./pages-dist/demos
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./pages-dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
