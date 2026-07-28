@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="chrom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2f3f0"/>
+      <stop offset="0.42" stop-color="#8f918a"/>
+      <stop offset="0.55" stop-color="#2c2d2b"/>
+      <stop offset="0.7" stop-color="#c9cbc4"/>
+      <stop offset="1" stop-color="#5a5c57"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="#0a0b0a"/>
+  <text x="16" y="23.5" font-family="Arial, sans-serif" font-size="20" font-weight="900" text-anchor="middle" fill="url(#chrom)">B</text>
+  <rect x="4" y="27" width="24" height="1.6" rx="0.8" fill="#ff342e"/>
+</svg>
