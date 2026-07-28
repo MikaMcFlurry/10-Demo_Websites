@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Stimmzettel – die 100 wichtigsten Themen Deutschlands</title>
+<meta name="description" content="Zwei Sätze aus Podcasts, eine Frage: Was ist wichtiger für Deutschland? Aus Ihren Entscheidungen entsteht eine Rangliste der 100 wichtigsten Themen – und daraus ein Programm.">
+<meta name="theme-color" content="#e4e4de">
+<meta property="og:title" content="Der Stimmzettel – die 100 wichtigsten Themen Deutschlands">
+<meta property="og:description" content="Zwei Sätze, eine Frage, ein Kreuz. Ohne Konto.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/chivo-normal-300-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/petrona-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/bogen.css">
+</head>
+<body>
+<a class="springen" href="#bogen">Zum Stimmzettel springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html">
+    <svg viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <rect x="1.2" y="1.2" width="23.6" height="23.6" stroke="#16181a" stroke-width="2"/>
+      <rect x="4.4" y="4.4" width="17.2" height="17.2" stroke="#16181a" stroke-width="1"/>
+      <path d="M7.5 7.5 L18.5 18.5 M18.5 7.5 L7.5 18.5" stroke="#c8102e" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span>
+      <b>Der Stimmzettel</b>
+      <small>Demokratie am Küchentisch</small>
+    </span>
+  </a>
+
+  <nav class="wege" aria-label="Hauptbereiche">
+    <a href="index.html" aria-current="page">Entscheiden</a>
+    <a href="ergebnis.html">Ergebnis</a>
+    <a href="mein-bogen.html">Mein Bogen</a>
+    <a href="warum.html">Warum</a>
+  </nav>
+
+  <p class="stand" data-stand>
+    <span data-sterne>★ 0</span>
+    <span class="teiler">von</span>
+    <b>100 Sternen</b>
+  </p>
+</header>
+
+<main class="blatt" id="bogen" data-blatt>
+
+  <!-- Der Auftrag: ein Satz, nicht achtzehn FAQ-Einträge -->
+  <div class="auftrag" data-auftrag>
+    <h1>Welche Sätze gehören in ein Programm für Deutschland?</h1>
+    <p>
+      Wir sammeln, was in deutschen Podcasts über dieses Land gesagt wird, und
+      lassen darüber abstimmen. Sie entscheiden immer nur zwischen zwei Sätzen.
+      Aus vielen solchen Entscheidungen entsteht eine Rangliste der 100
+      wichtigsten Themen – die Grundlage für ein Parteiprogramm.
+      <a class="warum" href="warum.html">Wie das genau funktioniert →</a>
+    </p>
+  </div>
+
+  <h2 class="frage">
+    <span>Was ist wichtiger für Deutschland?</span>
+    <span class="nr" data-nr>Entscheidung 1</span>
+  </h2>
+
+  <div class="paar" data-paar>
+    <div class="wahl">
+      <button class="flaeche" type="button" data-seite="a" data-gewaehlt="nein">
+        <span>
+          <p class="satz" data-satz>Wird geladen …</p>
+          <p class="beleg" data-beleg hidden></p>
+        </span>
+        <span class="unterzeile">
+          <span class="quelle" data-quelle></span>
+          <span class="feld" aria-hidden="true">
+            <svg viewBox="0 0 46 46" aria-hidden="true"><path d="M13 13 L33 33"/><path d="M33 13 L13 33"/></svg>
+          </span>
+        </span>
+      </button>
+      <div class="wahl-fuss">
+        <button class="hoeren" type="button" data-hoeren aria-pressed="false" hidden>
+          <svg width="11" height="12" viewBox="0 0 11 12" aria-hidden="true"><path d="M1 1 L10 6 L1 11 Z" fill="currentColor"/></svg>
+          Anhören <span class="lauf" aria-hidden="true"><i></i></span>
+        </button>
+        <a class="quelle-link" data-episode href="#" target="_blank" rel="noopener noreferrer">Episode öffnen →</a>
+      </div>
+    </div>
+
+    <div class="perfo" aria-hidden="true"></div>
+
+    <div class="wahl">
+      <button class="flaeche" type="button" data-seite="b" data-gewaehlt="nein">
+        <span>
+          <p class="satz" data-satz>Wird geladen …</p>
+          <p class="beleg" data-beleg hidden></p>
+        </span>
+        <span class="unterzeile">
+          <span class="quelle" data-quelle></span>
+          <span class="feld" aria-hidden="true">
+            <svg viewBox="0 0 46 46" aria-hidden="true"><path d="M13 13 L33 33"/><path d="M33 13 L13 33"/></svg>
+          </span>
+        </span>
+      </button>
+      <div class="wahl-fuss">
+        <button class="hoeren" type="button" data-hoeren aria-pressed="false" hidden>
+          <svg width="11" height="12" viewBox="0 0 11 12" aria-hidden="true"><path d="M1 1 L10 6 L1 11 Z" fill="currentColor"/></svg>
+          Anhören <span class="lauf" aria-hidden="true"><i></i></span>
+        </button>
+        <a class="quelle-link" data-episode href="#" target="_blank" rel="noopener noreferrer">Episode öffnen →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ausweich">
+    <p>Sie müssen sich nicht entscheiden. Beide Auswege zählen als Antwort.</p>
+    <span class="rechts">
+      <button class="knopf" type="button" data-keins>Beide unwichtig</button>
+      <button class="knopf" type="button" data-unbekannt>Kenne ich beide nicht</button>
+    </span>
+  </div>
+
+  <p class="echo" data-echo role="status"></p>
+
+  <p class="zaehlung" data-zaehlung aria-hidden="true"></p>
+
+  <!-- Erscheint erst, wenn etwas zu verlieren ist -->
+  <section class="sicherung" data-sicherung hidden>
+    <span class="kopfzeile">Ihre Entscheidungen sichern</span>
+    <div class="inhalt">
+      <h2 data-sicher-titel>Sie haben 15 Entscheidungen getroffen.</h2>
+      <p>
+        Bisher liegen sie nur in diesem Browser. Mit einer E-Mail-Adresse bleiben
+        sie erhalten – auf einem anderen Gerät, nach dem Löschen des Verlaufs,
+        und sie zählen für die Auswertung mit.
+      </p>
+      <form data-konto novalidate>
+        <label class="nurlesbar" for="mail">E-Mail-Adresse</label>
+        <input id="mail" type="email" name="email" placeholder="ihre@adresse.de" autocomplete="email" required>
+        <button class="knopf knopf--rot" type="submit">Entscheidungen sichern</button>
+        <p class="fehler" role="alert"></p>
+      </form>
+      <p class="quittung" role="status">
+        Vorgemerkt. In dieser Demonstration wird nichts versendet und nichts
+        gespeichert – im Echtbetrieb käme jetzt eine Bestätigungsmail, und Ihre
+        Sterne würden auf Ihr Konto übertragen.
+      </p>
+      <p style="margin-top:14px;font-size:.88rem;color:var(--druck-3)">
+        Später sichern geht auch. Ihre Entscheidungen bleiben so lange in diesem Browser.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div>
+      <h4>Mitmachen</h4>
+      <ul>
+        <li><a href="index.html">Entscheiden</a></li>
+        <li><a href="ergebnis.html">Ergebnis ansehen</a></li>
+        <li><a href="mein-bogen.html">Mein Bogen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hintergrund</h4>
+      <ul>
+        <li><a href="warum.html">Warum es das gibt</a></li>
+        <li><a href="warum.html#verfahren">Wie gerechnet wird</a></li>
+        <li><a href="warum.html#ki">Wo KI mitarbeitet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quellen</h4>
+      <p>
+        Alle Sätze stammen wörtlich aus öffentlich verfügbaren Podcast-Episoden
+        und sind mit ihrer Quelle verlinkt.
+      </p>
+    </div>
+  </div>
+
+  <p class="schluss">
+    <span class="kz">Entwurf</span>
+    <span>Überarbeitung von demokratieamküchentisch.de</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/kern.js"></script>
+<script src="assets/blatt.js"></script>
+</body>
+</html>

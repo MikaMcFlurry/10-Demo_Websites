@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ergebnis – was Deutschland gerade für wichtig hält</title>
+<meta name="description" content="Die laufende Auszählung: welche Sätze bisher die meisten Stimmen haben, nach Politikfeld gefiltert, mit Quelle und Originalzitat.">
+<meta name="theme-color" content="#17395e">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/bogen.css">
+</head>
+<body class="amtlich">
+<a class="springen" href="#tafel">Zur Auszählung springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html">
+    <svg viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <rect x="1.2" y="1.2" width="23.6" height="23.6" stroke="#eef2f6" stroke-width="2"/>
+      <rect x="4.4" y="4.4" width="17.2" height="17.2" stroke="#eef2f6" stroke-width="1"/>
+      <path d="M7.5 7.5 L18.5 18.5 M18.5 7.5 L7.5 18.5" stroke="#f0c419" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span>
+      <b>Der Stimmzettel</b>
+      <small>Demokratie am Küchentisch</small>
+    </span>
+  </a>
+
+  <nav class="wege" aria-label="Hauptbereiche">
+    <a href="index.html">Entscheiden</a>
+    <a href="ergebnis.html" aria-current="page">Ergebnis</a>
+    <a href="mein-bogen.html">Mein Bogen</a>
+    <a href="warum.html">Warum</a>
+  </nav>
+
+  <p class="stand">
+    <span data-sterne>★ 0</span>
+    <span class="teiler">von</span>
+    <b>100 Sternen</b>
+  </p>
+</header>
+
+<main class="blatt" id="tafel">
+  <div class="tafelkopf">
+    <div>
+      <h1>Was Deutschland gerade für wichtig hält</h1>
+      <p>
+        Die laufende Auszählung aller Stimmen. Ihre eigenen Sterne sind
+        <span style="color:var(--gelb)">gelb</span> markiert.
+      </p>
+    </div>
+    <dl class="zahlen">
+      <div><dt>Sätze zur Wahl</dt><dd data-anz-saetze>–</dd></div>
+      <div><dt>Ihre Sterne</dt><dd data-anz-sterne>–</dd></div>
+      <div><dt>Ihre Duelle</dt><dd data-anz-duelle>–</dd></div>
+    </dl>
+  </div>
+
+  <!-- Der ehrlichste Satz der Seite: bisher haben vier Menschen abgestimmt. -->
+  <div class="vermerk" style="margin-top:26px;border-color:#eef2f6;background:rgba(0,0,0,.22)">
+    <span class="kopfzeile" style="background:#eef2f6;color:#17395e">Stand der Auszählung</span>
+    <p style="color:#dce6f0">
+      Die Stimmenzahlen unten stammen aus der bestehenden Plattform. In ihrem
+      bisher einzigen ausgewerteten Zeitraum haben <b>vier Personen</b>
+      insgesamt <b>130 Stimmen</b> abgegeben. Das ist keine Rangliste
+      Deutschlands – noch nicht. Genau deshalb muss das Abstimmen so leicht
+      sein wie hier.
+    </p>
+  </div>
+
+  <div class="filter" data-filter role="group" aria-label="Nach Politikfeld filtern"></div>
+
+  <ol class="auszaehlung" data-tafel>
+    <li><p class="satz">Wird ausgezählt …</p></li>
+  </ol>
+
+  <section class="rest" data-rest hidden></section>
+
+  <p style="margin-top:clamp(26px,3vw,42px)">
+    <a class="knopf" href="mein-bogen.html">Mein eigener Bogen</a>
+  </p>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div>
+      <h4>Mitmachen</h4>
+      <ul>
+        <li><a href="index.html">Entscheiden</a></li>
+        <li><a href="ergebnis.html">Ergebnis ansehen</a></li>
+        <li><a href="mein-bogen.html">Mein Bogen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hintergrund</h4>
+      <ul>
+        <li><a href="warum.html">Warum es das gibt</a></li>
+        <li><a href="warum.html#verfahren">Wie gerechnet wird</a></li>
+        <li><a href="warum.html#ki">Wo KI mitarbeitet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datenstand</h4>
+      <p data-datenstand>–</p>
+    </div>
+  </div>
+
+  <p class="schluss">
+    <span class="kz">Entwurf</span>
+    <span>Überarbeitung von demokratieamküchentisch.de</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/kern.js"></script>
+<script src="assets/tafel.js"></script>
+</body>
+</html>

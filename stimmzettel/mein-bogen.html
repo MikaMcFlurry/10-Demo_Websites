@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mein Bogen – meine 100 Sätze für Deutschland</title>
+<meta name="description" content="Die eigene Rangliste: welche Sätze aus den bisherigen Entscheidungen ganz oben stehen, wie viele Sterne noch frei sind und was beim Tausch passiert.">
+<meta name="theme-color" content="#e4e4de">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/bogen.css">
+</head>
+<body>
+<a class="springen" href="#meins">Zum eigenen Bogen springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html">
+    <svg viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <rect x="1.2" y="1.2" width="23.6" height="23.6" stroke="#16181a" stroke-width="2"/>
+      <rect x="4.4" y="4.4" width="17.2" height="17.2" stroke="#16181a" stroke-width="1"/>
+      <path d="M7.5 7.5 L18.5 18.5 M18.5 7.5 L7.5 18.5" stroke="#c8102e" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span><b>Der Stimmzettel</b><small>Demokratie am Küchentisch</small></span>
+  </a>
+
+  <nav class="wege" aria-label="Hauptbereiche">
+    <a href="index.html">Entscheiden</a>
+    <a href="ergebnis.html">Ergebnis</a>
+    <a href="mein-bogen.html" aria-current="page">Mein Bogen</a>
+    <a href="warum.html">Warum</a>
+  </nav>
+
+  <p class="stand">
+    <span data-sterne>★ 0</span>
+    <span class="teiler">von</span>
+    <b>100 Sternen</b>
+  </p>
+</header>
+
+<main class="blatt" id="meins">
+  <div class="auftrag" style="margin-bottom:clamp(18px,2.2vw,28px)">
+    <h1>Mein Bogen</h1>
+    <p data-einleitung>
+      Ihre Sterne verteilen sich nicht von Hand – sie ergeben sich aus Ihren
+      Entscheidungen. Was Sie öfter gewählt haben, steht weiter oben.
+    </p>
+  </div>
+
+  <!-- Erscheint, sobald alle hundert Sterne vergeben sind -->
+  <div class="vermerk" data-tausch hidden>
+    <span class="kopfzeile">Ihr Bogen ist voll</span>
+    <p>
+      Alle hundert Sterne sind vergeben. Ab jetzt gilt: Was Neues aufgenommen
+      wird, verdrängt etwas anderes. Entscheiden Sie weiter – oder streichen Sie
+      hier gezielt, was Ihnen weniger wichtig geworden ist.
+    </p>
+  </div>
+
+  <div data-inhalt>
+    <p style="color:var(--druck-3)">Wird geladen …</p>
+  </div>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div>
+      <h4>Mitmachen</h4>
+      <ul>
+        <li><a href="index.html">Entscheiden</a></li>
+        <li><a href="ergebnis.html">Ergebnis ansehen</a></li>
+        <li><a href="mein-bogen.html">Mein Bogen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hintergrund</h4>
+      <ul>
+        <li><a href="warum.html">Warum es das gibt</a></li>
+        <li><a href="warum.html#verfahren">Wie gerechnet wird</a></li>
+        <li><a href="warum.html#ki">Wo KI mitarbeitet</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Wo das liegt</h4>
+      <p>
+        Ihre Entscheidungen liegen ausschließlich in diesem Browser. Ohne Konto
+        verlassen sie das Gerät nicht.
+      </p>
+    </div>
+  </div>
+
+  <p class="schluss">
+    <span class="kz">Entwurf</span>
+    <span>Überarbeitung von demokratieamküchentisch.de</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/kern.js"></script>
+<script src="assets/mein.js"></script>
+</body>
+</html>
