@@ -25,6 +25,7 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 | 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Mika UX Library |
 | 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Mika UX Library |
 | 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Mika UX Library |
+| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Mika UX Library |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -57,6 +58,7 @@ Vorlagen, die das Ergebnis beeinflusst haben.
 | 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | `MXL-068` + `MXL-079` + `MXL-050` |
 | 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg | `MXL-040` |
 | 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot | `MXL-147` |
+| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad | `MXL-022` + `MXL-040` |
 
 Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
 wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter

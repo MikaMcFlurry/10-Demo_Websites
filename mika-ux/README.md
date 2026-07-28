@@ -42,6 +42,7 @@ einander: die eine liefert die Erfahrung, die andere die Zahlen.
 | 14 | [`geburtshaus-uferwiese`](geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Cormorant Garamond, Karla | `MXL-068` + `MXL-079` + `MXL-050` |
 | 15 | [`nereus-tiefsee`](nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Space Grotesk, Space Mono | `MXL-040` |
 | 16 | [`schwarzwerk-presswerk`](schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Baloo 2, Inter Tight | `MXL-147` |
+| 17 | [`wolkenkamm`](wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Lexend Exa, Familjen Grotesk, Fragment Mono | `MXL-022` + `MXL-040` |
 
 ### 11 — SPRUDELWERK
 
@@ -216,6 +217,69 @@ komfortable und die harte Grenze sowie die Pegelreserve — über der harten Gre
 nennt er bewusst keine Zahl mehr, weil dann nicht geschnitten wird.
 
 Fünf Seiten: Werk, Laufzeit, Auflage, Impressum, Datenschutz.
+
+### 17 — WOLKENKAMM Werkstatt für Marmorpapier
+
+Die dritte Mischung — und die erste Website des Portfolios, die etwas
+rechnet. Zwei Vorlagen mit strikt getrennten Aufgaben:
+
+| Vorlage | Beitrag |
+|---|---|
+| `MXL-022` Martin Laxenaire — *Kinetic print poster* | Die Welt: warmes Papier `#F7F5EF`, monumentale Display-Type über einer wirklich gerechneten Fläche, winzige Mono-Marginalien, streng rationiertes Rosa, Plakatplatte mit Papierrand. Typografische Komposition zuerst, UI danach. |
+| `MXL-040` The Monolith Project — *Interactive sci-fi artifact* | Der Interaktionsvertrag: Canvas bleibt Hintergrund oder Beweis, nie die einzige Navigation; Fallback-Poster aus CSS ohne JavaScript; stiller Textpfad über Statusregionen und Werkstattzettel; kein Scroll-Jacking; `prefers-reduced-motion` ersetzt die Schöpf-Choreografie durch den fertigen Bogen. Schafft das Gerät die Choreografie nicht (etwa Software-Rendering oder gedrosselte CPU), erkennt die Seite das und schaltet hart auf den fertigen Bogen. |
+
+Warum diese Kombination: `MXL-022` beschreibt eine Welt, aber keine
+Choreografie — und kinetische Typografie geht fast nie zugänglich in
+Produktion. `MXL-040` ist genau der fehlende Vertrag; seine Ästhetik bleibt
+draußen, die kommt vollständig aus `MXL-022`.
+
+Übersetzt in eine Werkstatt für Marmorpapier in Aschaffenburg — anderthalb
+Jahrhunderte Stadt des Buntpapiers, bis die letzte Fabrik 1972 schloss. Die
+These der Website: Kein Bogen zweimal. Die erste Bildschirmseite ist ein
+tatsächlich gerechnetes Marmorierbad; jeder Aufruf schöpft einen nummerierten
+Bogen, den es kein zweites Mal gibt. Verweigert wird das Kategorie-Übliche —
+Foto-Hero, Claim, zwei Knöpfe.
+
+**Das Marmorieren ist echt gerechnet, ohne Abhängigkeit.** Tropfen, Kamm-,
+Wirbel- und Wellenzüge sind exakt invertierbare Abbildungen der Badebene
+(Verdrängungsmodell). Gerendert wird rückwärts: Für jedes Pixel werden die
+Arbeitsschritte in umgekehrter Reihenfolge zurückgerechnet, bis ein Tropfen
+trifft — per WebGL-Fragment-Shader, mit identischer Mathematik als
+2D-Canvas-Fallback. Der Werkstattzettel des Bades ist zugleich das Protokoll
+der Rechnung: Jeder notierte Handgriff ist ein Term der Abbildung, und
+„Zurück“ nimmt ihn wieder heraus.
+
+Fünf Seiten: Werkstatt, Marmorierbad (Farben streuen, Kämme ziehen,
+Werkstattzettel mit Zurücknehmen, Bogen-Abnahme als PNG, Badrechner),
+Musterbuch (sechs Klassiker von Steinmarmor bis Bukett mit generierter
+Schrittfolge), Impressum, Datenschutz. Alles läuft ausschließlich im
+Browser; der abgenommene Bogen verlässt das Gerät nicht.
+
+> **Anmerkung zur Belastbarkeit der Musterbögen.** Die Kacheln des
+> Musterbuchs rechnen mit festgehaltener Saat. Überlagerte Schneckenzüge
+> sind keine Isometrie — je nach Saat können sie das schmale Kachelfenster
+> fast vollständig in unbetropftes Bad abbilden (gemessen: 41 bis 100 %
+> Grundanteil). Die Saat der Schnecken-Kachel ist deshalb numerisch und mit
+> eigenen Augen geprüft; auf Plakat und Wanne ist das Rezept in jeder Saat
+> gesund.
+
+Externe Quellen über die Library hinaus:
+
+- **A. Jaffer, „Mathematical Marbling“** —
+  [people.csail.mit.edu/jaffer/Marbling/](https://people.csail.mit.edu/jaffer/Marbling/):
+  Quelle des Marmorierverfahrens (Verdrängungsmodell und invertierbare
+  Züge); dazu S. Lu, A. Jaffer, X. Jin, H. Zhao, X. Mao: „Mathematical
+  Marbling“, *IEEE Computer Graphics and Applications* 32(6), 2012.
+- **martin-laxenaire.fr** — Primärquelle von `MXL-022`.
+- **themonolithproject.net** — Primärquelle von `MXL-040`.
+- **styles.refero.design** — Analysequelle von `MXL-022`.
+- **fonts.google.com** — Lexend Exa, Familjen Grotesk und Fragment Mono,
+  per `scripts/fetch-fonts.mjs` lokal abgelegt (SIL OFL 1.1); zur Laufzeit
+  wird nichts geladen.
+
+Musternamen und Handgriffe (Gel-Git, Nonpareille, Schneckenmarmor, Bukett)
+folgen der Literatur zum Buchbinderhandwerk und sind vereinfacht; die
+Rezeptwerte des Badrechners sind vereinfachte Literaturwerte.
 
 ## Technische Leitplanken
 
