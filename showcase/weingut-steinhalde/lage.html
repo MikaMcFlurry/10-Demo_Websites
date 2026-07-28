@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lage und Böden — Weingut Steinhalde</title>
+<meta name="description" content="Der Hang der Steinhalde im Querschnitt: Knollenmergel, Stubensandstein und Gipskeuper auf 12,4 Hektar zwischen 265 und 340 Metern über NN.">
+<meta name="theme-color" content="#191c15">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/profil.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="shell" style="margin-left:0">
+  <header class="top">
+    <a class="gut" href="index.html" aria-label="Weingut Steinhalde, zur Startseite">
+      <svg viewBox="0 0 30 34" fill="none" aria-hidden="true">
+        <path d="M2 2h26v9l-8 7v13h-4v-3h4M2 2v9l8 7v14h6" stroke="#9fc93c" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M2 24h26" stroke="#e8e6dc" stroke-width="1.2" stroke-dasharray="3 3" opacity=".6"/>
+      </svg>
+      <span><b>Steinhalde</b><span>Kernen im Remstal</span></span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="index.html">Profil</a><a href="weine.html">Weine</a>
+      <a href="lage.html" aria-current="page">Lage</a><a href="besuch.html">Besuch</a>
+    </nav>
+    <a class="book" href="besuch.html">Verkostung</a>
+  </header>
+
+  <main id="inhalt">
+    <section class="sheet">
+      <h1>Lage</h1>
+      <p class="intro">
+        Ein Hang, drei Gesteine, 62 Prozent Neigung an der steilsten Stelle.
+        Wer hier Wein macht, entscheidet nicht viel — er ordnet sich ein.
+      </p>
+    </section>
+
+    <!-- ── Hangschnitt ──────────────────────────────────────────────── -->
+    <section class="sheet" style="padding-top:0">
+      <figure style="margin:0">
+        <svg viewBox="0 0 960 400" role="img" aria-labelledby="hs-t hs-d" style="width:100%;height:auto;border:1px solid rgba(232,230,220,.2)">
+          <title id="hs-t">Querschnitt durch den Hang der Steinhalde</title>
+          <desc id="hs-d">Der Hang fällt von 340 Metern über NN im Süden auf 265 Meter im Norden.
+            Im oberen Drittel steht Stubensandstein, im mittleren Knollenmergel, am Hangfuß
+            Gipskeuper unter einer Lösslehmdecke.</desc>
+
+          <defs>
+            <clipPath id="hang">
+              <path d="M40 400 V210 C160 150 300 112 470 104 C640 96 790 128 920 178 V400 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- Von unten nach oben aufgetragen: das tiefste Gestein ist die
+               Grundfläche, jede jüngere Schicht liegt darüber. -->
+          <g clip-path="url(#hang)">
+            <rect x="0" y="0" width="960" height="400" fill="#949889"/>
+            <path d="M0 375 C160 315 300 277 470 269 C640 261 800 293 960 343 L960 0 L0 0 Z" fill="#6b4a2f"/>
+            <path d="M0 310 C160 250 300 212 470 204 C640 196 800 228 960 278 L960 0 L0 0 Z" fill="#b99a5e"/>
+            <path d="M0 250 C160 190 300 152 470 144 C640 136 800 168 960 218 L960 0 L0 0 Z" fill="#a08a5f"/>
+          </g>
+
+          <!-- Geländelinie -->
+          <path d="M40 210 C160 150 300 112 470 104 C640 96 790 128 920 178"
+                fill="none" stroke="#e8e6dc" stroke-width="2.4"/>
+
+          <!-- Rebzeilen -->
+          <g stroke="#9fc93c" stroke-width="2" opacity=".9">
+            <path d="M120 178 v-22M180 160 v-22M240 145 v-22M300 133 v-22M360 124 v-22
+                     M420 116 v-22M480 110 v-22M540 110 v-22M600 114 v-22M660 122 v-22
+                     M720 132 v-22M780 145 v-22M840 158 v-22"/>
+          </g>
+
+          <!-- Höhenangaben -->
+          <g font-family="Jost, sans-serif" font-size="13" fill="#e8e6dc" letter-spacing=".12em">
+            <path d="M470 104 v-34" stroke="#e8e6dc" stroke-width=".8" opacity=".55"/>
+            <text x="470" y="60" text-anchor="middle">340 m ü. NN</text>
+            <path d="M920 178 v-40" stroke="#e8e6dc" stroke-width=".8" opacity=".55"/>
+            <text x="920" y="128" text-anchor="end">265 m</text>
+          </g>
+
+          <!-- Schichtbeschriftung -->
+          <g font-family="Jost, sans-serif" font-size="13" letter-spacing=".18em">
+            <text x="180" y="199" fill="#17150e">LÖSSLEHM</text>
+            <text x="180" y="256" fill="#191c15">STUBENSANDSTEIN</text>
+            <text x="180" y="320" fill="#e8e6dc">KNOLLENMERGEL</text>
+            <text x="180" y="382" fill="#191c15">GIPSKEUPER</text>
+          </g>
+
+          <!-- Himmelsrichtung -->
+          <g font-family="Jost, sans-serif" font-size="12" fill="#b3b3a2" letter-spacing=".22em">
+            <text x="44" y="392">SÜD</text>
+            <text x="916" y="392" text-anchor="end">NORD</text>
+          </g>
+        </svg>
+        <figcaption style="margin-top:12px;font:400 11px/1.6 var(--f-mark);letter-spacing:.18em;text-transform:uppercase;color:var(--text-2)">
+          Schematischer Hangschnitt · überhöht dargestellt
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="horizon horizon--sand">
+      <p class="hmark"><span class="d">Oberer Hang</span> <span>310—340 m ü. NN</span> <span class="l"></span></p>
+      <h2>Oben der Sandstein</h2>
+      <div class="cols" style="margin-top:0">
+        <div>
+          <h3>Was dort steht</h3>
+          <p>4,8 Hektar Riesling, Silvaner, Weißburgunder und die kleine
+             Muskattrollinger-Parzelle. Pflanzdichte 6.500 Stock je Hektar,
+             Zeilen in Falllinie.</p>
+        </div>
+        <div>
+          <h3>Warum dort</h3>
+          <p>Die obersten Zeilen bekommen am meisten Wind. Das trocknet das Laub
+             nach Regen ab und hält Pilzdruck von den dünnschaligen Weißweinsorten
+             fern.</p>
+        </div>
+        <div>
+          <h3>Der Nachteil</h3>
+          <p>Der Boden hält kaum Wasser. Ab drei Wochen ohne Regen sieht man es
+             am Laub. In Trockenjahren tropfbewässern wir hier zuerst.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="horizon horizon--mergel">
+      <p class="hmark"><span class="d">Mittlerer Hang</span> <span>285—310 m ü. NN</span> <span class="l"></span></p>
+      <h2>In der Mitte der Mergel</h2>
+      <div class="cols" style="margin-top:0">
+        <div>
+          <h3>Was dort steht</h3>
+          <p>5,9 Hektar Lemberger, Spätburgunder, Zweigelt und Trollinger.
+             Die ältesten Stöcke wurden 1961 gepflanzt, in Einzelpfahlerziehung,
+             wie es damals üblich war.</p>
+        </div>
+        <div>
+          <h3>Warum dort</h3>
+          <p>Der Mergel liefert Wasser bis in den September und bremst die
+             Reife. Genau das brauchen Rotweinsorten, damit die Gerbstoffe reifen,
+             bevor der Zucker davonläuft.</p>
+        </div>
+        <div>
+          <h3>Der Nachteil</h3>
+          <p>Nach Regen ist der Boden zwei Tage lang nicht befahrbar und kaum
+             begehbar. Die Lese verschiebt sich dann, ob es uns passt oder nicht.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="horizon horizon--gips">
+      <p class="hmark"><span class="d">Hangfuß</span> <span>265—285 m ü. NN</span> <span class="l"></span></p>
+      <h2>Unten der Gips</h2>
+      <div class="cols" style="margin-top:0">
+        <div>
+          <h3>Was dort steht</h3>
+          <p>0,7 Hektar Riesling und Chardonnay auf einer Terrasse, die 1978
+             angelegt wurde, nachdem der Hang an dieser Stelle abgerutscht war.</p>
+        </div>
+        <div>
+          <h3>Warum so wenig</h3>
+          <p>Gipskeuper quillt bei Wassersättigung und schrumpft beim Trocknen.
+             Das bewegt den Untergrund. Weiter westlich haben wir zweimal neu
+             gepflanzt und es dann gelassen.</p>
+        </div>
+        <div>
+          <h3>Was er kann</h3>
+          <p>Weine mit einer Salzigkeit, die man nicht erklären, aber
+             wiedererkennen kann. Deshalb füllen wir die Parzelle einzeln ab,
+             obwohl es sich betriebswirtschaftlich nicht rechnet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="horizon horizon--humus">
+      <p class="hmark"><span class="d">1904—heute</span> <span>Vier Generationen</span> <span class="l"></span></p>
+      <h2>Was sich geändert hat</h2>
+      <dl class="werte">
+        <div><dt>Gegründet</dt><dd>1904<small>Wilhelm Ammann</small></dd></div>
+        <div><dt>Eigene Füllung seit</dt><dd>1968<small>zuvor Fassweinverkauf</small></dd></div>
+        <div><dt>Ohne Herbizid seit</dt><dd>2009<small>gesamte Fläche</small></dd></div>
+        <div><dt>Betriebsleitung</dt><dd>2011<small>Sabine Ammann</small></dd></div>
+      </dl>
+
+      <p style="max-width:56ch;margin-top:36px">
+        Bis 1968 ging der gesamte Ertrag als Fassware an die Genossenschaft. Der
+        Großvater füllte den ersten eigenen Wein ab, weil ein Gastwirt aus
+        Waiblingen ihn darum bat. Die Etiketten schrieb er mit der Hand — 240
+        Stück, in einer Nacht.
+      </p>
+
+      <p style="margin-top:32px">
+        <a class="act" href="besuch.html">Kommen Sie vorbei</a>
+        <a class="act act--line" href="weine.html" style="margin-left:10px">Zur Weinliste</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-cols">
+      <div><h4>Wein</h4><ul>
+        <li><a href="weine.html">Weinliste</a></li>
+        <li><a href="lage.html">Lage und Böden</a></li>
+        <li><a href="besuch.html">Verkostung</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+      <div><h4>Anschrift</h4><p>Weingut Steinhalde<br>Haldenweg 7<br>71394 Kernen im Remstal</p></div>
+      <div><h4>Kontakt</h4><p><a href="tel:+497151900000">+49 7151 900000</a><br><a href="mailto:wein@steinhalde.example">wein@steinhalde.example</a></p></div>
+    </div>
+    <p class="base">
+      <span class="mark">Demo</span>
+      <span>Fiktives Weingut · Beispielprojekt</span>
+      <span>Schriften lokal gehostet</span>
+      <span>Keine Tracker, keine Cookies</span>
+    </p>
+  </footer>
+</div>
+
+<script src="assets/profil.js" defer></script>
+</body>
+</html>

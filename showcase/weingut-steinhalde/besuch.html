@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Besuch und Verkostung — Weingut Steinhalde</title>
+<meta name="description" content="Verkostung im Hof zwischen Presshaus und Keller, 90 Minuten, sechs Weine. Öffnungszeiten, Anfahrt und Anfrageformular des Weinguts Steinhalde.">
+<meta name="theme-color" content="#191c15">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/profil.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="shell" style="margin-left:0">
+  <header class="top">
+    <a class="gut" href="index.html" aria-label="Weingut Steinhalde, zur Startseite">
+      <svg viewBox="0 0 30 34" fill="none" aria-hidden="true">
+        <path d="M2 2h26v9l-8 7v13h-4v-3h4M2 2v9l8 7v14h6" stroke="#9fc93c" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M2 24h26" stroke="#e8e6dc" stroke-width="1.2" stroke-dasharray="3 3" opacity=".6"/>
+      </svg>
+      <span><b>Steinhalde</b><span>Kernen im Remstal</span></span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="index.html">Profil</a><a href="weine.html">Weine</a>
+      <a href="lage.html">Lage</a><a href="besuch.html" aria-current="page">Besuch</a>
+    </nav>
+    <a class="book" href="#anfrage">Verkostung</a>
+  </header>
+
+  <main id="inhalt">
+    <section class="sheet">
+      <h1>Besuch</h1>
+      <p class="intro">
+        Neunzig Minuten, sechs Weine, ein Tisch im Hof. Wir reden über Boden,
+        nicht über Aromenräder — und wir verkaufen niemandem etwas, das er nicht
+        will.
+      </p>
+    </section>
+
+    <section class="horizon horizon--humus">
+      <p class="hmark"><span class="d">Ablauf</span> <span>90 Minuten</span> <span class="l"></span></p>
+      <h2>Wie eine Verkostung läuft</h2>
+
+      <div class="cols" style="margin-top:0">
+        <div>
+          <h3>Erst der Hang</h3>
+          <p>Wir gehen zwanzig Minuten in den Weinberg, wenn das Wetter es
+             zulässt. Dort steht ein offenes Bodenprofil — dieselben Schichten,
+             die Sie auf der Startseite sehen, nur echt.</p>
+        </div>
+        <div>
+          <h3>Dann die Weine</h3>
+          <p>Sechs Weine im Hof, in der Reihenfolge der Schichten: erst Sandstein,
+             dann Mergel, dann Gips. Brot und Wasser stehen dabei, Käse auf
+             Wunsch.</p>
+        </div>
+        <div>
+          <h3>Und dann?</h3>
+          <p>Nichts. Wer kaufen will, kauft; wer nicht, geht mit einer
+             Empfehlung für ein anderes Weingut nach Hause. Das ist ernst
+             gemeint.</p>
+        </div>
+      </div>
+
+      <dl class="werte">
+        <div><dt>Dauer</dt><dd>90<small>Minuten</small></dd></div>
+        <div><dt>Gruppengröße</dt><dd>4—14<small>Personen</small></dd></div>
+        <div><dt>Beitrag</dt><dd>24 €<small>je Person</small></dd></div>
+        <div><dt>Anrechnung</dt><dd>ab 3<small>gekauften Flaschen</small></dd></div>
+      </dl>
+    </section>
+
+    <section class="horizon horizon--sand" id="anfrage">
+      <p class="hmark"><span class="d">Anfrage</span> <span>Antwort binnen zwei Tagen</span> <span class="l"></span></p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(30px,4vw,70px);align-items:start">
+        <div>
+          <h2>Termin anfragen</h2>
+          <p style="max-width:44ch">
+            Schreiben Sie uns, wann und mit wie vielen Leuten. Wir melden uns
+            innerhalb von zwei Werktagen mit zwei, drei Terminvorschlägen.
+          </p>
+
+          <form class="form" data-demo novalidate>
+            <p class="done" role="status">
+              Angekommen — in dieser Demo wird nichts versendet. Im Echtbetrieb
+              läge Ihre Anfrage jetzt im Postfach des Weinguts.
+            </p>
+
+            <div class="row">
+              <div class="f">
+                <label for="n">Name <span aria-hidden="true">*</span></label>
+                <input id="n" name="name" type="text" required autocomplete="name" placeholder="Vor- und Nachname">
+                <p class="bad">Bitte tragen Sie Ihren Namen ein.</p>
+              </div>
+              <div class="f">
+                <label for="e">E-Mail <span aria-hidden="true">*</span></label>
+                <input id="e" name="email" type="email" required autocomplete="email" placeholder="ihre@adresse.de">
+                <p class="bad">Bitte prüfen Sie die Adresse.</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="f">
+                <label for="p">Personen</label>
+                <input id="p" name="personen" type="number" min="4" max="14" placeholder="4 bis 14">
+                <p class="tip">Kleinere Gruppen legen wir zusammen.</p>
+              </div>
+              <div class="f">
+                <label for="d">Wunschzeitraum</label>
+                <select id="d" name="zeitraum">
+                  <option>Frühjahr — März bis Mai</option>
+                  <option>Sommer — Juni bis August</option>
+                  <option>Herbst — September bis November</option>
+                  <option>Winter — Dezember bis Februar</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="f">
+              <label for="m">Anlass oder Wünsche</label>
+              <textarea id="m" name="nachricht" placeholder="Firmenausflug, Geburtstag, Allergien, Anreise mit dem Bus …"></textarea>
+            </div>
+
+            <p class="tip" style="margin:0 0 22px">
+              Ihre Angaben gehen nur an das Weingut und werden nach Abschluss
+              der Anfrage gelöscht.
+            </p>
+
+            <button class="act act--dark" type="submit">Anfrage senden</button>
+          </form>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:18px">Öffnungszeiten Verkauf</h3>
+          <ul class="hours" data-hours>
+            <li data-tag="5"><b>Freitag</b><span class="z">15:00 — 19:00</span></li>
+            <li data-tag="6"><b>Samstag</b><span class="z">11:00 — 17:00</span></li>
+            <li data-tag="0" class="zu"><b>Sonntag</b><span class="z">geschlossen</span></li>
+            <li class="zu"><b>Mo bis Do</b><span class="z">nach Vereinbarung</span></li>
+          </ul>
+
+          <h3 style="margin:38px 0 14px">Anfahrt</h3>
+          <p style="font-size:.98rem">
+            <b>Mit der Bahn:</b> S2 bis Kernen-Stetten, dann 900 Meter zu Fuß
+            bergauf. Der Weg ist ausgeschildert und im Dunkeln beleuchtet.
+          </p>
+          <p style="font-size:.98rem">
+            <b>Mit dem Auto:</b> Haldenweg 7. Sechs Stellplätze im Hof, weitere
+            am Sportplatz, 300 Meter entfernt.
+          </p>
+          <p style="font-size:.98rem">
+            <b>Barrierefrei:</b> Hof und Verkaufsraum sind ebenerdig. Der Weg
+            in den Weinberg ist es nicht — sagen Sie vorher Bescheid, dann
+            verkosten wir vollständig im Hof.
+          </p>
+
+          <h3 style="margin:38px 0 14px">Direkt</h3>
+          <p style="font-size:.98rem">
+            <a href="tel:+497151900000">+49 7151 900000</a><br>
+            <a href="mailto:wein@steinhalde.example">wein@steinhalde.example</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-cols">
+      <div><h4>Wein</h4><ul>
+        <li><a href="weine.html">Weinliste</a></li>
+        <li><a href="lage.html">Lage und Böden</a></li>
+        <li><a href="besuch.html">Verkostung</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+      <div><h4>Anschrift</h4><p>Weingut Steinhalde<br>Haldenweg 7<br>71394 Kernen im Remstal</p></div>
+      <div><h4>Kontakt</h4><p><a href="tel:+497151900000">+49 7151 900000</a><br><a href="mailto:wein@steinhalde.example">wein@steinhalde.example</a></p></div>
+    </div>
+    <p class="base">
+      <span class="mark">Demo</span>
+      <span>Fiktives Weingut · Beispielprojekt</span>
+      <span>Schriften lokal gehostet</span>
+      <span>Keine Tracker, keine Cookies</span>
+    </p>
+  </footer>
+</div>
+
+<script src="assets/profil.js" defer></script>
+</body>
+</html>
