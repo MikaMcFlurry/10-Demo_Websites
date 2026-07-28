@@ -26,6 +26,7 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 | 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Mika UX Library |
 | 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Mika UX Library |
 | 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Mika UX Library |
+| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Gerechnetes Chrom, harter Schnitt in weiße Galerie | Mika UX Library |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -59,6 +60,7 @@ Vorlagen, die das Ergebnis beeinflusst haben.
 | 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg | `MXL-040` |
 | 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot | `MXL-147` |
 | 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad | `MXL-022` + `MXL-040` |
+| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Chrom auf Nacht, weiße Galerie | `MXL-045` |
 
 Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
 wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter

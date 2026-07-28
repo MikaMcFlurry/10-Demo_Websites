@@ -43,6 +43,7 @@ einander: die eine liefert die Erfahrung, die andere die Zahlen.
 | 15 | [`nereus-tiefsee`](nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Space Grotesk, Space Mono | `MXL-040` |
 | 16 | [`schwarzwerk-presswerk`](schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Baloo 2, Inter Tight | `MXL-147` |
 | 17 | [`wolkenkamm`](wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Lexend Exa, Familjen Grotesk, Fragment Mono | `MXL-022` + `MXL-040` |
+| 18 | [`blank-oberflaechen`](blank-oberflaechen/) | Galvanik | Gerechnetes Chrom, harter Schnitt in weiße Galerie | Archivo, Fragment Mono | `MXL-045` |
 
 ### 11 — SPRUDELWERK
 
@@ -288,6 +289,69 @@ Externe Quellen über die Library hinaus:
 Musternamen und Handgriffe (Gel-Git, Nonpareille, Schneckenmarmor, Bukett)
 folgen der Literatur zum Buchbinderhandwerk und sind vereinfacht; die
 Rezeptwerte des Badrechners sind vereinfachte Literaturwerte.
+
+### 18 — BLANK Oberflächentechnik
+
+`MXL-045` („Hyper Tria“, *Chrome monolith gallery*) verlangt massive
+Chrom-Typografie auf dunkler Bühne und danach einen harten Wechsel — keinen
+Übergang — in eine weiße, messerscharfe Galerie (`theme: mixed`).
+
+Übersetzt in eine Galvanik in Solingen, wird das Chrom vom Stilmittel zum
+Gegenstand: Die Wortmarke ist eine zur Laufzeit gerechnete Chromfläche aus
+rohem WebGL ohne Abhängigkeit. Der Schriftzug wird in ein 2D-Canvas
+gezeichnet, per separierbarem Box-Blur zu einem 16-Bit-Höhenfeld
+weichgezeichnet; der Fragment-Shader liest daraus Normalen und spiegelt ein
+prozedurales Studio-Environment aus Softbox-Bändern, Absorbern und einer
+Horizontlinie. Das Signalrot existiert in der dunklen Welt ausschließlich
+als reflektierter Lichtstreifen im Chrom. Der Zeiger dreht das Environment,
+eine Taste hält die Bewegung an; `prefers-reduced-motion` ersetzt sie durch
+genau ein stehendes Bild, und ohne WebGL bleibt ein CSS-Chromposter stehen —
+Vertrag nach `MXL-040`/`MXL-045`.
+
+Nach dem Schnitt ist die Seite eine weiße Galerie, geordnet als
+Schichtaufbau von innen nach außen: Schleifen, Kupfer, Nickel, Chrom, dazu
+die Solitäre Hartchrom und Chemisch Nickel. Der Querschnitt zeigt den
+Aufbau wahlweise im wahren Maßstab — Chrom ist mit 0,3 µm die dünnste
+Schicht des Systems, das nach ihm benannt ist. Der **Schichtzeitrechner**
+rechnet die Hartchrom-Badzeit nach Faraday (M = 52 g/mol, z = 6,
+ρ = 7,14 g/cm³, Stromausbeute 12–18 %) und nennt über 500 µm bewusst keine
+Zahl mehr, weil dort nicht mehr aufgebaut wird. Die Betriebsseite erklärt
+die REACH-Lage von Chrom(VI) ohne Beschönigung, nennt die Abwasserwerte
+nach Anhang 40 AbwV und listet offen, was das Werk nicht macht.
+
+Fünf Seiten: Oberfläche, Verfahren, Betrieb, Impressum, Datenschutz.
+
+**Zur Vorlagenwahl.** Die zweite Fable-Sitzung hat die Vorsortierung des
+Briefings nicht übernommen, sondern nachgeprüft: `MXL-059` (osmo.supply)
+wurde verworfen, weil die Live-Site inzwischen dunkel ist und die helle
+Spezifikation wörtlich mit `MXL-022` kollidiert; `MXL-092` (authkit.com)
+wegen dreier dunkler Bestandswebsites und eines Violetts nahe an
+`nereus-tiefsee`. Bei `MXL-045` selbst wich die Refero-Forensik in zwei
+Punkten von der Spezifikation ab (Akzent `#ee3a49` statt `#ff342e`, Radius
+durchgehend 0); gebaut wurde nach der Spezifikation. Die Quell-Website
+hypertria.com liefert heute eine WordPress-Fassung ohne nachweisbare
+Chrom-Wortmarke — dieselbe Grenze der statischen Erhebung wie beim Nachtrag
+zu `MXL-147`, und der Grund, die Chromfläche als echte Laufzeitgrafik zu
+bauen statt als Bild.
+
+Externe Quellen über die Library hinaus:
+
+- **styles.refero.design** — Analysequelle von `MXL-045`, Struktur-, Farb-
+  und Typografie-Verifikation.
+- **hypertria.com** — Quell-Website von `MXL-045`, gegengeprüft.
+- **www.osmo.supply**, **authkit.com** — Primärquellen von `MXL-059` und
+  `MXL-092`, geprüft und verworfen.
+- Fachliche Näherungen, im Fuß und Impressum als solche gekennzeichnet:
+  Faradaysches Gesetz für die Chromabscheidung; Schichtdicken und Härten
+  nach DIN EN ISO 1456, 6158, 4527, 4516, 2178, 3497; Abwasser-Grenzwerte
+  nach Anhang 40 AbwV.
+- **fonts.google.com** — Archivo (variabel) und Fragment Mono, per
+  `scripts/fetch-fonts.mjs` lokal abgelegt (SIL OFL 1.1).
+
+Auch diese Website ist von Fable 5 gebaut, in einer eigenen Sitzung auf dem
+Branch `claude/portfolio-fable-zwei`. Die Einbindung in die Startseite kam
+aus der koordinierenden Sitzung; die Website selbst fasst keine geteilte
+Datei an.
 
 ## Technische Leitplanken
 

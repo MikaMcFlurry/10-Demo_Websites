@@ -1483,6 +1483,68 @@ summary:focus-visible {
   text-transform: uppercase;
 }
 
+/* 18 — BLANK Oberflächentechnik: Chrom auf Nacht, harter Schnitt in Papier. */
+.spec-chromschnitt {
+  display: grid;
+  grid-template-rows: 1.6fr 1fr;
+  width: 100%;
+  min-height: 100%;
+}
+
+.spec-chromschnitt .chromschnitt-wort {
+  display: grid;
+  place-items: center;
+  background: #0a0b0a;
+  padding: clamp(24px, 3vw, 48px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.04em;
+  /* Poster-Chrom der Website: Verlauf als stehende Vertretung der
+     gerechneten WebGL-Fläche. Der Verlauf wird auf die Höhe der Zeile
+     gestaucht — über die ganze Platte gespannt träfe die Schrift nur das
+     dunkle Mittelstück und bliebe ein Fleck. */
+  background-image: linear-gradient(177deg,
+    #2c2d2b 0%, #babcb4 20%, #fdfdfa 33%, #6f716b 46%,
+    #191a18 55%, #8d8f88 68%, #dfe0da 82%, #3a3b38 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 1.05em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-color: #0a0b0a;
+}
+
+.spec-chromschnitt .chromschnitt-galerie {
+  display: grid;
+  align-content: space-evenly;
+  gap: 0;
+  background: #f4f1e9;
+  padding: clamp(12px, 1.6vw, 24px) clamp(24px, 3vw, 48px);
+}
+
+.spec-chromschnitt .chromschnitt-galerie i {
+  display: block;
+  height: 1px;
+  background: #d9d5c9;
+  position: relative;
+}
+
+.spec-chromschnitt .chromschnitt-galerie i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 22%;
+  height: 5px;
+  background: #11130f;
+}
+
+.spec-chromschnitt .chromschnitt-galerie i:last-child::after {
+  background: #ff342e;
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);
