@@ -1225,6 +1225,70 @@ summary:focus-visible {
   color: #8a3208;
 }
 
+/* 14 — pastel sky and a forty-week arc (MXL-068 + MXL-079 + MXL-050) */
+.spec-ufer {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(26px, 4vw, 56px);
+  background: linear-gradient(168deg, #dbe6ff 0%, #eef1e8 52%, #ffe9e2 100%);
+  color: #11130f;
+}
+
+.ufer-form {
+  position: absolute;
+  border-radius: 48% 52% 44% 56% / 52% 44% 56% 48%;
+  background: rgba(255, 255, 255, .5);
+}
+
+.ufer-form--a { top: -12%; right: 8%; width: 42%; aspect-ratio: 1; }
+.ufer-form--b { bottom: -16%; left: 4%; width: 34%; aspect-ratio: 1; background: rgba(255, 255, 255, .3); }
+
+.ufer-wort {
+  position: relative;
+  z-index: 2;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.4rem, 8vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: .9;
+}
+
+.ufer-wort i {
+  display: block;
+  font-size: .26em;
+  font-style: normal;
+  letter-spacing: .01em;
+}
+
+/* Vierzig Wochen, drei Trimester, ein Korallzeiger — wie im Projekt. */
+.ufer-bogen {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: clamp(30px, 4vw, 46px);
+  gap: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.ufer-bogen i { flex: 1; background: rgba(255, 255, 255, .82); }
+.ufer-bogen i:nth-child(n+14) { background: rgba(255, 255, 255, .55); }
+.ufer-bogen i:nth-child(n+28) { background: rgba(255, 255, 255, .34); }
+.ufer-bogen i:nth-child(-n+24) { filter: saturate(.4) brightness(.97); }
+
+.ufer-bogen b {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60%;
+  width: 3px;
+  border-radius: 999px;
+  background: #fa7864;
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);

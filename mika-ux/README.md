@@ -27,6 +27,7 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 | 11 | [`sprudelwerk`](sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Anybody, Figtree | `MXL-051` |
 | 12 | [`vehring-orgelbau`](vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Unbounded, Instrument Sans, Spline Sans Mono | `MXL-007` |
 | 13 | [`saatgutarchiv`](saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Public Sans, IBM Plex Mono | `MXL-118` + `MXL-090` + `MXL-113` |
+| 14 | [`geburtshaus-uferwiese`](geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Cormorant Garamond, Karla | `MXL-068` + `MXL-079` + `MXL-050` |
 
 ### 11 — SPRUDELWERK
 
@@ -89,6 +90,31 @@ Nachbaubedarf), Abgabe, Vermehrung, Impressum, Datenschutz. Der Katalog steht
 vollständig im HTML; das Skript blendet nur aus. Ohne JavaScript bleiben alle
 24 Datensätze lesbar, und die Filterleiste bleibt verborgen, statt eine
 Bedienung vorzutäuschen, die nichts tut.
+
+### 14 — Geburtshaus Uferwiese
+
+Die zweite Mischung. Wieder drei Vorlagen mit getrennten Aufgaben, wieder auf
+gemeinsamer warmer Grundfläche.
+
+| Vorlage | Beitrag |
+|---|---|
+| `MXL-068` Handhold — *Whispered serif parchment* | Die Stimme: leichte Serif in 300, Hairlines, keine Farbe, viel Weißraum. Alles Ruhige kommt von hier. |
+| `MXL-079` Beautiful — *Warm Sunday kitchen* | Die Wärme: Elfenbein statt Weiß, schwarze Hairlines, genau ein rationiertes Korall (`#fa7864`). Häuslich statt klinisch. |
+| `MXL-050` Geniestudio — *Pastel sky design canvas* | Der Himmel: eine einzige große Pastellfläche mit 32px-Radien und schwarzen, klaren Aktionen darauf. Sonst nirgends. |
+
+Übersetzt in ein hebammengeführtes Geburtshaus. Der **Terminrechner** rechnet
+nach der Naegele-Regel mit Zykluskorrektur (280 Tage ab erstem Tag der letzten
+Regelblutung, plus Abweichung der Zykluslänge von 28), zeigt die aktuelle
+Schwangerschaftswoche in der Form `24+3` und die Lage auf einem
+Vierzig-Wochen-Bogen mit drei Trimesterbändern und einem Korallzeiger.
+
+Der Ton ist bewusst zurückhaltend: Die Seite nennt die Verlegungsrate, sagt
+beim Termin, dass nur etwa vier von hundert Kindern an ihm zur Welt kommen, und
+weist an jeder gesundheitsbezogenen Stelle darauf hin, dass sie keine Beratung
+ersetzt. Die Eingaben des Rechners sind Gesundheitsdaten nach Art. 9 DSGVO —
+deshalb hat er keinen Absenden-Knopf und verarbeitet ausschließlich im Browser.
+
+Fünf Seiten: Das Haus, Begleitung, Termin, Impressum, Datenschutz.
 
 ## Technische Leitplanken
 

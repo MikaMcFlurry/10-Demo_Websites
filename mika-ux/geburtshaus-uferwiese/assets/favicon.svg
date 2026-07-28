@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Geburtshaus Uferwiese">
+  <defs>
+    <linearGradient id="h" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dbe6ff"/>
+      <stop offset="1" stop-color="#ffe9e2"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#h)"/>
+  <circle cx="16" cy="15" r="7" fill="#fff" opacity=".72"/>
+  <path d="M9 24c2.6-2.4 4.9-3.6 7-3.6s4.4 1.2 7 3.6" fill="none" stroke="#11130f" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="16" cy="13.6" r="2.6" fill="#fa7864"/>
+</svg>

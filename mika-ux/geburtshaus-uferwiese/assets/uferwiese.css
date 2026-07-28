@@ -1,0 +1,471 @@
+/*
+  Geburtshaus Uferwiese
+  Mika UX Library — Mischung aus drei Vorlagen, jede mit eigener Aufgabe:
+
+    MXL-068  Handhold — Whispered serif parchment
+             Trägt die Stimme: leichte Serif in 300, Hairlines, keine Farbe,
+             viel Weißraum. Alles Ruhige an dieser Seite kommt von hier.
+
+    MXL-079  Beautiful — Warm Sunday kitchen
+             Trägt die Wärme: Elfenbein statt Weiß, schwarze Hairlines und
+             genau ein rationiertes Korall. Häuslich statt klinisch.
+
+    MXL-050  Geniestudio — Pastel sky design canvas
+             Trägt den Himmel: eine einzige große Pastellfläche mit 32px-Radien
+             und schwarzen, klaren Aktionen darauf. Sonst nirgends.
+
+  Alle drei teilen dieselbe warme Grundfläche — deshalb ergibt die Mischung
+  ein System und keine Collage.
+*/
+
+@import url("fonts/fonts.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --canvas: #f7f5ef;
+  --surface: #ffffff;
+  --ink: #11130f;
+  --muted: #72776d;
+
+  /* MXL-079: der eine Akzent, für Zustand und Marke — nicht für Dekoration */
+  --korall: #fa7864;
+  --korall-tief: #b8412e;
+
+  /* MXL-050: der Himmel, nur im Aufmacher und im Wochenbogen */
+  --himmel-1: #dbe6ff;
+  --himmel-2: #eef1e8;
+  --himmel-3: #ffe9e2;
+
+  --hair: #ddd9cd;
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+  --sp-11: 160px;
+
+  --r-m: 16px; --r-l: 32px; --r-pill: 999px;
+
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+html { scroll-behavior: smooth; background: var(--canvas); }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+
+/* ── Typografie: die leise Serif führt, die Sans liest ───────────────── */
+
+.h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 7.5vw, 104px);
+  font-weight: 300;
+  letter-spacing: -.012em;
+  line-height: 1.02;
+  text-wrap: balance;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 4.2vw, 56px);
+  font-weight: 300;
+  letter-spacing: -.008em;
+  line-height: 1.08;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(21px, 2.2vw, 28px);
+  font-weight: 400;
+  line-height: 1.22;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.lead { max-width: 44ch; margin: 0; font-size: clamp(19px, 1.9vw, 22px); line-height: 1.58; }
+.prose { max-width: 64ch; }
+.prose p { margin: 0 0 var(--sp-5); }
+.muted { color: var(--muted); }
+
+.label {
+  display: inline-block;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+a { color: inherit; text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: fixed;
+  z-index: 90;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  transform: translateY(-160%);
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--canvas);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip:focus { transform: translateY(0); }
+
+/* ── Kopf: leise Navigation (MXL-068) ────────────────────────────────── */
+
+.kopf {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: var(--sp-5) clamp(var(--sp-4), 4vw, var(--sp-7));
+}
+
+.marke {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-3);
+  align-items: center;
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: .01em;
+  text-decoration: none;
+}
+
+.marke svg { width: 26px; height: 26px; flex: none; }
+
+.menue { display: flex; gap: var(--sp-2); align-items: center; }
+
+.menue a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 var(--sp-3);
+  color: var(--muted);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 240ms var(--ease);
+}
+
+.menue a:hover { color: var(--ink); }
+.menue a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+
+.menuetaste {
+  display: none;
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ── Aktionen: schwarz und klar (MXL-050) ────────────────────────────── */
+
+.tat {
+  display: inline-flex;
+  min-height: 50px;
+  gap: var(--sp-2);
+  align-items: center;
+  padding: 0 var(--sp-6);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--canvas);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 240ms var(--ease), color 240ms var(--ease);
+}
+
+.tat:hover { background: transparent; color: var(--ink); }
+
+.tat--still { background: transparent; color: var(--ink); }
+.tat--still:hover { background: var(--ink); color: var(--canvas); }
+
+/* ── Rhythmus: 96–160px (MXL-068/079, spacious) ──────────────────────── */
+
+.bahn { padding: clamp(var(--sp-9), 10vw, var(--sp-11)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.bahn--eng { padding-block: clamp(var(--sp-8), 7vw, var(--sp-9)); }
+.mitte { max-width: 1320px; margin-inline: auto; }
+.schmal { max-width: 860px; }
+
+.kopfzeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: end;
+  margin-bottom: clamp(var(--sp-7), 5vw, var(--sp-9));
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--ink);
+}
+
+/* ── Der Himmel: die einzige Farbfläche der Seite (MXL-050) ──────────── */
+
+.himmel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  min-height: min(72svh, 660px);
+  margin: 0 clamp(var(--sp-3), 2vw, var(--sp-5)) 0;
+  padding: clamp(var(--sp-8), 8vw, var(--sp-10)) clamp(var(--sp-5), 5vw, var(--sp-9));
+  border-radius: var(--r-l);
+  background:
+    linear-gradient(168deg, var(--himmel-1) 0%, var(--himmel-2) 52%, var(--himmel-3) 100%);
+}
+
+/* Weiche Körper im Himmel — geringe Amplitude, wie MXL-050 verlangt. */
+.himmel__form {
+  position: absolute;
+  border-radius: 48% 52% 44% 56% / 52% 44% 56% 48%;
+  background: rgba(255, 255, 255, .5);
+  animation: treiben 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.himmel__form--a { top: -8%;  right: 6%;  width: clamp(160px, 22vw, 320px); aspect-ratio: 1; animation-delay: -1s; }
+.himmel__form--b { bottom: -14%; right: 24%; width: clamp(120px, 16vw, 240px); aspect-ratio: 1; background: rgba(255, 255, 255, .34); animation-delay: -6s; }
+.himmel__form--c { top: 22%; left: -6%; width: clamp(140px, 18vw, 260px); aspect-ratio: 1; background: rgba(255, 255, 255, .28); animation-delay: -3.5s; }
+
+@keyframes treiben {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+
+.himmel__text { position: relative; z-index: 2; max-width: 1320px; margin-inline: auto; width: 100%; }
+.himmel__tat { display: flex; gap: var(--sp-3); margin-top: clamp(var(--sp-6), 4vw, var(--sp-7)); flex-wrap: wrap; }
+
+/* ── Karten und Listen (MXL-079: weiche Radien, Hairlines) ───────────── */
+
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-5); }
+.karten > * { min-width: 0; }
+
+.karte {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  padding: clamp(var(--sp-5), 3vw, var(--sp-6));
+  border: 1px solid var(--hair);
+  border-radius: var(--r-l);
+  background: var(--surface);
+}
+
+.karte p { margin: 0; color: var(--muted); font-size: 16px; }
+
+/* Der Weg: Abschnitte einer Begleitung, über Hairlines getrennt. */
+.weg { margin: 0; padding: 0; list-style: none; }
+
+.wegpunkt {
+  display: grid;
+  grid-template-columns: minmax(120px, .28fr) minmax(0, 1fr);
+  gap: clamp(var(--sp-4), 3vw, var(--sp-7));
+  padding: clamp(var(--sp-6), 4vw, var(--sp-7)) 0;
+  border-top: 1px solid var(--hair);
+}
+
+.wegpunkt:last-child { border-bottom: 1px solid var(--hair); }
+.wegpunkt p { margin: var(--sp-3) 0 0; color: var(--muted); }
+.wegpunkt__zeit { font-family: var(--font-serif); font-size: clamp(19px, 2vw, 25px); font-weight: 400; }
+
+/* ── Terminrechner ───────────────────────────────────────────────────── */
+
+.rechner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 420px); gap: clamp(var(--sp-6), 5vw, var(--sp-8)); align-items: start; }
+.rechner > * { min-width: 0; }
+
+.feld { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+.feld label { font-weight: 600; }
+
+.feld input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.feld .hinweis { margin: 0; color: var(--muted); font-size: 15px; }
+
+.ergebnis {
+  display: grid;
+  gap: var(--sp-5);
+  padding: clamp(var(--sp-5), 3vw, var(--sp-7));
+  border-radius: var(--r-l);
+  background: var(--surface);
+  border: 1px solid var(--hair);
+}
+
+.ergebnis__datum { font-family: var(--font-serif); font-size: clamp(32px, 4vw, 46px); font-weight: 300; line-height: 1.06; }
+.ergebnis dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3) var(--sp-5); margin: 0; }
+.ergebnis dt { color: var(--muted); font-size: 14px; }
+.ergebnis dd { margin: 0; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Der Wochenbogen: vierzig Wochen, drei Trimester, ein Korallzeiger. */
+.bogen { display: grid; gap: var(--sp-3); }
+
+.bogen__spur {
+  position: relative;
+  display: flex;
+  height: 46px;
+  gap: 2px;
+  overflow: hidden;
+  border-radius: var(--r-pill);
+}
+
+.bogen__spur i { flex: 1; background: var(--himmel-1); }
+.bogen__spur i:nth-child(n+14) { background: var(--himmel-2); }
+.bogen__spur i:nth-child(n+28) { background: var(--himmel-3); }
+.bogen__spur i[data-vorbei] { filter: saturate(.35) brightness(.94); }
+
+.bogen__zeiger {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--korall);
+  transition: left 420ms var(--ease);
+}
+
+.bogen__achse { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+.marke-korall {
+  display: inline-block;
+  padding: 4px var(--sp-3);
+  border-radius: var(--r-pill);
+  background: #fff0ec;
+  color: var(--korall-tief);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Hinweiskasten ───────────────────────────────────────────────────── */
+
+.merk {
+  padding: clamp(var(--sp-5), 3vw, var(--sp-6));
+  border-left: 3px solid var(--korall);
+  border-radius: 0 var(--r-m) var(--r-m) 0;
+  background: var(--surface);
+}
+
+.merk p { margin: 0 0 var(--sp-3); }
+.merk p:last-child { margin-bottom: 0; }
+
+/* ── Tafel ───────────────────────────────────────────────────────────── */
+
+.rolle { overflow-x: auto; }
+.rolle .tafel { min-width: 30rem; }
+
+.tafel { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tafel caption { margin-bottom: var(--sp-4); color: var(--muted); font-size: 15px; text-align: left; }
+.tafel th, .tafel td { padding: var(--sp-4); border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
+.tafel thead th { border-bottom: 1px solid var(--ink); font-size: 14px; font-weight: 600; }
+.tafel td:last-child, .tafel th:last-child { text-align: right; }
+
+/* ── Fuß ─────────────────────────────────────────────────────────────── */
+
+.fuss { padding: var(--sp-9) clamp(var(--sp-4), 4vw, var(--sp-7)) var(--sp-7); border-top: 1px solid var(--ink); }
+.fuss__mitte { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--sp-7); max-width: 1320px; margin-inline: auto; }
+.fuss h2 { margin: 0 0 var(--sp-4); font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.fuss ul { margin: 0; padding: 0; list-style: none; }
+.fuss li { margin-bottom: var(--sp-2); }
+.fuss address { font-style: normal; }
+.fuss__demo { max-width: 1320px; margin: var(--sp-8) auto 0; padding-top: var(--sp-5); border-top: 1px solid var(--hair); color: var(--muted); font-size: 14px; }
+
+/* ── Rechtsseiten ────────────────────────────────────────────────────── */
+
+.recht { max-width: 70ch; margin-inline: auto; }
+.recht h2 { margin: var(--sp-8) 0 var(--sp-3); font-family: var(--font-serif); font-size: clamp(24px, 2.4vw, 30px); font-weight: 400; }
+.recht h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: 17px; }
+.recht ul { padding-left: var(--sp-5); }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 940px) {
+  .rechner, .kopfzeile { grid-template-columns: 1fr; }
+  .wegpunkt { grid-template-columns: 1fr; gap: var(--sp-2); }
+
+  .menuetaste { display: inline-flex; align-items: center; justify-content: center; }
+
+  .menue {
+    position: absolute;
+    top: 84px;
+    right: clamp(var(--sp-4), 4vw, var(--sp-7));
+    left: clamp(var(--sp-4), 4vw, var(--sp-7));
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-3);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-l);
+    background: var(--surface);
+  }
+
+  .menue[data-offen] { display: flex; }
+  .menue a { padding: var(--sp-3) var(--sp-4); }
+
+  .kopf { position: relative; }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  /* Der Himmel bleibt — er ist die Aussage. Er wird nur flacher und die
+     treibenden Körper weichen, damit auf kleinem Schirm nichts wackelt. */
+  .himmel { min-height: auto; margin-inline: var(--sp-2); padding: var(--sp-8) var(--sp-5); border-radius: var(--r-m); }
+  .himmel__form { display: none; }
+  .karte, .ergebnis { padding: var(--sp-5); }
+  .bogen__spur { height: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
