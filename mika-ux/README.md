@@ -21,6 +21,17 @@ entstanden ist. Die Angabe unterscheidet zwei Fälle:
 `mika-ux/` braucht genau eine Karte auf dem Hub, jede Karte mindestens eine
 MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 
+`scripts/pruefe-seiten.mjs` prüft zusätzlich im Browser: Konsolenfehler,
+fehlende Ressourcen, horizontaler Überlauf und Zielgrößen unter 44 px — je
+Seite auf 1440 px und 390 px.
+
+**Zur Belastbarkeit der Vorlagen.** Einträge mit `method: curated` beschreiben
+die gestalterische Idee einer Quelle. Einträge mit `method: css-dom` sind aus
+Stylesheet und DOM erhoben und liefern präzisere Tokens, können aber alles
+übersehen, was erst zur Laufzeit entsteht — siehe den Nachtrag zu `MXL-147`
+weiter unten. Wo beide Methoden dieselbe Quelle beschreiben, ergänzen sie
+einander: die eine liefert die Erfahrung, die andere die Zahlen.
+
 ## Aktueller Stand
 
 | # | Site | Branche | Form | Schriften | Herkunft |
@@ -176,6 +187,28 @@ Navigationsmittel** — hier dreht sich die Platte deshalb nicht dauerhaft,
 sondern macht bei jedem Stationswechsel genau eine Umdrehung und steht danach
 wieder still. Das markiert den Sprung durch die Fertigung, hält das Label
 lesbar und braucht keine Pause-Steuerung, weil nichts dauerhaft läuft.
+
+> **Nachtrag zur Vorlage — Grenze der CSS-/DOM-Forensik.**
+> Die Quelle von `MXL-147` ist [themonolithproject.net](https://themonolithproject.net/):
+> eine kinematische WebGL-Reise mit Three.js, React Three Fiber und GSAP, die
+> von handgezeichneten 2D-Skizzen in vollständig beleuchtete 3D-Szenen
+> übergeht — mit Shader-Übergängen, GPU-Partikeln, Masken-Reveals, Ton und
+> Kapiteldramaturgie. Sie wurde am 26. November 2025 Awwwards Site of the Day;
+> die Teilnote für Animation und Übergänge liegt bei 9,00 von 10.
+>
+> Die Erhebung von `MXL-147` erfolgte per `css-dom` und vermerkt selbst
+> „0 Bilder · 1 Videos · 0 Canvas“. Der Canvas wird von React Three Fiber erst
+> zur Laufzeit eingehängt und war für die Forensik deshalb unsichtbar. Die
+> Spezifikation beschreibt damit zuverlässig die **Chrome** der Quelle —
+> Farbrollen, Schrift, Spaltenbreite, Radien, Schatten — aber nicht ihre
+> **Erfahrung**.
+>
+> SCHWARZWERK setzt die dokumentierten Tokens korrekt um. Es setzt jedoch
+> nicht um, was die Quelle eigentlich ausmacht, weil das in `MXL-147` nicht
+> steht. Wer die Erfahrung sucht, findet sie in der kuratierten Schwester-
+> spezifikation `MXL-040` derselben Quelle — dort steht sie ausdrücklich
+> („Jede Berührung verändert eine illustrierte WebGL-Welt“) — und in
+> `mika-ux/nereus-tiefsee/`, das genau darauf gebaut ist.
 
 Der **Laufzeitrechner** beantwortet die häufigste Frage an ein Presswerk: Passt
 diese Seite? Aus Format (12″/10″/7″), Drehzahl (33⅓/45) und Spielzeit folgen die
