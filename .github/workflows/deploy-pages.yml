@@ -32,7 +32,7 @@ jobs:
       # ── GreenCart (Nuxt 3) ─────────────────────────────────────────────────
       - name: Install GreenCart dependencies
         working-directory: sites/greencart-nuxt
-        run: npm ci
+        run: npm install
 
       - name: Build GreenCart
         working-directory: sites/greencart-nuxt
@@ -44,7 +44,7 @@ jobs:
       # ── AuroraMetrics (Next.js) ────────────────────────────────────────────
       - name: Install AuroraMetrics dependencies
         working-directory: sites/aurorametrics-nextjs
-        run: npm ci
+        run: npm install
 
       - name: Build AuroraMetrics
         working-directory: sites/aurorametrics-nextjs
@@ -56,7 +56,7 @@ jobs:
       # ── Lumen Atelier (Astro) ──────────────────────────────────────────────
       - name: Install Lumen Atelier dependencies
         working-directory: sites/lumen-atelier-astro
-        run: npm ci
+        run: npm install
 
       - name: Build Lumen Atelier
         working-directory: sites/lumen-atelier-astro
