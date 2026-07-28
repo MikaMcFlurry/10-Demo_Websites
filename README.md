@@ -19,6 +19,7 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 | 08 | [`krawumm-labor`](showcase/krawumm-labor/) | Bildung | Interaktives Experimentierheft | Codex |
 | 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Codex |
 | 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | Codex |
+| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Mika UX Library |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -36,12 +37,20 @@ Folgende ältere Arbeiten liegen im nativen Archiv-Disclosure:
 
 ## Mika UX Library
 
-Im Zielbranch war keine eindeutig benannte Mika-UX-Library und keine
-Badge-Konvention vorhanden. Für die fünf neuen Schaustücke wurde daher **keine
-Library-Nutzung behauptet und kein Mika-UX-Icon gesetzt**. Wenn später eine
-konkrete Vorlage eingebunden wird, muss ihre Karte sichtbar und
-screenreader-lesbar mit `Mika UX` markiert und die Quelle hier dokumentiert
-werden.
+Sammlung C auf der Startseite versammelt Websites, deren Gestaltung aus der
+**Mika UX Library** abgeleitet ist — einem Bestand aus 121 kuratierten
+Referenzen (`MXL-001`–`MXL-120`, `MXL-145`). Jede dieser Websites nennt auf
+ihrer Karte die MXL-Nummern, aus denen sie entstanden ist: eine einzige Nummer
+bedeutet eine reine Vorlage ohne Mischung, mehrere Nummern listen alle
+Vorlagen, die das Ergebnis beeinflusst haben.
+
+| # | Projekt | Branche | Gestalterische Form | Herkunft |
+|---:|---|---|---|---|
+| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen | `MXL-051` |
+
+Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
+wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter
+`mika-ux/` geprüft.
 
 ## Technische Leitplanken
 

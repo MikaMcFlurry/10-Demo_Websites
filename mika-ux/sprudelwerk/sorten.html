@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorten und Mischpult – SPRUDELWERK Limonadenmanufaktur</title>
+<meta name="description" content="Sechs Sorten im Einzelnen: Herkunft, Zucker, Saison. Dazu das Mischpult mit allen Paaren, die wir wirklich abgefüllt haben.">
+<meta name="theme-color" content="#f7f5ef">
+<meta property="og:title" content="Sorten und Mischpult – SPRUDELWERK">
+<meta property="og:description" content="Sechs Sorten, fünfzehn Paare, ein Mischpult.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/anybody-normal-400-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/bogen.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="wortmarke" href="index.html" aria-label="Sprudelwerk, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="13" fill="#4da2ff"/>
+      <circle cx="11.6" cy="12" r="2.6" fill="#fff" opacity=".92"/>
+      <circle cx="20" cy="19" r="3.6" fill="#fff" opacity=".5"/>
+    </svg>
+    Sprudelwerk
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Bogen</a>
+    <a href="sorten.html" aria-current="page">Sorten</a>
+    <a href="manufaktur.html">Manufaktur</a>
+    <a href="kiosk.html">Kiosk</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+
+  <section class="bahn bahn--eng" aria-labelledby="titel">
+    <div class="mitte">
+      <p class="label muted">Bogen A · Sorten 01–06</p>
+      <h1 class="display" id="titel" style="font-size: clamp(44px, 7vw, 96px)">Sechs Sorten<br>im Einzelnen</h1>
+      <p class="lead muted" style="margin-top: var(--sp-5)">
+        Jede Sorte hat eine Ernte, eine Saison und eine Zahl. Wo eine Sorte
+        ausläuft, steht das hier — und nicht erst an der leeren Kiste.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Mischpult ──────────────────────────────────────────────────── -->
+  <section class="bahn bahn--eng" aria-labelledby="pult-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="label muted">Zwei Sorten, ein Ergebnis</p>
+          <h2 class="h2" id="pult-t">Das Mischpult</h2>
+        </div>
+        <p class="muted" style="max-width:36ch; margin:0">
+          Fünfzehn Paare sind über die Jahre entstanden. Das Pult zeigt nur die,
+          die wir tatsächlich abgefüllt haben — der Rest bleibt im Laborbuch.
+        </p>
+      </div>
+
+      <p data-mischpult-fallback class="karte" style="margin:0">
+        Das Mischpult braucht JavaScript. Die fünfzehn Paare stehen unten in der
+        Tabelle auch ohne Skript vollständig zur Verfügung.
+      </p>
+
+      <div class="mischpult" data-mischpult hidden>
+        <div>
+          <h3 class="h3" id="wahl-t" style="margin-bottom: var(--sp-4)">Sorten wählen</h3>
+          <div class="wahl" role="group" aria-labelledby="wahl-t">
+            <button type="button" aria-pressed="false" data-nr="1" data-sorte="Holunder" data-farbe="#c6e04f" style="--puff-tint: var(--s1); --puff-ink: var(--s1-ink)">01 Holunder</button>
+            <button type="button" aria-pressed="false" data-nr="2" data-sorte="Rhabarber" data-farbe="#ff87b5" style="--puff-tint: var(--s2); --puff-ink: var(--s2-ink)">02 Rhabarber</button>
+            <button type="button" aria-pressed="false" data-nr="3" data-sorte="Waldmeister" data-farbe="#4fd39b" style="--puff-tint: var(--s3); --puff-ink: var(--s3-ink)">03 Waldmeister</button>
+            <button type="button" aria-pressed="false" data-nr="4" data-sorte="Zitrone Salbei" data-farbe="#ffc933" style="--puff-tint: var(--s4); --puff-ink: var(--s4-ink)">04 Zitrone Salbei</button>
+            <button type="button" aria-pressed="false" data-nr="5" data-sorte="Sanddorn" data-farbe="#ff8f38" style="--puff-tint: var(--s5); --puff-ink: var(--s5-ink)">05 Sanddorn</button>
+            <button type="button" aria-pressed="false" data-nr="6" data-sorte="Kirsche Schlehe" data-farbe="#b98cff" style="--puff-tint: var(--s6); --puff-ink: var(--s6-ink)">06 Kirsche Schlehe</button>
+          </div>
+
+          <p style="margin-top: var(--sp-5)">
+            <button type="button" class="pille pille--still puff" data-zuruecksetzen>Auswahl zurücksetzen</button>
+          </p>
+
+          <p class="muted" style="max-width:44ch">
+            Genau zwei Sorten ergeben ein Paar. Sind zwei gewählt, sperrt das Pult
+            die übrigen, bis eine wieder frei wird.
+          </p>
+        </div>
+
+        <div class="glas">
+          <div class="glas__probe" data-probe aria-hidden="true"></div>
+          <h3 class="h3 glas__name" data-name>Zwei Sorten wählen</h3>
+          <p class="muted" data-note style="margin:0">Das Mischpult zeigt nur Paare, die wir wirklich abgefüllt haben.</p>
+          <dl>
+            <dt>Anteile</dt><dd data-teile>—</dd>
+            <dt>Bogen-Nr.</dt><dd data-bogennr>—</dd>
+          </dl>
+          <p class="visually-hidden" data-stand role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)">0 von 2 Sorten gewählt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Sortenblätter ──────────────────────────────────────────────── -->
+  <section class="bahn bahn--eng" aria-labelledby="blatt-t">
+    <div class="mitte">
+      <h2 class="h2" id="blatt-t" style="margin-bottom: var(--sp-7)">Die Sortenblätter</h2>
+
+      <div class="raster">
+        <article class="sticker" id="s1" style="--puff-tint: var(--s1); --puff-ink: var(--s1-ink)">
+          <span class="sticker__nr">01</span>
+          <h3 class="h3 sticker__name">Holunder</h3>
+          <p class="sticker__note">
+            Sechs alte Bäume am Hangweg, geerntet an zehn Tagen zwischen Ende Mai
+            und Anfang Juni. Die Blüten ziehen kalt über Nacht, danach wird
+            abgeseiht und sofort abgefüllt.
+          </p>
+          <span class="sticker__fuss"><span>Mai–Juni</span><span>6,2 g Zucker</span></span>
+        </article>
+
+        <article class="sticker" id="s2" style="--puff-tint: var(--s2); --puff-ink: var(--s2-ink)">
+          <span class="sticker__nr">02</span>
+          <h3 class="h3 sticker__name">Rhabarber</h3>
+          <p class="sticker__note">
+            Aus dem Beet hinter der Halle, Sorte Holsteiner Blut. Wir pressen
+            roh und stoppen die Säure nicht ab — deshalb fragt niemand nach
+            zusätzlichem Zucker.
+          </p>
+          <span class="sticker__fuss"><span>April–Juni</span><span>7,0 g Zucker</span></span>
+        </article>
+
+        <article class="sticker" id="s3" style="--puff-tint: var(--s3); --puff-ink: var(--s3-ink)">
+          <span class="sticker__nr">03</span>
+          <h3 class="h3 sticker__name">Waldmeister</h3>
+          <p class="sticker__note">
+            Echter Waldmeister, angewelkt und kalt gezogen. Er ist blass, weil
+            wir nicht nachfärben. Nach Mitte Juni wird das Kraut bitter, dann
+            ist die Sorte für ein Jahr vorbei.
+          </p>
+          <span class="sticker__fuss"><span>Mai–Juni</span><span>5,8 g Zucker</span></span>
+        </article>
+
+        <article class="sticker" id="s4" style="--puff-tint: var(--s4); --puff-ink: var(--s4-ink)">
+          <span class="sticker__nr">04</span>
+          <h3 class="h3 sticker__name">Zitrone Salbei</h3>
+          <p class="sticker__note">
+            Salbei aus dem Hochbeet am Tor, Zitronen frisch gepresst. Die
+            trockenste Sorte im Haus und die einzige, die wir das ganze Jahr
+            abfüllen können.
+          </p>
+          <span class="sticker__fuss"><span>ganzjährig</span><span>5,1 g Zucker</span></span>
+        </article>
+
+        <article class="sticker" id="s5" style="--puff-tint: var(--s5); --puff-ink: var(--s5-ink)">
+          <span class="sticker__nr">05</span>
+          <h3 class="h3 sticker__name">Sanddorn</h3>
+          <p class="sticker__note">
+            Beeren einer Genossenschaft an der Ostsee, tiefgekühlt geliefert.
+            Sehr sauer und sehr wach. Wer sie zum ersten Mal trinkt, verzieht
+            das Gesicht — und nimmt dann die zweite Flasche.
+          </p>
+          <span class="sticker__fuss"><span>Sept.–März</span><span>7,4 g Zucker</span></span>
+        </article>
+
+        <article class="sticker" id="s6" style="--puff-tint: var(--s6); --puff-ink: var(--s6-ink)">
+          <span class="sticker__nr">06</span>
+          <h3 class="h3 sticker__name">Kirsche Schlehe</h3>
+          <p class="sticker__note">
+            Die Wintersorte. Sauerkirsche aus dem Nachbarort, Schlehe erst nach
+            dem ersten Frost — vorher schmeckt sie nach nichts als Adstringenz.
+            Dunkel, herb im Abgang, kaum süß.
+          </p>
+          <span class="sticker__fuss"><span>Nov.–Feb.</span><span>6,6 g Zucker</span></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Paartabelle (JS-frei) ──────────────────────────────────────── -->
+  <section class="bahn bahn--eng" aria-labelledby="paar-t">
+    <div class="mitte">
+      <div class="karte">
+        <h2 class="h2" id="paar-t" style="font-size: clamp(24px, 3vw, 36px)">Alle fünfzehn Paare</h2>
+        <div class="rolle">
+          <table class="werte">
+          <caption>Abgefüllte Paare seit 2011, sortiert nach Bogen-Nummer</caption>
+          <thead>
+            <tr><th scope="col">Bogen-Nr.</th><th scope="col">Name</th><th scope="col">Sorten</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>B–12</td><td>Abendrot</td><td>Holunder + Rhabarber</td></tr>
+            <tr><td>B–13</td><td>Maigrün</td><td>Holunder + Waldmeister</td></tr>
+            <tr><td>B–14</td><td>Heuwiese</td><td>Holunder + Zitrone Salbei</td></tr>
+            <tr><td>B–15</td><td>Bernstein</td><td>Holunder + Sanddorn</td></tr>
+            <tr><td>B–16</td><td>Hollerdunkel</td><td>Holunder + Kirsche Schlehe</td></tr>
+            <tr><td>B–23</td><td>Beetnachbarn</td><td>Rhabarber + Waldmeister</td></tr>
+            <tr><td>B–24</td><td>Rosengarten</td><td>Rhabarber + Zitrone Salbei</td></tr>
+            <tr><td>B–25</td><td>Kupferstich</td><td>Rhabarber + Sanddorn</td></tr>
+            <tr><td>B–26</td><td>Schattenmorelle</td><td>Rhabarber + Kirsche Schlehe</td></tr>
+            <tr><td>B–34</td><td>Schulhof</td><td>Waldmeister + Zitrone Salbei</td></tr>
+            <tr><td>B–35</td><td>Nordhang</td><td>Waldmeister + Sanddorn</td></tr>
+            <tr><td>B–36</td><td>Dickicht</td><td>Waldmeister + Kirsche Schlehe</td></tr>
+            <tr><td>B–45</td><td>Dünenlicht</td><td>Zitrone Salbei + Sanddorn</td></tr>
+            <tr><td>B–46</td><td>Späte Ernte</td><td>Zitrone Salbei + Kirsche Schlehe</td></tr>
+            <tr><td>B–56</td><td>Glutkern</td><td>Sanddorn + Kirsche Schlehe</td></tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Sprudelwerk</h2>
+      <address>
+        Hüttenweg 14<br>
+        57223 Kreuztal<br>
+        <a href="tel:+492732900000">+49 2732 900000</a><br>
+        <a href="mailto:hallo@sprudelwerk.example">hallo@sprudelwerk.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Hofverkauf</h2>
+      <p style="margin:0">Donnerstag 14–18 Uhr<br>Samstag 9–13 Uhr<br>Leergut jederzeit im Tor</p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="index.html">Bogen</a></li>
+        <li><a href="manufaktur.html">Manufaktur</a></li>
+        <li><a href="kiosk.html">Kiosk und Pfand</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Manufaktur, Personen, Adressen, Preise und Zahlen sind
+    frei erfunden. Gestaltung nach Mika UX Library <b>MXL-051</b>.
+  </p>
+</footer>
+
+<script src="assets/bogen.js" defer></script>
+</body>
+</html>

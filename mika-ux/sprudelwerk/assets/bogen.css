@@ -1,0 +1,726 @@
+/*
+  SPRUDELWERK — Limonadenmanufaktur
+  Mika UX Library: MXL-051 „Slush“ — Inflatable sticker universe (rein, keine Mischung)
+
+  Die Website ist ein Aufkleberbogen. Sorten sind gestanzte Sticker mit weißem
+  Rand, Abschnitte sind aufgeblasene Bänder, Aktionen sind pralle Pillen.
+  Alles Aufgeblasene entsteht aus zwei Schattenlagen: eine innere Lichtkante
+  oben, ein innerer Schattenbogen unten. Kein Bild, kein Canvas, kein 3D.
+*/
+
+@import url("fonts/fonts.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* MXL-051 Farbrollen */
+  --canvas: #f7f5ef;
+  --surface: #ffffff;
+  --ink: #11130f;
+  --muted: #72776d;
+  --signal: #4da2ff;
+
+  /* Rainbow-Sticker-System: sechs Sorten, je Fläche + Tinte, sonst nichts. */
+  --s1: #c6e04f; --s1-ink: #2b3609;   /* Holunder        */
+  --s2: #ff87b5; --s2-ink: #4a0f26;   /* Rhabarber       */
+  --s3: #4fd39b; --s3-ink: #08331f;   /* Waldmeister     */
+  --s4: #ffc933; --s4-ink: #422f05;   /* Zitrone Salbei  */
+  --s5: #ff8f38; --s5-ink: #451f05;   /* Sanddorn        */
+  --s6: #b98cff; --s6-ink: #260f47;   /* Kirsche Schlehe */
+
+  /* MXL-051 Spacing-Skala, Basis 8 */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+
+  /* Radien: 12–32 für Karten, 999 für Pillen */
+  --r-s: 12px; --r-m: 20px; --r-l: 32px; --r-pill: 999px;
+
+  --font-display: 'Anybody', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-puff: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-calm: cubic-bezier(.2, .8, .2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+
+/* ── Typografie ───────────────────────────────────────────────────────── */
+
+/* „Crushed display type“: die Variable-Width-Achse von Anybody wird
+   zusammengedrückt, nicht die Laufweite des Fließtexts. */
+.display {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 132px);
+  font-stretch: 78%;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: .92;
+  text-wrap: balance;
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 60px);
+  font-stretch: 84%;
+  font-weight: 800;
+  letter-spacing: -.015em;
+  line-height: 1.06;
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.2vw, 27px);
+  font-stretch: 90%;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.lead { max-width: 34ch; margin: 0; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.42; }
+.prose { max-width: 62ch; }
+.prose p { margin: 0 0 var(--sp-4); }
+.muted { color: var(--muted); }
+
+.label {
+  display: inline-block;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: var(--sp-1);
+}
+
+.skip {
+  position: fixed;
+  z-index: 90;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  transform: translateY(-160%);
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--surface);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip:focus { transform: translateY(0); }
+
+/* ── Das aufgeblasene Grundmuster ─────────────────────────────────────── */
+
+/*
+  .puff macht aus jeder Fläche einen prallen Körper. --puff-tint ist die
+  Fläche, --puff-deep der Schattenbogen unten. Beide werden pro Sorte gesetzt,
+  die Lichtkante oben bleibt immer dieselbe — daher wirkt der Bogen wie ein
+  Material und nicht wie sechs Effekte.
+*/
+.puff {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 30% 12%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 58%),
+    var(--puff-tint, var(--surface));
+  box-shadow:
+    inset 0 14px 20px -12px rgba(255, 255, 255, .95),
+    inset 0 -20px 26px -16px var(--puff-deep, rgba(17, 19, 15, .32)),
+    0 18px 30px -22px rgba(17, 19, 15, .45);
+}
+
+/* ── Kopf ─────────────────────────────────────────────────────────────── */
+
+.kopf {
+  position: sticky;
+  z-index: 60;
+  top: 0;
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) clamp(var(--sp-4), 4vw, var(--sp-7));
+  background: color-mix(in srgb, var(--canvas) 86%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.wortmarke {
+  display: inline-flex;
+  gap: var(--sp-2);
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-stretch: 76%;
+  font-weight: 900;
+  letter-spacing: .01em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wortmarke svg { width: 30px; height: 30px; flex: none; }
+
+.menue { display: flex; gap: var(--sp-1); align-items: center; }
+
+.menue a {
+  padding: 9px var(--sp-4);
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms var(--ease-calm), color 200ms var(--ease-calm);
+}
+
+.menue a:hover { background: rgba(17, 19, 15, .07); }
+
+.menue a[aria-current="page"] { background: var(--ink); color: var(--surface); }
+
+.menuetaste {
+  display: none;
+  min-height: 44px;
+  padding: 9px var(--sp-4);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--surface);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── Aktionen ─────────────────────────────────────────────────────────── */
+
+.pille {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-2);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-6);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--signal);
+  color: #06213d;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 260ms var(--ease-puff), box-shadow 260ms var(--ease-calm);
+  --puff-tint: var(--signal);
+  --puff-deep: rgba(6, 33, 61, .45);
+}
+
+.pille:hover { transform: translateY(-3px) scale(1.02); }
+.pille:active { transform: translateY(0) scale(.98); }
+
+.pille--still {
+  background: var(--surface);
+  color: var(--ink);
+  --puff-tint: var(--surface);
+  --puff-deep: rgba(17, 19, 15, .22);
+}
+
+/* ── Abschnittsrhythmus ───────────────────────────────────────────────── */
+
+.bahn { padding: clamp(var(--sp-8), 10vw, var(--sp-10)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.bahn--eng { padding-top: clamp(var(--sp-7), 6vw, var(--sp-8)); }
+.mitte { max-width: 1280px; margin-inline: auto; }
+
+.kopfzeile {
+  display: flex;
+  gap: var(--sp-5);
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: var(--sp-7);
+  flex-wrap: wrap;
+}
+
+/* ── Aufmacher ────────────────────────────────────────────────────────── */
+
+.auf {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(var(--sp-7), 7vw, var(--sp-9)) clamp(var(--sp-4), 4vw, var(--sp-7)) clamp(var(--sp-7), 6vw, var(--sp-9));
+}
+
+.auf__mitte { position: relative; z-index: 2; max-width: 1280px; margin-inline: auto; }
+
+/*
+  Das große Band ist der einzige Ort, an dem alle sechs Sortenfarben zugleich
+  auftreten. Damit es aufgeblasen wirkt und nicht wie ein Farbverlauf, sitzen
+  drei Lagen übereinander: Fläche mit harten Farbzonen, Lichtkante oben,
+  Schattenbogen unten — plus eine dunklere Unterseite als sichtbarer Falz.
+*/
+.band {
+  position: absolute;
+  z-index: 1;
+  top: clamp(150px, 25vw, 300px);
+  left: -6%;
+  width: 112%;
+  height: clamp(132px, 16vw, 210px);
+  transform: rotate(-3.4deg);
+  border-radius: var(--r-pill);
+  background:
+    /* Spekularstreifen wie auf einem prallen Schlauch, nicht als Weißschleier */
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 4%,
+      rgba(255, 255, 255, .72) 15%,
+      rgba(255, 255, 255, .1) 30%,
+      rgba(255, 255, 255, 0) 40%),
+    linear-gradient(180deg, rgba(17, 19, 15, 0) 55%, rgba(17, 19, 15, .34) 100%),
+    linear-gradient(97deg,
+      var(--s2) 0%, var(--s2) 13%,
+      var(--s4) 27%, var(--s4) 37%,
+      var(--s1) 48%, var(--s1) 56%,
+      var(--s3) 66%, var(--s3) 74%,
+      var(--s5) 82%, var(--s5) 88%,
+      var(--s6) 96%);
+  box-shadow: 0 30px 46px -34px rgba(17, 19, 15, .65);
+  pointer-events: none;
+}
+
+/* Der Falz: eine schmale, abgedunkelte Unterseite direkt unter der Kante. */
+.band::after {
+  position: absolute;
+  right: 2.5%;
+  bottom: -11px;
+  left: 2.5%;
+  height: 26px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(97deg,
+    var(--s2), var(--s4) 32%, var(--s1) 52%, var(--s3) 70%, var(--s5) 85%, var(--s6));
+  filter: brightness(.66) saturate(1.1);
+  content: "";
+}
+
+.band__text {
+  display: flex;
+  height: 100%;
+  gap: clamp(var(--sp-6), 5vw, var(--sp-9));
+  align-items: center;
+  padding-inline: var(--sp-7);
+  position: relative;
+  z-index: 2;
+  color: rgba(17, 19, 15, .58);
+  font-family: var(--font-display);
+  font-size: clamp(12px, 1.3vw, 17px);
+  font-stretch: 80%;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.auf__kicker { margin: 0 0 var(--sp-5); color: var(--muted); }
+
+.auf__zeile { position: relative; z-index: 3; }
+
+.auf__unten {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  margin-top: clamp(var(--sp-8), 17vw, 250px);
+  flex-wrap: wrap;
+}
+
+/* Schwebende Sorten-Sticker im Aufmacher */
+.schweber { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+
+.schweber i {
+  position: absolute;
+  display: grid;
+  width: clamp(66px, 8vw, 104px);
+  height: clamp(66px, 8vw, 104px);
+  place-items: center;
+  transform: rotate(var(--dreh, 0deg));
+  border: 5px solid var(--surface);
+  border-radius: var(--r-pill);
+  background:
+    radial-gradient(120% 90% at 32% 14%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 56%),
+    var(--puff-tint);
+  box-shadow: 0 16px 24px -18px rgba(17, 19, 15, .6);
+  color: var(--puff-ink);
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.2vw, 27px);
+  font-stretch: 78%;
+  font-weight: 900;
+  font-style: normal;
+  animation: schwebe 6s ease-in-out infinite;
+}
+
+.schweber i:nth-child(1) { top: 4%;  right: 6%;  --dreh: -9deg;  animation-delay: -.4s; }
+.schweber i:nth-child(2) { top: 34%; right: 22%; --dreh: 11deg;  animation-delay: -2.1s; }
+.schweber i:nth-child(3) { top: 62%; right: 3%;  --dreh: -5deg;  animation-delay: -3.4s; }
+
+@keyframes schwebe {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -9px; }
+}
+
+/* ── Der Bogen: gestanzte Sorten-Sticker ──────────────────────────────── */
+
+.bogen {
+  padding: clamp(var(--sp-5), 3vw, var(--sp-7));
+  border: 2px dashed rgba(17, 19, 15, .16);
+  border-radius: var(--r-l);
+  background: var(--surface);
+}
+
+.bogen__kante {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-4);
+  border-bottom: 2px dashed rgba(17, 19, 15, .16);
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+/* Drei mal zwei — der Bogen soll als Bogen aufgehen, nicht als Restreihe. */
+.raster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(var(--sp-5), 2.4vw, var(--sp-6));
+}
+
+@media (max-width: 1040px) { .raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px)  { .raster { grid-template-columns: 1fr; } }
+
+.sticker {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-6) var(--sp-5) var(--sp-5);
+  transform: rotate(var(--dreh, 0deg));
+  border: 6px solid var(--surface);
+  border-radius: var(--r-l);
+  background:
+    radial-gradient(120% 80% at 28% 8%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 56%),
+    var(--puff-tint);
+  box-shadow:
+    inset 0 12px 18px -12px rgba(255, 255, 255, .95),
+    inset 0 -22px 28px -18px rgba(17, 19, 15, .28),
+    0 20px 30px -24px rgba(17, 19, 15, .55);
+  color: var(--puff-ink);
+  text-decoration: none;
+  transition: transform 300ms var(--ease-puff), box-shadow 300ms var(--ease-calm);
+}
+
+.sticker:nth-child(3n+1) { --dreh: -1.4deg; }
+.sticker:nth-child(3n+2) { --dreh: .9deg; }
+.sticker:nth-child(3n)   { --dreh: -.6deg; }
+
+/* Abziehen: nur verlinkte Sticker lösen sich vom Bogen — Sortenblätter
+   sind Text und dürfen keine Interaktivität vortäuschen. */
+a.sticker:hover,
+a.sticker:focus-visible {
+  transform: rotate(var(--dreh, 0deg)) translateY(-7px) scale(1.015);
+  box-shadow:
+    inset 0 12px 18px -12px rgba(255, 255, 255, .95),
+    inset 0 -22px 28px -18px rgba(17, 19, 15, .28),
+    0 30px 40px -26px rgba(17, 19, 15, .6);
+}
+
+.sticker__nr {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .72);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-stretch: 80%;
+  font-weight: 900;
+}
+
+.sticker__name { font-size: clamp(25px, 2.6vw, 33px); }
+
+.sticker__note { margin: 0; font-size: 15px; opacity: .82; }
+
+.sticker__fuss {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(17, 19, 15, .16);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── Mischpult ────────────────────────────────────────────────────────── */
+
+.mischpult {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+  gap: clamp(var(--sp-6), 4vw, var(--sp-8));
+  align-items: start;
+}
+
+.wahl { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+
+.wahl button {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-2);
+  align-items: center;
+  padding: var(--sp-2) var(--sp-5);
+  border: 3px solid transparent;
+  border-radius: var(--r-pill);
+  background:
+    radial-gradient(120% 90% at 30% 12%, rgba(255, 255, 255, .78), rgba(255, 255, 255, 0) 58%),
+    var(--puff-tint);
+  box-shadow: inset 0 -14px 20px -14px rgba(17, 19, 15, .3);
+  color: var(--puff-ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 220ms var(--ease-puff), border-color 200ms var(--ease-calm);
+}
+
+.wahl button:hover { transform: translateY(-2px); }
+
+.wahl button[aria-pressed="true"] { border-color: var(--ink); transform: translateY(-2px); }
+
+.wahl button[aria-pressed="true"]::after {
+  content: "✓";
+  font-size: 14px;
+}
+
+.wahl button[disabled] { cursor: not-allowed; opacity: .5; filter: saturate(.55); }
+
+.glas {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  border-radius: var(--r-l);
+  background: var(--surface);
+  box-shadow: 0 20px 40px -32px rgba(17, 19, 15, .5);
+  text-align: center;
+}
+
+.glas__probe {
+  height: 168px;
+  border-radius: var(--r-m);
+  background:
+    radial-gradient(120% 70% at 30% 10%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 55%),
+    var(--probe, linear-gradient(120deg, #e8e6de, #d9d7cf));
+  box-shadow: inset 0 -26px 34px -22px rgba(17, 19, 15, .35);
+  transition: background 340ms var(--ease-calm);
+}
+
+.glas__name { min-height: 2.2em; }
+
+.glas dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-2) var(--sp-4); margin: 0; text-align: left; }
+.glas dt { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.glas dd { margin: 0; font-weight: 600; }
+
+/* ── Verfahren ────────────────────────────────────────────────────────── */
+
+.stufen { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--sp-5); }
+
+.stufe { display: grid; gap: var(--sp-3); align-content: start; padding: var(--sp-6); border-radius: var(--r-l); background: var(--surface); }
+
+.stufe__nr {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border-radius: var(--r-pill);
+  background:
+    radial-gradient(120% 90% at 30% 12%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 58%),
+    var(--puff-tint, var(--s4));
+  box-shadow: inset 0 -16px 22px -14px rgba(17, 19, 15, .34);
+  color: var(--puff-ink, var(--s4-ink));
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-stretch: 80%;
+  font-weight: 900;
+}
+
+.stufe p { margin: 0; color: var(--muted); }
+
+/* ── Tabelle / Werte ──────────────────────────────────────────────────── */
+
+/* Breite Tabellen rollen in sich selbst, statt die Seite zu verbreitern.
+   Grid-Kinder brauchen dafür min-width: 0 — sonst erzwingt der Tabelleninhalt
+   die Spaltenbreite und schiebt die ganze Seite auf. */
+.rechner > *, .mischpult > *, .karten > *, .stufen > *, .raster > * { min-width: 0; }
+.rolle { overflow-x: auto; }
+.rolle .werte { min-width: 30rem; }
+
+.werte { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.werte caption { margin-bottom: var(--sp-4); color: var(--muted); text-align: left; }
+.werte th, .werte td { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid rgba(17, 19, 15, .12); text-align: left; }
+.werte th { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.werte td:last-child, .werte th:last-child { text-align: right; }
+.werte tbody tr:last-child td { border-bottom: 0; }
+
+/* ── Rechner ──────────────────────────────────────────────────────────── */
+
+.rechner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: clamp(var(--sp-6), 4vw, var(--sp-8)); align-items: start; }
+
+.feld { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+.feld label { font-weight: 700; }
+.feld input[type="number"] {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 2px solid rgba(17, 19, 15, .18);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+.feld input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--signal); }
+.feld .hinweis { color: var(--muted); font-size: 14px; }
+
+.summe { display: grid; gap: var(--sp-3); padding: var(--sp-6); border-radius: var(--r-l); background: var(--surface); box-shadow: 0 20px 40px -32px rgba(17, 19, 15, .5); }
+.summe__zeile { display: flex; justify-content: space-between; gap: var(--sp-4); font-variant-numeric: tabular-nums; }
+.summe__zeile--gross { padding-top: var(--sp-3); border-top: 2px solid rgba(17, 19, 15, .14); font-family: var(--font-display); font-size: 27px; font-stretch: 84%; font-weight: 900; }
+
+/* ── Karten / Kiosk ───────────────────────────────────────────────────── */
+
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: var(--sp-5); }
+.karte { display: grid; gap: var(--sp-3); align-content: start; padding: var(--sp-6); border-radius: var(--r-l); background: var(--surface); }
+.karte p { margin: 0; color: var(--muted); }
+.karte address { font-style: normal; }
+
+.marke {
+  display: inline-block;
+  padding: 5px var(--sp-3);
+  border-radius: var(--r-pill);
+  background: var(--puff-tint, var(--s3));
+  color: var(--puff-ink, var(--s3-ink));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ── Fuß ──────────────────────────────────────────────────────────────── */
+
+.fuss { padding: var(--sp-8) clamp(var(--sp-4), 4vw, var(--sp-7)) var(--sp-7); background: var(--ink); color: var(--canvas); }
+.fuss__mitte { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-6); max-width: 1280px; margin-inline: auto; }
+.fuss h2 { margin: 0 0 var(--sp-3); font-family: var(--font-display); font-size: 17px; font-stretch: 84%; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.fuss ul { margin: 0; padding: 0; list-style: none; }
+.fuss li { margin-bottom: var(--sp-2); }
+.fuss a { text-decoration-color: rgba(247, 245, 239, .4); text-underline-offset: 4px; }
+.fuss address { font-style: normal; }
+.fuss__demo { max-width: 1280px; margin: var(--sp-7) auto 0; padding-top: var(--sp-5); border-top: 1px solid rgba(247, 245, 239, .22); color: #b8b6ad; font-size: 14px; }
+
+/* ── Rechtsseiten ─────────────────────────────────────────────────────── */
+
+.recht { max-width: 74ch; margin-inline: auto; }
+.recht h2 { margin: var(--sp-7) 0 var(--sp-3); font-family: var(--font-display); font-size: clamp(23px, 2.4vw, 30px); font-stretch: 86%; font-weight: 800; }
+.recht h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: 18px; }
+.recht p, .recht li { color: #3a3d36; }
+.recht ul { padding-left: var(--sp-5); }
+
+.warnung {
+  padding: var(--sp-5);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  border-left: 6px solid var(--s5);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .mischpult, .rechner { grid-template-columns: 1fr; }
+
+  .menuetaste { display: inline-flex; align-items: center; }
+
+  .menue {
+    position: absolute;
+    top: 100%;
+    right: clamp(var(--sp-4), 4vw, var(--sp-7));
+    left: clamp(var(--sp-4), 4vw, var(--sp-7));
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-3);
+    border-radius: var(--r-l);
+    background: var(--surface);
+    box-shadow: 0 24px 40px -28px rgba(17, 19, 15, .6);
+  }
+
+  .menue[data-offen] { display: flex; }
+  .menue a { padding: var(--sp-3) var(--sp-4); }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  /*
+    Mobil gewinnt die Lesereihenfolge: die schwebenden Sticker entfallen, das
+    Band bleibt — aber als ruhige, ungedrehte Vollbreitenbahn unter der
+    Schlagzeile. Die Aufkleber-Identität überlebt damit den Breakpoint, ohne
+    dass Text über einer gedrehten Fläche liegt.
+  */
+  .schweber { display: none; }
+
+  .auf {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+
+  .auf__mitte { order: 1; }
+  .auf__unten { margin-top: var(--sp-7); margin-bottom: var(--sp-8); }
+
+  .band {
+    position: static;
+    order: 2;
+    width: 100vw;
+    height: 88px;
+    margin-left: calc(50% - 50vw);
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .band::after { display: none; }
+
+  .band__text { gap: var(--sp-6); padding-inline: var(--sp-4); font-size: 12px; }
+
+  .sticker, .sticker:hover, .sticker:focus-visible { transform: none; }
+  .bogen { padding: var(--sp-4); border-radius: var(--r-m); }
+  .stufe, .karte, .glas, .summe { padding: var(--sp-5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

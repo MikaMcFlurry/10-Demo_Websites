@@ -226,6 +226,12 @@ summary:focus-visible {
   --ink: var(--chalk);
 }
 
+/* Sammlung C teilt die helle Fläche mit A und unterscheidet sich über den
+   Akzent — dieselbe Logik, mit der A und B bereits getrennt werden. */
+.collection--mika {
+  --accent: var(--vermilion);
+}
+
 .collection__head {
   min-height: 44svh;
   display: grid;
@@ -274,6 +280,51 @@ summary:focus-visible {
 
 .collection--codex .collection__title i {
   color: var(--acid);
+}
+
+.collection--mika .collection__title i {
+  color: var(--vermilion);
+}
+
+/* Einleitung der Sammlung: erklärt die Herkunftsangabe, bevor die erste
+   Karte sie zeigt. */
+.collection__note {
+  max-width: 62ch;
+  margin: 0;
+  padding: clamp(28px, 4vw, 46px) clamp(20px, 4vw, 64px) 0;
+  color: var(--muted-dark);
+  font-size: clamp(.98rem, 1.3vw, 1.16rem);
+}
+
+.collection__note abbr {
+  text-decoration: none;
+}
+
+/* Herkunftsangabe auf der Karte: welche MXL-Nummern das Ergebnis getragen
+   haben. Eine Nummer bedeutet eine reine Vorlage, mehrere eine Mischung. */
+.work__source {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: clamp(18px, 2.4vw, 26px) 0 0;
+  flex-wrap: wrap;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.work__source-kind {
+  padding: 5px 9px;
+  border: 1px solid currentColor;
+  color: var(--vermilion);
+}
+
+.work__source-ids {
+  color: var(--muted-dark);
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: .06em;
 }
 
 .work {
@@ -1028,6 +1079,50 @@ summary:focus-visible {
   transform: rotate(-11deg);
   background: #f7f7f2;
 }
+
+/* 11 — inflatable sticker sheet (MXL-051) */
+.spec-puff {
+  position: relative;
+  overflow: hidden;
+  background: #f7f5ef;
+}
+
+.puff-band {
+  position: absolute;
+  top: 42%;
+  left: -6%;
+  width: 112%;
+  height: 26%;
+  transform: rotate(-4deg);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, .72) 18%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(180deg, rgba(17, 19, 15, 0) 56%, rgba(17, 19, 15, .32) 100%),
+    linear-gradient(97deg, #ff87b5 0%, #ffc933 26%, #c6e04f 48%, #4fd39b 68%, #ff8f38 85%, #b98cff 100%);
+}
+
+.puff-dot {
+  position: absolute;
+  display: grid;
+  width: 22%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background:
+    radial-gradient(120% 90% at 32% 14%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 56%),
+    var(--dot);
+  box-shadow: 0 18px 26px -20px rgba(17, 19, 15, .7);
+  color: var(--dot-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.9rem);
+  font-style: normal;
+  font-weight: 900;
+}
+
+.puff-dot--a { --dot: #ff87b5; --dot-ink: #4a0f26; top: 9%;  left: 11%; }
+.puff-dot--b { --dot: #ffc933; --dot-ink: #422f05; top: 20%; right: 14%; }
+.puff-dot--c { --dot: #b98cff; --dot-ink: #260f47; bottom: 8%; left: 34%; }
 
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
