@@ -263,6 +263,14 @@ Browser; der abgenommene Bogen verlässt das Gerät nicht.
 > eigenen Augen geprüft; auf Plakat und Wanne ist das Rezept in jeder Saat
 > gesund.
 
+**Zur Entstehung.** Diese Website ist der Fable-5-Test des Portfolios: Auswahl
+der Vorlagen, Konzept, Marmorierverfahren, Shader, Seiten und Texte stammen
+aus einer Fable-Sitzung, nicht aus dem Hauptmodell. Der Kern entstand in einer
+ersten Sitzung, die vorzeitig endete; Fehlerbehebung, Musterseiten und
+Einbindung in die Startseite kamen aus einer zweiten Fable-Sitzung ohne den
+Kontext der ersten. Das Hauptmodell hat den Zwischenstand gesichert, das
+Briefing gestellt und am Ende gegengeprüft — gebaut hat es die Seite nicht.
+
 Externe Quellen über die Library hinaus:
 
 - **A. Jaffer, „Mathematical Marbling“** —
