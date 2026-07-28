@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bestandskatalog – Saatgutarchiv Zollernalb</title>
+<meta name="description" content="24 Akzessionen aus zwölf Arten: Keimfähigkeit, Bestand, letzter Nachbau und Herkunft jeder Sorte. Nach Art und Status filterbar.">
+<meta name="theme-color" content="#f7f5ef">
+<meta property="og:title" content="Bestandskatalog – Saatgutarchiv Zollernalb">
+<meta property="og:description" content="24 Akzessionen aus zwölf Arten: Keimfähigkeit, Bestand, letzter Nachbau und Herkunft jeder Sorte. Nach Art und Status filterbar.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/public-sans-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/archiv.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="kopf__reihe">
+    <a class="marke" href="index.html" aria-label="Saatgutarchiv Zollernalb, zur Startseite">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="4" fill="#11130f"/>
+        <path d="M16 25V13" stroke="#f7f5ef" stroke-width="2"/>
+        <path d="M16 14c0-4 3-7 7-7 0 4-3 7-7 7Z" fill="#f7f5ef"/>
+        <path d="M16 19c0-3-2.4-5.5-5.5-5.5 0 3 2.4 5.5 5.5 5.5Z" fill="#ff6a2b"/>
+      </svg>
+      <span>Saatgutarchiv Zollernalb<small>Erhaltungsinitiative seit 1994</small></span>
+    </a>
+
+    <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+
+    <nav class="menue" id="menue" aria-label="Hauptnavigation">
+      <a href="index.html">Archiv</a>
+      <a href="bestand.html" aria-current="page">Bestand</a>
+      <a href="abgabe.html">Abgabe</a>
+      <a href="vermehrung.html">Vermehrung</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <section class="bahn bahn--eng">
+    <div class="mitte schmal">
+      <p class="label">Bestandskatalog · Stand Februar 2026</p>
+      <h1 class="h1" style="margin: 12px 0 24px">24 Akzessionen</h1>
+      <p class="lead">
+        Jede Akzession ist eine Sorte aus einer bestimmten Aufsammlung. Was hier
+        steht, ist der geprüfte Stand — nicht ein Katalogversprechen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Filter: dauerhaft sichtbar, mit Ergebniszahl (MXL-118) ────── -->
+  <p class="mitte" data-filter-fallback style="max-width:1320px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) 24px; color:#72776d">
+    Die Filterleiste braucht JavaScript. Der vollständige Katalog mit allen 24
+    Akzessionen steht unabhängig davon unten.
+  </p>
+
+  <form class="filter" role="search" aria-label="Bestand durchsuchen und filtern" onsubmit="return false" hidden>
+    <div class="filter__mitte">
+      <div class="feld">
+        <label for="suche">Suche in Sorte, Art, Herkunft und Nummer</label>
+        <input type="search" id="suche" name="suche" autocomplete="off" placeholder="z. B. Bohne, Hechingen oder ZA-0019">
+      </div>
+
+      <div class="feld">
+        <label for="art">Art</label>
+        <select id="art" name="art">
+          <option value="">alle Arten</option>
+              <option value="Bohne">Bohne</option>
+              <option value="Erbse">Erbse</option>
+              <option value="Getreide">Getreide</option>
+              <option value="Gurke">Gurke</option>
+              <option value="Kohl">Kohl</option>
+              <option value="Kürbis">Kürbis</option>
+              <option value="Mangold">Mangold</option>
+              <option value="Möhre">Möhre</option>
+              <option value="Rote Bete">Rote Bete</option>
+              <option value="Salat">Salat</option>
+              <option value="Tomate">Tomate</option>
+              <option value="Zwiebel">Zwiebel</option>
+        </select>
+      </div>
+
+      <div class="feld">
+        <span id="status-t" style="font-size:14px; font-weight:600">Status</span>
+        <div class="chips" role="group" aria-labelledby="status-t">
+          <button type="button" class="chip" aria-pressed="false" data-status="frei">Abgabe möglich</button>
+          <button type="button" class="chip" aria-pressed="false" data-status="vermehrung">nur Vermehrung</button>
+          <button type="button" class="chip" aria-pressed="false" data-status="gesperrt">gesperrt</button>
+          <button type="button" class="chip" aria-pressed="false" data-nachbau-filter>Nachbau fällig</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter__stand">
+      <p class="filter__zahl" data-zahl role="status" aria-live="polite">24 von 24 Akzessionen</p>
+      <button type="button" class="chip" data-zuruecksetzen>Filter zurücksetzen</button>
+    </div>
+  </form>
+
+  <section class="bahn bahn--eng" aria-label="Akzessionen">
+    <div class="mitte">
+      <div class="leer" data-leer>
+        <h2>Keine Akzession passt zu dieser Auswahl</h2>
+        <p>
+          Der Bestand umfasst 24 Akzessionen aus zwölf Arten. Wenn Sie eine
+          bestimmte Sorte suchen und sie hier nicht finden, kann sie trotzdem in
+          einem Partnerarchiv liegen — schreiben Sie uns.
+        </p>
+        <button type="button" class="knopf knopf--still" data-leer-zuruecksetzen>Auswahl zurücksetzen</button>
+      </div>
+
+      <ul class="satzliste" data-katalog>
+          <li>
+            <article class="satz" data-art="Bohne" data-status="frei" data-keim="88" data-vermehrung="2024">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0007</span>
+                <span class="satz__art">Bohne</span>
+              </p>
+
+              <h3 class="satz__sorte">Killertaler Sichelbohne</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>88 %</dd>
+                <dt>Bestand</dt><dd>42 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2024</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 88 von 100 Prozent">
+                <span style="width: 88%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Killertal, Aufsammlung 1948<br>
+                Eingang ins Archiv: 1994 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Bohne" data-status="frei" data-keim="71" data-vermehrung="2021" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0011</span>
+                <span class="satz__art">Bohne</span>
+              </p>
+
+              <h3 class="satz__sorte">Hechinger Perlbohne</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>71 %</dd>
+                <dt>Bestand</dt><dd>18 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2021</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 71 von 100 Prozent">
+                <span style="width: 71%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Hechingen, Aufsammlung 1932<br>
+                Eingang ins Archiv: 1994 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Tomate" data-status="frei" data-keim="94" data-vermehrung="2025">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0019</span>
+                <span class="satz__art">Tomate</span>
+              </p>
+
+              <h3 class="satz__sorte">Balinger Fleisch</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>94 %</dd>
+                <dt>Bestand</dt><dd>61 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2025</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 94 von 100 Prozent">
+                <span style="width: 94%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Balingen, Aufsammlung 1955<br>
+                Eingang ins Archiv: 1996 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Tomate" data-status="gesperrt" data-keim="58" data-vermehrung="2019" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0023</span>
+                <span class="satz__art">Tomate</span>
+              </p>
+
+              <h3 class="satz__sorte">Zoller Gelbe</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--gesperrt">gesperrt</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>58 %</dd>
+                <dt>Bestand</dt><dd>7 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2019</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 58 von 100 Prozent">
+                <span style="width: 58%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Bisingen, Aufsammlung 1961<br>
+                Eingang ins Archiv: 1996 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Salat" data-status="frei" data-keim="81" data-vermehrung="2023">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0031</span>
+                <span class="satz__art">Salat</span>
+              </p>
+
+              <h3 class="satz__sorte">Albtaler Butterkopf</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>81 %</dd>
+                <dt>Bestand</dt><dd>29 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2023</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 81 von 100 Prozent">
+                <span style="width: 81%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Onstmettingen, Aufsammlung 1940<br>
+                Eingang ins Archiv: 1998 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Salat" data-status="vermehrung" data-keim="64" data-vermehrung="2018" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0034</span>
+                <span class="satz__art">Salat</span>
+              </p>
+
+              <h3 class="satz__sorte">Roter Schwabe</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--vermehrung">nur Vermehrung</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>64 %</dd>
+                <dt>Bestand</dt><dd>11 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2018</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 64 von 100 Prozent">
+                <span style="width: 64%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Burladingen, Aufsammlung 1958<br>
+                Eingang ins Archiv: 1998 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Kürbis" data-status="frei" data-keim="90" data-vermehrung="2024">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0042</span>
+                <span class="satz__art">Kürbis</span>
+              </p>
+
+              <h3 class="satz__sorte">Zollernbirne</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>90 %</dd>
+                <dt>Bestand</dt><dd>35 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2024</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 90 von 100 Prozent">
+                <span style="width: 90%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Rangendingen, Aufsammlung 1936<br>
+                Eingang ins Archiv: 2000 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Erbse" data-status="frei" data-keim="76" data-vermehrung="2022">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0047</span>
+                <span class="satz__art">Erbse</span>
+              </p>
+
+              <h3 class="satz__sorte">Grosselfinger Frühe</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>76 %</dd>
+                <dt>Bestand</dt><dd>24 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2022</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 76 von 100 Prozent">
+                <span style="width: 76%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Grosselfingen, Aufsammlung 1927<br>
+                Eingang ins Archiv: 2001 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Möhre" data-status="vermehrung" data-keim="69" data-vermehrung="2020" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0053</span>
+                <span class="satz__art">Möhre</span>
+              </p>
+
+              <h3 class="satz__sorte">Steinlach Gelbe</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--vermehrung">nur Vermehrung</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>69 %</dd>
+                <dt>Bestand</dt><dd>15 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2020</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 69 von 100 Prozent">
+                <span style="width: 69%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Mössingen, Aufsammlung 1949<br>
+                Eingang ins Archiv: 2002 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Zwiebel" data-status="gesperrt" data-keim="52" data-vermehrung="2017" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0058</span>
+                <span class="satz__art">Zwiebel</span>
+              </p>
+
+              <h3 class="satz__sorte">Junginger Platte</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--gesperrt">gesperrt</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>52 %</dd>
+                <dt>Bestand</dt><dd>4 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2017</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 52 von 100 Prozent">
+                <span style="width: 52%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Jungingen, Aufsammlung 1953<br>
+                Eingang ins Archiv: 2003 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Kohl" data-status="frei" data-keim="84" data-vermehrung="2023">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0061</span>
+                <span class="satz__art">Kohl</span>
+              </p>
+
+              <h3 class="satz__sorte">Albstädter Spitzkopf</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>84 %</dd>
+                <dt>Bestand</dt><dd>27 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2023</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 84 von 100 Prozent">
+                <span style="width: 84%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Albstadt, Aufsammlung 1944<br>
+                Eingang ins Archiv: 2004 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Kohl" data-status="frei" data-keim="78" data-vermehrung="2021" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0066</span>
+                <span class="satz__art">Kohl</span>
+              </p>
+
+              <h3 class="satz__sorte">Hohenzoller Winterwirsing</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>78 %</dd>
+                <dt>Bestand</dt><dd>19 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2021</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 78 von 100 Prozent">
+                <span style="width: 78%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Bisingen, Aufsammlung 1939<br>
+                Eingang ins Archiv: 2005 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Gurke" data-status="frei" data-keim="87" data-vermehrung="2024">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0072</span>
+                <span class="satz__art">Gurke</span>
+              </p>
+
+              <h3 class="satz__sorte">Starzeltal Einleger</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>87 %</dd>
+                <dt>Bestand</dt><dd>33 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2024</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 87 von 100 Prozent">
+                <span style="width: 87%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Rangendingen, Aufsammlung 1962<br>
+                Eingang ins Archiv: 2006 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Mangold" data-status="frei" data-keim="73" data-vermehrung="2022">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0078</span>
+                <span class="satz__art">Mangold</span>
+              </p>
+
+              <h3 class="satz__sorte">Weiße Rippe Hechingen</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>73 %</dd>
+                <dt>Bestand</dt><dd>21 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2022</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 73 von 100 Prozent">
+                <span style="width: 73%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Hechingen, Aufsammlung 1951<br>
+                Eingang ins Archiv: 2007 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Rote Bete" data-status="vermehrung" data-keim="61" data-vermehrung="2019" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0083</span>
+                <span class="satz__art">Rote Bete</span>
+              </p>
+
+              <h3 class="satz__sorte">Zollernrunde</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--vermehrung">nur Vermehrung</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>61 %</dd>
+                <dt>Bestand</dt><dd>9 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2019</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 61 von 100 Prozent">
+                <span style="width: 61%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Nusplingen, Aufsammlung 1947<br>
+                Eingang ins Archiv: 2008 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Getreide" data-status="frei" data-keim="92" data-vermehrung="2025">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0089</span>
+                <span class="satz__art">Getreide</span>
+              </p>
+
+              <h3 class="satz__sorte">Dinkel Onstmettingen</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>92 %</dd>
+                <dt>Bestand</dt><dd>48 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2025</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 92 von 100 Prozent">
+                <span style="width: 92%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Onstmettingen, Aufsammlung 1918<br>
+                Eingang ins Archiv: 2009 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Getreide" data-status="frei" data-keim="85" data-vermehrung="2023">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0094</span>
+                <span class="satz__art">Getreide</span>
+              </p>
+
+              <h3 class="satz__sorte">Einkorn Killertal</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>85 %</dd>
+                <dt>Bestand</dt><dd>31 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2023</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 85 von 100 Prozent">
+                <span style="width: 85%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Killertal, Aufsammlung 1922<br>
+                Eingang ins Archiv: 2010 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Bohne" data-status="gesperrt" data-keim="57" data-vermehrung="2018" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0101</span>
+                <span class="satz__art">Bohne</span>
+              </p>
+
+              <h3 class="satz__sorte">Feuerbohne Talheim</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--gesperrt">gesperrt</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>57 %</dd>
+                <dt>Bestand</dt><dd>6 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2018</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 57 von 100 Prozent">
+                <span style="width: 57%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Talheim, Aufsammlung 1934<br>
+                Eingang ins Archiv: 2011 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Erbse" data-status="frei" data-keim="89" data-vermehrung="2024">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0107</span>
+                <span class="satz__art">Erbse</span>
+              </p>
+
+              <h3 class="satz__sorte">Bodelshausener Zucker</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>89 %</dd>
+                <dt>Bestand</dt><dd>38 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2024</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 89 von 100 Prozent">
+                <span style="width: 89%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Bodelshausen, Aufsammlung 1956<br>
+                Eingang ins Archiv: 2012 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Möhre" data-status="vermehrung" data-keim="66" data-vermehrung="2021" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0112</span>
+                <span class="satz__art">Möhre</span>
+              </p>
+
+              <h3 class="satz__sorte">Hechinger Wurzelpetersilie</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--vermehrung">nur Vermehrung</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>66 %</dd>
+                <dt>Bestand</dt><dd>13 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2021</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 66 von 100 Prozent">
+                <span style="width: 66%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Hechingen, Aufsammlung 1963<br>
+                Eingang ins Archiv: 2013 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Möhre" data-status="frei" data-keim="70" data-vermehrung="2020" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0118</span>
+                <span class="satz__art">Möhre</span>
+              </p>
+
+              <h3 class="satz__sorte">Alb-Lange Pastinake</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>70 %</dd>
+                <dt>Bestand</dt><dd>17 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2020</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 70 von 100 Prozent">
+                <span style="width: 70%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Burladingen, Aufsammlung 1941<br>
+                Eingang ins Archiv: 2014 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Kohl" data-status="frei" data-keim="91" data-vermehrung="2025">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0124</span>
+                <span class="satz__art">Kohl</span>
+              </p>
+
+              <h3 class="satz__sorte">Blauer Zoller Kohlrabi</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>91 %</dd>
+                <dt>Bestand</dt><dd>44 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2025</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 91 von 100 Prozent">
+                <span style="width: 91%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Bisingen, Aufsammlung 1959<br>
+                Eingang ins Archiv: 2015 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Getreide" data-status="frei" data-keim="79" data-vermehrung="2022">
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0129</span>
+                <span class="satz__art">Getreide</span>
+              </p>
+
+              <h3 class="satz__sorte">Rangendinger Nackthafer</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--frei">Abgabe möglich</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>79 %</dd>
+                <dt>Bestand</dt><dd>26 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2022</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 79 von 100 Prozent">
+                <span style="width: 79%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Rangendingen, Aufsammlung 1930<br>
+                Eingang ins Archiv: 2016 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+          <li>
+            <article class="satz" data-art="Getreide" data-status="vermehrung" data-keim="63" data-vermehrung="2019" data-nachbau>
+              <p class="satz__kopf">
+                <span class="satz__nr">ZA-0133</span>
+                <span class="satz__art">Getreide</span>
+              </p>
+
+              <h3 class="satz__sorte">Starzel Winterroggen</h3>
+
+              <p style="margin:0; display:flex; gap:8px; flex-wrap:wrap">
+                <span class="marker marker--vermehrung">nur Vermehrung</span>
+              <span class="marker marker--nachbau">Nachbau fällig</span>
+              </p>
+
+              <dl class="satz__werte">
+                <dt>Keimfähigkeit</dt><dd>63 %</dd>
+                <dt>Bestand</dt><dd>12 Portionen</dd>
+                <dt>Letzter Nachbau</dt><dd>2019</dd>
+              </dl>
+
+              <div class="keim" role="img" aria-label="Keimfähigkeit 63 von 100 Prozent">
+                <span style="width: 63%"></span>
+              </div>
+
+              <p class="satz__quelle">
+                Herkunft: Jungingen, Aufsammlung 1925<br>
+                Eingang ins Archiv: 2017 · Stand der Prüfung: Februar 2026<br>
+                Abgabe nur zu Vermehrungs- und Erhaltungszwecken.
+              </p>
+            </article>
+          </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Wie die Werte zustande kommen ─────────────────────────────── -->
+  <section class="bahn bahn--eng bahn--flaeche" aria-labelledby="lesen-t">
+    <div class="mitte schmal">
+      <h2 class="h2" id="lesen-t" style="margin-bottom: 24px">Wie diese Werte zustande kommen</h2>
+
+      <div class="prose">
+        <p>
+          <b>Keimfähigkeit</b> ist kein Schätzwert. Wir legen jedes Jahr im
+          Februar von jeder Akzession 100 Korn auf Filterpapier und zählen nach
+          der artspezifischen Frist aus. Der Wert auf der Karte stammt aus
+          dieser Prüfung, das Datum steht darunter.
+        </p>
+        <p>
+          <b>Nachbau fällig</b> bedeutet: Die Keimfähigkeit liegt unter 70
+          Prozent oder der letzte Nachbau ist fünf Jahre oder länger her. Beides
+          zusammen ist der einzige Grund, aus dem diese Kennzeichnung erscheint.
+          Elf der 24 Akzessionen tragen sie derzeit.
+        </p>
+        <p>
+          <b>Status</b> folgt der Abgabeordnung: unter 60 Prozent Keimfähigkeit
+          oder unter acht Portionen ist eine Akzession gesperrt, unter 70
+          Prozent oder unter 15 Portionen geht sie nur an Vermehrerinnen und
+          Vermehrer. Alles andere kann an jede Person abgegeben werden, die die
+          Ordnung anerkennt.
+        </p>
+      </div>
+
+      <p style="margin-top: 32px">
+        <a class="knopf" href="abgabe.html">Zur Abgabeordnung</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Saatgutarchiv Zollernalb e. V.</h2>
+      <address class="muted">
+        Alte Zollernstraße 14<br>
+        72379 Hechingen<br>
+        <a href="tel:+4974719000">+49 7471 9000</a><br>
+        <a href="mailto:archiv@saatgutarchiv-zollernalb.example">archiv@saatgutarchiv-zollernalb.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Sprechzeiten</h2>
+      <p class="muted" style="margin:0">
+        Dienstag 9–12 Uhr<br>
+        Donnerstag 14–18 Uhr<br>
+        Abgabe nur nach Voranmeldung
+      </p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="bestand.html">Bestandskatalog</a></li>
+        <li><a href="abgabe.html">Abgabeordnung</a></li>
+        <li><a href="vermehrung.html">Vermehrung und Nachbau</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Verein, Personen, Adressen, Akzessionen, Sorten und
+    alle Zahlen sind frei erfunden. Gestaltung nach Mika UX Library
+    <b>MXL-118</b>, <b>MXL-090</b> und <b>MXL-113</b>.
+  </p>
+</footer>
+
+<script src="assets/archiv.js" defer></script>
+</body>
+</html>

@@ -26,6 +26,7 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 |---:|---|---|---|---|---|
 | 11 | [`sprudelwerk`](sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Anybody, Figtree | `MXL-051` |
 | 12 | [`vehring-orgelbau`](vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Unbounded, Instrument Sans, Spline Sans Mono | `MXL-007` |
+| 13 | [`saatgutarchiv`](saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Public Sans, IBM Plex Mono | `MXL-118` + `MXL-090` + `MXL-113` |
 
 ### 11 — SPRUDELWERK
 
@@ -64,6 +65,30 @@ lassen die zugehörigen Pfeifen im Prospekt aufleuchten. Der **Mensurrechner**
 auf `verfahren.html` rechnet aus Taste und Fußtonlage die klingende Frequenz
 und die Länge der offenen Labialpfeife (halbe Wellenlänge bei 20 °C) samt
 Mündungskorrektur.
+
+### 13 — Saatgutarchiv Zollernalb
+
+Die erste Mischung der Sammlung. Drei Vorlagen mit je einer klar getrennten
+Aufgabe — sie lassen sich überhaupt nur mischen, weil alle drei dieselbe warme
+Papierfläche teilen (`#F7F5EF` / `#FFFFFF` / `#11130F` / `#72776D`).
+
+| Vorlage | Beitrag |
+|---|---|
+| `MXL-118` GOV.UK Design System — *Accessible public-service system* | Die Dienstarchitektur: dauerhaft sichtbare Suche, Filter und Ergebniszahl, ausformulierter Leerzustand, an jedem Datensatz Herkunft, Nutzungshinweis und Stand. Blau (`#1d70b8`) ist Interaktions- und Fokusfarbe. |
+| `MXL-090` Ventriloc — *Warm-paper data observatory* | Die Datenkarte: monospaced Werte, asymmetrische Radien (`16px 16px 16px 3px`) und genau ein orangefarbener Ember (`#ff6a2b`) als Zustandssignal. |
+| `MXL-113` Fonts In Use — *Applied typography archive* | Das Katalogrückgrat: kompakte Dichte, stabile Taxonomie, Schwarz auf warmem Papier als eigentliche Aussage. |
+
+Übersetzt in eine Erhaltungsinitiative für regionale Sorten: 24 Akzessionen mit
+Keimfähigkeit, Bestand, letztem Nachbau und Herkunft. Der Ember erscheint
+ausschließlich für „Nachbau fällig“ — unter 70 % Keimfähigkeit oder fünf Jahre
+seit dem letzten Nachbau; das trifft derzeit elf der 24 Akzessionen. Der Status
+(Abgabe möglich / nur Vermehrung / gesperrt) folgt der Abgabeordnung.
+
+Sechs Seiten: Archiv, Bestand (Filter nach Volltext, Art, Status und
+Nachbaubedarf), Abgabe, Vermehrung, Impressum, Datenschutz. Der Katalog steht
+vollständig im HTML; das Skript blendet nur aus. Ohne JavaScript bleiben alle
+24 Datensätze lesbar, und die Filterleiste bleibt verborgen, statt eine
+Bedienung vorzutäuschen, die nichts tut.
 
 ## Technische Leitplanken
 

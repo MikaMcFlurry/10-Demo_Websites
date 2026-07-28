@@ -1163,6 +1163,68 @@ summary:focus-visible {
   box-shadow: 0 0 26px rgba(252, 116, 221, .3);
 }
 
+/* 13 — accession records on warm paper (MXL-118 + MXL-090 + MXL-113) */
+.spec-saat {
+  display: grid;
+  align-content: center;
+  gap: clamp(14px, 1.8vw, 24px);
+  padding: clamp(22px, 3.4vw, 48px);
+  background: #f7f5ef;
+  color: #11130f;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.saat-satz {
+  display: grid;
+  gap: 8px;
+  padding: clamp(14px, 1.8vw, 22px);
+  /* Der asymmetrische Radius ist die Signatur von MXL-090. */
+  border: 1px solid #ddd9cd;
+  border-radius: 16px 16px 16px 3px;
+  background: #fff;
+}
+
+.saat-satz b {
+  color: #72776d;
+  font-family: "Courier New", monospace;
+  font-size: clamp(.66rem, .82vw, .78rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.saat-satz > span {
+  font-size: clamp(.94rem, 1.35vw, 1.24rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.saat-balken {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff6a2b var(--k), #e8e5da var(--k));
+}
+
+.saat-balken--gut {
+  background: linear-gradient(90deg, #11130f var(--k), #e8e5da var(--k));
+}
+
+.saat-satz em {
+  color: #72776d;
+  font-family: "Courier New", monospace;
+  font-size: clamp(.62rem, .78vw, .74rem);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Der eine Ember des Systems — sonst nirgends. */
+.saat-marker {
+  justify-self: start;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #fff1e9;
+  color: #8a3208;
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);
