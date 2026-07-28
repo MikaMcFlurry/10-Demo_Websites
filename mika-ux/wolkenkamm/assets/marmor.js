@@ -246,7 +246,9 @@ void main(){
     for (let i = ops.length - 1; i >= 0; i--) {
       const o = ops[i];
       const treffer = invers(q, o, o.str == null ? 1 : o.str);
-      if (treffer >= 0) return FARBEN[treffer].rgb;
+      // Palettenindex wie im Shader: 0 = Gallwasser/Grund, 1..5 = FARBEN.
+      if (treffer === 0) return GRUND;
+      if (treffer > 0) return FARBEN[treffer - 1].rgb;
     }
     return GRUND;
   }
