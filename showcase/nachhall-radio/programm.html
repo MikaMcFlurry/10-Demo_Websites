@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programm – NACHHALL RADIO</title>
+  <meta name="description" content="Das fiktive Wochenprogramm von NACHHALL RADIO mit bedienbaren Tageswahltasten und detailliertem Sendelog.">
+  <meta name="theme-color" content="#171815">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/radio.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zum Programm</a>
+  <div class="demo-line">PORTFOLIO-DEMO · ALLE SENDUNGEN, PERSONEN UND ZEITEN SIND FIKTIV</div>
+
+  <header class="rack-header">
+    <a class="brand" href="index.html" aria-label="NACHHALL RADIO Startseite">
+      <strong>Nachhall Radio</strong>
+      <span>Freies Kulturband · Essen</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="rack-nav">Menü</button>
+    <nav class="rack-nav" id="rack-nav" aria-label="Hauptnavigation">
+      <a href="index.html">Tuner</a>
+      <a href="programm.html" aria-current="page">Programm</a>
+      <a href="archiv.html">Archiv</a>
+      <a href="studio.html">Studio</a>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <section class="rack" aria-labelledby="seitentitel">
+      <p class="rack-label"><span>Sendelog / Woche 31</span><span>Programmrevision 04</span></p>
+      <div class="module-grid">
+        <div class="module-intro module-intro--red">
+          <div>
+            <h1 class="panel-title" id="seitentitel">Sieben Tage, kein Shuffle</h1>
+            <p>
+              Jede Sendung hat einen festen Platz und einen redaktionellen Grund.
+              Die Tageswahltasten schalten zwischen sieben vollständigen
+              Logblättern um.
+            </p>
+          </div>
+          <a class="module-action" href="index.html#inhalt">Zurück zum Tuner →</a>
+        </div>
+        <div class="program-log">
+          <div class="log-date"><span>Gerade im Demo-Log</span><span>REC / Spur 02</span></div>
+          <article class="on-air-row">
+            <time datetime="18:00">18:00</time>
+            <div>
+              <h2>Jenseits der Eile</h2>
+              <p>Eine Stunde Gespräch, ohne Nachrichtenbett und ohne Countdown.</p>
+            </div>
+            <span class="program-type">Gespräch</span>
+          </article>
+          <p>
+            NACHHALL sendet in dieser Demonstration nicht wirklich. Die
+            Programmdaten zeigen Informationsarchitektur und Interaktion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rack" aria-labelledby="woche-titel">
+      <p class="rack-label"><span>Wochenschaltwerk</span><span>Alle Zeiten MEZ / Demo</span></p>
+      <div class="day-panel">
+        <h2 class="section-title" id="woche-titel">Programm wählen</h2>
+        <div class="day-buttons" aria-label="Wochentag wählen">
+          <button class="day-button" type="button" data-program-day="mo" aria-pressed="true">Mo</button>
+          <button class="day-button" type="button" data-program-day="di" aria-pressed="false">Di</button>
+          <button class="day-button" type="button" data-program-day="mi" aria-pressed="false">Mi</button>
+          <button class="day-button" type="button" data-program-day="do" aria-pressed="false">Do</button>
+          <button class="day-button" type="button" data-program-day="fr" aria-pressed="false">Fr</button>
+          <button class="day-button" type="button" data-program-day="sa" aria-pressed="false">Sa</button>
+          <button class="day-button" type="button" data-program-day="so" aria-pressed="false">So</button>
+        </div>
+        <p class="schedule-status" data-program-status aria-live="polite">Montag gewählt.</p>
+
+        <div class="schedule-sheet" data-schedule="mo" data-day-name="Montag">
+          <h3 class="schedule-heading">Montag / Sprache</h3>
+          <article class="schedule-row"><time datetime="16:00">16:00</time><div><h3>Stadtbibliothek offen</h3><p>Neue Texte aus kleinen Verlagen, gelesen und besprochen.</p></div><span class="program-type">Literatur</span></article>
+          <article class="schedule-row"><time datetime="18:00">18:00</time><div><h3>Zwischen zwei Sprachen</h3><p>Übersetzerinnen erklären eine einzige, schwierige Seite.</p></div><span class="program-type">Gespräch</span></article>
+          <article class="schedule-row"><time datetime="21:00">21:00</time><div><h3>Leises Lesen</h3><p>Dreißig Minuten Text, danach dreißig Minuten Raumklang.</p></div><span class="program-type">Lesung</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="di" data-day-name="Dienstag">
+          <h3 class="schedule-heading">Dienstag / Arbeit</h3>
+          <article class="schedule-row"><time datetime="15:00">15:00</time><div><h3>Werkbank</h3><p>Handwerk, Material und die Geräusche eines Arbeitsschritts.</p></div><span class="program-type">Reportage</span></article>
+          <article class="schedule-row"><time datetime="18:00">18:00</time><div><h3>Jenseits der Eile</h3><p>Langsame Arbeit mit der fiktiven Restauratorin Lale Öz.</p></div><span class="program-type">Gespräch</span></article>
+          <article class="schedule-row"><time datetime="22:00">22:00</time><div><h3>Nachtbus 974</h3><p>Stimmen und Geräusche von der letzten Runde durchs Revier.</p></div><span class="program-type">Feature</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="mi" data-day-name="Mittwoch">
+          <h3 class="schedule-heading">Mittwoch / Bühne</h3>
+          <article class="schedule-row"><time datetime="17:00">17:00</time><div><h3>Vor dem Vorhang</h3><p>Technik, Aufbau und die zwei Stunden vor Einlass.</p></div><span class="program-type">Backstage</span></article>
+          <article class="schedule-row"><time datetime="19:00">19:00</time><div><h3>Erste Reihe</h3><p>Eine komplette Probe aus dem fiktiven Depot-Theater.</p></div><span class="program-type">Live</span></article>
+          <article class="schedule-row"><time datetime="21:30">21:30</time><div><h3>Nachkritik</h3><p>Publikum spricht, bevor die Rezension erscheint.</p></div><span class="program-type">Debatte</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="do" data-day-name="Donnerstag">
+          <h3 class="schedule-heading">Donnerstag / Stadt</h3>
+          <article class="schedule-row"><time datetime="16:00">16:00</time><div><h3>Ein Haus erzählt</h3><p>Architekturgeschichte an einer einzigen Straßenecke.</p></div><span class="program-type">Feature</span></article>
+          <article class="schedule-row"><time datetime="18:00">18:00</time><div><h3>Runder Tisch, eckige Fragen</h3><p>Lokale Initiativen erklären ihre aktuellen Konflikte.</p></div><span class="program-type">Debatte</span></article>
+          <article class="schedule-row"><time datetime="20:30">20:30</time><div><h3>Offenes Mikrofon</h3><p>Fünf Minuten pro Stimme, live sortiert statt vorgefiltert.</p></div><span class="program-type">Live</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="fr" data-day-name="Freitag">
+          <h3 class="schedule-heading">Freitag / Musik</h3>
+          <article class="schedule-row"><time datetime="17:00">17:00</time><div><h3>Neue Rille</h3><p>Aktuelle Musik aus dem Ruhrgebiet, mit Produktionsnotizen.</p></div><span class="program-type">Musik</span></article>
+          <article class="schedule-row"><time datetime="20:00">20:00</time><div><h3>Staub auf der Nadel</h3><p>Plattenfunde, B-Seiten und Geschichten auf den Hüllen.</p></div><span class="program-type">Musik</span></article>
+          <article class="schedule-row"><time datetime="23:00">23:00</time><div><h3>Bandende offen</h3><p>Ein zweistündiger Mix ohne Wortbeiträge und ohne Replay.</p></div><span class="program-type">Mix</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="sa" data-day-name="Samstag">
+          <h3 class="schedule-heading">Samstag / Draußen</h3>
+          <article class="schedule-row"><time datetime="11:00">11:00</time><div><h3>Marktgeräusche</h3><p>Händler, Kisten, Rufe – eine Stunde dokumentierter Alltag.</p></div><span class="program-type">Feldton</span></article>
+          <article class="schedule-row"><time datetime="15:00">15:00</time><div><h3>Unterwegs senden</h3><p>Mobiles Studio aus einem anderen fiktiven Stadtteil.</p></div><span class="program-type">Live</span></article>
+          <article class="schedule-row"><time datetime="19:00">19:00</time><div><h3>Hofkonzert</h3><p>Drei Acts, zwei Mikrofone, Publikum in der Wetterlage.</p></div><span class="program-type">Konzert</span></article>
+        </div>
+
+        <div class="schedule-sheet" data-schedule="so" data-day-name="Sonntag">
+          <h3 class="schedule-heading">Sonntag / Archiv</h3>
+          <article class="schedule-row"><time datetime="10:00">10:00</time><div><h3>Bandpflege</h3><p>Restaurierung eines Mitschnitts, Schritt für Schritt hörbar.</p></div><span class="program-type">Archiv</span></article>
+          <article class="schedule-row"><time datetime="14:00">14:00</time><div><h3>Stimme der Woche</h3><p>Ein historischer Ausschnitt mit neuem Kontext.</p></div><span class="program-type">Archiv</span></article>
+          <article class="schedule-row"><time datetime="18:00">18:00</time><div><h3>Sendeschluss</h3><p>Die Redaktion blickt zurück und lässt ein Band auslaufen.</p></div><span class="program-type">Redaktion</span></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="radio-footer">
+    <div><p class="footer-station"><span>92.7</span> Nachhall Radio</p><p>Fiktives Kultur- und Archivradio · Bandstraße 27 · 45127 Essen</p></div>
+    <nav class="footer-nav" aria-label="Fußnavigation"><a href="index.html">Tuner</a><a href="archiv.html">Archiv</a><a href="studio.html">Studio</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+    <p class="legal-note">Portfolio-Demo: Sendungen, Personen, Zeiten und Kontaktdaten sind frei erfunden. Kein Stream, kein Tracking, keine Cookies und keine externen Laufzeitressourcen.</p>
+  </footer>
+  <script src="assets/radio.js" defer></script>
+</body>
+</html>

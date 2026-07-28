@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sehprofil und Terminorientierung des fiktiven Fokus40 Augenateliers.">
+  <title>Sehprofil — Fokus40 Augenatelier</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/atelier.css">
+  <script src="assets/sehen.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <p class="demo-note">Fiktives Augenatelier · Portfolio-Demonstration · keine medizinische Beratung</p>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="index.html" aria-label="Fokus40 Augenatelier, Startseite"><span class="wordmark-lens" aria-hidden="true">40</span><span><strong>Fokus40</strong><small>Augenatelier</small></span></a>
+      <button class="mobile-nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-menu-toggle>Menü</button>
+      <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation" data-site-nav>
+        <ul><li><a href="index.html">Atelierblick</a></li><li><a href="sehtest.html" aria-current="page">Sehprofil</a></li><li><a href="brillen.html">Brillen</a></li><li><a href="atelier.html">Atelier</a></li></ul>
+      </nav>
+      <div class="view-tools" aria-label="Darstellung anpassen"><button type="button" data-large-type aria-pressed="false" aria-label="Große Schrift ein- oder ausschalten">A+</button><button type="button" data-high-contrast aria-pressed="false" aria-label="Hohen Kontrast ein- oder ausschalten">◐</button></div>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <header class="page-intro">
+      <div class="page-intro-copy">
+        <p class="eyebrow">Zeit für den Seh-Alltag</p>
+        <h1>Ihr Sehprofil</h1>
+        <p>Kein Online-Test, sondern ein fiktiver Ablauf für ein gründliches Gespräch: Welche Entfernungen, Lichtlagen und Tätigkeiten prägen Ihren Tag?</p>
+      </div>
+      <div class="intro-optic" aria-hidden="true"><span>E</span><span>40</span></div>
+    </header>
+
+    <section class="focus-workbench" data-focus-scope aria-labelledby="focus-heading">
+      <div class="workbench-controls">
+        <p class="eyebrow">Interaktive Sehgestaltung</p>
+        <h2 id="focus-heading">Schärfe ist mehr als eine Zahl</h2>
+        <p>Der Regler verändert nur die rechts gezeichneten Optotypen. Er misst keine Sehschärfe und speichert keinen Wert.</p>
+        <div class="focus-control">
+          <label for="focus-test"><span>Grafische Schärfe</span><span class="focus-status" data-focus-status>weich</span></label>
+          <input id="focus-test" type="range" min="0" max="100" value="35" data-focus-slider>
+          <div class="range-scale" aria-hidden="true"><span>unscharf</span><span>klar</span></div>
+        </div>
+        <p class="responsibility-note"><strong>Wichtig:</strong> Abstand, Bildschirm und Beleuchtung sind nicht kontrolliert. Daraus lässt sich keine Sehleistung ableiten.</p>
+      </div>
+      <div class="workbench-visual" data-focus-visual aria-hidden="true">
+        <div class="blur-chart"><span>E</span><span>F P T O</span><span>L P E D</span></div>
+      </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="profile-process">
+      <p class="eyebrow">Im Atelier / 45–75 Minuten</p>
+      <h2 id="profile-process">Messen, fragen, im Alltag prüfen</h2>
+      <ol class="process-list prose">
+        <li><strong>Ankommen und erzählen.</strong><br>Bildschirmarbeit, Fahrten bei Nacht, Lesen, Handwerk oder Sport verändern die Anforderungen.</li>
+        <li><strong>Objektiv und subjektiv messen.</strong><br>Messwerte geben eine Richtung; die feinere Abstimmung erfolgt über verständliche Vergleiche.</li>
+        <li><strong>Beidäugiges Sehen beachten.</strong><br>Beide Augen sollen als Team angenehm arbeiten. Medizinische Auffälligkeiten gehören in ärztliche Hände.</li>
+        <li><strong>Lösung im echten Abstand erproben.</strong><br>Lesedistanz, Monitorposition und typische Blickwechsel werden im fiktiven Atelier nachgestellt.</li>
+      </ol>
+    </section>
+
+    <section class="triage" id="termin" aria-labelledby="triage-heading">
+      <div class="triage-intro">
+        <p class="eyebrow">Zwei Fragen / keine Buchung</p>
+        <h2 id="triage-heading">Welche Terminart passt?</h2>
+        <p>Die Orientierung schlägt nur eine Dauer vor. Sie überträgt keine Daten und ersetzt keine medizinische Beurteilung.</p>
+      </div>
+      <form class="triage-form" data-triage>
+        <fieldset class="triage-step" data-triage-step>
+          <legend>Wie hat sich Ihr Sehen verändert?</legend>
+          <span class="option-row"><input id="timing-routine" type="radio" name="timing" value="routine"><label for="timing-routine">Langsam oder im Rahmen einer regulären Kontrolle</label></span>
+          <span class="option-row"><input id="timing-sudden" type="radio" name="timing" value="sudden"><label for="timing-sudden">Plötzlich, mit Lichtblitzen, Schatten oder starken Schmerzen</label></span>
+          <div class="triage-actions"><button class="action-button" type="button" data-triage-next>Weiter</button></div>
+        </fieldset>
+
+        <fieldset class="triage-step" data-triage-step hidden>
+          <legend>Wofür wünschen Sie sich Unterstützung?</legend>
+          <span class="option-row"><input id="reason-check" type="radio" name="reason" value="check"><label for="reason-check">Reguläre Sehkontrolle</label></span>
+          <span class="option-row"><input id="reason-new" type="radio" name="reason" value="new"><label for="reason-new">Neue Brille und Fassungsberatung</label></span>
+          <span class="option-row"><input id="reason-contact" type="radio" name="reason" value="contact"><label for="reason-contact">Kontaktlinsen neu anpassen</label></span>
+          <div class="triage-actions"><button class="action-button secondary" type="button" data-triage-back>Zurück</button><button class="action-button" type="submit">Vorschlag anzeigen</button></div>
+        </fieldset>
+        <div class="triage-message" data-triage-message role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="appointment-band" aria-labelledby="medical-note">
+      <div>
+        <p class="eyebrow">Grenze des Ateliers</p>
+        <h2 id="medical-note">Akute Beschwerden gehören nicht in eine Online-Terminwahl.</h2>
+        <p>Plötzlicher Sehverlust, Lichtblitze, ein neuer Schatten im Gesichtsfeld oder starke Augenschmerzen sollten zeitnah ärztlich abgeklärt werden. In einem akuten Notfall gilt in Deutschland die 112.</p>
+      </div>
+      <a class="solid-link" href="atelier.html#zeiten">Reguläre Atelierzeiten</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><div class="footer-mark">Fokus40 Augenatelier</div><p class="footer-copy">Fiktives Portfolio-Konzept. Keine Sehmessung, Diagnose, Terminbuchung oder medizinische Beratung.</p></div>
+      <nav class="footer-links" aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+      <div class="footer-index">Sehprofil / Demo<br>Keine Diagnose</div>
+    </div>
+  </footer>
+</body>
+</html>

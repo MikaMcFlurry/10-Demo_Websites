@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Chivo";
+  src: url("chivo-normal-300-900-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chivo";
+  src: url("chivo-italic-400-700-latin-ext.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Azeret Mono";
+  src: url("azeret-mono-normal-400-700-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}

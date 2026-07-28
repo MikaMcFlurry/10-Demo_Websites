@@ -23,7 +23,13 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Low-impact everyday goods with transparent sourcing and durable materials.' },
         { name: 'theme-color', content: '#1F3D2B' },
       ],
-      link: [],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          href: '/10-Demo_Websites/greencart/favicon.svg',
+        },
+      ],
     },
   },
   nitro: {

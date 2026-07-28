@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Liniennetz und textlicher Netzplan des fiktiven Nordhafen Stadtverkehrs.">
+  <title>Netz — Nordhafen Stadtverkehr</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/leitsystem.css">
+  <script src="assets/betrieb.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <p class="demo-strip">Fiktiver Stadtverkehr · Portfolio-Demonstration · keine echten Fahrplandaten</p>
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="index.html" aria-label="Nordhafen Stadtverkehr, Startseite">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span><span class="brand-name">Nordhafen</span><span class="brand-sub">Stadtverkehr / Verkehrsbetrieb 04</span></span>
+      </a>
+      <div class="clock-block"><span class="clock-label">Lokale Gerätezeit</span><time class="local-clock" data-local-clock>--:--:--</time></div>
+      <div class="status-block"><span class="status-label">Demo-Betrieb</span><span class="status-value"><span class="status-dot" aria-hidden="true"></span>Planmäßig</span></div>
+    </div>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html">Fahrt planen</a></li>
+        <li><a href="abfahrten.html">Abfahrten</a></li>
+        <li><a href="netz.html" aria-current="page">Netz</a></li>
+        <li><a href="service.html">Service</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-shell">
+    <header class="page-lead">
+      <h1 class="page-title">Netz</h1>
+      <div class="page-lead-meta">
+        <p class="page-kicker">Plan 04 / Insel &amp; Ufer</p>
+        <p>Vier Linien, zwei Umsteigepunkte und eine textliche Alternative zum grafischen Plan.</p>
+      </div>
+    </header>
+
+    <div class="network-page">
+      <section aria-labelledby="graphic-map">
+        <h2 class="panel-heading" id="graphic-map">Linienplan <span class="panel-count">Linie wählen</span></h2>
+        <div class="network-canvas">
+          <svg class="network-map" viewBox="0 0 640 690" role="img" aria-labelledby="net-title net-description">
+            <title id="net-title">Schematischer Liniennetzplan Nordhafen</title>
+            <desc id="net-description">U1, U2, T3 und B7 treffen teilweise am Hauptbahnhof und an der Markthalle zusammen.</desc>
+            <path class="map-water" d="M35 545 C155 465 225 610 340 530 S520 460 610 540 L610 650 L35 650 Z"/>
+            <path class="map-route" style="--route-color: var(--u1)" data-map-line="U1" d="M80 600 L80 480 L210 350 L360 350 L480 230 L575 230"/>
+            <path class="map-route" style="--route-color: var(--u2)" data-map-line="U2" d="M55 120 L210 120 L360 270 L360 350 L510 500 L590 500"/>
+            <path class="map-route" style="--route-color: var(--t3)" data-map-line="T3" d="M145 560 L210 495 L210 350 L360 350 L470 460 L565 365"/>
+            <path class="map-route" style="--route-color: var(--b7)" data-map-line="B7" d="M80 600 L210 600 L300 510 L300 420 L360 350"/>
+            <g aria-hidden="true">
+              <circle class="map-station" cx="80" cy="600" r="11"/><circle class="map-station" cx="80" cy="480" r="8"/>
+              <circle class="map-station" cx="210" cy="350" r="13"/><circle class="map-station" cx="360" cy="350" r="15"/>
+              <circle class="map-station" cx="480" cy="230" r="8"/><circle class="map-station" cx="575" cy="230" r="8"/>
+              <circle class="map-station" cx="55" cy="120" r="8"/><circle class="map-station" cx="210" cy="120" r="8"/>
+              <circle class="map-station" cx="360" cy="270" r="8"/><circle class="map-station" cx="510" cy="500" r="8"/>
+              <circle class="map-station" cx="590" cy="500" r="8"/><circle class="map-station" cx="145" cy="560" r="8"/>
+              <circle class="map-station" cx="210" cy="495" r="8"/><circle class="map-station" cx="470" cy="460" r="8"/>
+              <circle class="map-station" cx="565" cy="365" r="8"/><circle class="map-station" cx="210" cy="600" r="8"/>
+              <circle class="map-station" cx="300" cy="510" r="8"/><circle class="map-station" cx="300" cy="420" r="8"/>
+              <text class="map-label" x="95" y="625">Werfttor</text><text class="map-label" x="95" y="473">Dock 8</text>
+              <text class="map-label" x="118" y="337">Markthalle</text><text class="map-label" x="378" y="342">Hauptbahnhof</text>
+              <text class="map-label" x="492" y="219">Klint</text><text class="map-label" x="523" y="258">Nordkai</text>
+              <text class="map-label" x="55" y="99">Westhafen</text><text class="map-label" x="173" y="99">Kanalpark</text>
+              <text class="map-label" x="374" y="264">Museum</text><text class="map-label" x="470" y="528">Südfeld</text>
+              <text class="map-label" x="517" y="489">Seegarten</text><text class="map-label" x="70" y="548">Fischmarkt</text>
+              <text class="map-label" x="221" y="490">Speicherstadt</text><text class="map-label" x="480" y="452">Deichstraße</text>
+              <text class="map-label" x="500" y="394">Leuchtturm</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <aside class="network-aside" aria-label="Linien und Umstieg">
+        <section>
+          <h2>Linie filtern</h2>
+          <ul class="line-index">
+            <li><button class="line-filter" type="button" data-line-filter="all" aria-pressed="true"><span class="line-badge" style="--line-color: var(--night)">00</span><span class="line-route"><strong>Gesamtnetz</strong><small>alle Linien</small></span><span class="line-frequency">zeigen</span></button></li>
+            <li><button class="line-filter" type="button" data-line-filter="U1" aria-pressed="false"><span class="line-badge" style="--line-color: var(--u1)">U1</span><span class="line-route"><strong>Werfttor — Nordkai</strong><small>6 Stationen</small></span><span class="line-frequency">6 min</span></button></li>
+            <li><button class="line-filter" type="button" data-line-filter="U2" aria-pressed="false"><span class="line-badge" style="--line-color: var(--u2)">U2</span><span class="line-route"><strong>Westhafen — Seegarten</strong><small>6 Stationen</small></span><span class="line-frequency">8 min</span></button></li>
+            <li><button class="line-filter" type="button" data-line-filter="T3" aria-pressed="false"><span class="line-badge" style="--line-color: var(--t3)">T3</span><span class="line-route"><strong>Fischmarkt — Leuchtturm</strong><small>6 Stationen</small></span><span class="line-frequency">10 min</span></button></li>
+            <li><button class="line-filter" type="button" data-line-filter="B7" aria-pressed="false"><span class="line-badge" style="--line-color: var(--b7)">B7</span><span class="line-route"><strong>Werfttor — Hauptbahnhof</strong><small>5 Stationen</small></span><span class="line-frequency">15 min</span></button></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Umsteigen</h3>
+          <ul class="line-list">
+            <li><span class="mini-line" style="--line-color: var(--orange)">HBF</span><span><strong>Hauptbahnhof</strong><br>U1, U2, T3, B7 · Aufzüge Ost und West</span></li>
+            <li><span class="mini-line" style="--line-color: var(--sea)">MKT</span><span><strong>Markthalle</strong><br>U1, T3 · ebenerdiger Übergang</span></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <section class="content-section">
+      <p class="page-kicker">Textlicher Linienweg</p>
+      <h2>Das Netz ohne Grafik</h2>
+      <ul class="line-list prose">
+        <li><span class="mini-line" style="--line-color: var(--u1)">U1</span><span>Werfttor → Dock 8 → Markthalle → Hauptbahnhof → Klint → Nordkai</span></li>
+        <li><span class="mini-line" style="--line-color: var(--u2)">U2</span><span>Westhafen → Kanalpark → Museum → Hauptbahnhof → Südfeld → Seegarten</span></li>
+        <li><span class="mini-line" style="--line-color: var(--t3)">T3</span><span>Fischmarkt → Speicherstadt → Markthalle → Hauptbahnhof → Deichstraße → Leuchtturm</span></li>
+        <li><span class="mini-line" style="--line-color: var(--b7)">B7</span><span>Werfttor → Quartierkai → Alte Schleuse → Marktbrücke → Hauptbahnhof</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><div class="footer-brand">Nordhafen Stadtverkehr</div><p class="footer-note">Fiktiver Netzplan als Portfolio-Demonstration.</p></div>
+      <nav class="footer-links" aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+      <div class="footer-code">NHV / PLAN 04<br>Schema 2026</div>
+    </div>
+  </footer>
+</body>
+</html>

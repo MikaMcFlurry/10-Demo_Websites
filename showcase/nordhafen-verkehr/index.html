@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nordhafen Stadtverkehr: fiktiver Fahrplaner, Abfahrten und Netzplan als hochwertige Portfolio-Demonstration.">
+  <title>Nordhafen Stadtverkehr | Fahrt planen</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/leitsystem.css">
+  <script src="assets/betrieb.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <p class="demo-strip">Fiktiver Stadtverkehr · Portfolio-Demonstration · keine echten Fahrplandaten</p>
+
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="index.html" aria-label="Nordhafen Stadtverkehr, Startseite">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>
+          <span class="brand-name">Nordhafen</span>
+          <span class="brand-sub">Stadtverkehr / Verkehrsbetrieb 04</span>
+        </span>
+      </a>
+      <div class="clock-block">
+        <span class="clock-label">Lokale Gerätezeit</span>
+        <time class="local-clock" data-local-clock>--:--:--</time>
+      </div>
+      <div class="status-block">
+        <span class="status-label">Demo-Betrieb</span>
+        <span class="status-value"><span class="status-dot" aria-hidden="true"></span>Planmäßig</span>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html" aria-current="page">Fahrt planen</a></li>
+        <li><a href="abfahrten.html">Abfahrten</a></li>
+        <li><a href="netz.html">Netz</a></li>
+        <li><a href="service.html">Service</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="mobile-switcher" role="tablist" aria-label="Schnellansicht" data-mobile-switcher>
+    <button type="button" role="tab" aria-selected="true" aria-controls="panel-plan">Planen</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="panel-network" tabindex="-1">Netz</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="panel-departures" tabindex="-1">Abfahrten</button>
+  </div>
+
+  <main id="main">
+    <div class="operations">
+      <section class="operation-panel" id="panel-plan" role="tabpanel" aria-label="Fahrt planen">
+        <h2 class="panel-heading">Linienindex <span class="panel-count">04 Linien</span></h2>
+        <ul class="line-index" aria-label="Linie auf Plan und Abfahrtstafel hervorheben">
+          <li>
+            <button class="line-filter" type="button" data-line-filter="all" aria-pressed="true">
+              <span class="line-badge" style="--line-color: var(--night)">00</span>
+              <span class="line-route"><strong>Gesamtnetz</strong><small>alle Verbindungen</small></span>
+              <span class="line-frequency">zeigen</span>
+            </button>
+          </li>
+          <li>
+            <button class="line-filter" type="button" data-line-filter="U1" aria-pressed="false">
+              <span class="line-badge" style="--line-color: var(--u1)">U1</span>
+              <span class="line-route"><strong>Werfttor → Nordkai</strong><small>via Hauptbahnhof</small></span>
+              <span class="line-frequency">6 min</span>
+            </button>
+          </li>
+          <li>
+            <button class="line-filter" type="button" data-line-filter="U2" aria-pressed="false">
+              <span class="line-badge" style="--line-color: var(--u2)">U2</span>
+              <span class="line-route"><strong>Westhafen → Seegarten</strong><small>via Hauptbahnhof</small></span>
+              <span class="line-frequency">8 min</span>
+            </button>
+          </li>
+          <li>
+            <button class="line-filter" type="button" data-line-filter="T3" aria-pressed="false">
+              <span class="line-badge" style="--line-color: var(--t3)">T3</span>
+              <span class="line-route"><strong>Markthalle → Leuchtturm</strong><small>via Speicherstadt</small></span>
+              <span class="line-frequency">10 min</span>
+            </button>
+          </li>
+          <li>
+            <button class="line-filter" type="button" data-line-filter="B7" aria-pressed="false">
+              <span class="line-badge" style="--line-color: var(--b7)">B7</span>
+              <span class="line-route"><strong>Kanalpark → Werfttor</strong><small>Quartiersbus</small></span>
+              <span class="line-frequency">15 min</span>
+            </button>
+          </li>
+        </ul>
+
+        <form class="planner" data-journey-planner>
+          <h1>Fahrt durch Nordhafen planen</h1>
+          <p class="planner-intro">Direktverbindung im fiktiven Demonstrationsnetz.</p>
+          <div class="journey-fields">
+            <div class="field-stack">
+              <div class="field">
+                <label for="from">Von</label>
+                <select id="from" name="from">
+                  <option>Werfttor</option>
+                  <option>Hauptbahnhof</option>
+                  <option>Markthalle</option>
+                  <option>Seegarten</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="to">Nach</label>
+                <select id="to" name="to">
+                  <option>Hauptbahnhof</option>
+                  <option>Werfttor</option>
+                  <option>Markthalle</option>
+                  <option>Seegarten</option>
+                </select>
+              </div>
+            </div>
+            <button class="swap-button" type="button" data-swap aria-label="Start und Ziel tauschen">⇅</button>
+          </div>
+          <div class="planner-actions">
+            <div class="planner-time" data-planner-now>Abfahrt ab --:--</div>
+            <button class="primary-button" type="submit">Verbindung</button>
+          </div>
+          <div class="route-result" data-route-result role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="operation-panel" id="panel-network" role="tabpanel" aria-label="Netzplan">
+        <h2 class="panel-heading">Netzplan <span class="panel-count">Schema / 2026</span></h2>
+        <div class="network-canvas">
+          <svg class="network-map" viewBox="0 0 640 690" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">Schematischer Liniennetzplan von Nordhafen</title>
+            <desc id="map-desc">Vier Linien verbinden Werfttor, Hauptbahnhof, Markthalle, Seegarten und weitere fiktive Haltestellen.</desc>
+            <path class="map-water" d="M35 545 C155 465 225 610 340 530 S520 460 610 540 L610 650 L35 650 Z"/>
+            <path class="map-route" style="--route-color: var(--u1)" data-map-line="U1" d="M80 600 L80 480 L210 350 L360 350 L480 230 L575 230"/>
+            <path class="map-route" style="--route-color: var(--u2)" data-map-line="U2" d="M55 120 L210 120 L360 270 L360 350 L510 500 L590 500"/>
+            <path class="map-route" style="--route-color: var(--t3)" data-map-line="T3" d="M145 560 L210 495 L210 350 L360 350 L470 460 L565 365"/>
+            <path class="map-route" style="--route-color: var(--b7)" data-map-line="B7" d="M80 600 L210 600 L300 510 L300 420 L360 350"/>
+
+            <g aria-hidden="true">
+              <circle class="map-station" cx="80" cy="600" r="11"/>
+              <circle class="map-station" cx="80" cy="480" r="8"/>
+              <circle class="map-station" cx="210" cy="350" r="13"/>
+              <circle class="map-station" cx="360" cy="350" r="15"/>
+              <circle class="map-station" cx="480" cy="230" r="8"/>
+              <circle class="map-station" cx="575" cy="230" r="8"/>
+              <circle class="map-station" cx="55" cy="120" r="8"/>
+              <circle class="map-station" cx="210" cy="120" r="8"/>
+              <circle class="map-station" cx="360" cy="270" r="8"/>
+              <circle class="map-station" cx="510" cy="500" r="8"/>
+              <circle class="map-station" cx="590" cy="500" r="8"/>
+              <circle class="map-station" cx="145" cy="560" r="8"/>
+              <circle class="map-station" cx="210" cy="495" r="8"/>
+              <circle class="map-station" cx="470" cy="460" r="8"/>
+              <circle class="map-station" cx="565" cy="365" r="8"/>
+              <circle class="map-station" cx="210" cy="600" r="8"/>
+              <circle class="map-station" cx="300" cy="510" r="8"/>
+              <circle class="map-station" cx="300" cy="420" r="8"/>
+            </g>
+
+            <g aria-hidden="true">
+              <text class="map-label" x="95" y="625">Werfttor</text>
+              <text class="map-label" x="95" y="473">Dock 8</text>
+              <text class="map-label" x="118" y="337">Markthalle</text>
+              <text class="map-label" x="378" y="342">Hauptbahnhof</text>
+              <text class="map-label" x="492" y="219">Klint</text>
+              <text class="map-label" x="523" y="258">Nordkai</text>
+              <text class="map-label" x="55" y="99">Westhafen</text>
+              <text class="map-label" x="173" y="99">Kanalpark</text>
+              <text class="map-label" x="374" y="264">Museum</text>
+              <text class="map-label" x="470" y="528">Südfeld</text>
+              <text class="map-label" x="517" y="489">Seegarten</text>
+              <text class="map-label" x="70" y="548">Fischmarkt</text>
+              <text class="map-label" x="221" y="490">Speicherstadt</text>
+              <text class="map-label" x="480" y="452">Deichstraße</text>
+              <text class="map-label" x="500" y="394">Leuchtturm</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-key">
+          <details>
+            <summary>Netzplan als Text lesen</summary>
+            <ol>
+              <li>U1: Werfttor, Dock 8, Markthalle, Hauptbahnhof, Klint, Nordkai</li>
+              <li>U2: Westhafen, Kanalpark, Museum, Hauptbahnhof, Südfeld, Seegarten</li>
+              <li>T3: Fischmarkt, Speicherstadt, Markthalle, Hauptbahnhof, Deichstraße, Leuchtturm</li>
+              <li>B7: Werfttor, Quartierkai, Alte Schleuse, Marktbrücke, Hauptbahnhof</li>
+            </ol>
+          </details>
+        </div>
+      </section>
+
+      <section class="operation-panel departure-board" id="panel-departures" role="tabpanel" aria-label="Nächste Abfahrten">
+        <h2 class="panel-heading">Nächste Abfahrten <span class="panel-count">lokal berechnet</span></h2>
+        <div class="departure-legend" aria-hidden="true"><span>Zeit</span><span>Richtung</span><span>Steig</span></div>
+        <div class="departure-list">
+          <details class="departure" data-departure-line="U1">
+            <summary>
+              <time class="departure-time" data-departure-offset="2">--:--</time>
+              <span class="departure-destination">
+                <strong>Nordkai</strong>
+                <span class="departure-meta"><span class="mini-line" style="--line-color: var(--u1)">U1</span><span class="countdown" data-countdown="2">in 2 min</span></span>
+              </span>
+              <span class="platform">A 01</span>
+            </summary>
+            <div class="departure-detail"><strong>Über Hauptbahnhof.</strong> Stufenloser Einstieg am markierten Fahrzeugabschnitt.</div>
+          </details>
+          <details class="departure" data-departure-line="T3">
+            <summary>
+              <time class="departure-time" data-departure-offset="5">--:--</time>
+              <span class="departure-destination">
+                <strong>Leuchtturm</strong>
+                <span class="departure-meta"><span class="mini-line" style="--line-color: var(--t3)">T3</span><span class="countdown" data-countdown="5">in 5 min</span></span>
+              </span>
+              <span class="platform">C 04</span>
+            </summary>
+            <div class="departure-detail"><strong>Über Speicherstadt.</strong> Fahrradmitnahme außerhalb der Hauptzeit möglich.</div>
+          </details>
+          <details class="departure" data-departure-line="U2">
+            <summary>
+              <time class="departure-time" data-departure-offset="8">--:--</time>
+              <span class="departure-destination">
+                <strong>Seegarten</strong>
+                <span class="departure-meta"><span class="mini-line" style="--line-color: var(--u2)">U2</span><span class="countdown" data-countdown="8">in 8 min</span></span>
+              </span>
+              <span class="platform">B 02</span>
+            </summary>
+            <div class="departure-detail"><strong>Über Südfeld.</strong> Aufzug am Ausgang Ost ist in dieser Demo als verfügbar markiert.</div>
+          </details>
+          <details class="departure" data-departure-line="B7">
+            <summary>
+              <time class="departure-time" data-departure-offset="12">--:--</time>
+              <span class="departure-destination">
+                <strong>Werfttor</strong>
+                <span class="departure-meta"><span class="mini-line" style="--line-color: var(--b7)">B7</span><span class="countdown" data-countdown="12">in 12 min</span></span>
+              </span>
+              <span class="platform">D 07</span>
+            </summary>
+            <div class="departure-detail"><strong>Über Alte Schleuse.</strong> Kleinbus mit Mehrzweckfläche.</div>
+          </details>
+          <details class="departure" data-departure-line="U1">
+            <summary>
+              <time class="departure-time" data-departure-offset="15">--:--</time>
+              <span class="departure-destination">
+                <strong>Werfttor</strong>
+                <span class="departure-meta"><span class="mini-line" style="--line-color: var(--u1)">U1</span><span class="countdown" data-countdown="15">in 15 min</span></span>
+              </span>
+              <span class="platform">A 03</span>
+            </summary>
+            <div class="departure-detail"><strong>Über Markthalle.</strong> Regelfahrt des fiktiven Demonstrationsfahrplans.</div>
+          </details>
+        </div>
+        <p class="board-foot">Die Zeiten entstehen aus der lokalen Geräteuhr. Es besteht keine Verbindung zu einem Verkehrsunternehmen.</p>
+      </section>
+    </div>
+
+    <aside class="service-ribbon" data-service-alert aria-label="Geplante Betriebsmeldung">
+      <span class="service-code">PLANMELDUNG M–04</span>
+      <span class="service-copy"><strong>T3 · Haltestelle Speicherstadt</strong><span>Am Sonnabend hält die T3 wegen Marktbetrieb 80 Meter weiter südlich. Fiktive Demonstrationsmeldung.</span></span>
+      <button class="dismiss-alert" type="button" data-dismiss-alert aria-label="Planmeldung schließen">×</button>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Nordhafen Stadtverkehr</div>
+        <p class="footer-note">Konzeptseite für ein fiktives kommunales Verkehrsunternehmen. Keine Fahrplanauskunft, kein Ticketverkauf, keine echten Betriebsdaten.</p>
+      </div>
+      <nav class="footer-links" aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <div class="footer-code">NHV / DEMO 2026<br>Stand: lokal</div>
+    </div>
+  </footer>
+</body>
+</html>

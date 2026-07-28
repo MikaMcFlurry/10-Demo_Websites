@@ -32,7 +32,7 @@ jobs:
       # ── GreenCart (Nuxt 3) ─────────────────────────────────────────────────
       - name: Install GreenCart dependencies
         working-directory: sites/greencart-nuxt
-        run: npm install
+        run: npm ci
 
       - name: Build GreenCart
         working-directory: sites/greencart-nuxt
@@ -44,7 +44,7 @@ jobs:
       # ── AuroraMetrics (Next.js) ────────────────────────────────────────────
       - name: Install AuroraMetrics dependencies
         working-directory: sites/aurorametrics-nextjs
-        run: npm install
+        run: npm ci
 
       - name: Build AuroraMetrics
         working-directory: sites/aurorametrics-nextjs
@@ -56,7 +56,7 @@ jobs:
       # ── Lumen Atelier (Astro) ──────────────────────────────────────────────
       - name: Install Lumen Atelier dependencies
         working-directory: sites/lumen-atelier-astro
-        run: npm install
+        run: npm ci
 
       - name: Build Lumen Atelier
         working-directory: sites/lumen-atelier-astro
@@ -69,11 +69,16 @@ jobs:
       - name: Copy root index and demos
         run: |
           cp index.html ./pages-dist/index.html
+          cp -r portfolio-assets ./pages-dist/portfolio-assets
           cp -r demos ./pages-dist/demos
+          cp -r stimmzettel ./pages-dist/stimmzettel
 
       # ── Schaustücke (statisch, kein Build) ────────────────────────────────
       - name: Copy showcase sites
         run: cp -r showcase ./pages-dist/showcase
+
+      - name: Validate static showcase
+        run: node scripts/validate-static-showcase.mjs ./pages-dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

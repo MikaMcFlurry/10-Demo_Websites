@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kantine Klee – saisonale Küche in Leipzig-Plagwitz</title>
+  <meta name="description" content="Kantine Klee: erfundene Demo eines saisonalen Nachbarschaftsrestaurants mit Mittagskarte, Abendküche und unverbindlicher Reservierungsdemo.">
+  <meta name="theme-color" content="#eadfce">
+  <meta property="og:title" content="Kantine Klee – aus dem Beet auf den Tisch">
+  <meta property="og:description" content="Saisonale Nachbarschaftsküche in einem digitalen Küchenjournal. Vollständig erfundene Portfolio-Demo.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/kantine.css">
+  <script src="assets/kantine.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Kantine Klee",
+    "servesCuisine": "Saisonale europäische Küche",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kanalweg 17",
+      "postalCode": "04229",
+      "addressLocality": "Leipzig",
+      "addressCountry": "DE"
+    },
+    "email": "tisch@kantine-klee.example",
+    "telephone": "+49 341 0000000",
+    "disambiguatingDescription": "Fiktives Restaurant für eine Portfolio-Demonstration."
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <p class="demo-ribbon">Portfolio-Demo · Restaurant, Personen, Adresse und Reservierung sind vollständig erfunden.</p>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Kantine Klee, Startseite">Kantine Klee <span>Plagwitz</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="hauptnavigation" data-menu-toggle>Menü</button>
+    <nav class="primary-nav" id="hauptnavigation" aria-label="Hauptnavigation" data-navigation>
+      <a href="index.html" aria-current="page">Heute</a>
+      <a href="speisekarte.html">Speisekarte</a>
+      <a href="ueber-uns.html">Küche &amp; Leute</a>
+      <a href="besuch.html">Besuch</a>
+    </nav>
+    <button class="reserve-trigger" type="button" data-open-reservation>Tisch anfragen</button>
+  </header>
+
+  <main id="inhalt" class="page-shell">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Aus dem Beet. <em>Auf den Tisch.</em></h1>
+        <p class="lead">Eine kleine Küche für große Töpfe: mittags schnell, abends langsam, immer nach dem, was rings um Leipzig gerade wächst.</p>
+      </div>
+
+      <figure class="plate-study" aria-labelledby="plate-caption">
+        <span class="plate-leaf" aria-hidden="true"></span>
+        <span class="plate-root" aria-hidden="true"></span>
+        <span class="plate-sauce" aria-hidden="true"></span>
+        <figcaption class="plate-caption" id="plate-caption">Tellerstudie · Mangold, Möhre, Paprikaöl</figcaption>
+      </figure>
+
+      <aside class="daily-note" aria-labelledby="daily-title">
+        <p class="note-date">Dienstag · Beispielkarte</p>
+        <h2 id="daily-title">Heute auf dem Zettel</h2>
+        <dl>
+          <div><dt>Geröstete Tomate</dt><dd>8,50</dd></div>
+          <div><dt>Sellerie · Haselnuss</dt><dd>17,00</dd></div>
+          <div><dt>Pflaume · Mohn</dt><dd>7,50</dd></div>
+        </dl>
+      </aside>
+
+      <div class="hero-action">
+        <a class="paper-button paper-button--tomato" href="speisekarte.html">Ganze Karte lesen</a>
+        <small>Die Karte ist Demonstrationsmaterial. Preise und Verfügbarkeit sind nicht real.</small>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="kitchen-heading">
+      <p class="section-label"><span>Notiz aus der Küche</span></p>
+      <div class="journal-columns">
+        <p class="pullquote">„Wir kaufen keine Idee ein. Wir kochen, was morgens in den Kisten liegt.“</p>
+        <div>
+          <h2 id="kitchen-heading">Drei Höfe, eine Mühle, kein Tiefkühlfach.</h2>
+          <p>Unser fiktives Team arbeitet mit kleinen Erzeugerbetrieben aus dem Leipziger Umland. Gemüse kommt in ganzen Kisten, Brot vom Vortag wird zu Bröseln, Schalen wandern in den Fond. Das ist weder Dogma noch Verkaufsversprechen – für diese Demo ist es das redaktionelle Rückgrat einer glaubwürdigen Restaurantgeschichte.</p>
+          <p>Mittags stehen drei Teller auf der Schiefertafel. Abends serviert die Kantine eine kurze Folge aus Gemüse, Getreide und auf Wunsch Fisch. Wer Allergien hat, spricht vor der Bestellung mit dem Service.</p>
+          <a href="ueber-uns.html">Wie die Demo-Küche gedacht ist →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="preview-heading">
+      <p class="section-label">Karte · Juli</p>
+      <h2 id="preview-heading">Was gerade Saison spielt</h2>
+      <div class="menu-preview">
+        <article>
+          <p class="dish-title"><strong>Tomate auf Tomate</strong><strong>8,50</strong></p>
+          <p class="dish-detail">Ochsenherz, klarer Tomatenfond, Johannisbeerblatt · vegan</p>
+        </article>
+        <article>
+          <p class="dish-title"><strong>Sellerie vom Salz</strong><strong>17,00</strong></p>
+          <p class="dish-detail">Haselnuss, geröstete Hefe, Liebstöckel · vegan</p>
+        </article>
+        <article>
+          <p class="dish-title"><strong>Saibling &amp; Gurke</strong><strong>23,00</strong></p>
+          <p class="dish-detail">Geräucherte Molke, Dillblüte, Kartoffelstroh</p>
+        </article>
+        <article>
+          <p class="dish-title"><strong>Pflaume, Mohn, Sauerrahm</strong><strong>7,50</strong></p>
+          <p class="dish-detail">Warmer Mohnkuchen, eingelegte Pflaume · vegetarisch</p>
+        </article>
+      </div>
+      <p style="margin-top:1.5rem"><a class="paper-button paper-button--plain" href="speisekarte.html">Speisekarte mit Ernährungsfilter</a></p>
+    </section>
+
+    <section class="section" aria-labelledby="visit-heading">
+      <p class="section-label"><span>Vorbeikommen</span></p>
+      <h2 id="visit-heading">Mittags ohne Plan. Abends besser mit Tisch.</h2>
+      <div class="visit-strip">
+        <div>
+          <h3>Öffnung</h3>
+          <dl>
+            <div><dt>Di–Fr Mittag</dt><dd>12–15 Uhr</dd></div>
+            <div><dt>Di–Sa Abend</dt><dd>18–23 Uhr</dd></div>
+            <div><dt>So &amp; Mo</dt><dd>Ruhetag</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Adresse der Demo</h3>
+          <address>Kanalweg 17<br>04229 Leipzig-Plagwitz<br><a href="mailto:tisch@kantine-klee.example">tisch@kantine-klee.example</a></address>
+        </div>
+        <p class="stamp">Fiktiver Ort<br>keine echte Buchung</p>
+      </div>
+      <p style="margin-top:1.5rem"><button class="paper-button" type="button" data-open-reservation>Unverbindliche Demo-Anfrage öffnen</button></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Kantine<br>Klee</p>
+      <nav class="footer-nav" aria-label="Sitemap">
+        <strong>Lesen</strong>
+        <a href="speisekarte.html">Speisekarte</a>
+        <a href="ueber-uns.html">Küche &amp; Leute</a>
+        <a href="besuch.html">Besuch</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <strong>Mustertexte</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <p class="footer-demo">Diese Website ist ein nicht kommerzielles Portfolio-Schaustück. Kantine Klee existiert nicht; sämtliche Inhalte sind erfunden. Rechtstexte sind Muster ohne Rechtswirkung.</p>
+    </div>
+  </footer>
+
+  <dialog class="reservation-drawer" aria-labelledby="reservation-title" data-reservation-drawer>
+    <div class="drawer-head">
+      <h2 id="reservation-title">Tischzettel</h2>
+      <button class="drawer-close" type="button" aria-label="Reservierungsanfrage schließen" data-close-reservation>×</button>
+    </div>
+    <form class="reservation-form" data-reservation-form>
+      <p><strong>Nur eine Interaktionsdemo:</strong> Das Formular sendet und speichert keine Daten.</p>
+      <div class="field">
+        <label for="reservation-name">Name *</label>
+        <input id="reservation-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="reservation-email">E-Mail *</label>
+        <input id="reservation-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="reservation-date">Wunschtag *</label>
+        <input id="reservation-date" name="date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="reservation-time">Zeit *</label>
+        <select id="reservation-time" name="time" required>
+          <option value="">Bitte wählen</option>
+          <option>18:00 Uhr</option>
+          <option>19:30 Uhr</option>
+          <option>21:00 Uhr</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="reservation-guests">Personen *</label>
+        <select id="reservation-guests" name="guests" required>
+          <option value="">Bitte wählen</option>
+          <option>1 Person</option><option>2 Personen</option><option>3 Personen</option>
+          <option>4 Personen</option><option>5 Personen</option><option>6 Personen</option>
+        </select>
+        <small>Für größere Runden wäre im echten Betrieb eine direkte Anfrage nötig.</small>
+      </div>
+      <div class="field">
+        <label for="reservation-note">Hinweis</label>
+        <textarea id="reservation-note" name="note" placeholder="Zum Beispiel Allergien oder Kinderstuhl"></textarea>
+      </div>
+      <button class="paper-button paper-button--tomato" type="submit">Demo-Anfrage notieren</button>
+      <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </dialog>
+</body>
+</html>

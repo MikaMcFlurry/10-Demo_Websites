@@ -100,12 +100,11 @@ ersten Viewport steht. Wer umbaut, sollte ihn zuerst lesen.
 
 ## Datenquelle
 
-`kern.js` versucht zuerst `/api/tags` am eigenen Origin. Liegt die Seite hinter
-dem Rewrite aus `vercel.json`, kommen die Daten **live** aus der bestehenden
-Plattform. Sonst greift `daten/fakten.json` — derselbe Bestand, als Auszug.
-
-> Ohne Rewrite meldet die Konsole beim Start einen 404 auf `/api/tags`. Das ist
-> der vorgesehene Weg zum Rückfall, kein Defekt.
+Im statischen Portfolio unter `/stimmzettel/` lädt `kern.js` direkt
+`daten/fakten.json`. Dadurch funktioniert die archivierte GitHub-Pages-Fassung
+ohne absichtlich ausgelösten API-404. Eine separat betriebene Fassung außerhalb
+dieses Pfads versucht weiterhin zuerst `/api/tags` am eigenen Origin und fällt
+bei Bedarf auf denselben lokalen Auszug zurück.
 
 Die Schnittstelle sendet **keine** CORS-Header. Ein direkter Aufruf aus dem
 Browser von einer fremden Domain scheitert deshalb — der Rewrite ist nicht

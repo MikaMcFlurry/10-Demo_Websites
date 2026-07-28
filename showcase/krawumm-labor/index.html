@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KRAWUMM! Kinder-Machmuseum – Anfassen, ausprobieren, weiterfragen</title>
+  <meta name="description" content="KRAWUMM! ist ein fiktives Kinder-Machmuseum in Essen. Drei kleine Experimente zeigen Magnetfelder, additive Farbmischung und Klangwellen direkt im Browser.">
+  <meta name="theme-color" content="#F6E0DB">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/heft.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Museum",
+    "name": "KRAWUMM! Kinder-Machmuseum",
+    "description": "Fiktives Kinder-Machmuseum und Portfolio-Demonstration.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Funkenkai 18",
+      "postalCode": "45127",
+      "addressLocality": "Essen",
+      "addressCountry": "DE"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zu den Experimenten</a>
+
+  <div class="demo-strip">
+    Portfolio-Demo · Museum, Adresse, Zeiten und Preise sind frei erfunden
+  </div>
+
+  <header class="site-head">
+    <a class="brand-lockup" href="index.html" aria-label="KRAWUMM! Startseite">
+      <span class="brand-bang">KRAWUMM!</span>
+      <span class="brand-kind">Kinder-<br>Machmuseum</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-controls="lab-nav" aria-expanded="false">
+      Heft öffnen
+    </button>
+    <nav class="lab-nav" id="lab-nav" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Start</a>
+      <a href="experimente.html">Experimente</a>
+      <a href="besuch.html">Besuch</a>
+      <a href="gruppen.html">Gruppen</a>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <section class="book book--hero" aria-labelledby="starttitel">
+      <div class="book-page page--paper">
+        <span class="folio">Forschungsheft · Nr. 08 · Essen</span>
+        <h1 class="kaboom-title" id="starttitel">KRAWUMM!<span>Mach mit.</span></h1>
+        <p class="hero-lead">Das Museum, in dem Fragen lauter werden.</p>
+        <p class="hero-copy">
+          Drehen, ziehen, mischen, lauschen: Bei uns steht an jeder Station ein
+          Verb. Erwachsene dürfen mitforschen – Kinder haben am Versuchstisch
+          das erste Wort.
+        </p>
+        <a class="sticker-link" href="besuch.html">Besuch ins Heft schreiben →</a>
+        <aside class="margin-note">
+          Laborregel 1: Eine gute Frage darf Flecken machen.
+        </aside>
+        <span class="burst-mark" aria-hidden="true">ab<br>5</span>
+      </div>
+
+      <div class="book-page page--mint">
+        <article aria-labelledby="magnet-titel">
+          <div class="experiment-head">
+            <div>
+              <span class="folio">Versuch A · Feldlinien</span>
+              <h2 class="experiment-word" id="magnet-titel">Magnet</h2>
+            </div>
+            <span class="experiment-number" aria-hidden="true">N↔S</span>
+          </div>
+          <p class="experiment-instruction">
+            Schieben Sie den Magneten. Beobachten Sie, wie sich die
+            Eisenlinien um Nord- und Südpol neu ausrichten.
+          </p>
+          <div class="experiment-stage">
+            <span class="stage-label">Feldanzeige · schematisch</span>
+            <canvas data-magnet-canvas aria-hidden="true"></canvas>
+          </div>
+          <div class="range-wrap">
+            <label for="magnet-position">Magnetposition verändern</label>
+            <input
+              class="experiment-range"
+              id="magnet-position"
+              data-magnet-control
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              aria-describedby="magnet-status"
+            >
+          </div>
+          <p class="experiment-status" id="magnet-status" data-magnet-status aria-live="polite">
+            Magnet in der Mitte: Die Eisenlinien richten sich zwischen Nord- und Südpol aus.
+          </p>
+          <p class="experiment-note">
+            Funktioniert mit Maus, Touch und Pfeiltasten. Die Skizze ist ein
+            vereinfachtes Modell, kein Messinstrument.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="book" aria-label="Zwei weitere Mini-Experimente">
+      <div class="book-page page--canary">
+        <article aria-labelledby="farbe-titel">
+          <div class="experiment-head">
+            <div>
+              <span class="folio">Versuch B · Lichtmischung</span>
+              <h2 class="experiment-word" id="farbe-titel">Farbe</h2>
+            </div>
+            <span class="experiment-number" aria-hidden="true">RGB</span>
+          </div>
+          <p class="experiment-instruction">
+            Schalten Sie Lichtfilter an und aus. Wo sich Licht überlagert,
+            entstehen neue Farben – anders als beim Mischen von Tusche.
+          </p>
+          <div class="experiment-stage filter-stage" aria-hidden="true">
+            <span class="stage-label">Lichttisch · vereinfacht</span>
+            <div class="light-field">
+              <span class="light-disc light-disc--ember" data-light-disc="ember"></span>
+              <span class="light-disc light-disc--mint" data-light-disc="mint"></span>
+              <span class="light-disc light-disc--cobalt" data-light-disc="cobalt"></span>
+            </div>
+          </div>
+          <div class="filter-controls" aria-label="Lichtfilter schalten">
+            <button class="filter-button" type="button" data-filter-button="ember" aria-pressed="true">
+              <span class="swatch swatch--ember" aria-hidden="true"></span>
+              Glut
+            </button>
+            <button class="filter-button" type="button" data-filter-button="mint" aria-pressed="false">
+              <span class="swatch swatch--mint" aria-hidden="true"></span>
+              Minze
+            </button>
+            <button class="filter-button" type="button" data-filter-button="cobalt" aria-pressed="true">
+              <span class="swatch swatch--cobalt" aria-hidden="true"></span>
+              Kobalt
+            </button>
+          </div>
+          <p class="experiment-status" data-filter-status aria-live="polite">
+            Glut plus Kobalt: In der Überlagerung entsteht Magenta.
+          </p>
+        </article>
+      </div>
+
+      <div class="book-page page--cobalt">
+        <article aria-labelledby="klang-titel">
+          <div class="experiment-head">
+            <div>
+              <span class="folio">Versuch C · Schwingung</span>
+              <h2 class="experiment-word" id="klang-titel">Klang</h2>
+            </div>
+            <span class="experiment-number" aria-hidden="true">≈</span>
+          </div>
+          <p class="experiment-instruction">
+            Mehr Wellen im gleichen Fenster bedeuten eine höhere Frequenz.
+            Schieben Sie den Regler – dieser Versuch bleibt bewusst stumm.
+          </p>
+          <div class="experiment-stage sound-stage">
+            <span class="stage-label">Oszilloskop · Modell</span>
+            <canvas data-sound-canvas aria-hidden="true"></canvas>
+          </div>
+          <div class="range-wrap">
+            <label for="sound-frequency">Wellenzahl verändern</label>
+            <input
+              class="experiment-range"
+              id="sound-frequency"
+              data-sound-control
+              type="range"
+              min="1"
+              max="12"
+              value="5"
+              aria-describedby="sound-status"
+            >
+          </div>
+          <p class="experiment-status" id="sound-status" data-sound-status aria-live="polite">
+            5 Wellen im Fenster: mittlere Schwingung – der gedachte Ton steigt. Die Demo bleibt absichtlich stumm.
+          </p>
+          <p class="experiment-note">
+            Im Museum wird die Welle zusätzlich über eine vibrierende Membran fühlbar.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="field-section field-section--ember" aria-labelledby="heute-titel">
+      <div class="field-grid">
+        <div>
+          <h2 class="section-heading" id="heute-titel">Heute im <em>Heft</em></h2>
+          <p class="section-copy">
+            Keine Führung im Gleichschritt. Jede Station hat eine klare Frage,
+            ein sichtbares Ergebnis und Platz für den zweiten Versuch.
+          </p>
+          <a class="sticker-link" href="experimente.html">Alle Stationen aufschlagen →</a>
+        </div>
+        <dl class="station-ledger">
+          <div class="station-row">
+            <dt>Wolke</dt>
+            <dd>Druck ablassen und Wasserdampf beim Entstehen beobachten.</dd>
+            <span class="age">ab 6</span>
+          </div>
+          <div class="station-row">
+            <dt>Funke</dt>
+            <dd>Ladung trennen, Haare aufstellen, Ursache finden.</dd>
+            <span class="age">ab 5</span>
+          </div>
+          <div class="station-row">
+            <dt>Schatten</dt>
+            <dd>Drei Lichtquellen, drei Konturen, kein einziger grauer Fleck.</dd>
+            <span class="age">ab 4</span>
+          </div>
+          <div class="station-row">
+            <dt>Luft</dt>
+            <dd>Eine Papierkugel schwebt im Windkanal und fällt doch nicht.</dd>
+            <span class="age">ab 7</span>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="closing-strip" aria-labelledby="los-titel">
+      <div>
+        <h2 class="short-word" id="los-titel">LOS!</h2>
+        <p>
+          Zwei Stunden sind gut. Neugier darf länger bleiben. Alles zu Zeiten,
+          Demo-Preisen, Barrierefreiheit und Anfahrt steht auf einer Seite.
+        </p>
+      </div>
+      <a class="sticker-link" href="besuch.html">Besuch vorbereiten →</a>
+    </section>
+  </main>
+
+  <footer class="lab-footer">
+    <div>
+      <span class="footer-bang">KRAWUMM!</span>
+      <p class="footer-copy">
+        Kinder-Machmuseum · Funkenkai 18 · 45127 Essen<br>
+        <a href="mailto:hallo@krawumm-labor.example">hallo@krawumm-labor.example</a>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Fußnavigation">
+      <a href="experimente.html">Experimente</a>
+      <a href="besuch.html">Besuch</a>
+      <a href="gruppen.html">Gruppen</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+    <p class="demo-disclaimer">
+      Portfolio-Demo: KRAWUMM!, alle Personen, Angebote, Kontaktdaten, Preise und
+      Termine sind fiktives Demonstrationsmaterial. Es werden keine Daten
+      übertragen, keine Cookies gesetzt und keine Drittanbieter geladen.
+    </p>
+  </footer>
+
+  <script src="assets/labor.js" defer></script>
+</body>
+</html>

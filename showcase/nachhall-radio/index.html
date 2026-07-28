@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NACHHALL RADIO – Freies Kultur- und Archivradio</title>
+  <meta name="description" content="NACHHALL RADIO ist eine fiktive Portfolio-Demo als bedienbarer UKW-Tuner mit Programm und Kassettenarchiv.">
+  <meta name="theme-color" content="#171815">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/radio.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Direkt zum Tuner</a>
+  <div class="demo-line">PORTFOLIO-DEMO · SENDER, FREQUENZEN, PERSONEN UND ARCHIVMATERIAL SIND FIKTIV</div>
+
+  <header class="rack-header">
+    <a class="brand" href="index.html" aria-label="NACHHALL RADIO Startseite">
+      <strong>Nachhall Radio</strong>
+      <span>Freies Kulturband · Essen</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="rack-nav">Menü</button>
+    <nav class="rack-nav" id="rack-nav" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Tuner</a>
+      <a href="programm.html">Programm</a>
+      <a href="archiv.html">Archiv</a>
+      <a href="studio.html">Studio</a>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <section class="rack" aria-labelledby="sendername">
+      <p class="rack-label">
+        <span><span class="lamp" aria-hidden="true"></span>UKW / Band II</span>
+        <span>Modell NH–927 · kein Audiostream</span>
+      </p>
+
+      <div class="tuner-face">
+        <div class="scale-bank">
+          <div>
+            <div class="station-ident">
+              <h1 id="sendername"><span data-station-name>NACHHALL</span> RADIO</h1>
+              <output class="frequency" data-frequency for="tuner">92.7<small>MHz</small></output>
+            </div>
+            <p class="tuner-copy">
+              Ein freies, fiktives Radio für Gespräche aus Werkstätten,
+              Hinterhöfen und Bühnen. Drehen Sie über das Band und finden Sie
+              vier Programmpunkte – vollständig stumm, aber wirklich bedienbar.
+            </p>
+          </div>
+
+          <div>
+            <div class="scale-window" data-scale>
+              <div class="scale-ticks" aria-hidden="true">
+                <span>87.5</span>
+                <span>90</span>
+                <span>92.5</span>
+                <span>95</span>
+                <span>97.5</span>
+                <span>100</span>
+                <span>102.5</span>
+                <span>105</span>
+                <span>108</span>
+              </div>
+            </div>
+            <label for="tuner"><strong>Frequenz abstimmen</strong></label>
+            <input
+              class="tuner-range"
+              id="tuner"
+              data-tuner
+              type="range"
+              min="875"
+              max="1080"
+              step="1"
+              value="927"
+              aria-describedby="tuner-status"
+            >
+            <p class="tuner-status" id="tuner-status" data-tuner-status aria-live="polite">
+              NACHHALL auf 92.7 MHz: Kultur aus dem Revier – live, lokal und mit langen Pausen.
+            </p>
+          </div>
+        </div>
+
+        <aside class="control-bank" aria-label="Tuner-Bedienfeld">
+          <div class="knob-wrap" aria-hidden="true">
+            <span class="knob" data-knob></span>
+            <span class="knob-label">Abstimmung</span>
+          </div>
+
+          <div class="signal-meter">
+            <label for="signal"><span>Signal</span><span>0–100</span></label>
+            <meter id="signal" data-signal min="0" max="100" value="100">100 von 100</meter>
+          </div>
+
+          <div class="preset-bank" aria-label="Senderspeicher">
+            <button class="preset-button" type="button" data-preset="883" aria-pressed="false">
+              A · Freiraum<small>88.3 MHz</small>
+            </button>
+            <button class="preset-button" type="button" data-preset="927" aria-pressed="true">
+              B · Nachhall<small>92.7 MHz</small>
+            </button>
+            <button class="preset-button" type="button" data-preset="974" aria-pressed="false">
+              C · Nachtbus<small>97.4 MHz</small>
+            </button>
+            <button class="preset-button" type="button" data-preset="1031" aria-pressed="false">
+              D · Werkstatt<small>103.1 MHz</small>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="rack" aria-labelledby="heute-titel">
+      <p class="rack-label"><span>Programmlog / Heute</span><span>Bandgeschwindigkeit 4,75 cm/s</span></p>
+      <div class="module-grid">
+        <div class="module-intro">
+          <div>
+            <h2 id="heute-titel">Heute auf Band</h2>
+            <p>
+              Kein algorithmischer Mix: Jede Stunde hat einen Namen, einen
+              Menschen am Pult und einen Grund, gerade jetzt zu laufen.
+            </p>
+          </div>
+          <a class="module-action" href="programm.html">Wochenprogramm öffnen →</a>
+        </div>
+        <div class="program-log">
+          <div class="log-date">
+            <span>Dienstag · Demo-Sendeplan</span>
+            <span>REC LOG 28/07</span>
+          </div>
+          <article class="on-air-row">
+            <time datetime="18:00">18:00</time>
+            <div>
+              <h3>Jenseits der Eile</h3>
+              <p>Ein Gespräch über langsame Arbeit mit der fiktiven Restauratorin Lale Öz.</p>
+            </div>
+            <span class="program-type">Gespräch</span>
+          </article>
+          <article class="schedule-row">
+            <time datetime="20:00">20:00</time>
+            <div>
+              <h3>Staub auf der Nadel</h3>
+              <p>Plattenfunde, B-Seiten und die Geschichten auf den Hüllen.</p>
+            </div>
+            <span class="program-type">Musik</span>
+          </article>
+          <article class="schedule-row">
+            <time datetime="22:00">22:00</time>
+            <div>
+              <h3>Nachtbus 974</h3>
+              <p>Stimmen und Geräusche von der letzten Runde durch das Revier.</p>
+            </div>
+            <span class="program-type">Feature</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="rack" aria-labelledby="archiv-titel">
+      <p class="rack-label"><span>Kassettenmagazin / Vorschau</span><span>Schublade C · 1986–1994</span></p>
+      <div class="module-grid">
+        <div class="module-intro module-intro--tape">
+          <div>
+            <h2 id="archiv-titel">Stimmen bleiben</h2>
+            <p>
+              Das fiktive Archiv bewahrt Mitschnitte nicht als Coverwand,
+              sondern als beschriftete Bänder: Datum, Ort, Stimmen, Zustand.
+            </p>
+          </div>
+          <a class="module-action" href="archiv.html">Kassettendeck bedienen →</a>
+        </div>
+        <div class="program-log">
+          <div class="log-date"><span>Neu digitalisiert</span><span>3 Bänder</span></div>
+          <article class="schedule-row">
+            <time datetime="1989-05-04">C–041</time>
+            <div>
+              <h3>Die letzte Schicht</h3>
+              <p>Werkstor Süd, Stimmen zum Ende eines Walzwerks · 04.05.1989</p>
+            </div>
+            <span class="program-type">32:14</span>
+          </article>
+          <article class="schedule-row">
+            <time datetime="1991-08-17">C–118</time>
+            <div>
+              <h3>Hofkonzert bei Regen</h3>
+              <p>Eine Bühne, zwei Mikrofone und ein sehr lautes Vordach.</p>
+            </div>
+            <span class="program-type">47:08</span>
+          </article>
+          <article class="schedule-row">
+            <time datetime="1993-02-11">C–203</time>
+            <div>
+              <h3>Telefonzelle, Linie offen</h3>
+              <p>Elf anonyme Antworten auf die Frage: Was fehlt dieser Stadt?</p>
+            </div>
+            <span class="program-type">28:51</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="radio-footer">
+    <div>
+      <p class="footer-station"><span>92.7</span> Nachhall Radio</p>
+      <p>Fiktives Kultur- und Archivradio · Bandstraße 27 · 45127 Essen</p>
+      <p><a href="mailto:studio@nachhall-radio.example">studio@nachhall-radio.example</a></p>
+    </div>
+    <nav class="footer-nav" aria-label="Fußnavigation">
+      <a href="programm.html">Programm</a>
+      <a href="archiv.html">Archiv</a>
+      <a href="studio.html">Studio</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+    <p class="legal-note">
+      Portfolio-Demo: NACHHALL RADIO, Frequenzen, Sendungen, Mitschnitte,
+      Personen, Adresse und Kontaktdaten sind frei erfunden. Kein Stream, kein
+      Tracking, keine Cookies und keine externen Laufzeitressourcen.
+    </p>
+  </footer>
+
+  <script src="assets/radio.js" defer></script>
+</body>
+</html>

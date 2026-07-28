@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Abfahrtstafel des fiktiven Nordhafen Stadtverkehrs.">
+  <title>Abfahrten | Nordhafen Stadtverkehr</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/leitsystem.css">
+  <script src="assets/betrieb.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+  <p class="demo-strip">Fiktiver Stadtverkehr · Portfolio-Demonstration · keine echten Fahrplandaten</p>
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="index.html" aria-label="Nordhafen Stadtverkehr, Startseite">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span><span class="brand-name">Nordhafen</span><span class="brand-sub">Stadtverkehr / Verkehrsbetrieb 04</span></span>
+      </a>
+      <div class="clock-block"><span class="clock-label">Lokale Gerätezeit</span><time class="local-clock" data-local-clock>--:--:--</time></div>
+      <div class="status-block"><span class="status-label">Demo-Betrieb</span><span class="status-value"><span class="status-dot" aria-hidden="true"></span>Planmäßig</span></div>
+    </div>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html">Fahrt planen</a></li>
+        <li><a href="abfahrten.html" aria-current="page">Abfahrten</a></li>
+        <li><a href="netz.html">Netz</a></li>
+        <li><a href="service.html">Service</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-shell">
+    <header class="page-lead">
+      <h1 class="page-title">Abfahrten</h1>
+      <div class="page-lead-meta">
+        <p class="page-kicker">Tafel 01 / Gerätezeit</p>
+        <p>Eine lesbare Abfahrtstafel mit Details zu Fahrtweg und Zugänglichkeit. Alle Zeiten werden ausschließlich lokal erzeugt.</p>
+      </div>
+    </header>
+
+    <div class="board-page-layout">
+      <aside class="board-controls" aria-labelledby="filter-heading">
+        <h2 id="filter-heading">Tafel wählen</h2>
+        <p>Die Auswahl filtert das lokale Demonstrationsmaterial.</p>
+        <label for="stop-filter">Haltestelle</label>
+        <select id="stop-filter" data-stop-filter>
+          <option value="all">Alle Haltestellen</option>
+          <option value="Hauptbahnhof">Hauptbahnhof</option>
+          <option value="Markthalle">Markthalle</option>
+          <option value="Werfttor">Werfttor</option>
+        </select>
+        <p class="data-note" data-filter-status role="status">6 Abfahrten für alle Haltestellen</p>
+        <p class="data-note">Aufklappen für Linienweg und Einstiegsinformation.</p>
+      </aside>
+
+      <section class="departure-board full-board" aria-labelledby="board-heading">
+        <h2 class="panel-heading" id="board-heading">Nächste Fahrten <span class="panel-count">lokal berechnet</span></h2>
+        <div class="departure-legend" aria-hidden="true"><span>Zeit</span><span>Richtung</span><span>Steig</span></div>
+        <div class="departure-list">
+          <details class="departure" data-stop="Hauptbahnhof">
+            <summary>
+              <time class="departure-time" data-departure-offset="2">--:--</time>
+              <span class="departure-destination"><strong>Nordkai</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--u1)">U1</span><span class="countdown" data-countdown="2">in 2 min</span> · Hauptbahnhof</span></span>
+              <span class="platform">A 01</span>
+            </summary>
+            <div class="departure-detail"><strong>Hauptbahnhof → Klint → Nordkai.</strong> Der Aufzug zum Steig A ist in dieser Demo als betriebsbereit gekennzeichnet.</div>
+          </details>
+          <details class="departure" data-stop="Markthalle">
+            <summary>
+              <time class="departure-time" data-departure-offset="5">--:--</time>
+              <span class="departure-destination"><strong>Leuchtturm</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--t3)">T3</span><span class="countdown" data-countdown="5">in 5 min</span> · Markthalle</span></span>
+              <span class="platform">C 04</span>
+            </summary>
+            <div class="departure-detail"><strong>Markthalle → Speicherstadt → Deichstraße → Leuchtturm.</strong> Niederflurfahrzeug laut Demonstrationsfahrplan.</div>
+          </details>
+          <details class="departure" data-stop="Hauptbahnhof">
+            <summary>
+              <time class="departure-time" data-departure-offset="8">--:--</time>
+              <span class="departure-destination"><strong>Seegarten</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--u2)">U2</span><span class="countdown" data-countdown="8">in 8 min</span> · Hauptbahnhof</span></span>
+              <span class="platform">B 02</span>
+            </summary>
+            <div class="departure-detail"><strong>Hauptbahnhof → Südfeld → Seegarten.</strong> Mehrzweckbereich im mittleren Fahrzeugteil.</div>
+          </details>
+          <details class="departure" data-stop="Werfttor">
+            <summary>
+              <time class="departure-time" data-departure-offset="12">--:--</time>
+              <span class="departure-destination"><strong>Hauptbahnhof</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--b7)">B7</span><span class="countdown" data-countdown="12">in 12 min</span> · Werfttor</span></span>
+              <span class="platform">D 07</span>
+            </summary>
+            <div class="departure-detail"><strong>Werfttor → Quartierkai → Alte Schleuse → Marktbrücke → Hauptbahnhof.</strong> Kleinbus mit manueller Rampe.</div>
+          </details>
+          <details class="departure" data-stop="Markthalle">
+            <summary>
+              <time class="departure-time" data-departure-offset="15">--:--</time>
+              <span class="departure-destination"><strong>Werfttor</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--u1)">U1</span><span class="countdown" data-countdown="15">in 15 min</span> · Markthalle</span></span>
+              <span class="platform">A 03</span>
+            </summary>
+            <div class="departure-detail"><strong>Markthalle → Dock 8 → Werfttor.</strong> Stufenloser Einstieg an Tür 2 und 3.</div>
+          </details>
+          <details class="departure" data-stop="Werfttor">
+            <summary>
+              <time class="departure-time" data-departure-offset="19">--:--</time>
+              <span class="departure-destination"><strong>Nordkai</strong><span class="departure-meta"><span class="mini-line" style="--line-color: var(--u1)">U1</span><span class="countdown" data-countdown="19">in 19 min</span> · Werfttor</span></span>
+              <span class="platform">A 02</span>
+            </summary>
+            <div class="departure-detail"><strong>Werfttor → Dock 8 → Markthalle → Hauptbahnhof → Klint → Nordkai.</strong> Regelfahrt ohne dargestellte Einschränkung.</div>
+          </details>
+        </div>
+        <p class="board-foot">Kein Echtzeitdienst: Abfahrten werden relativ zur Uhr des Geräts dargestellt und sind Teil dieser Portfolio-Demo.</p>
+      </section>
+    </div>
+
+    <section class="content-section">
+      <div class="prose">
+        <p class="page-kicker">Orientierung am Steig</p>
+        <h2>Ein Blick, drei Antworten</h2>
+        <p>Uhrzeit, Ziel und Steig stehen in einer festen Leserichtung. Zusatzinformationen bleiben in der Ruheansicht zurückgenommen und lassen sich per Tastatur oder Berührung öffnen.</p>
+        <p><a class="button-link" href="service.html">Zugänglichkeit &amp; Service</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><div class="footer-brand">Nordhafen Stadtverkehr</div><p class="footer-note">Fiktive Portfolio-Demonstration ohne echte Fahrplandaten.</p></div>
+      <nav class="footer-links" aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+      <div class="footer-code">NHV / TAFEL 01<br>Stand: lokal</div>
+    </div>
+  </footer>
+</body>
+</html>

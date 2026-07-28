@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speisekarte – Kantine Klee</title>
+  <meta name="description" content="Fiktive Sommerkarte der Kantine Klee mit zugänglichem Filter für vegane, vegetarische und glutenarme Gerichte.">
+  <meta name="theme-color" content="#eadfce">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/kantine.css">
+  <script src="assets/kantine.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <p class="demo-ribbon">Portfolio-Demo · Alle Gerichte, Preise und Angaben sind erfunden.</p>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Kantine Klee, Startseite">Kantine Klee <span>Plagwitz</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="hauptnavigation" data-menu-toggle>Menü</button>
+    <nav class="primary-nav" id="hauptnavigation" aria-label="Hauptnavigation" data-navigation>
+      <a href="index.html">Heute</a><a href="speisekarte.html" aria-current="page">Speisekarte</a>
+      <a href="ueber-uns.html">Küche &amp; Leute</a><a href="besuch.html">Besuch</a>
+    </nav>
+    <button class="reserve-trigger" type="button" data-open-reservation>Tisch anfragen</button>
+  </header>
+
+  <main id="inhalt" class="page-shell">
+    <header class="page-intro">
+      <div>
+        <p class="section-label"><span>Sommerblatt · Demo</span></p>
+        <h1>Kurze Karte. Lange Abende.</h1>
+      </div>
+      <aside class="intro-note">
+        <h2 style="font-size:2rem">So ist sie gemeint</h2>
+        <p>Alle Teller lassen sich teilen, müssen es aber nicht. Die Kennzeichnung dient der Orientierung; bei Allergien wäre immer das persönliche Gespräch entscheidend.</p>
+      </aside>
+    </header>
+
+    <div class="menu-tools" role="group" aria-label="Speisekarte nach Ernährungsweise filtern">
+      <button type="button" data-menu-filter="all" aria-pressed="true">Alles</button>
+      <button type="button" data-menu-filter="vegan" aria-pressed="false">Vegan</button>
+      <button type="button" data-menu-filter="vegetarian" aria-pressed="false">Vegetarisch</button>
+      <button type="button" data-menu-filter="glutenarm" aria-pressed="false">Glutenarm</button>
+      <p class="filter-status" role="status" aria-live="polite" data-filter-status>12 · Alle Gerichte</p>
+    </div>
+
+    <div class="menu-ledger">
+      <section class="menu-course" aria-labelledby="course-small">
+        <div class="course-heading"><h2 id="course-small">Kleine Teller</h2></div>
+        <div class="course-dishes">
+          <article class="menu-row" data-diet="vegan glutenarm">
+            <h3><span class="diet-mark">V</span>Tomate auf Tomate</h3><p class="price">8,50</p>
+            <p class="ingredients">Ochsenherz, klarer Tomatenfond, Johannisbeerblatt</p>
+          </article>
+          <article class="menu-row" data-diet="vegetarian">
+            <h3><span class="diet-mark">Veg</span>Junge Kartoffel</h3><p class="price">9,00</p>
+            <p class="ingredients">Buttermilch, Schnittlauchöl, geröstete Buchweizenbrösel</p>
+          </article>
+          <article class="menu-row" data-diet="vegan glutenarm">
+            <h3><span class="diet-mark">V</span>Gurke &amp; grüne Erdbeere</h3><p class="price">7,50</p>
+            <p class="ingredients">Dill, Senfsaat, Sonnenblumenkerncreme</p>
+          </article>
+          <article class="menu-row" data-diet="vegetarian glutenarm">
+            <h3><span class="diet-mark">Veg</span>Gerösteter Lauch</h3><p class="price">8,00</p>
+            <p class="ingredients">Eigelb, Kapern, Petersilie</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-course" aria-labelledby="course-large">
+        <div class="course-heading"><h2 id="course-large">Große Teller</h2></div>
+        <div class="course-dishes">
+          <article class="menu-row" data-diet="vegan glutenarm">
+            <h3><span class="diet-mark">V</span>Sellerie vom Salz</h3><p class="price">17,00</p>
+            <p class="ingredients">Haselnuss, geröstete Hefe, Liebstöckel</p>
+          </article>
+          <article class="menu-row" data-diet="vegetarian">
+            <h3><span class="diet-mark">Veg</span>Pfifferling &amp; Dinkel</h3><p class="price">19,00</p>
+            <p class="ingredients">Bergkäse, Zwiebeljus, Kerbel</p>
+          </article>
+          <article class="menu-row" data-diet="glutenarm">
+            <h3>Saibling &amp; Gurke</h3><p class="price">23,00</p>
+            <p class="ingredients">Geräucherte Molke, Dillblüte, Kartoffelstroh</p>
+          </article>
+          <article class="menu-row" data-diet="glutenarm">
+            <h3>Freilandhuhn</h3><p class="price">24,00</p>
+            <p class="ingredients">Mangold, schwarze Johannisbeere, Hühnerjus</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="menu-course" aria-labelledby="course-sweet">
+        <div class="course-heading"><h2 id="course-sweet">Danach</h2></div>
+        <div class="course-dishes">
+          <article class="menu-row" data-diet="vegetarian">
+            <h3><span class="diet-mark">Veg</span>Pflaume, Mohn, Sauerrahm</h3><p class="price">7,50</p>
+            <p class="ingredients">Warmer Mohnkuchen, eingelegte Pflaume, Sauerrahmeis</p>
+          </article>
+          <article class="menu-row" data-diet="vegan glutenarm">
+            <h3><span class="diet-mark">V</span>Schwarze Johannisbeere</h3><p class="price">7,00</p>
+            <p class="ingredients">Hafer, Fichtenspitze, Beerensorbet</p>
+          </article>
+          <article class="menu-row" data-diet="vegetarian glutenarm">
+            <h3><span class="diet-mark">Veg</span>Käse vom Brett</h3><p class="price">11,00</p>
+            <p class="ingredients">Drei fiktive Hofkäse, Senffrucht, Kümmel</p>
+          </article>
+          <article class="menu-row" data-diet="vegan glutenarm">
+            <h3><span class="diet-mark">V</span>Kräutertee</h3><p class="price">4,00</p>
+            <p class="ingredients">Zitronenverbene, Minze, Fenchelsaat</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <aside class="allergen-note">
+      <h2 style="font-size:2rem">Wichtiger Hinweis zur Demo</h2>
+      <p>„Glutenarm“ bedeutet hier nicht glutenfrei. Diese Beispielkarte ersetzt keine Allergenkennzeichnung und keine persönliche Beratung. In einem echten Betrieb müssten Rezepturen, Kreuzkontakt und Pflichtangaben tagesaktuell geprüft werden.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Kantine<br>Klee</p>
+      <nav class="footer-nav" aria-label="Sitemap"><strong>Lesen</strong><a href="index.html">Heute</a><a href="ueber-uns.html">Küche &amp; Leute</a><a href="besuch.html">Besuch</a></nav>
+      <nav class="footer-nav" aria-label="Rechtliches"><strong>Mustertexte</strong><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+      <p class="footer-demo">Nicht kommerzielles Portfolio-Schaustück. Das Restaurant existiert nicht; sämtliche Inhalte sind erfunden.</p>
+    </div>
+  </footer>
+
+  <dialog class="reservation-drawer" aria-labelledby="reservation-title" data-reservation-drawer>
+    <div class="drawer-head"><h2 id="reservation-title">Tischzettel</h2><button class="drawer-close" type="button" aria-label="Reservierungsanfrage schließen" data-close-reservation>×</button></div>
+    <form class="reservation-form" data-reservation-form>
+      <p><strong>Nur eine Interaktionsdemo:</strong> Das Formular sendet und speichert keine Daten.</p>
+      <div class="field"><label for="reservation-name">Name *</label><input id="reservation-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="reservation-email">E-Mail *</label><input id="reservation-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="reservation-date">Wunschtag *</label><input id="reservation-date" name="date" type="date" required></div>
+      <div class="field"><label for="reservation-time">Zeit *</label><select id="reservation-time" name="time" required><option value="">Bitte wählen</option><option>18:00 Uhr</option><option>19:30 Uhr</option><option>21:00 Uhr</option></select></div>
+      <div class="field"><label for="reservation-guests">Personen *</label><select id="reservation-guests" name="guests" required><option value="">Bitte wählen</option><option>1 Person</option><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option><option>5 Personen</option><option>6 Personen</option></select></div>
+      <div class="field"><label for="reservation-note">Hinweis</label><textarea id="reservation-note" name="note" placeholder="Zum Beispiel Allergien oder Kinderstuhl"></textarea></div>
+      <button class="paper-button paper-button--tomato" type="submit">Demo-Anfrage notieren</button>
+      <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </dialog>
+</body>
+</html>

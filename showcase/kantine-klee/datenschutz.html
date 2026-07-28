@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datenschutz – Kantine Klee</title>
+  <meta name="description" content="Datenschutz-Muster der fiktiven Portfolio-Demo Kantine Klee mit transparenter Beschreibung der rein lokalen Interaktionen.">
+  <meta name="theme-color" content="#eadfce">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/kantine.css">
+  <script src="assets/kantine.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <p class="demo-ribbon">Portfolio-Demo · Diese Datenschutzerklärung ist ein Muster ohne Rechtswirkung.</p>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Kantine Klee, Startseite">Kantine Klee <span>Plagwitz</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="hauptnavigation" data-menu-toggle>Menü</button>
+    <nav class="primary-nav" id="hauptnavigation" aria-label="Hauptnavigation" data-navigation>
+      <a href="index.html">Heute</a>
+      <a href="speisekarte.html">Speisekarte</a>
+      <a href="ueber-uns.html">Küche &amp; Leute</a>
+      <a href="besuch.html">Besuch</a>
+    </nav>
+    <a class="reserve-trigger" href="besuch.html#reservierung">Tisch anfragen</a>
+  </header>
+
+  <main id="inhalt" class="page-shell">
+    <header class="page-intro">
+      <div>
+        <p class="section-label">Mustertext · verständlich notiert</p>
+        <h1>Datenschutz</h1>
+      </div>
+      <aside class="intro-note">
+        <p><strong>Kurzfassung</strong></p>
+        <p>Diese Demo setzt keine Cookies, lädt keine externen Medien und übermittelt das Reservierungsformular nicht.</p>
+      </aside>
+    </header>
+
+    <div class="legal-layout">
+      <nav class="legal-index" aria-label="Inhalt dieser Seite">
+        <strong>Auf dieser Seite</strong>
+        <ol>
+          <li><a href="#verantwortung">Verantwortung</a></li>
+          <li><a href="#bereitstellung">Bereitstellung</a></li>
+          <li><a href="#lokale-funktionen">Lokale Funktionen</a></li>
+          <li><a href="#kontakt">Kontaktlinks</a></li>
+          <li><a href="#rechte">Betroffenenrechte</a></li>
+        </ol>
+      </nav>
+
+      <div class="legal-copy">
+        <p class="legal-warning">Dieses Datenschutz-Muster beschreibt nur den aktuellen technischen Stand der Portfolio-Demo. Es ist keine Rechtsberatung. Vor einer realen Veröffentlichung mit Buchung, Analyse, Newsletter oder echten Kontaktdaten wäre eine individuelle rechtliche Prüfung notwendig.</p>
+
+        <section id="verantwortung" aria-labelledby="verantwortung-title">
+          <p class="section-label">01</p>
+          <h2 id="verantwortung-title">Verantwortliche Stelle</h2>
+          <p>
+            Kantine Klee Demo GmbH i. G. <strong>(fiktiv)</strong><br>
+            Kanalweg 17, 04229 Leipzig <strong>(Demo-Adresse)</strong><br>
+            E-Mail: <a href="mailto:datenschutz@kantine-klee.example">datenschutz@kantine-klee.example</a>
+          </p>
+          <p>Es existiert keine verantwortliche Stelle im datenschutzrechtlichen Sinn unter diesen Angaben, weil Kantine Klee kein realer Betrieb ist. Für den tatsächlichen Portfolio-Herausgeber müssten hier die richtigen Angaben eingesetzt werden.</p>
+        </section>
+
+        <section id="bereitstellung" aria-labelledby="bereitstellung-title">
+          <p class="section-label">02</p>
+          <h2 id="bereitstellung-title">Technische Bereitstellung</h2>
+          <p>Die Website besteht aus statischen HTML-, CSS-, JavaScript- und SVG-Dateien. Beim Abruf einer öffentlich gehosteten Website werden technisch erforderliche Angaben wie IP-Adresse, Zeitpunkt, angeforderte Datei, Referrer sowie Browser- und Betriebssysteminformationen an den jeweiligen Hostinganbieter übertragen. Der Anbieter kann daraus Server-Protokolle erstellen.</p>
+          <p>Welcher Anbieter, welche Speicherdauer und welche Rechtsgrundlage gelten, hängt vom tatsächlichen Hosting des Portfolios ab. In einer produktiven Datenschutzerklärung müssten diese Informationen konkret ergänzt werden.</p>
+        </section>
+
+        <section id="lokale-funktionen" aria-labelledby="lokale-title">
+          <p class="section-label">03</p>
+          <h2 id="lokale-title">Reservierungsdemo und Speisekartenfilter</h2>
+          <p>Das Reservierungsformular ist eine reine Frontend-Demonstration. Eingaben werden nur kurzfristig im Arbeitsspeicher des geöffneten Browser-Tabs verarbeitet, um Pflichtfelder und eine Erfolgsmeldung zu zeigen. Es gibt keinen Versand, keinen Server-Endpunkt, keine Datenbank und keine Speicherung in Local Storage oder Session Storage.</p>
+          <p>Auch die Ernährungsfilter der Speisekarte arbeiten ausschließlich im Browser: Sie blenden bereits im Dokument vorhandene Gerichte ein oder aus. Daraus entstehen keine Nutzerprofile.</p>
+        </section>
+
+        <section id="kontakt" aria-labelledby="kontakt-title">
+          <p class="section-label">04</p>
+          <h2 id="kontakt-title">Kontaktlinks und externe Inhalte</h2>
+          <p>Links mit <code>mailto:</code> oder <code>tel:</code> können ein auf dem Gerät eingerichtetes E-Mail- beziehungsweise Telefonprogramm öffnen. Ob und welche Daten dort verarbeitet werden, richtet sich nach dem gewählten Programm. Die angezeigten Adressen und Nummern sind in dieser Demo nicht für eine echte Kontaktaufnahme bestimmt.</p>
+          <p>Die Demo ruft keine externen Schriftarten, Karten, Videos, Analyse-Skripte, Social-Media-Widgets oder Consent-Plattformen ab. Sie setzt selbst keine Cookies.</p>
+        </section>
+
+        <section id="rechte" aria-labelledby="rechte-title">
+          <p class="section-label">05</p>
+          <h2 id="rechte-title">Rechte betroffener Personen</h2>
+          <p>Gegenüber einer real verantwortlichen Stelle können – abhängig von den gesetzlichen Voraussetzungen – insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerspruch und Beschwerde bei einer Aufsichtsbehörde bestehen.</p>
+          <p>Da das Demo-Formular keine Daten übermittelt oder speichert, liegen Kantine Klee daraus keine personenbezogenen Daten vor. Etwaige Hosting-Protokolle wären beim tatsächlichen Portfolio-Betreiber und dessen Hostinganbieter einzuordnen.</p>
+          <p>Weitere fiktive Anbieterangaben stehen im <a href="impressum.html">Impressum-Muster</a>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Kantine<br>Klee</p>
+      <nav class="footer-nav" aria-label="Sitemap">
+        <strong>Lesen</strong>
+        <a href="speisekarte.html">Speisekarte</a>
+        <a href="ueber-uns.html">Küche &amp; Leute</a>
+        <a href="besuch.html">Besuch</a>
+      </nav>
+      <nav class="footer-nav" aria-label="Rechtliches">
+        <strong>Mustertexte</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html" aria-current="page">Datenschutz</a>
+      </nav>
+      <p class="footer-demo">Diese Website ist ein nicht kommerzielles Portfolio-Schaustück. Kantine Klee existiert nicht; sämtliche Inhalte sind erfunden. Rechtstexte sind Muster ohne Rechtswirkung.</p>
+    </div>
+  </footer>
+</body>
+</html>

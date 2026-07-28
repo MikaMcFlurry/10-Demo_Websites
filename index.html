@@ -1,459 +1,362 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo-Websites — Portfolio: 5 Schaustücke, 3 Framework-Projekte, 10 Vorlagen</title>
-    <meta name="description" content="Portfolio mit Demo-Websites: fünf Schaustücke mit eigener Gestaltungswelt, drei Framework-Projekte und zehn Vorlagen für kleine Unternehmen in Deutschland. Statisch und ohne externe Abhängigkeiten.">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --text: #1a1a2e;
-            --bg: #fafafa;
-            --card-bg: #ffffff;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --muted: #64748b;
-            --border: #e2e8f0;
-            --radius: 12px;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
-
-        .header {
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .header h1 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
-        }
-        .header p {
-            color: var(--muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .lang-switch {
-            display: inline-flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        .lang-switch span { color: var(--muted); }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem 4rem;
-        }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-        .card-thumb {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            color: #fff;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .card-body {
-            padding: 1.25rem 1.5rem 1.5rem;
-        }
-        .card-body h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-        }
-        .card-body .type {
-            font-size: 0.85rem;
-            color: var(--muted);
-            margin-bottom: 0.75rem;
-        }
-        .card-body p {
-            font-size: 0.95rem;
-            color: #475569;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        .card-links {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        .card-links a {
-            padding: 0.4rem 0.9rem;
-            border-radius: 6px;
-            border: 1px solid var(--accent);
-            transition: background 0.15s, color 0.15s;
-        }
-        .card-links a:first-child {
-            background: var(--accent);
-            color: #fff;
-        }
-        .card-links a:first-child:hover {
-            background: var(--accent-hover);
-            text-decoration: none;
-        }
-        .card-links a:last-child:hover {
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-        .footer a { color: var(--muted); }
-        .footer a:hover { color: var(--accent); }
-
-        @media (max-width: 400px) {
-            .grid { grid-template-columns: 1fr; }
-        }
-
-        .featured-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem 2rem;
-        }
-        .featured-section h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--muted);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .featured-card {
-            display: block;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            text-decoration: none;
-            color: var(--text);
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .featured-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); text-decoration: none; }
-        .featured-card .badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.2rem 0.55rem;
-            border-radius: 999px;
-            margin-bottom: 0.9rem;
-            background: #eff6ff;
-            color: var(--accent);
-        }
-        .featured-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
-        .featured-card p  { font-size: 0.875rem; color: #475569; line-height: 1.55; }
-        .featured-card .arrow { margin-top: 1rem; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
-
-        /* Schaustücke: jede Site hat eine eigene Signaturfarbe, damit die
-           Übersicht zeigt, dass es fünf eigenständige Welten sind. */
-        .showcase-card { border-top: 4px solid var(--sig, var(--accent)); }
-        .showcase-card .badge { background: var(--sig-bg, #eff6ff); color: var(--sig, var(--accent)); }
-        .showcase-card .arrow { color: var(--sig, var(--accent)); }
-        .showcase-card .stack {
-            margin-top: 0.85rem; font-size: 0.75rem; color: var(--muted);
-            letter-spacing: 0.04em; text-transform: uppercase;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#11110f">
+  <title>Zehn Websites. Kein Template. — Mika Webdesign Showcase</title>
+  <meta name="description" content="Zehn eigenständige Demo-Websites aus zehn Branchen — kuratiert als Webdesign-Portfolio, mit älteren Projekten im Archiv.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zehn Websites. Kein Template.">
+  <meta property="og:description" content="Zehn eigenständige digitale Welten in einer kuratierten Webdesign-Sammlung.">
+  <meta property="og:url" content="https://mikamcflurry.github.io/10-Demo_Websites/">
+  <meta property="og:image" content="https://mikamcflurry.github.io/10-Demo_Websites/portfolio-assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Schwarze Ausstellungsgrafik mit großer Zehn und dem Titel: Zehn Websites. Kein Template.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="portfolio-assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="portfolio-assets/portfolio.css">
 </head>
 <body>
-    <a href="#main" style="position:absolute;left:-9999px;top:0;padding:0.5rem;background:var(--accent);color:#fff;z-index:100;" onfocus="this.style.left='0';" onblur="this.style.left='-9999px';">Zum Inhalt springen</a>
+  <a class="skip-link" href="#arbeiten">Direkt zu den Arbeiten</a>
 
-    <header class="header">
-        <h1>Demo-Websites</h1>
-        <p>Fünf Schaustücke mit je eigener Gestaltungswelt, drei Framework-Projekte und zehn Vorlagen für kleine Unternehmen. Statisch, schnell, mobilfreundlich, ohne externe Abhängigkeiten.</p>
-        <div class="lang-switch">
-            <span>Sprache:</span>
-            <strong>DE</strong>
-            <span>|</span>
-            <span>EN (see individual demos)</span>
-        </div>
-    </header>
+  <header class="masthead" aria-labelledby="page-title">
+    <div class="masthead__bar">
+      <span class="masthead__brand">Mika / Web Showcase</span>
+      <nav class="masthead__nav" aria-label="Seitennavigation">
+        <a href="#arbeiten">Arbeiten</a>
+        <a href="#archiv">Archiv</a>
+      </nav>
+    </div>
 
-    <section class="featured-section" aria-label="Schaustücke">
-        <h2>Schaustücke — fünf eigenständige Gestaltungswelten</h2>
-        <p style="font-size:0.9rem;color:var(--muted);margin:-0.5rem 0 1.1rem;max-width:70ch">
-            Fünf Demo-Websites aus fünf Branchen. Jede hat eine eigene visuelle Welt,
-            eine eigene CSS-Architektur und ein eigenes Seitengerüst – keine geteilten
-            Bausteine, keine wiederkehrende Handschrift. Schriften lokal gehostet,
-            keine Cookies, keine Tracker.
+    <div class="masthead__stage">
+      <p class="masthead__number" aria-hidden="true">10</p>
+      <div class="masthead__copy">
+        <p class="masthead__kicker">Ausgabe 2026 · zehn digitale Welten</p>
+        <h1 id="page-title">Zehn Websites.<br>Kein Template.</h1>
+        <p class="masthead__intro">
+          Zehn fiktive Unternehmen, Institutionen und Orte. Jede Website folgt
+          ihrer eigenen visuellen Logik — vom technischen Zeichnungsblatt bis
+          zur optischen Sehprobe. Keine geteilten Komponenten, keine Tracker,
+          kein austauschbares Agentur-Raster.
         </p>
-        <div class="featured-grid">
-            <a class="featured-card showcase-card" href="./showcase/haertl-praezision/"
-               style="--sig:#a08000;--sig-bg:#fdf6d9">
-                <span class="badge">Industrie</span>
-                <h3>HÄRTL Präzisionstechnik</h3>
-                <p>Lohnfertigung, gebaut als technisches Zeichnungsblatt nach DIN 6771:
-                   Blattrahmen mit Zonenmarken, bemaßtes Bauteil im SVG, Schriftfeld als
-                   Kontaktbereich.</p>
-                <p class="stack">Archivo · Azeret Mono · Zinkpapier &amp; Maschinengelb</p>
-                <p class="arrow">Ansehen &rarr;</p>
-            </a>
-            <a class="featured-card showcase-card" href="./showcase/hochofen-festival/"
-               style="--sig:#c4340f;--sig-bg:#fdeae4">
-                <span class="badge">Kultur</span>
-                <h3>HOCHOFEN Festival</h3>
-                <p>Musikfestival als Siebdruck-Plakat im Zweifarben-Überdruck. Das Line-up
-                   ist echter Plakatsatz, die Passerdifferenz fährt beim Laden ein.</p>
-                <p class="stack">Anton · Barlow Semi Condensed · Riso-Duplex</p>
-                <p class="arrow">Ansehen &rarr;</p>
-            </a>
-            <a class="featured-card showcase-card" href="./showcase/weingut-steinhalde/"
-               style="--sig:#5f7d17;--sig-bg:#f0f6e0">
-                <span class="badge">Landwirtschaft</span>
-                <h3>Weingut Steinhalde</h3>
-                <p>Man scrollt durch die Keuper-Schichten des Remstals. Links läuft ein
-                   Tiefenlineal mit, die Weine stehen als Analysetafel statt als Karten.</p>
-                <p class="stack">Vollkorn · Jost · Bodenprofil auf dunklem Grund</p>
-                <p class="arrow">Ansehen &rarr;</p>
-            </a>
-            <a class="featured-card showcase-card" href="./showcase/brandt-ostermann/"
-               style="--sig:#0f5563;--sig-bg:#e2f1f4">
-                <span class="badge">Recht</span>
-                <h3>Brandt Ostermann Rechtsanwälte</h3>
-                <p>Kanzlei als Aktenregister: Navigation über farbige Registerreiter,
-                   Inhalte gesetzt wie ein Schriftsatz mit Randziffern und Aktenzeichen.</p>
-                <p class="stack">Spectral · Libre Franklin · Aktenpapier &amp; Registerfarben</p>
-                <p class="arrow">Ansehen &rarr;</p>
-            </a>
-            <a class="featured-card showcase-card" href="./showcase/blockwerk-boulder/"
-               style="--sig:#8a6b00;--sig-bg:#fdf3d4">
-                <span class="badge">Sport</span>
-                <h3>BLOCKWERK Boulderhalle</h3>
-                <p>Routenboard statt Werbeseite: Sektorplan als SVG, filterbare Routenliste
-                   nach Griffkartenfarbe, Öffnungsstatus und Auslastung in Echtzeit.</p>
-                <p class="stack">Bricolage Grotesque · Hanken Grotesk · Griffkartenfarben</p>
-                <p class="arrow">Ansehen &rarr;</p>
-            </a>
+      </div>
+    </div>
+
+    <div class="masthead__foot">
+      <div class="masthead__ledger" aria-label="Umfang der Sammlung">
+        <span><b>05</b> Claude</span>
+        <span><b>05</b> Codex</span>
+        <span><b>01</b> Archiv</span>
+      </div>
+      <span class="masthead__clock"><span data-clock>–:–</span> · Berlin</span>
+    </div>
+  </header>
+
+  <main id="arbeiten">
+    <section class="collection collection--claude" aria-labelledby="claude-title">
+      <header class="collection__head">
+        <p class="collection__edition">
+          Sammlung A / 01–05
+          <span>Entworfen mit Claude Code</span>
+        </p>
+        <h2 class="collection__title" id="claude-title">Fünf <i>Fundstücke</i></h2>
+      </header>
+
+      <a class="work" href="showcase/haertl-praezision/" aria-label="Härtl Präzisionstechnik ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>01 / Industrie</span><span>Technisches Zeichnungsblatt</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Härtl Präzision</h3>
+            <p class="work__description">
+              Lohnfertigung als DIN-Zeichnung: Maßketten, Blattrahmen und
+              Schriftfeld bilden die Website, statt sie nur zu dekorieren.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
         </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-blueprint">
+            <span class="blueprint-part"></span>
+            <span class="blueprint-note">Ø 42 h6 · Ra 0,8</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/hochofen-festival/" aria-label="Hochofen Festival ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>02 / Kultur</span><span>Zweifarben-Siebdruck</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Hochofen Festival</h3>
+            <p class="work__description">
+              Ein Musikfestival als Plakatwand: Orange und Ultramarin laufen
+              absichtlich aus dem Passer, das Line-up setzt die Hierarchie.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-riso">
+            <span class="riso-red"></span>
+            <span class="riso-blue"></span>
+            <span class="riso-word"><span>Hoch</span><span>Ofen</span></span>
+            <span class="riso-date">17–19 JUL · BOCHUM</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/weingut-steinhalde/" aria-label="Weingut Steinhalde ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>03 / Weinbau</span><span>Geologisches Profil</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Weingut Steinhalde</h3>
+            <p class="work__description">
+              Der Scrollweg führt durch Keuper, Mergel und Stubensandstein.
+              Weine erscheinen als Analysewerte — nicht als Produktkacheln.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-soil">
+            <span class="soil-layer">Oberboden <b class="soil-depth">0–22 cm</b></span>
+            <span class="soil-layer">Lehm <b class="soil-depth">22–61 cm</b></span>
+            <span class="soil-layer">Bunter Mergel <b class="soil-depth">61–118 cm</b></span>
+            <span class="soil-layer">Gipskeuper <b class="soil-depth">118–162 cm</b></span>
+            <span class="soil-layer">Stubensandstein <b class="soil-depth">ab 162 cm</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/brandt-ostermann/" aria-label="Brandt Ostermann Rechtsanwälte ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>04 / Recht</span><span>Akte und Register</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Brandt Ostermann</h3>
+            <p class="work__description">
+              Eine Kanzlei als Registratur: Randziffern, Aktenzeichen und
+              farbige Reiter führen durch Mandate, Honorar und Erstberatung.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-file">
+            <div class="file-sheet">
+              <span class="file-code">AZ 14 O 278/25 · BAND II</span>
+              <p class="file-title">In Sachen Zukunft.</p>
+              <span class="file-lines"><i></i><i></i><i></i></span>
+            </div>
+            <span class="file-tabs"><i></i><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/blockwerk-boulder/" aria-label="Blockwerk Boulderhalle ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>05 / Sport</span><span>Routenboard</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Blockwerk Boulder</h3>
+            <p class="work__description">
+              Sektorplan und Griffkartenfarbe stehen vor Werbung: filterbare
+              Routen, Schraubplan und echte Öffnungslogik machen die Halle greifbar.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-boulder">
+            <i class="hold"></i><i class="hold"></i><i class="hold"></i><i class="hold"></i>
+            <i class="hold"></i><i class="hold"></i><i class="hold"></i><i class="hold"></i>
+            <span class="boulder-label">6C+</span>
+          </div>
+        </div>
+      </a>
     </section>
 
-    <section class="featured-section" aria-label="Featured demo sites">
-        <h2>Featured — Live on GitHub Pages</h2>
-        <div class="featured-grid">
-            <a class="featured-card" href="./greencart/">
-                <span class="badge">Nuxt 3</span>
-                <h3>GreenCart</h3>
-                <p>Sustainable e-commerce storefront with transparent sourcing and low-impact everyday goods.</p>
-                <p class="arrow">View site &rarr;</p>
-            </a>
-            <a class="featured-card" href="./aurorametrics/">
-                <span class="badge">Next.js</span>
-                <h3>AuroraMetrics</h3>
-                <p>Analytics dashboard with real-time charts, team management, audit logs, and pricing pages.</p>
-                <p class="arrow">View site &rarr;</p>
-            </a>
-            <a class="featured-card" href="./lumen-atelier/">
-                <span class="badge">Astro</span>
-                <h3>Lumen Atelier</h3>
-                <p>Editorial digital studio portfolio with project case studies, journal, gallery, and contact.</p>
-                <p class="arrow">View site &rarr;</p>
-            </a>
+    <section class="collection collection--codex" aria-labelledby="codex-title">
+      <header class="collection__head">
+        <p class="collection__edition">
+          Sammlung B / 06–10
+          <span>Entworfen mit Codex</span>
+        </p>
+        <h2 class="collection__title" id="codex-title">Fünf <i>Gegenwelten</i></h2>
+      </header>
+
+      <a class="work" href="showcase/kantine-klee/" aria-label="Kantine Klee ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>06 / Gastronomie</span><span>Küchenjournal</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Kantine Klee</h3>
+            <p class="work__description">
+              Saisonale Nachbarschaftsküche als zerrissenes Magazin: Menü,
+              Kassenbon und Reservierungsschublade statt glatter Restaurantvorlage.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
         </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-klee">
+            <span class="klee-photo"></span>
+            <span class="klee-ticket">DIENSTAG<br>12:00–22:00<br>TISCH 04</span>
+            <span class="klee-word">KLEE</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/nachhall-radio/" aria-label="Nachhall Radio ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>07 / Audio</span><span>Sendepult</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Nachhall Radio</h3>
+            <p class="work__description">
+              Community-Radio als physischer Tuner: Frequenzskala, Programmtasten
+              und Kassettenarchiv — ohne die Gesten einer Streaming-App.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-radio">
+            <span class="radio-scale"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="radio-needle"></span>
+            <span class="radio-controls">
+              <b class="radio-frequency">94.6</b>
+              <i class="radio-dial"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/krawumm-labor/" aria-label="Krawumm Labor ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>08 / Bildung</span><span>Experimentierheft</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Krawumm Labor</h3>
+            <p class="work__description">
+              Ein Machmuseum zum Anfassen: Magnetfeld, additive Farben und
+              Klangwelle sind echte kleine Experimente in einer lebhaften Heftwelt.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-lab">
+            <span class="lab-grid"></span>
+            <i class="lab-shape lab-shape--sun"></i>
+            <i class="lab-shape lab-shape--wave"></i>
+            <i class="lab-shape lab-shape--pill"></i>
+            <span class="lab-word">KRA<span>WUMM!</span></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/nordhafen-verkehr/" aria-label="Nordhafen Verkehr ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>09 / Mobilität</span><span>Leitsystem</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Nordhafen Verkehr</h3>
+            <p class="work__description">
+              Die Website ist bereits die Haltestelle: Planer, Liniennetz,
+              Abfahrtstafel und Störungsdetails bilden ein kommunales Betriebssystem.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-transit">
+            <i class="transit-line transit-line--a"></i>
+            <i class="transit-line transit-line--b"></i>
+            <i class="transit-line transit-line--c"></i>
+            <span class="transit-board">NÄCHSTE ABFAHRT<b>U4 · 03</b> MIN</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="work" href="showcase/fokus40-augenatelier/" aria-label="Fokus 40 Augenatelier ansehen">
+        <div class="work__copy">
+          <p class="work__meta"><span>10 / Optometrie</span><span>Sehprobe und Linsen</span></p>
+          <div class="work__body">
+            <h3 class="work__title">Fokus 40 Augenatelier</h3>
+            <p class="work__description">
+              Sehzeichen, Farbfilter und Linsenfassungen werden zur Boutique:
+              Ein zugänglicher Fokusvergleich erklärt, statt Diagnosen zu versprechen.
+            </p>
+          </div>
+          <p class="work__action"><span>Projekt öffnen</span><span class="work__arrow" aria-hidden="true">↗</span></p>
+        </div>
+        <div class="work__visual" aria-hidden="true">
+          <div class="spec-focus">
+            <span class="focus-chart"><span>E</span><span>F P</span><span>T O Z</span><span>L P E D</span></span>
+            <span class="focus-lenses">
+              <i class="focus-lens"></i>
+              <i class="focus-lens"></i>
+              <i class="focus-bridge"></i>
+            </span>
+          </div>
+        </div>
+      </a>
     </section>
 
-    <main id="main" class="grid" role="main">
+    <section class="archive" id="archiv" aria-labelledby="archive-title">
+      <details data-archive>
+        <summary id="archive-title" aria-expanded="false">Frühere Websites <span aria-hidden="true">14</span></summary>
+        <p class="archive__intro">
+          Die früheren Framework-Projekte, Branchenvorlagen und das interaktive
+          Stimmzettel-Experiment bleiben vollständig erreichbar, stehen aber nicht
+          mehr in Konkurrenz zur aktuellen Zehner-Auswahl.
+        </p>
 
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #8B4513, #D4A574);" aria-label="Café & Restaurant Vorschau">
-                <!-- Thumbnail placeholder — replace with screenshot -->
-                Café & Restaurant
-            </div>
-            <div class="card-body">
-                <h2>Café Goldstück</h2>
-                <p class="type">Café / Restaurant</p>
-                <p>Gemütliches Café mit hausgemachten Kuchen, Frühstück und saisonaler Speisekarte. Warme Farben, einladend.</p>
-                <div class="card-links">
-                    <a href="demos/cafe-restaurant/">DE Version</a>
-                    <a href="demos/cafe-restaurant/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
+        <div class="archive__groups">
+          <section class="archive__group" aria-labelledby="archive-special">
+            <h3 id="archive-special">Einzelprojekt</h3>
+            <ul class="archive__list">
+              <li><a href="stimmzettel/"><span>Demokratie am Küchentisch</span><small>Paarvergleich</small></a></li>
+            </ul>
+          </section>
 
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #1a3a5c, #f5a623);" aria-label="Elektriker Vorschau">
-                Elektriker
-            </div>
-            <div class="card-body">
-                <h2>Blitz Elektrotechnik</h2>
-                <p class="type">Elektriker</p>
-                <p>Zuverlässige Elektroinstallationen, Smart-Home-Lösungen und 24h-Notdienst. Professionell und vertrauenswürdig.</p>
-                <div class="card-links">
-                    <a href="demos/electrician/">DE Version</a>
-                    <a href="demos/electrician/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
+          <section class="archive__group" aria-labelledby="archive-frameworks">
+            <h3 id="archive-frameworks">Framework-Projekte</h3>
+            <ul class="archive__list">
+              <li><a href="greencart/"><span>GreenCart</span><small>Nuxt 3</small></a></li>
+              <li><a href="aurorametrics/"><span>AuroraMetrics</span><small>Next.js</small></a></li>
+              <li><a href="lumen-atelier/"><span>Lumen Atelier</span><small>Astro</small></a></li>
+            </ul>
+          </section>
 
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #2a7a6a, #a7d7c5);" aria-label="Physiotherapie Vorschau">
-                Physiotherapie
-            </div>
-            <div class="card-body">
-                <h2>Praxis Bewegungszeit</h2>
-                <p class="type">Physiotherapie</p>
-                <p>Ganzheitliche Physiotherapie mit modernen Behandlungsmethoden. Ruhig, heilend, professionell.</p>
-                <div class="card-links">
-                    <a href="demos/physiotherapy/">DE Version</a>
-                    <a href="demos/physiotherapy/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
+          <section class="archive__group" aria-labelledby="archive-templates">
+            <h3 id="archive-templates">Branchenvorlagen</h3>
+            <ul class="archive__list">
+              <li><a href="demos/cafe-restaurant/"><span>Café Goldstück</span><small>Café / Restaurant</small></a></li>
+              <li><a href="demos/electrician/"><span>Blitz Elektrotechnik</span><small>Elektriker</small></a></li>
+              <li><a href="demos/physiotherapy/"><span>Praxis Bewegungszeit</span><small>Physiotherapie</small></a></li>
+              <li><a href="demos/barber-salon/"><span>Schnittwerk</span><small>Barbershop</small></a></li>
+              <li><a href="demos/tax-advisor/"><span>Kanzlei Finanzklar</span><small>Steuerberatung</small></a></li>
+              <li><a href="demos/fitness-pt/"><span>PowerHouse Fitness</span><small>Training</small></a></li>
+              <li><a href="demos/real-estate/"><span>Haus &amp; Grund Immobilien</span><small>Immobilien</small></a></li>
+              <li><a href="demos/event-dj/"><span>DJ Marco Events</span><small>Event-DJ</small></a></li>
+              <li><a href="demos/auto-repair/"><span>AutoFit Werkstatt</span><small>Kfz-Werkstatt</small></a></li>
+              <li><a href="demos/coaching/"><span>Coaching Impuls</span><small>Beratung</small></a></li>
+            </ul>
+          </section>
+        </div>
+      </details>
+    </section>
+  </main>
 
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #1a1a2e, #c9a96e);" aria-label="Friseur/Barbershop Vorschau">
-                Friseur / Barbershop
-            </div>
-            <div class="card-body">
-                <h2>Schnittwerk Barbershop</h2>
-                <p class="type">Friseur / Barbershop</p>
-                <p>Klassische Herrenhaarschnitte und moderne Styles. Dunkel, elegant, maskulin.</p>
-                <div class="card-links">
-                    <a href="demos/barber-salon/">DE Version</a>
-                    <a href="demos/barber-salon/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
+  <footer class="site-footer">
+    <p class="site-footer__statement">Gebaut, um verschieden zu sein.</p>
+    <div class="site-footer__meta">
+      <p>
+        Alle Marken, Personen, Adressen und Angebote sind fiktiv.
+        Die Websites dienen ausschließlich als Demonstrations- und Portfolioprojekte.
+      </p>
+      <a href="https://github.com/MikaMcFlurry/10-Demo_Websites/tree/claude/portfolio-websites-five-qda4ge">Quellcode auf GitHub ↗</a>
+    </div>
+  </footer>
 
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #1a2744, #5b7fa5);" aria-label="Steuerberater Vorschau">
-                Steuerberater
-            </div>
-            <div class="card-body">
-                <h2>Kanzlei Finanzklar</h2>
-                <p class="type">Steuerberater</p>
-                <p>Kompetente Steuerberatung für Unternehmen und Privatpersonen. Seriös, vertrauenswürdig, klar.</p>
-                <div class="card-links">
-                    <a href="demos/tax-advisor/">DE Version</a>
-                    <a href="demos/tax-advisor/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #e63946, #1d3557);" aria-label="Fitness/Personal Training Vorschau">
-                Fitness / Personal Training
-            </div>
-            <div class="card-body">
-                <h2>PowerHouse Fitness</h2>
-                <p class="type">Fitnessstudio / Personal Training</p>
-                <p>Individuelles Training und Gruppenkurse. Energetisch, motivierend, ergebnisorientiert.</p>
-                <div class="card-links">
-                    <a href="demos/fitness-pt/">DE Version</a>
-                    <a href="demos/fitness-pt/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #0a2463, #3e92cc);" aria-label="Immobilienmakler Vorschau">
-                Immobilienmakler
-            </div>
-            <div class="card-body">
-                <h2>Heimwert Immobilien</h2>
-                <p class="type">Immobilienmakler</p>
-                <p>Professionelle Immobilienvermittlung mit persönlicher Beratung. Modern, vertrauenswürdig, kompetent.</p>
-                <div class="card-links">
-                    <a href="demos/real-estate/">DE Version</a>
-                    <a href="demos/real-estate/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #6b21a8, #ec4899);" aria-label="Event DJ Vorschau">
-                Event DJ / Hochzeit
-            </div>
-            <div class="card-body">
-                <h2>DJ Momentum</h2>
-                <p class="type">Event DJ / Hochzeit</p>
-                <p>Professioneller DJ-Service für Hochzeiten, Firmenevents und private Feiern. Dynamisch, stimmungsvoll.</p>
-                <div class="card-links">
-                    <a href="demos/event-dj/">DE Version</a>
-                    <a href="demos/event-dj/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #c0392b, #2c3e50);" aria-label="KFZ Werkstatt Vorschau">
-                KFZ Werkstatt
-            </div>
-            <div class="card-body">
-                <h2>AutoFix Werkstatt</h2>
-                <p class="type">KFZ Werkstatt</p>
-                <p>Meisterbetrieb für alle Marken. TÜV-Vorbereitung, Reparaturen und Wartung. Zuverlässig, fair, transparent.</p>
-                <div class="card-links">
-                    <a href="demos/auto-repair/">DE Version</a>
-                    <a href="demos/auto-repair/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-thumb" style="background: linear-gradient(135deg, #0d9488, #f59e0b);" aria-label="Coaching/Beratung Vorschau">
-                Coaching / Beratung
-            </div>
-            <div class="card-body">
-                <h2>Klarvision Coaching</h2>
-                <p class="type">Coaching / Beratung</p>
-                <p>Persönliches und berufliches Coaching für nachhaltige Veränderung. Warm, professionell, inspirierend.</p>
-                <div class="card-links">
-                    <a href="demos/coaching/">DE Version</a>
-                    <a href="demos/coaching/en.html">EN Version</a>
-                </div>
-            </div>
-        </article>
-
-    </main>
-
-    <footer class="footer">
-        <p>Demo-Vorlagen &mdash; Alle rechtlichen Texte sind Platzhalter und müssen von einem Anwalt geprüft werden.</p>
-        <p style="margin-top:0.5rem;"><a href="README.md">Dokumentation</a> · <a href="LEGAL_TEMPLATE.md">Rechtliche Hinweise</a></p>
-    </footer>
+  <script src="portfolio-assets/portfolio.js" defer></script>
 </body>
 </html>

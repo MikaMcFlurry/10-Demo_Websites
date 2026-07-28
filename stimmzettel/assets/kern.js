@@ -62,9 +62,6 @@
 
   var daten = null;
 
-  /* Hinweis: Liegt die Seite nicht hinter einem Rewrite auf die Nexus-API,
-     schlägt dieser Aufruf fehl und die Konsole zeigt einen 404. Das ist der
-     vorgesehene Weg, kein Defekt – danach greift der eingebettete Datensatz. */
   function ausApi() {
     return fetch('/api/tags', { headers: { accept: 'application/json' } })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -115,8 +112,17 @@
 
   function holen() {
     if (daten) return Promise.resolve(daten);
-    return ausApi()
-      .catch(function () { return ausDatei(); })
+    /* Im statischen Portfolio ist der lokale Auszug die primäre Quelle. So
+       entsteht auf GitHub Pages kein absichtlich provozierter API-404. Eine
+       separat betriebene Fassung außerhalb von /stimmzettel/ kann weiterhin
+       die gleich-originige API verwenden und fällt bei Bedarf lokal zurück. */
+    var statischesPortfolio = global.location &&
+      /\/stimmzettel(?:\/|$)/.test(global.location.pathname);
+    var quelle = statischesPortfolio
+      ? ausDatei()
+      : ausApi().catch(function () { return ausDatei(); });
+
+    return quelle
       .then(function (j) {
         daten = j;
         daten.nach = {};

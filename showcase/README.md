@@ -1,105 +1,125 @@
-# Schaustücke — fünf eigenständige Gestaltungswelten
+# Schaustücke — zehn eigenständige Gestaltungswelten
 
-Fünf Demo-Websites aus fünf Branchen. Sie teilen sich **nichts**: kein Framework,
-keine gemeinsame CSS-Datei, keine wiederkehrenden Bausteine, keine gemeinsame
-Farb- oder Schriftlogik. Jede Site hat ein eigenes Seitengerüst, das aus ihrem
-Gegenstand kommt statt aus einer Vorlage.
+Zehn Demo-Websites aus zehn Branchen. Sie teilen weder Framework noch
+Komponenten, Raster, Farb- oder Bewegungslogik. Jede Site hat sechs vollständige
+Seiten und ein Seitengerüst, das aus ihrem Gegenstand statt aus einer Vorlage
+entsteht.
 
-| Site | Branche | Form | Schriften |
-|---|---|---|---|
-| [`haertl-praezision`](haertl-praezision/) | Zerspanung, Lohnfertigung | Technisches Zeichnungsblatt nach DIN 6771 | Archivo, Azeret Mono |
-| [`hochofen-festival`](hochofen-festival/) | Musikfestival | Siebdruck-Plakat, Zweifarben-Überdruck | Anton, Barlow Semi Condensed |
-| [`weingut-steinhalde`](weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Vollkorn, Jost |
-| [`brandt-ostermann`](brandt-ostermann/) | Wirtschaftskanzlei | Aktenregister und Schriftsatz | Spectral, Libre Franklin |
-| [`blockwerk-boulder`](blockwerk-boulder/) | Boulderhalle | Routenboard und Sektorplan | Bricolage Grotesque, Hanken Grotesk |
+| # | Site | Branche | Form | Schriften | Kollektion |
+|---:|---|---|---|---|---|
+| 01 | [`haertl-praezision`](haertl-praezision/) | Zerspanung | Technisches Zeichnungsblatt | Archivo, Azeret Mono | Claude Code |
+| 02 | [`hochofen-festival`](hochofen-festival/) | Musikfestival | Zweifarbiger Siebdruck | Anton, Barlow Semi Condensed | Claude Code |
+| 03 | [`weingut-steinhalde`](weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Vollkorn, Jost | Claude Code |
+| 04 | [`brandt-ostermann`](brandt-ostermann/) | Wirtschaftsrecht | Aktenregister und Schriftsatz | Spectral, Libre Franklin | Claude Code |
+| 05 | [`blockwerk-boulder`](blockwerk-boulder/) | Bouldern | Routenboard und Sektorplan | Bricolage Grotesque, Hanken Grotesk | Claude Code |
+| 06 | [`kantine-klee`](kantine-klee/) | Gastronomie | Analoges Küchenjournal | Georgia, Arial Narrow | Codex |
+| 07 | [`nachhall-radio`](nachhall-radio/) | Kultur / Audio | Tunerfront und Kassettenarchiv | Antonio, Commissioner | Codex |
+| 08 | [`krawumm-labor`](krawumm-labor/) | Bildung | Interaktives Experimentierheft | Bowlby One SC, Atkinson Hyperlegible | Codex |
+| 09 | [`nordhafen-verkehr`](nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Chivo, Azeret Mono | Codex |
+| 10 | [`fokus40-augenatelier`](fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenwerkbank | Archivo, Jost | Codex |
 
-## Was jede Site anders macht
+## Die zehn Richtungen
 
-**Härtl Präzisionstechnik** ist ein Zeichnungsblatt. Blattrahmen mit Zonenmarken
-A–F und 1–4, Schriftfeld unten rechts als Kontaktbereich, das Bauteil als SVG mit
-echten Maßketten, Form- und Lagetoleranz und Bezugsdreieck. Der Maschinenpark
-steht als Datentabelle, nicht als Kachelraster. Beim Laden konstruiert sich die
-Zeichnung einmal selbst.
+**Härtl Präzisionstechnik** ist ein Zeichnungsblatt mit Zonenmarken, Maßketten,
+Toleranzen und einem Schriftfeld als Kontaktbereich. Maschinen stehen in einer
+Datentabelle statt in einem Kartenraster.
 
 **HOCHOFEN Festival** ist eine Plakatwand. Leuchtorange und Ultramarin liegen im
-Multiply-Überdruck übereinander, die Orangeplatte fährt beim Laden in den Passer.
-Das Line-up ist echter Plakatsatz: die Schriftgröße folgt der Position im Billing.
-Der Laufplan ist ein Zeitraster und markiert den gerade laufenden Slot.
+Siebdruck-Überdruck übereinander; Line-up und Laufplan funktionieren als
+Plakatsatz und Zeitraster.
 
-**Weingut Steinhalde** ist ein Bodenprofil. Man scrollt durch die
-Keuper-Schichtenfolge des Remstals; links läuft ein Tiefenlineal in Zentimetern
-mit und benennt den Horizont, in dem man gerade liest. Die Weine stehen als
-Analysetafel mit Alkohol, Restzucker und Säure.
+**Weingut Steinhalde** führt durch ein geologisches Bodenprofil. Tiefenlineal,
+Keuper-Schichten und eine Analysetafel ersetzen die übliche Weingut-Bildstrecke.
 
-**Brandt Ostermann** ist eine Registratur. Navigiert wird über Registerreiter in
-den Farben eines Ordnerregisters; der Reiter des sichtbaren Abschnitts zieht aus
-dem Register heraus. Inhalte sind gesetzt wie ein Schriftsatz: Marginalspalte mit
-Paragraf und Randziffern, Verfahren mit Aktenzeichen.
+**Brandt Ostermann** ist eine Registratur mit farbigen Registerreitern,
+Marginalspalte, Randziffern und echten Aktenzeichen.
 
-**BLOCKWERK** ist ein Routenboard. Der Sektorplan der Halle liegt als SVG im
-ersten Viewport; das Board darunter lässt sich nach Griffkartenfarbe filtern, und
-wer über einen Sektor fährt, sieht die zugehörigen Zeilen aufleuchten. Öffnungs­status
-und Auslastung berechnen sich aus Wochentag und Uhrzeit.
+**BLOCKWERK** ist ein Routenboard. Sektorplan, Griffkartenfilter, Schraubplan und
+lokal berechnete Auslastung machen die Halle bedienbar.
 
-## Technisch
+**Kantine Klee** ist ein täglich beklebtes Küchenjournal: abstrahierter Teller,
+Tageszettel, Saisonkarte und Kassenbon-Logik. Ein Ernährungsfilter und eine
+unverbindliche Reservierungsdemo sind vollständig tastaturbedienbar.
 
-- **Statisch.** Reines HTML, CSS und JavaScript ohne Build-Schritt. Ordner
-  hochladen genügt.
-- **Keine externen Anfragen.** Schriften liegen als woff2 im jeweiligen
-  `assets/fonts/` und werden über eine lokale `fonts.css` eingebunden. Kein
-  Google-Fonts-CDN, kein Analytics, keine Einbettungen, keine Cookies.
-- **Zugänglich.** Ein `h1` je Seite, `lang="de"`, Sprunglink, sichtbarer
-  Fokusring, beschriftete SVG-Grafiken, `prefers-reduced-motion` respektiert.
-  Textkontraste erfüllen WCAG AA.
-- **Responsiv.** Alle 30 Seiten bei 1440 px und 390 px ohne Querlauf geprüft.
-- **Deutsche Typografie.** Halbgeviertstrich statt Geviertstrich, Silbentrennung
-  für Komposita, Tabellenziffern bei Messwerten.
+**NACHHALL RADIO** ist ein physisches Empfangsgerät. Frequenzregler und Presets
+stimmen vier fiktive Sender ab; Wochenprogramm und Kassettendeck erschließen ein
+stummes, beschriftetes Audioarchiv.
+
+**KRAWUMM! Labor** liegt als aufgeschlagenes Experimentierheft auf dem Tisch.
+Magnetfeld, additive Farbmischung und Klangwelle reagieren als echte kleine
+Versuche auf Eingaben.
+
+**Nordhafen Stadtverkehr** ist bereits das öffentliche Leitsystem. Fahrtplaner,
+Liniennetz, Abfahrtstafel, Haltestellenfilter und Betriebsmeldungen greifen
+ineinander.
+
+**Fokus40 Augenatelier** verbindet Sehprobentafel und Werkbank. Fokusregler,
+A/B-Linsenvergleich sowie große Schrift und hoher Kontrast erklären Gestaltung,
+ohne einen medizinischen Test vorzutäuschen.
+
+## Technische Leitplanken
+
+- Reines HTML, CSS und JavaScript ohne Build-Schritt
+- Sechs Seiten pro Site, insgesamt 60 HTML-Dokumente
+- Eigene Stylesheets, Scripts, Favicons und Gestaltungsverträge pro Site
+- Lokale WOFF2- oder bewusst gewählte Systemschriften; keine Font-CDNs
+- Keine Tracker, Cookies, eingebetteten Karten oder Laufzeit-Drittanfragen
+- Ein `h1`, ein semantisches `main`, Skip-Link und sichtbarer Fokus je Seite
+- `prefers-reduced-motion`, verständliche Live-Status und beschriftete Controls
+- Responsive Kompositionen ohne horizontalen Querlauf bei 390 und 1440 Pixeln
+
+## Mika UX Library
+
+Für die fünf Codex-Schaustücke wurde keine Vorlage aus der Mika UX Library
+übernommen. Deshalb tragen ihre Karten bewusst kein Mika-UX-Badge. Sobald eine
+konkrete Library-Vorlage verwendet wird, müssen Karte und Dokumentation ihre
+Quelle sichtbar und screenreader-lesbar ausweisen.
 
 ## Rechtliches und Inhalte
 
-Alle fünf Unternehmen sind **erfunden**. Firmennamen, Personen, Adressen,
-Telefonnummern, Preise, Aktenzeichen und Referenzen sind Demonstrationsmaterial.
-Jede Seite trägt im Fuß eine Demo-Kennzeichnung.
+Alle Unternehmen, Personen, Adressen, Preise, Fahrplandaten, Sendungen und
+medizinisch wirkenden Beispiele sind erfunden. Jede Seite trägt eine sichtbare
+Demo-Kennzeichnung.
 
-Impressum und Datenschutzerklärung sind **Musterfassungen ohne Rechtswirkung**
-und als solche auf jeder Seite gekennzeichnet. Sie enthalten die branchen­spezifischen
-Pflichtangaben als Platzhalter — etwa Berufsrecht nach BRAO und
-DL-InfoV bei der Kanzlei, Weinbezeichnungsrecht und Jugendschutz beim Weingut.
-Vor einer Veröffentlichung müssen sie vollständig ersetzt und rechtlich geprüft
-werden.
+Impressum und Datenschutzerklärung sind Musterfassungen ohne Rechtswirkung. Sie
+müssen vor jeder realen Veröffentlichung vollständig ersetzt und fachlich
+geprüft werden. Fokus40 stellt keine Diagnose; Nordhafens Zeiten werden nur aus
+der Gerätezeit berechnet; Nachhall spielt kein Audio ab.
 
-## Anpassen
+## Ordnerstruktur
 
-Jede Site liegt vollständig in ihrem eigenen Ordner:
-
-```
+```text
 showcase/<site>/
-├── index.html              Startseite
-├── *.html                  Unterseiten, Impressum, Datenschutz
+├── index.html
+├── *.html
+├── DESIGN.md
 └── assets/
-    ├── <name>.css          gesamtes Stylesheet, oben der Richtungsvertrag
-    ├── <name>.js           Interaktion, ohne Abhängigkeiten
+    ├── <name>.css
+    ├── <name>.js
     ├── favicon.svg
-    └── fonts/              woff2 plus fonts.css (SIL OFL 1.1)
+    └── fonts/
 ```
 
-Am Kopf jedes Stylesheets steht der **Richtungsvertrag**: welche Idee die Seite
-trägt, welche Kategorie-Vorlage sie ablehnt, welche Farben und Schriften die Welt
-ausmachen und woraus das erste Viewport besteht. Wer die Site umbaut, sollte
-diesen Block zuerst lesen — und danach anpassen.
-
-Farben und Maße stehen durchgängig als CSS-Variablen im `:root`-Block.
+Der Richtungsvertrag am Kopf des Stylesheets beziehungsweise in `DESIGN.md`
+beschreibt These, eigene Welt, Ablauf, ersten Viewport und formale Regeln. Wer
+eine Site umbaut, sollte diesen Vertrag zuerst anpassen.
 
 ## Prüfen
 
-Die Sites sind gegen das [Impeccable](https://impeccable.style)-Regelwerk geprüft
-(Anti-Muster-Detektor, 60 Regeln). Erneut ausführen:
+Der statische Validator prüft HTML-Struktur, Sprungziele, interne Links und
+Assets sowie die genaue Zehner-Auswahl:
+
+```bash
+node scripts/validate-static-showcase.mjs .
+```
+
+Der mitgelieferte Impeccable-Detektor prüft wiederkehrende generische
+UI-Antimuster:
 
 ```bash
 node .github/skills/impeccable/scripts/detector/detect-antipatterns.mjs showcase
 ```
 
-Drei Befunde sind mit Begründung im Code stillgelegt (`impeccable-disable-line`),
-weil die beanstandete Form in der jeweiligen Welt das Gegenteil einer Verlegenheit
-ist: das Millimeterraster des Zeichenblatts, die Trennregeln der Plakattafel und
-die farbige Kante des Registerreiters.
+Seltene Ausnahmen sind direkt im CSS mit einer Begründung dokumentiert, wenn das
+erkannte Muster tatsächlich zur Gegenstandswelt gehört — etwa Messraster,
+Registerkante oder Gehäusenaht.

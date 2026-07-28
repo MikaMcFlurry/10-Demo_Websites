@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Archivo";
+  src: url("archivo-normal-400-800-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("archivo-italic-400-700-latin-ext.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("jost-normal-300-600-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("jost-italic-400-latin-ext.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}

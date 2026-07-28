@@ -1,95 +1,84 @@
 # Demo-Websites
 
-Ein Portfolio aus drei Teilen: fünf **Schaustücke** mit je eigener
-Gestaltungswelt, drei Framework-Projekte und zehn schlanke Vorlagen für kleine
-Unternehmen. Alles statisch, DSGVO-freundlich und ohne externe Abhängigkeiten.
+Ein kuratiertes Portfolio aus **zehn eigenständigen Vorzeige-Websites**. Die fünf
+Schaustücke der ersten Kollektion und die fünf neuen Gegenwelten teilen weder
+Template noch Komponenten, Raster, Farb- oder Bewegungslogik. Frühere Projekte
+bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar.
 
-## Schaustücke
+## Aktuelle Auswahl
 
-Fünf Demo-Websites, die sich bewusst **nichts** teilen: kein Framework, keine
-gemeinsame CSS-Datei, keine wiederkehrenden Bausteine. Jede hat ein Seitengerüst,
-das aus ihrem Gegenstand kommt. Details in [`showcase/README.md`](showcase/README.md).
+| # | Projekt | Branche | Gestalterische Form | Ursprung |
+|---:|---|---|---|---|
+| 01 | [`haertl-praezision`](showcase/haertl-praezision/) | Industrie | Technisches Zeichnungsblatt nach DIN-Logik | Claude Code |
+| 02 | [`hochofen-festival`](showcase/hochofen-festival/) | Kultur | Zweifarben-Siebdruck-Plakat | Claude Code |
+| 03 | [`weingut-steinhalde`](showcase/weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Claude Code |
+| 04 | [`brandt-ostermann`](showcase/brandt-ostermann/) | Recht | Aktenregister und Schriftsatz | Claude Code |
+| 05 | [`blockwerk-boulder`](showcase/blockwerk-boulder/) | Sport | Routenboard und Sektorplan | Claude Code |
+| 06 | [`kantine-klee`](showcase/kantine-klee/) | Gastronomie | Analoges Küchenjournal | Codex |
+| 07 | [`nachhall-radio`](showcase/nachhall-radio/) | Audio / Kultur | Tunerfront und Kassettenarchiv | Codex |
+| 08 | [`krawumm-labor`](showcase/krawumm-labor/) | Bildung | Interaktives Experimentierheft | Codex |
+| 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Codex |
+| 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | Codex |
 
-| Slug | Branche | Form |
-|---|---|---|
-| [`haertl-praezision`](showcase/haertl-praezision/) | Zerspanung | Technisches Zeichnungsblatt nach DIN 6771 |
-| [`hochofen-festival`](showcase/hochofen-festival/) | Musikfestival | Siebdruck-Plakat im Zweifarben-Überdruck |
-| [`weingut-steinhalde`](showcase/weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil |
-| [`brandt-ostermann`](showcase/brandt-ostermann/) | Wirtschaftskanzlei | Aktenregister und Schriftsatz |
-| [`blockwerk-boulder`](showcase/blockwerk-boulder/) | Boulderhalle | Routenboard und Sektorplan |
+Details zu Konzept, Seitenumfang und Interaktionen stehen in
+[`showcase/README.md`](showcase/README.md).
 
-Schriften liegen lokal (SIL OFL 1.1), es gibt keine Cookies, kein Tracking und
-keine Anfragen an Dritte. Alle Unternehmen sind erfunden und auf jeder Seite als
-Demo gekennzeichnet.
+## Archiv
 
-## Framework-Projekte
+Die Hauptseite zeigt ausschließlich die zehn aktuellen Vorzeigeprojekte.
+Folgende ältere Arbeiten liegen im nativen Archiv-Disclosure:
 
-| Ordner | Stack |
-|---|---|
-| [`sites/greencart-nuxt`](sites/greencart-nuxt/) | Nuxt 3 |
-| [`sites/aurorametrics-nextjs`](sites/aurorametrics-nextjs/) | Next.js |
-| [`sites/lumen-atelier-astro`](sites/lumen-atelier-astro/) | Astro |
+- `stimmzettel/` — Demokratie am Küchentisch
+- `sites/greencart-nuxt/` — Nuxt 3
+- `sites/aurorametrics-nextjs/` — Next.js
+- `sites/lumen-atelier-astro/` — Astro
+- `demos/` — zehn zweisprachige Branchenvorlagen
 
-## Demos
+## Mika UX Library
 
-| # | Slug | Business Type |
-|---|------|---------------|
-| 1 | `cafe-restaurant` | Café / Restaurant |
-| 2 | `electrician` | Elektriker |
-| 3 | `physiotherapy` | Physiotherapie |
-| 4 | `barber-salon` | Friseur / Barbershop |
-| 5 | `tax-advisor` | Steuerberater |
-| 6 | `fitness-pt` | Fitnessstudio / Personal Training |
-| 7 | `real-estate` | Immobilienmakler |
-| 8 | `event-dj` | Event DJ / Hochzeit |
-| 9 | `auto-repair` | KFZ Werkstatt |
-| 10 | `coaching` | Coaching / Beratung |
+Im Zielbranch war keine eindeutig benannte Mika-UX-Library und keine
+Badge-Konvention vorhanden. Für die fünf neuen Schaustücke wurde daher **keine
+Library-Nutzung behauptet und kein Mika-UX-Icon gesetzt**. Wenn später eine
+konkrete Vorlage eingebunden wird, muss ihre Karte sichtbar und
+screenreader-lesbar mit `Mika UX` markiert und die Quelle hier dokumentiert
+werden.
 
-## Deploy on GitHub Pages
+## Technische Leitplanken
 
-1. **Fork or clone** this repository.
-2. Go to **Settings → Pages** in your GitHub repo.
-3. Under **Source**, select the branch (e.g. `main`) and folder (`/ (root)`).
-4. Click **Save**. Your site will be live at `https://<username>.github.io/<repo-name>/`.
-5. Each demo is accessible at `/demos/<slug>/` (German) or `/demos/<slug>/en.html` (English).
+- Statische Multipage-Sites aus HTML, CSS und JavaScript
+- Je Vorzeigeprojekt eigenes Stylesheet, eigenes Script und eigene Assets
+- Lokale Schriften und Bilder; keine zur Laufzeit erforderlichen Drittanfragen
+- Keine Tracker, Cookies oder eingebetteten Fremddienste
+- Semantisches HTML, Skip-Links, sichtbare Fokuszustände und Reduced Motion
+- Responsive Kompositionen für Mobilgerät, Tablet und Desktop
+- Fiktive Firmen und Inhalte mit sichtbarer Demo-Kennzeichnung
+- Muster-Impressum und Muster-Datenschutz ohne Rechtswirkung
 
-## Customize Copy & Branding
+## GitHub Pages
 
-Each demo lives in `/demos/<slug>/` with this structure:
+`.github/workflows/deploy-pages.yml` baut die drei Framework-Projekte, sammelt
+den Portfolio-Hub, `showcase/`, `demos/` und `stimmzettel/` in einem
+Pages-Artefakt und veröffentlicht es über GitHub Actions.
 
+Der Workflow läuft bei Push auf dem Portfolio-Branch und kann zusätzlich über
+`workflow_dispatch` gestartet werden.
+
+## Lokale Prüfung
+
+Der im Repository enthaltene Impeccable-Detektor prüft typische generische
+UI-Muster:
+
+```bash
+node .github/skills/impeccable/scripts/detector/detect-antipatterns.mjs showcase
 ```
-demos/<slug>/
-├── index.html        # German version
-├── en.html           # English version
-└── assets/
-    ├── styles.css    # All styles for this demo
-    ├── app.js        # Minimal JS (menu, cookie banner, FAQ)
-    └── logo.svg      # Simple inline SVG logo
-```
 
-### Quick Customization Steps
+Vor Veröffentlichung werden zusätzlich interne Links und Assets, HTML-Struktur,
+Konsolenfehler, horizontales Overflow sowie die wichtigsten Interaktionen bei
+390, 768 und 1440 Pixel Breite geprüft.
 
-1. **Business name & copy**: Search and replace the placeholder business name in both `index.html` and `en.html`.
-2. **Colors**: Open `assets/styles.css` and change the CSS custom properties at the top (`:root { --primary: ...; --accent: ...; }`).
-3. **Logo**: Replace `assets/logo.svg` or edit the inline SVG.
-4. **Images**: Replace the placeholder hero/gallery sections with real `<img>` tags pointing to your images.
-5. **Contact**: Update the `mailto:` link and optional form action URL in the contact section.
-6. **Legal**: Fill in the Impressum and Datenschutzerklärung with real legal text. See `LEGAL_TEMPLATE.md`.
-7. **JSON-LD**: Update the structured data in the `<script type="application/ld+json">` block with real business details.
-8. **SEO**: Update `<title>`, `<meta name="description">`, and Open Graph tags.
+## Rechtlicher Hinweis
 
-## Legal Notice
-
-All legal sections (Impressum, Datenschutzerklärung, Cookie consent) contain **placeholders only**. They are **not** legally binding and **must be reviewed and customized** by a qualified legal professional before going live. See [LEGAL_TEMPLATE.md](LEGAL_TEMPLATE.md) for details.
-
-## Technical Details
-
-- **No external dependencies**: No CDNs, no remote fonts, no frameworks.
-- **System fonts**: Uses the native font stack for maximum performance.
-- **Mobile-first**: Responsive layouts using CSS Grid and Flexbox.
-- **Accessible**: Semantic HTML, ARIA labels, focus states, skip-to-content links.
-- **Fast**: Minimal JS — only for mobile menu toggle, cookie banner, and FAQ accordions.
-
-## License
-
-These templates are provided as starting points for client projects. Customize freely.
+Alle Marken, Personen, Adressen, Preise, Kennzahlen und Referenzen sind
+Demonstrationsmaterial. Die enthaltenen Rechtstexte sind Muster ohne
+Rechtswirkung und müssen vor einer realen Veröffentlichung vollständig ersetzt
+und fachlich geprüft werden. Siehe [`LEGAL_TEMPLATE.md`](LEGAL_TEMPLATE.md).
