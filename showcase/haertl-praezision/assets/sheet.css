@@ -1,0 +1,616 @@
+@import url("fonts/fonts.css");
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HÄRTL PRÄZISIONSTECHNIK — Richtungsvertrag
+
+   THESIS       Die Seite IST ein technisches Zeichnungsblatt nach DIN 6771,
+                kein Industrie-Header mit Hallenfoto. Präzision wird bemaßt,
+                nicht behauptet. Abgelehnt: blauer Verlauf, „Ihr starker
+                Partner", drei Icon-Kacheln.
+   OWN-WORLD    Zinkgraues Zeichenpapier, Tuscheschwarz, Maschinengelb als
+                Vollfeld. Blattrahmen mit Zonenmarken A–D/1–4, Schriftfeld
+                unten rechts, Bemaßungslinien mit Pfeilspitzen, Toleranzen in
+                Mono. Archivo eng gesetzt + Azeret Mono für jeden Messwert.
+   STORY        Ein Konstrukteur erkennt in Sekunden Verfahren, Toleranzfeld
+                und Maschinenpark — und lädt seine Zeichnung zur Anfrage hoch.
+   1. VIEWPORT  Vollflächiges Blatt. Links das Bauteil als SVG mit Maßketten
+                und ±0,005-Angabe, rechts der Blattkopf, unten rechts das
+                Schriftfeld mit der Primäraktion.
+   FORM         Technisches Zeichnungsblatt (Fertigungszeichnung, Blattsatz).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --paper:    #e4e2dc;
+  --paper-2:  #dbd9d2;
+  --paper-3:  #cfcdc5;
+  --ink:      #15171a;
+  --ink-2:    #3b3f45;
+  --ink-3:    #575c63;
+  --yellow:   #f5c400;
+  --yellow-d: #c99f00;
+  --red:      #b7112b;
+  --rule:     #15171a;
+  --grid:     rgba(21, 23, 26, .07);
+
+  --sheet-pad: clamp(14px, 2.2vw, 34px);
+  --frame: 1px;
+  /* Randband des Blattes – trägt die Zonenmarken, wie der 10-mm-Rand
+     einer echten Zeichnung. */
+  --band: 17px;
+
+  --f-sans: "Archivo", "Helvetica Neue", Helvetica, sans-serif;
+  --f-mono: "Azeret Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  /* Millimeterraster des Zeichenpapiers */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+}
+
+img, svg { max-width: 100%; }
+
+::selection { background: var(--yellow); color: var(--ink); }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 99;
+  background: var(--ink); color: var(--paper);
+  padding: .7rem 1.1rem; font: 600 .8rem/1 var(--f-mono); letter-spacing: .08em;
+}
+.skip:focus { left: 0; }
+
+/* ── Blattrahmen ──────────────────────────────────────────────────────────
+   Doppelrahmen mit Zonenmarken, wie auf einer Fertigungszeichnung.        */
+
+.sheet {
+  position: relative;
+  margin: var(--sheet-pad);
+  border: var(--frame) solid var(--rule);
+  background: transparent;
+}
+.sheet::before {
+  content: "";
+  position: absolute;
+  inset: var(--band);
+  border: var(--frame) solid var(--rule);
+  pointer-events: none;
+}
+
+/* Zonenmarken auf dem Rahmen (A B C D links, 1 2 3 4 oben) */
+.zones {
+  position: absolute; inset: 0; pointer-events: none;
+  font: 500 9px/1 var(--f-mono); color: var(--ink-3);
+}
+.zones span { position: absolute; }
+.zones .zx { top: 5px; transform: translateX(-50%); }
+.zones .zy { left: 6px; transform: translateY(-50%); }
+
+@media (max-width: 700px) { .zones { display: none; } }
+
+/* ── Blattkopf / Navigation ───────────────────────────────────────────── */
+
+.head {
+  display: flex; flex-wrap: wrap; align-items: stretch;
+  border-bottom: var(--frame) solid var(--rule);
+  margin: var(--band) var(--band) 0;
+}
+
+.mark {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px clamp(14px, 2vw, 26px);
+  text-decoration: none;
+  border-right: var(--frame) solid var(--rule);
+}
+.mark svg { display: block; width: 30px; height: 30px; }
+.mark b {
+  display: block;
+  font-size: 15px; font-weight: 800; letter-spacing: -.02em; line-height: 1;
+  text-transform: uppercase;
+}
+.mark small {
+  display: block; margin-top: 3px;
+  font: 400 9.5px/1 var(--f-mono); letter-spacing: .16em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+
+.nav { display: flex; flex: 1; }
+.nav a {
+  position: relative;
+  display: flex; align-items: center;
+  padding: 0 clamp(11px, 1.5vw, 20px);
+  font: 500 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none; color: var(--ink-2);
+  border-right: var(--frame) solid var(--rule);
+  transition: background .18s cubic-bezier(.16,1,.3,1), color .18s;
+}
+/* Teilstrich über jedem Navpunkt – der Rahmen liest sich als Lineal */
+.nav a::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 7px);
+  opacity: .35;
+}
+.nav a:hover { background: var(--paper-3); color: var(--ink); }
+.nav a[aria-current="page"] { background: var(--yellow); color: var(--ink); font-weight: 700; }
+.nav a[aria-current="page"]::before { opacity: .8; }
+
+.head .cta {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 clamp(14px, 2vw, 24px);
+  background: var(--ink); color: var(--paper);
+  font: 600 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none;
+  transition: background .18s;
+}
+.head .cta:hover { background: var(--red); }
+
+.burger {
+  display: none; align-items: center; gap: 9px;
+  margin-left: auto; padding: 0 18px;
+  background: none; border: 0; border-left: var(--frame) solid var(--rule);
+  font: 600 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink); cursor: pointer;
+}
+.burger i { display: block; width: 15px; height: 9px; border-top: 2px solid; border-bottom: 2px solid; }
+
+@media (max-width: 900px) {
+  .burger { display: flex; }
+  .nav {
+    display: none; order: 3; flex-basis: 100%; flex-direction: column;
+    border-top: var(--frame) solid var(--rule);
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 13px 18px; border-right: 0; border-bottom: var(--frame) solid var(--rule); }
+  .nav a::before { display: none; }
+  .head .cta { flex-basis: 100%; order: 4; justify-content: center; padding: 14px; }
+  .mark { flex: 1; }
+}
+
+/* ── Blattmarken zwischen den Abschnitten ─────────────────────────────── */
+
+.blatt {
+  display: flex; align-items: baseline; gap: 16px;
+  padding: 10px clamp(14px, 2vw, 26px);
+  margin: 0 var(--band);
+  border-bottom: var(--frame) solid var(--rule);
+  background: var(--paper-2);
+  font: 500 10.5px/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.blatt b { color: var(--ink); font-weight: 700; }
+.blatt .sp { flex: 1; height: 1px; background: repeating-linear-gradient(90deg, var(--ink-3) 0 3px, transparent 3px 8px); }
+
+/* ── Typografie ───────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4 { margin: 0; font-weight: 800; letter-spacing: -.03em; text-wrap: balance; }
+
+h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5.5rem);
+  line-height: .92;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.9rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+h3 { font-size: clamp(1.1rem, 1.7vw, 1.35rem); line-height: 1.2; letter-spacing: -.015em; }
+
+p { margin: 0 0 1.05em; max-width: 68ch; }
+p:last-child { margin-bottom: 0; }
+
+.lead { font-size: clamp(1.05rem, 1.5vw, 1.22rem); line-height: 1.5; color: var(--ink-2); }
+
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+/* Messwert: gehört zur Weltgrammatik, Mono trägt hier echte Zahlen */
+.val { font: 500 .92em/1 var(--f-mono); letter-spacing: -.01em; }
+.tol { color: var(--red); font-family: var(--f-mono); font-size: .82em; }
+
+.sect { padding: clamp(38px, 5.5vw, 76px) clamp(16px, 3.4vw, 58px); margin: 0 var(--band); }
+.sect + .sect { border-top: var(--frame) solid var(--rule); }
+
+/* ── Hero: das Zeichnungsblatt selbst ─────────────────────────────────── */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  margin: 0 var(--band);
+  border-bottom: var(--frame) solid var(--rule);
+}
+
+.hero-draw {
+  position: relative;
+  padding: clamp(20px, 3vw, 46px);
+  border-right: var(--frame) solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  min-height: clamp(340px, 46vw, 560px);
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 14px 14px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 14px 14px,
+    var(--paper-2);
+}
+.hero-draw svg { width: 100%; height: auto; max-height: 62vh; overflow: visible; }
+
+.hero-text {
+  padding: clamp(24px, 3.4vw, 54px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.hero-kicker {
+  display: flex; align-items: center; gap: 10px;
+  font: 500 11px/1 var(--f-mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 22px;
+}
+.hero-kicker::after { content: ""; flex: 1; height: 1px; background: var(--ink-3); opacity: .4; }
+
+.hero h1 { margin-bottom: 20px; }
+/* Maschinengelb tritt als Fläche auf, nicht als Textfarbe – so trägt es
+   Kontrast statt ihn zu kosten. */
+.hero h1 em {
+  font-style: normal;
+  display: inline-block;
+  margin-top: .07em;
+  padding: 0 .16em .05em;
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.hero-text .lead { margin-bottom: 26px; }
+
+.hero-facts {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border: var(--frame) solid var(--rule);
+  margin-bottom: 26px;
+}
+.hero-facts div {
+  flex: 1 1 30%; padding: 12px 14px;
+  border-right: var(--frame) solid var(--rule);
+}
+.hero-facts div:last-child { border-right: 0; }
+.hero-facts dt { font: 400 9.5px/1 var(--f-mono); letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+.hero-facts dd { margin: 7px 0 0; font: 500 1.18rem/1 var(--f-mono); letter-spacing: -.02em; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 950px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-draw { border-right: 0; border-bottom: var(--frame) solid var(--rule); min-height: 300px; }
+  .hero-text { order: -1; }
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 20px;
+  border: var(--frame) solid var(--rule);
+  background: var(--yellow); color: var(--ink);
+  font: 700 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: transform .16s cubic-bezier(.16,1,.3,1), box-shadow .16s cubic-bezier(.16,1,.3,1);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn--ghost { background: transparent; box-shadow: 3px 3px 0 var(--ink-3); }
+.btn--ghost:hover { background: var(--paper-3); box-shadow: 5px 5px 0 var(--ink-3); }
+.btn--dark { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--yellow-d); }
+.btn--dark:hover { box-shadow: 5px 5px 0 var(--yellow-d); }
+
+.btn[disabled] {
+  background: var(--paper-3); color: var(--ink-3); border-color: var(--ink-3);
+  box-shadow: none; cursor: not-allowed; transform: none;
+}
+
+/* ── Verfahren: bemaßte Reihen, keine Kacheln ─────────────────────────── */
+
+.ops { border-top: var(--frame) solid var(--rule); }
+
+.op {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) minmax(0, 1.1fr) 132px;
+  align-items: start; gap: clamp(14px, 2.4vw, 34px);
+  padding: clamp(20px, 2.6vw, 32px) 0;
+  border-bottom: var(--frame) solid var(--rule);
+  position: relative;
+}
+.op:hover .op-no { background: var(--yellow); }
+.op-no {
+  font: 500 11px/1 var(--f-mono); letter-spacing: .06em;
+  padding: 6px 8px; border: var(--frame) solid var(--rule);
+  justify-self: start;
+  transition: background .2s cubic-bezier(.16,1,.3,1);
+}
+.op h3 { padding-top: 2px; }
+.op h3 small {
+  display: block; margin-top: 6px;
+  font: 400 10px/1.4 var(--f-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.op p { font-size: .96rem; color: var(--ink-2); }
+.op-spec { font: 500 11.5px/1.9 var(--f-mono); text-align: right; color: var(--ink-2); }
+.op-spec b { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 860px) {
+  .op { grid-template-columns: 58px 1fr; row-gap: 12px; }
+  .op h3 { grid-column: 2; }
+  .op p { grid-column: 2; }
+  .op-spec { grid-column: 2; text-align: left; line-height: 1.7; }
+}
+
+/* ── Maschinenpark: Datentabelle ──────────────────────────────────────── */
+
+.tablewrap { overflow-x: auto; border: var(--frame) solid var(--rule); background: var(--paper-2); }
+
+table.data { width: 100%; border-collapse: collapse; min-width: 660px; }
+table.data caption {
+  text-align: left; padding: 11px 14px;
+  border-bottom: var(--frame) solid var(--rule);
+  font: 500 10.5px/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-2); background: var(--paper-3);
+}
+table.data th, table.data td {
+  padding: 10px 14px; text-align: left;
+  border-bottom: var(--frame) solid rgba(21,23,26,.16);
+  font-size: .9rem;
+}
+table.data th {
+  font: 600 10px/1.3 var(--f-mono); letter-spacing: .13em; text-transform: uppercase;
+  color: var(--ink-3); vertical-align: bottom;
+  border-bottom: var(--frame) solid var(--rule);
+  white-space: nowrap;
+}
+table.data td.num { font-family: var(--f-mono); font-size: .85rem; white-space: nowrap; }
+table.data tbody tr:hover { background: rgba(245,196,0,.16); }
+table.data tbody tr:last-child td { border-bottom: 0; }
+table.data td b { font-weight: 700; }
+
+/* ── Toleranzband ─────────────────────────────────────────────────────── */
+
+.tolband {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  border: var(--frame) solid var(--rule); background: var(--paper-2);
+}
+.tolband > div {
+  padding: 18px 16px 20px;
+  border-right: var(--frame) solid var(--rule);
+}
+.tolband > div:last-child { border-right: 0; }
+.tolband dt { font: 400 9.5px/1.3 var(--f-mono); letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+.tolband dd {
+  margin: 9px 0 0;
+  font: 500 clamp(1.35rem, 2.3vw, 1.85rem)/1 var(--f-mono);
+  letter-spacing: -.035em;
+}
+.tolband dd span { display: block; margin-top: 6px; font-size: .58em; color: var(--ink-3); letter-spacing: 0; }
+
+/* ── Ablauf als Maßkette ──────────────────────────────────────────────── */
+
+.chain { position: relative; padding-top: 34px; }
+.chain::before {
+  content: ""; position: absolute; top: 16px; left: 0; right: 0; height: 1px; background: var(--ink);
+}
+.chain-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; }
+.chain-step { position: relative; padding: 0 20px 4px 0; }
+.chain-step::before {
+  content: ""; position: absolute; top: -34px; left: 0; width: 1px; height: 26px; background: var(--ink);
+}
+.chain-step::after {
+  content: ""; position: absolute; top: -21px; left: 0; width: 7px; height: 7px;
+  background: var(--ink); transform: rotate(45deg) translate(-1px, -1px);
+}
+.chain-step em {
+  display: block; font-style: normal;
+  font: 500 10px/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 9px;
+}
+.chain-step h3 { margin-bottom: 8px; }
+.chain-step p { font-size: .92rem; color: var(--ink-2); }
+
+/* ── Branchen ─────────────────────────────────────────────────────────── */
+
+.tags { display: flex; flex-wrap: wrap; gap: 0; border: var(--frame) solid var(--rule); }
+.tags span {
+  padding: 11px 16px;
+  border-right: var(--frame) solid var(--rule);
+  border-bottom: var(--frame) solid var(--rule);
+  font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase;
+  flex: 1 1 auto;
+}
+
+/* ── Zitat / Referenz ─────────────────────────────────────────────────── */
+
+.quote {
+  display: grid; grid-template-columns: 1fr auto; gap: clamp(20px, 3vw, 46px);
+  align-items: end;
+  padding: clamp(26px, 3.4vw, 44px);
+  background: var(--ink); color: var(--paper);
+  margin: 0 var(--band);
+}
+.quote blockquote {
+  margin: 0; max-width: 22ch;
+  font-size: clamp(1.35rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.14; letter-spacing: -.025em;
+}
+.quote figcaption { font: 400 11px/1.7 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: #a8adb4; text-align: right; }
+.quote figcaption b { display: block; color: var(--yellow); font-weight: 600; }
+@media (max-width: 700px) { .quote { grid-template-columns: 1fr; } .quote figcaption { text-align: left; } }
+
+/* ── Schriftfeld (Titelblock) + Anfrage ───────────────────────────────── */
+
+.titleblock {
+  margin: 0 var(--band);
+  border-top: var(--frame) solid var(--rule);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+}
+.titleblock-form { padding: clamp(24px, 3.4vw, 48px); border-right: var(--frame) solid var(--rule); }
+.titleblock-meta { display: grid; grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); }
+.tb-cell {
+  padding: 13px 16px;
+  border-bottom: var(--frame) solid var(--rule);
+}
+.tb-cell:last-child { border-bottom: 0; }
+.tb-cell dt { font: 400 9px/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+.tb-cell dd { margin: 6px 0 0; font: 500 .95rem/1.35 var(--f-mono); }
+.tb-cell dd a { text-decoration: none; border-bottom: 1px solid var(--yellow-d); }
+.tb-cell dd a:hover { background: var(--yellow); }
+
+@media (max-width: 860px) {
+  .titleblock { grid-template-columns: 1fr; }
+  .titleblock-form { border-right: 0; border-bottom: var(--frame) solid var(--rule); }
+}
+
+/* ── Formular ─────────────────────────────────────────────────────────── */
+
+.field { margin-bottom: 18px; }
+.field label {
+  display: block; margin-bottom: 7px;
+  font: 500 10px/1 var(--f-mono); letter-spacing: .15em; text-transform: uppercase; color: var(--ink-2);
+}
+.field label .req { color: var(--red); }
+.field input, .field textarea, .field select {
+  width: 100%; padding: 12px 13px;
+  background: var(--paper-2);
+  border: var(--frame) solid var(--ink-3);
+  border-radius: 0;
+  font: 400 .96rem/1.4 var(--f-sans); color: var(--ink);
+  transition: border-color .15s, background .15s;
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--ink); background: #eeece7; outline: 2px solid var(--yellow); outline-offset: -1px;
+}
+.field textarea { resize: vertical; min-height: 118px; }
+.field .hint { margin-top: 6px; font: 400 11px/1.5 var(--f-mono); color: var(--ink-3); }
+.field.err input, .field.err textarea { border-color: var(--red); }
+.field .msg { display: none; margin-top: 6px; font: 500 11px/1.4 var(--f-mono); color: var(--red); }
+.field.err .msg { display: block; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+@media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.drop {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px;
+  border: 2px dashed var(--ink-3);
+  background: var(--paper-2);
+  font: 400 12px/1.5 var(--f-mono); color: var(--ink-2);
+  cursor: pointer;
+  transition: border-color .18s, background .18s;
+}
+.drop:hover, .drop.hot { border-color: var(--ink); background: rgba(245,196,0,.2); }
+.drop svg { flex: none; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+.formnote {
+  margin-top: 16px; padding-top: 14px; border-top: var(--frame) solid var(--ink-3);
+  font: 400 11.5px/1.6 var(--f-mono); color: var(--ink-3);
+}
+
+.sent {
+  display: none;
+  padding: 15px 16px; margin-bottom: 18px;
+  border: var(--frame) solid var(--ink); background: var(--yellow);
+  font: 600 12px/1.5 var(--f-mono); letter-spacing: .05em;
+}
+.sent.on { display: block; }
+
+/* ── Fußzeile ─────────────────────────────────────────────────────────── */
+
+.foot {
+  margin: 0 var(--band) var(--band);
+  border-top: var(--frame) solid var(--rule);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.foot > div {
+  padding: 22px clamp(16px, 2.4vw, 30px);
+  border-right: var(--frame) solid var(--rule);
+}
+.foot > div:last-child { border-right: 0; }
+.foot h4 { font: 600 9.5px/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 13px; }
+.foot ul { list-style: none; margin: 0; padding: 0; }
+.foot li { margin-bottom: 7px; }
+.foot a { font-size: .9rem; text-decoration: none; border-bottom: 1px solid transparent; }
+.foot a:hover { border-bottom-color: var(--ink); }
+.foot p { font-size: .88rem; color: var(--ink-2); }
+
+.colophon {
+  margin: 0 var(--band) var(--band); padding: 11px clamp(16px, 2.4vw, 30px);
+  border-top: var(--frame) solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center;
+  font: 400 10px/1.6 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.colophon .demo {
+  padding: 3px 8px; background: var(--ink); color: var(--paper); font-weight: 600;
+}
+
+/* ── Innenseiten ──────────────────────────────────────────────────────── */
+
+.page-head {
+  padding: clamp(30px, 4.4vw, 66px) clamp(16px, 3.4vw, 58px);
+  margin: 0 var(--band);
+  border-bottom: var(--frame) solid var(--rule);
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 50px); align-items: end;
+}
+.page-head .lead { margin: 0; }
+@media (max-width: 800px) { .page-head { grid-template-columns: 1fr; } }
+
+.prose h2 { margin: 2.2em 0 .6em; }
+.prose h2:first-child { margin-top: 0; }
+.prose h3 { margin: 1.7em 0 .5em; }
+.prose ul, .prose ol { max-width: 68ch; padding-left: 1.2em; margin: 0 0 1.05em; }
+.prose li { margin-bottom: .42em; }
+.prose a { border-bottom: 1px solid var(--yellow-d); text-decoration: none; }
+.prose a:hover { background: var(--yellow); }
+.prose dl { max-width: 68ch; }
+.prose dt { font-weight: 700; margin-top: 1.1em; }
+.prose dd { margin: .25em 0 0; color: var(--ink-2); }
+
+/* ── Bewegung: der eine inszenierte Moment ────────────────────────────
+   Die Zeichnung konstruiert sich einmal beim Laden: Maßlinien laufen ein,
+   dann erscheinen die Maßzahlen. Danach ist die Seite still.            */
+
+.draw-line { stroke-dasharray: var(--len, 400); stroke-dashoffset: var(--len, 400); }
+.draw-fade { opacity: 0; }
+
+.is-ready .draw-line {
+  animation: strokeIn .9s cubic-bezier(.16, 1, .3, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+.is-ready .draw-fade {
+  animation: fadeIn .5s cubic-bezier(.16, 1, .3, 1) forwards;
+  animation-delay: var(--d, .5s);
+}
+
+@keyframes strokeIn { to { stroke-dashoffset: 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-line { stroke-dashoffset: 0; }
+  .draw-fade { opacity: 1; }
+  .is-ready .draw-line, .is-ready .draw-fade { animation: none; }
+  * { transition-duration: .01ms !important; }
+}

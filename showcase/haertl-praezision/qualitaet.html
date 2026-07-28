@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qualität und Messtechnik — HÄRTL Präzisionstechnik</title>
+<meta name="description" content="Klimatisierter Messraum bei 20 °C, Koordinatenmesstechnik, SPC-Regelkarten, Erstmusterprüfbericht nach VDA 2 und rückführbare Prüfmittelüberwachung.">
+<meta name="theme-color" content="#e4e2dc">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/sheet.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="sheet">
+  <div class="zones" aria-hidden="true"></div>
+
+  <header class="head">
+    <a class="mark" href="index.html" aria-label="HÄRTL Präzisionstechnik, zur Startseite">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x=".5" y=".5" width="31" height="31" stroke="#15171a"/>
+        <circle cx="16" cy="16" r="9.5" stroke="#15171a"/>
+        <circle cx="16" cy="16" r="4" fill="#f5c400" stroke="#15171a"/>
+        <path d="M16 1v6M16 25v6M1 16h6M25 16h6" stroke="#15171a"/>
+      </svg>
+      <span><b>Härtl</b><small>Präzisionstechnik</small></span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="hauptnav"><i aria-hidden="true"></i> Menü</button>
+    <nav class="nav" id="hauptnav" aria-label="Hauptnavigation">
+      <a href="index.html">Übersicht</a>
+      <a href="fertigung.html">Fertigung</a>
+      <a href="maschinenpark.html">Maschinenpark</a>
+      <a href="qualitaet.html" aria-current="page">Qualität</a>
+    </nav>
+    <a class="cta" href="index.html#anfrage">Anfrage stellen</a>
+  </header>
+
+  <main id="inhalt">
+    <section class="page-head">
+      <div>
+        <p class="hero-kicker">Blatt 4 / 6 · Nachweis</p>
+        <h1>Qualität</h1>
+      </div>
+      <p class="lead">
+        Ein Maß gilt erst, wenn es reproduzierbar gemessen wurde. Alles auf dieser
+        Seite dient einem Zweck: dass Sie das Messprotokoll nicht nachprüfen müssen.
+      </p>
+    </section>
+
+    <p class="blatt"><b>4.1</b> <span class="sp"></span> Regelkarte einer laufenden Serie</p>
+    <section class="sect">
+      <h2>Der Prozess zeigt es vor dem Teil</h2>
+      <p class="lead" style="margin:14px 0 30px;max-width:60ch">
+        Bei Serien über 200 Stück läuft eine Regelkarte je kritischem Merkmal mit.
+        Driftet der Prozess, greifen wir ein, bevor ein einziges Teil aus der
+        Toleranz läuft. Der Ausschnitt zeigt 40 Stichproben eines Lagersitzes.
+      </p>
+
+      <figure style="margin:0;border:1px solid var(--rule);background:var(--paper-2)">
+        <svg viewBox="0 0 900 300" role="img" aria-labelledby="rk-t rk-d" style="display:block;width:100%;height:auto">
+          <title id="rk-t">Regelkarte: 40 Stichproben eines Lagersitzes</title>
+          <desc id="rk-d">Alle Messwerte liegen innerhalb der Eingriffsgrenzen; der Prozess ist mittig zur Sollwertlinie 24,000 Millimeter zentriert. Prozessfähigkeit Cpk 1,72.</desc>
+
+          <!-- Toleranzband -->
+          <rect x="70" y="60" width="800" height="180" fill="#f5c400" opacity=".14"/>
+          <!-- Eingriffsgrenzen -->
+          <line x1="70" y1="60"  x2="870" y2="60"  stroke="#b7112b" stroke-width="1.4" stroke-dasharray="7 5"/>
+          <line x1="70" y1="240" x2="870" y2="240" stroke="#b7112b" stroke-width="1.4" stroke-dasharray="7 5"/>
+          <!-- Sollwert -->
+          <line x1="70" y1="150" x2="870" y2="150" stroke="#15171a" stroke-width="1.2"/>
+
+          <g font-family="Azeret Mono, monospace" font-size="12" fill="#6a7078">
+            <text x="60" y="64"  text-anchor="end">+0,010</text>
+            <text x="60" y="154" text-anchor="end" fill="#15171a">24,000</text>
+            <text x="60" y="244" text-anchor="end">−0,010</text>
+            <text x="70" y="272">Stichprobe 1</text>
+            <text x="870" y="272" text-anchor="end">40</text>
+          </g>
+
+          <polyline fill="none" stroke="#15171a" stroke-width="1.8" stroke-linejoin="round"
+            points="70,158 90,146 110,152 130,141 150,155 170,148 190,138 210,150 230,144 250,159
+                    270,147 290,135 310,151 330,143 350,156 370,149 390,140 410,153 430,146 450,137
+                    470,152 490,144 510,158 530,147 550,139 570,151 590,143 610,156 630,148 650,141
+                    670,153 690,145 710,137 730,150 750,143 770,155 790,147 810,140 830,152 850,146"/>
+
+          <g fill="#15171a">
+            <circle cx="290" cy="135" r="3.5"/><circle cx="710" cy="137" r="3.5"/>
+            <circle cx="250" cy="159" r="3.5"/><circle cx="610" cy="156" r="3.5"/>
+          </g>
+
+          <g font-family="Azeret Mono, monospace" font-size="12">
+            <rect x="700" y="14" width="170" height="30" fill="#15171a"/>
+            <text x="785" y="34" text-anchor="middle" fill="#f5c400">Cpk 1,72 · n = 40</text>
+          </g>
+        </svg>
+        <figcaption class="mono" style="padding:11px 14px;border-top:1px solid var(--rule);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">
+          Beispieldaten zur Veranschaulichung · Merkmal ⌀ 24 H6 · Eingriffsgrenzen ±0,010 mm
+        </figcaption>
+      </figure>
+    </section>
+
+    <p class="blatt"><b>4.2</b> <span class="sp"></span> Messraum</p>
+    <section class="sect prose">
+      <h2>20,0 Grad, immer</h2>
+      <p>
+        Stahl dehnt sich um rund 11 µm je Meter und Kelvin. Bei einem Teil von
+        200 mm Länge verschiebt ein Grad Temperaturunterschied das Maß um
+        2,2 µm — das ist bereits die halbe Toleranz vieler unserer Aufträge.
+        Deshalb ist der Messraum auf ±0,5 K geregelt und Teile ruhen dort
+        mindestens vier Stunden, bevor sie angetastet werden.
+      </p>
+      <div class="tolband" style="margin:26px 0">
+        <div><dt>Solltemperatur</dt><dd>20,0 °C<span>±0,5 K geregelt</span></dd></div>
+        <div><dt>Auslagerung</dt><dd>4 h<span>vor der Messung</span></dd></div>
+        <div><dt>Antastgenauigkeit</dt><dd>1,8 µm<span>MPE‑E, Zeiss Contura G2</span></dd></div>
+        <div><dt>Prüfmittelprüfung</dt><dd>12 Mon.<span>rückführbar auf DKD</span></dd></div>
+      </div>
+    </section>
+
+    <p class="blatt"><b>4.3</b> <span class="sp"></span> Dokumente, die Sie bekommen</p>
+    <section class="sect prose">
+      <h2>Was mitgeliefert wird</h2>
+      <dl>
+        <dt>Messprotokoll</dt>
+        <dd>Zu jedem Los, bezogen auf den Zeichnungsstand. Ist-Werte, Sollwerte,
+            Toleranzlage je Merkmal. Digital als PDF, auf Wunsch als CSV für Ihr System.</dd>
+        <dt>Erstmusterprüfbericht</dt>
+        <dd>Nach VDA Band 2 oder in Ihrem Formblatt. Inklusive Werkstoffnachweis
+            und Prozessfähigkeitsnachweis, wenn gefordert.</dd>
+        <dt>Werkstoffzeugnis 3.1</dt>
+        <dd>Nach EN 10204 für alle Metalle, chargenbezogen archiviert.
+            Rückverfolgbarkeit bleibt zehn Jahre bestehen.</dd>
+        <dt>Konservierung und Verpackung</dt>
+        <dd>Reinraumtaugliche Verpackung auf Anforderung, VCI-Papier oder
+            Einzelblisterung nach Ihrer Vorgabe.</dd>
+      </dl>
+
+      <h2>Was wir nicht behaupten</h2>
+      <p>
+        Ein Zertifikat ersetzt keine Messung. Wir arbeiten nach den Grundsätzen
+        gängiger Qualitätsmanagementnormen und richten unsere Abläufe daran aus.
+        Welche Zertifizierungen ein Betrieb tatsächlich führt, gehört auf diese
+        Seite mit Zertifikatsnummer und Ausstellungsdatum — in dieser Demo steht
+        an dieser Stelle bewusst kein erfundenes Siegel.
+      </p>
+    </section>
+
+    <p class="blatt"><b>Anschluss</b> <span class="sp"></span> Nächster Schritt</p>
+    <section class="sect">
+      <h2 style="max-width:20ch">Kritisches Merkmal im Kopf?</h2>
+      <p class="lead" style="margin:16px 0 26px;max-width:58ch">
+        Schreiben Sie es in die Anfrage. Wir sagen Ihnen vorab, mit welchem
+        Prüfmittel wir es nachweisen und was das kostet.
+      </p>
+      <p>
+        <a class="btn" href="index.html#anfrage">Anfrage stellen</a>
+        <a class="btn btn--ghost" href="fertigung.html" style="margin-left:10px">Verfahren ansehen</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div><h4>Fertigung</h4><ul>
+      <li><a href="fertigung.html">CNC-Drehen</a></li>
+      <li><a href="fertigung.html">5-Achs-Fräsen</a></li>
+      <li><a href="fertigung.html">Schleifen</a></li>
+      <li><a href="fertigung.html">Erodieren</a></li></ul></div>
+    <div><h4>Haus</h4><ul>
+      <li><a href="maschinenpark.html">Maschinenpark</a></li>
+      <li><a href="qualitaet.html">Qualität und Messtechnik</a></li>
+      <li><a href="index.html#anfrage">Anfrage</a></li></ul></div>
+    <div><h4>Rechtliches</h4><ul>
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+    <div><h4>Anschrift</h4><p>Benzholzstraße 14<br>73525 Schwäbisch Gmünd<br>Baden-Württemberg</p></div>
+  </footer>
+
+  <p class="colophon">
+    <span class="demo">Demo</span>
+    <span>Fiktives Unternehmen · Beispielprojekt</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</div>
+
+<script src="assets/sheet.js" defer></script>
+</body>
+</html>

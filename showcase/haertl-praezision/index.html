@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HÄRTL Präzisionstechnik — Zerspanung im Toleranzfeld ±0,005 mm</title>
+<meta name="description" content="Lohnfertigung für Medizintechnik, Halbleiter und Messtechnik. CNC-Drehen, 5-Achs-Fräsen, Schleifen und Erodieren in Schwäbisch Gmünd. Angebot binnen 48 Stunden.">
+<meta name="theme-color" content="#e4e2dc">
+<meta property="og:title" content="HÄRTL Präzisionstechnik — Zerspanung im Toleranzfeld ±0,005 mm">
+<meta property="og:description" content="Lohnfertigung für Medizintechnik, Halbleiter und Messtechnik. Angebot binnen 48 Stunden.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/sheet.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "HÄRTL Präzisionstechnik GmbH",
+  "description": "Lohnfertigung: CNC-Drehen, 5-Achs-Fräsen, Schleifen, Erodieren.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Benzholzstraße 14",
+    "postalCode": "73525",
+    "addressLocality": "Schwäbisch Gmünd",
+    "addressRegion": "Baden-Württemberg",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 7171 900000",
+  "email": "anfrage@haertl-praezision.example",
+  "foundingDate": "1974",
+  "disambiguatingDescription": "Fiktives Unternehmen. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="sheet">
+  <div class="zones" aria-hidden="true"></div>
+
+  <header class="head">
+    <a class="mark" href="index.html" aria-label="HÄRTL Präzisionstechnik, zur Startseite">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x=".5" y=".5" width="31" height="31" stroke="#15171a"/>
+        <circle cx="16" cy="16" r="9.5" stroke="#15171a"/>
+        <circle cx="16" cy="16" r="4" fill="#f5c400" stroke="#15171a"/>
+        <path d="M16 1v6M16 25v6M1 16h6M25 16h6" stroke="#15171a"/>
+      </svg>
+      <span>
+        <b>Härtl</b>
+        <small>Präzisionstechnik</small>
+      </span>
+    </a>
+
+    <button class="burger" aria-expanded="false" aria-controls="hauptnav">
+      <i aria-hidden="true"></i> Menü
+    </button>
+
+    <nav class="nav" id="hauptnav" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Übersicht</a>
+      <a href="fertigung.html">Fertigung</a>
+      <a href="maschinenpark.html">Maschinenpark</a>
+      <a href="qualitaet.html">Qualität</a>
+    </nav>
+
+    <a class="cta" href="#anfrage">Anfrage stellen</a>
+  </header>
+
+  <main id="inhalt">
+
+    <!-- ── Blatt 01 · Titelblatt ─────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-draw">
+        <svg viewBox="0 0 660 480" role="img" aria-labelledby="zt zd">
+          <title id="zt">Fertigungszeichnung einer Passhülse im Längsschnitt</title>
+          <desc id="zd">Gestufte Hülse mit Bund, Durchgangsbohrung Ø 32 H7, Außendurchmesser Ø 64 h6, Gesamtlänge 182,50 mm, Rundlauftoleranz 0,005 mm zu Bezug A.</desc>
+
+          <defs>
+            <pattern id="hatch" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="9" stroke="#15171a" stroke-width="1" opacity=".55"/>
+            </pattern>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0 1.6 10 5 0 8.4z" fill="#15171a"/>
+            </marker>
+          </defs>
+
+          <g stroke="#15171a" fill="none" stroke-width="1.6" stroke-linejoin="miter">
+            <!-- Werkstoff, geschnitten -->
+            <path class="draw-line" style="--d:.05s"
+                  d="M130 120 L185 120 L185 152 L512 152 L520 160 L520 190 L130 190 Z"
+                  fill="url(#hatch)"/>
+            <path class="draw-line" style="--d:.15s"
+                  d="M130 320 L185 320 L185 288 L512 288 L520 280 L520 250 L130 250 Z"
+                  fill="url(#hatch)"/>
+          </g>
+
+          <!-- Mittellinie: Strichpunkt -->
+          <line class="draw-line" style="--d:0s" x1="86" y1="220" x2="596" y2="220"
+                stroke="#b7112b" stroke-width="1" stroke-dasharray="18 4 3 4" opacity=".85"/>
+
+          <g stroke="#15171a" stroke-width=".9" fill="none" opacity=".8">
+            <!-- Maßhilfslinien -->
+            <path class="draw-line" style="--d:.5s" d="M130 322 V416 M520 290 V416"/>
+            <path class="draw-line" style="--d:.5s" d="M128 120 H62 M128 320 H62"/>
+            <path class="draw-line" style="--d:.6s" d="M522 152 H610 M522 288 H610"/>
+          </g>
+
+          <g stroke="#15171a" stroke-width="1.1" marker-start="url(#ar)" marker-end="url(#ar)">
+            <!-- Maßlinien -->
+            <line class="draw-line" style="--d:.62s" x1="130" y1="406" x2="520" y2="406"/>
+            <line class="draw-line" style="--d:.66s" x1="74"  y1="120" x2="74"  y2="320"/>
+            <line class="draw-line" style="--d:.70s" x1="598" y1="152" x2="598" y2="288"/>
+          </g>
+
+          <g font-family="Azeret Mono, monospace" font-size="14" fill="#15171a">
+            <text class="draw-fade" style="--d:.95s" x="325" y="399" text-anchor="middle">182,50</text>
+            <text class="draw-fade" style="--d:1s" x="66" y="220" text-anchor="middle" transform="rotate(-90 66 220)">⌀96</text>
+            <text class="draw-fade" style="--d:1.05s" x="606" y="220" text-anchor="middle" transform="rotate(-90 606 220)">⌀64 h6</text>
+          </g>
+
+          <!-- Bohrung wird im freien Raum der Bohrung selbst bemaßt -->
+          <g class="draw-fade" style="--d:1.12s">
+            <line x1="424" y1="190" x2="424" y2="250" stroke="#15171a" stroke-width="1.1"
+                  marker-start="url(#ar)" marker-end="url(#ar)"/>
+            <text x="438" y="216" font-family="Azeret Mono, monospace" font-size="14" fill="#15171a">⌀32 H7</text>
+            <text x="438" y="234" font-family="Azeret Mono, monospace" font-size="11" fill="#b7112b">+0,025 / 0</text>
+          </g>
+
+          <!-- Form- und Lagetoleranz, Bezug A -->
+          <g class="draw-fade" style="--d:1.2s">
+            <path d="M300 152 V96" stroke="#15171a" stroke-width=".9" opacity=".8"/>
+            <g stroke="#15171a" stroke-width="1.2" fill="none">
+              <rect x="300" y="66" width="132" height="28"/>
+              <line x1="336" y1="66" x2="336" y2="94"/>
+              <line x1="396" y1="66" x2="396" y2="94"/>
+            </g>
+            <g font-family="Azeret Mono, monospace" font-size="13" fill="#15171a">
+              <text x="318" y="85" text-anchor="middle" font-size="15">◎</text>
+              <text x="366" y="85" text-anchor="middle">0,005</text>
+              <text x="414" y="85" text-anchor="middle">A</text>
+            </g>
+          </g>
+
+          <!-- Bezugsdreieck A -->
+          <g class="draw-fade" style="--d:1.28s">
+            <path d="M520 288 L520 344" stroke="#15171a" stroke-width=".9" opacity=".8"/>
+            <path d="M513 300 L527 300 L520 288 Z" fill="#15171a"/>
+            <rect x="506" y="344" width="28" height="24" fill="#f5c400" stroke="#15171a" stroke-width="1.2"/>
+            <text x="520" y="361" text-anchor="middle" font-family="Azeret Mono, monospace" font-size="14" fill="#15171a">A</text>
+          </g>
+
+          <!-- Rauheitsangabe an der Bohrungswand -->
+          <g class="draw-fade" style="--d:1.35s">
+            <path d="M240 190 L214 138 H170" stroke="#15171a" stroke-width=".9" fill="none" opacity=".8"/>
+            <path d="M186 138 L178 150 L170 126 H150" stroke="#15171a" stroke-width="1.3" fill="none"/>
+            <text x="152" y="120" font-family="Azeret Mono, monospace" font-size="13" fill="#15171a">Ra 0,4</text>
+          </g>
+
+          <!-- Schnittkennzeichnung -->
+          <text class="draw-fade" style="--d:1.4s" x="86" y="446" font-family="Azeret Mono, monospace" font-size="12" fill="#6a7078">SCHNITT A–A · MASSSTAB 1:2 · ALLE MASSE IN MM</text>
+        </svg>
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-kicker">Lohnfertigung seit 1974 · Schwäbisch Gmünd</p>
+        <h1>Wir fertigen,<br>was gemessen<br><em>werden muss.</em></h1>
+        <p class="lead">
+          Drehteile und Frästeile für Medizintechnik, Halbleiterfertigung und Messtechnik —
+          in Losgrößen von 1 bis 25.000. Jedes Teil verlässt das Haus mit Messprotokoll.
+        </p>
+
+        <dl class="hero-facts">
+          <div><dt>Toleranzfeld</dt><dd>±0,005</dd></div>
+          <div><dt>Rauheit</dt><dd>Ra 0,1</dd></div>
+          <div><dt>Angebot in</dt><dd>48 h</dd></div>
+        </dl>
+
+        <div class="hero-actions">
+          <a class="btn" href="#anfrage">Zeichnung prüfen lassen</a>
+          <a class="btn btn--ghost" href="maschinenpark.html">Maschinenpark ansehen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Blatt 02 · Verfahren ──────────────────────────────────────── -->
+    <p class="blatt"><b>Blatt 02</b> <span class="sp"></span> Fertigungsverfahren</p>
+
+    <section class="sect">
+      <h2>Vier Verfahren, ein Haus</h2>
+      <p class="lead" style="margin:14px 0 0;max-width:62ch">
+        Vom Rohteil bis zur geprüften Baugruppe bleibt alles unter einem Dach.
+        Das spart die Schnittstellen, an denen Toleranzen üblicherweise verloren gehen.
+      </p>
+
+      <div class="ops">
+        <article class="op">
+          <span class="op-no">OP 10</span>
+          <h3>CNC-Drehen<small>Dreh-Fräs-Zentren, 6 Achsen</small></h3>
+          <p>Komplettbearbeitung in einer Aufspannung: Drehen, Bohren, Fräsen, Gewinden und
+             Rückseitenbearbeitung. Stangenlader für Serien, Futterbetrieb ab Losgröße 1.</p>
+          <p class="op-spec">
+            <b>⌀ 3 – 220 mm</b><br>
+            Länge bis 850 mm<br>
+            IT-Grad 5
+          </p>
+        </article>
+
+        <article class="op">
+          <span class="op-no">OP 20</span>
+          <h3>5-Achs-Fräsen<small>Simultan, Palettenwechsler</small></h3>
+          <p>Freiformflächen, Hinterschnitte und dünnwandige Strukturteile aus Titan, Inconel
+             und PEEK. Nachtschicht mannlos über 12 Paletten.</p>
+          <p class="op-spec">
+            <b>800 × 800 × 550</b><br>
+            18.000 min⁻¹<br>
+            IT-Grad 6
+          </p>
+        </article>
+
+        <article class="op">
+          <span class="op-no">OP 30</span>
+          <h3>Schleifen<small>Rund-, Flach- und Innenschleifen</small></h3>
+          <p>Gehärtete Passungen und Dichtsitze. Rundlauf und Zylindrizität werden im
+             gleichen Aufbau geschliffen, in dem sie später gemessen werden.</p>
+          <p class="op-spec">
+            <b>Ra 0,1 µm</b><br>
+            Rundlauf 0,002<br>
+            bis 62 HRC
+          </p>
+        </article>
+
+        <article class="op">
+          <span class="op-no">OP 40</span>
+          <h3>Erodieren<small>Draht und Senk</small></h3>
+          <p>Konturen, die kein Fräser erreicht: Innenecken mit R 0,05, Passfedernuten in
+             gehärtetem Material, Startlochbohren im gleichen Durchlauf.</p>
+          <p class="op-spec">
+            <b>Schnittspalt 0,25</b><br>
+            Konik bis 30°<br>
+            Ra 0,15 µm
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Blatt 03 · Toleranzband ───────────────────────────────────── -->
+    <p class="blatt"><b>Blatt 03</b> <span class="sp"></span> Prüfmittel und Nachweis</p>
+
+    <section class="sect">
+      <h2>Gemessen wird bei 20,0 °C</h2>
+      <p class="lead" style="margin:14px 0 28px;max-width:62ch">
+        Der Messraum ist auf ±0,5 K klimatisiert. Was dort nicht bestätigt wird,
+        verlässt die Halle nicht — auch nicht als Erstmuster.
+      </p>
+
+      <dl class="tolband">
+        <div><dt>Kleinstes Toleranzfeld</dt><dd>±0,005<span>Millimeter</span></dd></div>
+        <div><dt>Messraum</dt><dd>20,0 °C<span>±0,5 K, Klasse 1</span></dd></div>
+        <div><dt>Antastgenauigkeit KMG</dt><dd>1,8 µm<span>MPE, Zeiss Contura</span></dd></div>
+        <div><dt>Prüfmittelüberwachung</dt><dd>12 Mon.<span>rückführbar auf DKD</span></dd></div>
+      </dl>
+
+      <p style="margin:26px 0 0">
+        <a class="btn btn--ghost" href="qualitaet.html">Prüfmittel und Messverfahren im Detail</a>
+      </p>
+    </section>
+
+    <!-- ── Blatt 04 · Maschinenpark ──────────────────────────────────── -->
+    <p class="blatt"><b>Blatt 04</b> <span class="sp"></span> Maschinenpark, Auszug</p>
+
+    <section class="sect">
+      <div class="tablewrap">
+        <table class="data">
+          <caption>Auszug — 6 von 23 Maschinen · Stand 03/2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Maschine</th>
+              <th scope="col">Bauart</th>
+              <th scope="col">Achsen</th>
+              <th scope="col">Arbeitsraum / Durchlass</th>
+              <th scope="col">Spindel</th>
+              <th scope="col">Bj.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>INDEX G220</b></td><td>Dreh-Fräs-Zentrum</td>
+              <td class="num">6</td><td class="num">⌀ 65 Stangendurchlass</td><td class="num">6.000 min⁻¹</td><td class="num">2021</td>
+            </tr>
+            <tr>
+              <td><b>DMG MORI NTX 1000</b></td><td>Dreh-Fräs-Zentrum</td>
+              <td class="num">5</td><td class="num">⌀ 460 × 800 mm</td><td class="num">12.000 min⁻¹</td><td class="num">2019</td>
+            </tr>
+            <tr>
+              <td><b>Hermle C 42 U</b></td><td>Bearbeitungszentrum</td>
+              <td class="num">5</td><td class="num">800 × 800 × 550 mm</td><td class="num">18.000 min⁻¹</td><td class="num">2022</td>
+            </tr>
+            <tr>
+              <td><b>Grob G350</b></td><td>Bearbeitungszentrum</td>
+              <td class="num">5</td><td class="num">600 × 770 × 710 mm</td><td class="num">16.000 min⁻¹</td><td class="num">2018</td>
+            </tr>
+            <tr>
+              <td><b>Studer S33</b></td><td>Rundschleifmaschine</td>
+              <td class="num">3</td><td class="num">Spitzenweite 650 mm</td><td class="num">—</td><td class="num">2020</td>
+            </tr>
+            <tr>
+              <td><b>AgieCharmilles CUT P 350</b></td><td>Drahterodiermaschine</td>
+              <td class="num">4</td><td class="num">350 × 250 × 256 mm</td><td class="num">—</td><td class="num">2023</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:22px 0 0"><a class="btn btn--ghost" href="maschinenpark.html">Vollständige Liste</a></p>
+    </section>
+
+    <!-- ── Blatt 05 · Ablauf ─────────────────────────────────────────── -->
+    <p class="blatt"><b>Blatt 05</b> <span class="sp"></span> Vom Datensatz zum Teil</p>
+
+    <section class="sect">
+      <h2>Sechs Stationen</h2>
+      <div class="chain" style="margin-top:30px">
+        <div class="chain-row">
+          <div class="chain-step"><em>+0 h</em><h3>Datensatz</h3><p>STEP, DXF oder IGES. Wir lesen auch Papierzeichnungen und digitalisieren sie.</p></div>
+          <div class="chain-step"><em>+48 h</em><h3>Machbarkeit</h3><p>Fertigungsgerechte Rückmeldung zu Toleranzen, Werkstoff und Preis pro Stufe.</p></div>
+          <div class="chain-step"><em>+5 d</em><h3>Arbeitsvorbereitung</h3><p>CAM-Programmierung, Vorrichtungsbau, Werkzeugvoreinstellung, Materialfreigabe.</p></div>
+        </div>
+        <div class="chain-row" style="margin-top:34px">
+          <div class="chain-step"><em>Serie</em><h3>Fertigung</h3><p>Erstteilfreigabe, dann SPC-begleitete Serie mit Regelkarte pro Merkmal.</p></div>
+          <div class="chain-step"><em>100 %</em><h3>Prüfung</h3><p>Messprotokoll nach Zeichnungsstand, Erstmusterprüfbericht auf Wunsch nach VDA 2.</p></div>
+          <div class="chain-step"><em>ab Werk</em><h3>Lieferung</h3><p>Konservierung, Kanban-Abruf oder Konsignationslager beim Kunden.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Blatt 06 · Branchen ───────────────────────────────────────── -->
+    <p class="blatt"><b>Blatt 06</b> <span class="sp"></span> Branchen und Werkstoffe</p>
+
+    <section class="sect">
+      <h2>Wofür wir fertigen</h2>
+      <div class="tags" style="margin:24px 0 34px">
+        <span>Medizintechnik</span><span>Halbleiterfertigung</span><span>Messtechnik</span>
+        <span>Antriebstechnik</span><span>Luft- und Raumfahrt</span><span>Sondermaschinenbau</span>
+        <span>Analytik</span><span>Vakuumtechnik</span>
+      </div>
+
+      <h3 style="margin-bottom:14px">Werkstoffe im Haus</h3>
+      <div class="tablewrap">
+        <table class="data">
+          <caption>Lagerware — Sonderwerkstoffe auf Anfrage</caption>
+          <thead>
+            <tr><th scope="col">Gruppe</th><th scope="col">Werkstoffe</th><th scope="col">Anmerkung</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Edelstahl</b></td><td>1.4404, 1.4571, 1.4542, 1.4112</td><td>auch als Vormaterial mit Zeugnis 3.1</td></tr>
+            <tr><td><b>Titan</b></td><td>Grade 2, Grade 5 (Ti6Al4V), Grade 23 ELI</td><td>für implantatnahe Bauteile</td></tr>
+            <tr><td><b>Nickelbasis</b></td><td>Inconel 718, Hastelloy C‑276</td><td>schwer zerspanbar, eigene Werkzeugstrategie</td></tr>
+            <tr><td><b>Aluminium</b></td><td>EN AW‑7075, EN AW‑6082, EN AW‑5083</td><td>eloxierfähig, spannungsarm geglüht</td></tr>
+            <tr><td><b>Kunststoff</b></td><td>PEEK, PTFE, POM, PVDF</td><td>getrennte Zone, keine Metallkontamination</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <figure class="quote">
+      <blockquote>„Die Zeichnung kam Freitag zurück — mit drei Änderungen, die uns 40 % Kosten gespart haben."</blockquote>
+      <figcaption>
+        <b>Dr. Anke Vollmer</b>
+        Leitung Entwicklung<br>
+        Fiktiver Kunde, Analysegeräte
+      </figcaption>
+    </figure>
+
+    <!-- ── Schriftfeld · Anfrage ─────────────────────────────────────── -->
+    <p class="blatt" id="anfrage"><b>Schriftfeld</b> <span class="sp"></span> Anfrage und Kontakt</p>
+
+    <section class="titleblock">
+      <div class="titleblock-form">
+        <h2 style="margin-bottom:10px">Zeichnung prüfen lassen</h2>
+        <p style="margin-bottom:26px;color:var(--ink-2)">
+          Laden Sie Ihren Datensatz hoch. Sie erhalten binnen zwei Arbeitstagen eine
+          fertigungsgerechte Rückmeldung mit Preis pro Stückzahlstufe.
+        </p>
+
+        <form data-demo novalidate>
+          <p class="sent" role="status">
+            Angenommen. In der Demo wird nichts versendet — im Echtbetrieb läge die
+            Anfrage jetzt in der Arbeitsvorbereitung.
+          </p>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="f-name">Name <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Vor- und Nachname">
+              <p class="msg">Bitte tragen Sie Ihren Namen ein.</p>
+            </div>
+            <div class="field">
+              <label for="f-firma">Unternehmen</label>
+              <input id="f-firma" name="firma" type="text" autocomplete="organization" placeholder="Firmenname">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="f-mail">E-Mail <span class="req">*</span></label>
+              <input id="f-mail" name="email" type="email" required autocomplete="email" placeholder="name@firma.de">
+              <p class="msg">Bitte prüfen Sie die E-Mail-Adresse.</p>
+            </div>
+            <div class="field">
+              <label for="f-stk">Stückzahl</label>
+              <input id="f-stk" name="stueckzahl" type="text" inputmode="numeric" placeholder="z. B. 250">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-text">Was soll gefertigt werden? <span class="req">*</span></label>
+            <textarea id="f-text" name="beschreibung" required placeholder="Werkstoff, kritische Maße, Termin, Zeichnungsstand"></textarea>
+            <p class="msg">Ein, zwei Sätze genügen.</p>
+          </div>
+
+          <label class="drop" tabindex="0">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15171a" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
+            </svg>
+            <span class="drop-label">Zeichnung anhängen — STEP, DXF, IGES oder PDF</span>
+            <input type="file" name="zeichnung" multiple accept=".step,.stp,.dxf,.igs,.iges,.pdf">
+          </label>
+
+          <p class="formnote">
+            Ihre Daten gehen ausschließlich an die Arbeitsvorbereitung und werden nach
+            180 Tagen gelöscht. NDA senden wir auf Wunsch vorab zu.
+          </p>
+
+          <p style="margin:20px 0 0">
+            <button class="btn btn--dark" type="submit">Anfrage absenden</button>
+          </p>
+        </form>
+      </div>
+
+      <div class="titleblock-meta">
+        <div class="tb-cell"><dt>Firma</dt><dd>HÄRTL Präzisionstechnik GmbH</dd></div>
+        <div class="tb-cell"><dt>Anschrift</dt><dd>Benzholzstraße 14<br>73525 Schwäbisch Gmünd</dd></div>
+        <div class="tb-cell"><dt>Telefon</dt><dd><a href="tel:+497171900000">+49 7171 900000</a></dd></div>
+        <div class="tb-cell"><dt>E-Mail</dt><dd><a href="mailto:anfrage@haertl-praezision.example">anfrage@haertl-praezision.example</a></dd></div>
+        <div class="tb-cell"><dt>Annahme Ware</dt><dd>Mo–Do 06:30–15:30<br>Fr 06:30–12:00</dd></div>
+        <div class="tb-cell"><dt>Blatt</dt><dd>1 / 6 · Rev. C</dd></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div>
+      <h4>Fertigung</h4>
+      <ul>
+        <li><a href="fertigung.html">CNC-Drehen</a></li>
+        <li><a href="fertigung.html">5-Achs-Fräsen</a></li>
+        <li><a href="fertigung.html">Schleifen</a></li>
+        <li><a href="fertigung.html">Erodieren</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Haus</h4>
+      <ul>
+        <li><a href="maschinenpark.html">Maschinenpark</a></li>
+        <li><a href="qualitaet.html">Qualität und Messtechnik</a></li>
+        <li><a href="#anfrage">Anfrage</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Anschrift</h4>
+      <p>Benzholzstraße 14<br>73525 Schwäbisch Gmünd<br>Baden-Württemberg</p>
+    </div>
+  </footer>
+
+  <p class="colophon">
+    <span class="demo">Demo</span>
+    <span>Fiktives Unternehmen · Beispielprojekt</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</div>
+
+<script src="assets/sheet.js" defer></script>
+</body>
+</html>
