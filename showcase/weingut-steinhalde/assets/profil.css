@@ -478,3 +478,12 @@ p:last-child { margin-bottom: 0; }
   .rail-read, .rail-marker { transition: none; }
   * { transition-duration: .01ms !important; }
 }
+
+/* Sprungziele bleiben unter der klebenden Kopfleiste sichtbar. */
+[id] { scroll-margin-top: 92px; }
+
+/* ── Deutsche Komposita ───────────────────────────────────────────────
+   „Berufshaftpflichtversicherung" ist in einer schmalen Spalte breiter als
+   der Kasten. Mit lang="de" trennt der Browser korrekt statt zu überlaufen. */
+h1, h2, h3, h4 { hyphens: auto; overflow-wrap: break-word; }
+p, li, dd, dt, th, td, summary, figcaption { overflow-wrap: break-word; }

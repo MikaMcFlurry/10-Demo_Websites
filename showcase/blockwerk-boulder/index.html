@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLOCKWERK Boulderhalle Bochum – 320 Boulder auf 1.400 m²</title>
+<meta name="description" content="Boulderhalle in Bochum: fünf Sektoren, 320 Boulder, jede Woche neu geschraubt. Routenboard, Preise, Kurse und Öffnungszeiten.">
+<meta name="theme-color" content="#1a1917">
+<meta property="og:title" content="BLOCKWERK Boulderhalle Bochum">
+<meta property="og:description" content="320 Boulder auf 1.400 m². Jede Woche ein Sektor neu.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/board.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "BLOCKWERK Boulderhalle",
+  "description": "Boulderhalle mit fünf Sektoren und 320 Bouldern.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Alleestraße 118",
+    "postalCode": "44793",
+    "addressLocality": "Bochum",
+    "addressRegion": "Nordrhein-Westfalen",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 234 900000",
+  "email": "hallo@blockwerk.example",
+  "disambiguatingDescription": "Fiktive Halle. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="wortmarke" href="index.html" aria-label="BLOCKWERK, zur Startseite">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="9" height="9" rx="2" fill="#f2c53d"/>
+      <rect x="13" y="2" width="9" height="9" rx="2" fill="#3f8fd8"/>
+      <rect x="2" y="13" width="9" height="9" rx="2" fill="#ea5a4e"/>
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="#4fb96a"/>
+    </svg>
+    Blockwerk
+  </a>
+
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html" aria-current="page">Halle</a>
+    <a href="routen.html">Routen</a>
+    <a href="kurse.html">Kurse</a>
+    <a href="preise.html">Preise</a>
+  </nav>
+
+  <p class="status" data-status style="margin:0">
+    <i aria-hidden="true"></i>
+    <span class="status-text">Öffnungszeiten prüfen</span>
+  </p>
+</header>
+
+<main id="inhalt">
+
+  <!-- ── Aufmacher: Sektorplan ─────────────────────────────────────── -->
+  <section class="auf">
+    <figure class="plan" style="margin:0" data-plan>
+      <svg viewBox="0 0 620 420" role="img" aria-labelledby="pl-t pl-d">
+        <title id="pl-t">Sektorplan der Halle</title>
+        <desc id="pl-d">Die Halle ist L-förmig. Links oben der Sektor Welle, in der Mitte oben das
+          Dach, rechts die Kante. Unten links die Platte, rechts daneben der Zirkel. Der Eingang
+          liegt unten links an der Alleestraße, die Theke direkt dahinter.</desc>
+
+        <!-- Hallenumriss -->
+        <path d="M30 30 H590 V240 H430 V390 H30 Z"
+              fill="none" stroke="#3b3735" stroke-width="2.5"/>
+
+        <!-- Sektoren -->
+        <g data-sektor="Welle" tabindex="0" role="img" aria-label="Sektor Welle, Übergänge und Volumen" style="cursor:pointer;opacity:.9">
+          <rect x="46" y="46" width="144" height="178" rx="7" fill="#3f8fd8" fill-opacity=".2" stroke="#3f8fd8" stroke-width="2"/>
+          <text x="118" y="128" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="21" fill="#ece8e0">WELLE</text>
+          <text x="118" y="150" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#a8a29a">72 Boulder</text>
+        </g>
+
+        <g data-sektor="Dach" tabindex="0" role="img" aria-label="Sektor Dach, starke Überhänge" style="cursor:pointer;opacity:.9">
+          <rect x="206" y="46" width="150" height="104" rx="7" fill="#ea5a4e" fill-opacity=".2" stroke="#ea5a4e" stroke-width="2"/>
+          <text x="281" y="92" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="21" fill="#ece8e0">DACH</text>
+          <text x="281" y="114" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#a8a29a">54 Boulder</text>
+        </g>
+
+        <g data-sektor="Kante" tabindex="0" role="img" aria-label="Sektor Kante, technische Wandkletterei" style="cursor:pointer;opacity:.9">
+          <rect x="372" y="46" width="202" height="178" rx="7" fill="#ac74dd" fill-opacity=".2" stroke="#ac74dd" stroke-width="2"/>
+          <text x="473" y="128" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="21" fill="#ece8e0">KANTE</text>
+          <text x="473" y="150" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#a8a29a">88 Boulder</text>
+        </g>
+
+        <g data-sektor="Platte" tabindex="0" role="img" aria-label="Sektor Platte, Reibung und Technik" style="cursor:pointer;opacity:.9">
+          <rect x="46" y="256" width="188" height="118" rx="7" fill="#4fb96a" fill-opacity=".2" stroke="#4fb96a" stroke-width="2"/>
+          <text x="140" y="308" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="21" fill="#ece8e0">PLATTE</text>
+          <text x="140" y="330" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#a8a29a">66 Boulder</text>
+        </g>
+
+        <g data-sektor="Zirkel" tabindex="0" role="img" aria-label="Sektor Zirkel, Kraftraum und Campusboard" style="cursor:pointer;opacity:.9">
+          <rect x="250" y="256" width="164" height="118" rx="7" fill="#f2c53d" fill-opacity=".2" stroke="#f2c53d" stroke-width="2"/>
+          <text x="332" y="308" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="21" fill="#ece8e0">ZIRKEL</text>
+          <text x="332" y="330" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#a8a29a">40 Boulder</text>
+        </g>
+
+        <!-- Eingang links, die Theke liegt direkt dahinter im Quergang -->
+        <g>
+          <path d="M30 254 V226" stroke="#1a1917" stroke-width="7"/>
+          <path d="M30 254 V226" stroke="#f2c53d" stroke-width="3.5"/>
+          <text x="19" y="240" text-anchor="middle" transform="rotate(-90 19 240)"
+                font-family="Hanken Grotesk, sans-serif" font-size="11.5" font-weight="600" fill="#f2c53d">EINGANG</text>
+
+          <rect x="56" y="226" width="196" height="28" rx="6" fill="#2f2c2a" stroke="#3b3735" stroke-width="1.5"/>
+          <text x="154" y="245" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="600" fill="#a8a29a">THEKE &amp; CAFÉ</text>
+        </g>
+
+        <!-- Nordpfeil -->
+        <g transform="translate(568 372)" opacity=".65">
+          <path d="M0 -14 L5 6 L0 1 L-5 6 Z" fill="#a8a29a"/>
+          <text x="0" y="20" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="11" font-weight="600" fill="#a8a29a">N</text>
+        </g>
+      </svg>
+
+      <figcaption>
+        <span><i style="background:#f2c53d"></i> 3–4</span>
+        <span><i style="background:#4fb96a"></i> 4–5</span>
+        <span><i style="background:#3f8fd8"></i> 5–6A</span>
+        <span><i style="background:#ea5a4e"></i> 6A–6C</span>
+        <span><i style="background:#ac74dd"></i> 6C–7B</span>
+        <span><i style="background:#e9e6df"></i> 7B+</span>
+      </figcaption>
+    </figure>
+
+    <div>
+      <h1>320 Boulder.<br><em>Jede Woche</em><br>ein Sektor neu.</h1>
+      <p class="satz">
+        1.400 Quadratmeter Kletterfläche in einer alten Werkshalle an der
+        Alleestraße. Fünf Sektoren, sechs Schwierigkeitsfarben, ein
+        Schraubteam, das nie fertig wird.
+      </p>
+
+      <div class="last" data-last>
+        <p class="last-kopf" style="max-width:none">
+          <span>Auslastung gerade</span>
+          <b data-last-wert>–</b>
+        </p>
+        <div class="last-bar"><span style="width:0"></span></div>
+        <small>Beispielwert dieser Demo, aus Wochentag und Uhrzeit errechnet.</small>
+      </div>
+
+      <div class="tasten">
+        <a class="taste" href="preise.html">Preise ansehen</a>
+        <a class="taste taste--leer" href="routen.html">Zum Routenboard</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Routenboard ───────────────────────────────────────────────── -->
+  <section class="teil">
+    <p class="marke">Routenboard</p>
+    <h2>Was diese Woche neu ist</h2>
+    <p class="gross" style="margin-bottom:24px;max-width:56ch">
+      Jeder Boulder steht mit Sektor, Farbe, Schrauber und Datum im Board.
+      Filtern Sie nach Farbe – oder fahren Sie über den Sektorplan oben,
+      dann leuchten die passenden Zeilen auf.
+    </p>
+
+    <div class="filter" data-filter role="group" aria-label="Nach Schwierigkeitsfarbe filtern">
+      <button type="button" data-grad="gelb"    aria-pressed="false" style="--c:var(--g1)"><i></i> Gelb 3–4</button>
+      <button type="button" data-grad="gruen"   aria-pressed="false" style="--c:var(--g2)"><i></i> Grün 4–5</button>
+      <button type="button" data-grad="blau"    aria-pressed="false" style="--c:var(--g3)"><i></i> Blau 5–6A</button>
+      <button type="button" data-grad="rot"     aria-pressed="false" style="--c:var(--g4)"><i></i> Rot 6A–6C</button>
+      <button type="button" data-grad="violett" aria-pressed="false" style="--c:var(--g5)"><i></i> Violett 6C–7B</button>
+      <button type="button" data-grad="weiss"   aria-pressed="false" style="--c:var(--g6)"><i></i> Weiß 7B+</button>
+      <button type="button" data-alle class="taste taste--leer zuruck">Alle zeigen</button>
+    </div>
+
+    <p class="trefferzahl" data-treffer role="status">–</p>
+
+    <div class="boardwrap">
+      <table class="board" data-board>
+        <caption>Auszug · vollständiges Board unter „Routen"</caption>
+        <thead>
+          <tr>
+            <th scope="col">Boulder</th>
+            <th scope="col">Sektor</th>
+            <th scope="col">Farbe</th>
+            <th scope="col">Geschraubt von</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Stand</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-grad="violett" data-sektor="Kante">
+            <th scope="row">Kaltverformung</th><td class="sek">Kante</td>
+            <td><span class="grad" style="--c:var(--g5)"><i></i>6C+</span></td>
+            <td class="schr">Nane K.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td>
+          </tr>
+          <tr data-grad="rot" data-sektor="Dach">
+            <th scope="row">Schwerlast</th><td class="sek">Dach</td>
+            <td><span class="grad" style="--c:var(--g4)"><i></i>6B</span></td>
+            <td class="schr">Tobi R.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td>
+          </tr>
+          <tr data-grad="rot" data-sektor="Dach">
+            <th scope="row">Zwischenruf</th><td class="sek">Dach</td>
+            <td><span class="grad" style="--c:var(--g4)"><i></i>6A+</span></td>
+            <td class="schr">Tobi R.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td>
+          </tr>
+          <tr data-grad="blau" data-sektor="Welle">
+            <th scope="row">Flachwasser</th><td class="sek">Welle</td>
+            <td><span class="grad" style="--c:var(--g3)"><i></i>5+</span></td>
+            <td class="schr">Marit S.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td>
+          </tr>
+          <tr data-grad="gruen" data-sektor="Platte">
+            <th scope="row">Erster Zug</th><td class="sek">Platte</td>
+            <td><span class="grad" style="--c:var(--g2)"><i></i>4</span></td>
+            <td class="schr">Ilyas D.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td>
+          </tr>
+          <tr data-grad="weiss" data-sektor="Kante">
+            <th scope="row">Nullserie</th><td class="sek">Kante</td>
+            <td><span class="grad" style="--c:var(--g6)"><i></i>7C</span></td>
+            <td class="schr">Nane K.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td>
+          </tr>
+          <tr data-grad="gelb" data-sektor="Platte">
+            <th scope="row">Warmlaufen</th><td class="sek">Platte</td>
+            <td><span class="grad" style="--c:var(--g1)"><i></i>3</span></td>
+            <td class="schr">Ilyas D.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td>
+          </tr>
+          <tr data-grad="violett" data-sektor="Welle">
+            <th scope="row">Blindgänger</th><td class="sek">Welle</td>
+            <td><span class="grad" style="--c:var(--g5)"><i></i>7A</span></td>
+            <td class="schr">Jonas P.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td>
+          </tr>
+          <tr data-grad="blau" data-sektor="Zirkel">
+            <th scope="row">Handbetrieb</th><td class="sek">Zirkel</td>
+            <td><span class="grad" style="--c:var(--g3)"><i></i>6A</span></td>
+            <td class="schr">Ferdi W.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td>
+          </tr>
+          <tr data-grad="gelb" data-sektor="Welle">
+            <th scope="row">Leichtlauf</th><td class="sek">Welle</td>
+            <td><span class="grad" style="--c:var(--g1)"><i></i>4</span></td>
+            <td class="schr">Marit S.</td><td class="dat">14.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td>
+          </tr>
+          <tr data-leer hidden>
+            <td colspan="6" class="leer">In dieser Farbe steht gerade nichts im Auszug – das vollständige Board hat mehr.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:24px">
+      <a class="taste taste--leer" href="routen.html">Alle 320 Boulder</a>
+    </p>
+  </section>
+
+  <!-- ── Schraubplan ───────────────────────────────────────────────── -->
+  <section class="teil">
+    <p class="marke">Schraubplan</p>
+    <h2>Alle fünf Wochen<br>ist jeder Sektor dran</h2>
+    <p class="gross" style="max-width:56ch">
+      Wir schrauben dienstags. Der betroffene Sektor ist dann ab 14 Uhr
+      gesperrt, alle anderen bleiben offen – und am Mittwoch früh hängt alles
+      Neue.
+    </p>
+
+    <dl class="plan-wochen">
+      <div class="woche" style="--c:var(--g4)"><dt>Diese Woche</dt><dd>Dach<small>54 Boulder, Di ab 14 Uhr gesperrt</small></dd></div>
+      <div class="woche" style="--c:var(--g5)"><dt>In 1 Woche</dt><dd>Kante<small>88 Boulder, größter Sektor</small></dd></div>
+      <div class="woche" style="--c:var(--g3)"><dt>In 2 Wochen</dt><dd>Welle<small>72 Boulder</small></dd></div>
+      <div class="woche" style="--c:var(--g2)"><dt>In 3 Wochen</dt><dd>Platte<small>66 Boulder</small></dd></div>
+      <div class="woche" style="--c:var(--g1)"><dt>In 4 Wochen</dt><dd>Zirkel<small>40 Boulder, plus Kraftraum</small></dd></div>
+    </dl>
+  </section>
+
+  <!-- ── Preise ────────────────────────────────────────────────────── -->
+  <section class="teil">
+    <p class="marke">Eintritt</p>
+    <h2>Was es kostet</h2>
+
+    <ul class="tafel">
+      <li>
+        <span class="was">Tageskarte<small>Erwachsene, den ganzen Tag, Wiedereinlass möglich</small></span>
+        <span class="eur">14,50 <span>€</span></span>
+      </li>
+      <li>
+        <span class="was">Feierabend ab 20 Uhr<small>Mo bis Fr, gilt bis zum Schließen</small></span>
+        <span class="eur">9,50 <span>€</span></span>
+      </li>
+      <li>
+        <span class="was">Ermäßigt<small>Schüler, Azubis, Studierende, Freiwilligendienst, Bochum-Pass</small></span>
+        <span class="eur">10,50 <span>€</span></span>
+      </li>
+      <li>
+        <span class="was">Kinder bis 13<small>Nur in Begleitung einer erwachsenen Person</small></span>
+        <span class="eur">7,00 <span>€</span></span>
+      </li>
+      <li>
+        <span class="was">Zehnerkarte<small>Übertragbar, ohne Ablaufdatum</small></span>
+        <span class="eur">125,00 <span>€</span></span>
+      </li>
+      <li>
+        <span class="was">Monatsabo<small>Monatlich kündbar, kein Mindestzeitraum</small></span>
+        <span class="eur">54,00 <span>€ / Monat</span></span>
+      </li>
+    </ul>
+
+    <p style="margin-top:24px;font-size:.92rem;color:var(--kreide-2)">
+      Beispielpreise einer fiktiven Halle. Leihschuhe 4 €, Chalkbag 2 €.
+    </p>
+    <p style="margin-top:22px">
+      <a class="taste" href="preise.html">Abos und Gruppenpreise</a>
+    </p>
+  </section>
+
+  <!-- ── Zeiten und Anfahrt ────────────────────────────────────────── -->
+  <section class="teil">
+    <p class="marke">Hier finden Sie uns</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(26px,4vw,60px);align-items:start">
+      <div>
+        <h2 style="font-size:clamp(1.4rem,2.2vw,1.9rem)">Öffnungszeiten</h2>
+        <ul class="zeiten">
+          <li data-tag="1"><b>Montag</b><span class="z">9–23 Uhr</span></li>
+          <li data-tag="2"><b>Dienstag</b><span class="z">9–23 Uhr</span></li>
+          <li data-tag="3"><b>Mittwoch</b><span class="z">9–23 Uhr</span></li>
+          <li data-tag="4"><b>Donnerstag</b><span class="z">9–23 Uhr</span></li>
+          <li data-tag="5"><b>Freitag</b><span class="z">9–24 Uhr</span></li>
+          <li data-tag="6"><b>Samstag</b><span class="z">9–23 Uhr</span></li>
+          <li data-tag="0"><b>Sonntag</b><span class="z">9–22 Uhr</span></li>
+        </ul>
+        <p style="margin-top:18px;font-size:.92rem;color:var(--kreide-2)">
+          An Feiertagen wie sonntags. Heiligabend und Silvester geschlossen.
+        </p>
+      </div>
+
+      <div>
+        <h2 style="font-size:clamp(1.4rem,2.2vw,1.9rem)">Anfahrt</h2>
+        <div class="spalten" style="margin-top:0;grid-template-columns:1fr">
+          <div>
+            <h3>Adresse</h3>
+            <p>Alleestraße 118<br>44793 Bochum<br>Halle 4 auf dem alten Werksgelände</p>
+          </div>
+          <div>
+            <h3>Öffentlich</h3>
+            <p>U35 bis Bochum Bergbaumuseum, dann acht Minuten zu Fuß. Nachts fährt
+               die Nachtexpresslinie NE2 bis Alleestraße.</p>
+          </div>
+          <div>
+            <h3>Rad und Auto</h3>
+            <p>120 überdachte Radstellplätze am Tor. 40 Autoplätze auf dem Hof,
+               nach 18 Uhr regelmäßig voll – kommen Sie lieber mit dem Rad.</p>
+          </div>
+          <div>
+            <h3>Barrierefrei</h3>
+            <p>Halle, Theke und Umkleiden sind ebenerdig. Rollstuhl-WC neben der
+               Theke. Für Paraclimbing-Training rufen Sie bitte vorher an.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Fragen ────────────────────────────────────────────────────── -->
+  <section class="teil">
+    <p class="marke">Bevor Sie kommen</p>
+    <h2>Häufige Fragen</h2>
+
+    <div class="fragen">
+      <details>
+        <summary>Ich habe noch nie gebouldert. Kann ich einfach kommen?</summary>
+        <p class="a">Ja. Beim ersten Besuch bekommen Sie an der Theke eine kurze
+           Einweisung – Fallen, Absichern, Hallenregeln, etwa zehn Minuten. Wer
+           mehr will, bucht den Einsteigerkurs; der ist aber keine Voraussetzung.</p>
+      </details>
+      <details>
+        <summary>Was brauche ich?</summary>
+        <p class="a">Sportsachen und saubere Kletterschuhe. Schuhe leihen wir für
+           4 €, Chalkbag für 2 €. Loses Chalk ist nicht erlaubt, nur Liquid oder
+           Chalkball – die Halle hat keine Absauganlage.</p>
+      </details>
+      <details>
+        <summary>Ab welchem Alter?</summary>
+        <p class="a">Kinder ab 6 Jahren in Begleitung einer aufsichtspflichtigen
+           Person. Ab 14 auch allein, mit schriftlicher Einverständniserklärung.
+           Für Kindergeburtstage gibt es ein eigenes Angebot mit Betreuung.</p>
+      </details>
+      <details>
+        <summary>Wie voll ist es wann?</summary>
+        <p class="a">Zwischen 17 und 21 Uhr ist werktags am meisten los, dienstags
+           zusätzlich durch die Sektorsperre. Vormittags und nach 21:30 haben Sie
+           die Wand oft für sich.</p>
+      </details>
+      <details>
+        <summary>Gibt es Duschen?</summary>
+        <p class="a">Ja, getrennte und ein geschlechtsneutraler Umkleidebereich,
+           dazu abschließbare Spinde. Schlosspfand 1 €, kein eigenes Schloss nötig.</p>
+      </details>
+      <details>
+        <summary>Kann ich in der Halle arbeiten?</summary>
+        <p class="a">Im Café ja, mit WLAN und Steckdosen an acht Plätzen. Wir
+           bitten nur darum, ab 17 Uhr die großen Tische freizumachen – dann
+           brauchen sie andere.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div>
+      <h4>Halle</h4>
+      <ul>
+        <li><a href="routen.html">Routenboard</a></li>
+        <li><a href="kurse.html">Kurse und Training</a></li>
+        <li><a href="preise.html">Preise und Abos</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Adresse</h4>
+      <p>Alleestraße 118<br>44793 Bochum<br>Halle 4</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>
+        <a href="tel:+49234900000">+49 234 900000</a><br>
+        <a href="mailto:hallo@blockwerk.example">hallo@blockwerk.example</a>
+      </p>
+    </div>
+  </div>
+
+  <p class="unten">
+    <span class="kz">Demo</span>
+    <span>Fiktive Halle · Beispielprojekt</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/board.js" defer></script>
+</body>
+</html>

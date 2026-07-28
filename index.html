@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Websites — 10 Premium Business Templates</title>
-    <meta name="description" content="10 kostenlose, professionelle Demo-Websites für kleine Unternehmen in Deutschland. Statisch, schnell, DSGVO-ready.">
+    <title>Demo-Websites — Portfolio: 5 Schaustücke, 3 Framework-Projekte, 10 Vorlagen</title>
+    <meta name="description" content="Portfolio mit Demo-Websites: fünf Schaustücke mit eigener Gestaltungswelt, drei Framework-Projekte und zehn Vorlagen für kleine Unternehmen in Deutschland. Statisch und ohne externe Abhängigkeiten.">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
@@ -188,14 +188,24 @@
         .featured-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
         .featured-card p  { font-size: 0.875rem; color: #475569; line-height: 1.55; }
         .featured-card .arrow { margin-top: 1rem; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+
+        /* Schaustücke: jede Site hat eine eigene Signaturfarbe, damit die
+           Übersicht zeigt, dass es fünf eigenständige Welten sind. */
+        .showcase-card { border-top: 4px solid var(--sig, var(--accent)); }
+        .showcase-card .badge { background: var(--sig-bg, #eff6ff); color: var(--sig, var(--accent)); }
+        .showcase-card .arrow { color: var(--sig, var(--accent)); }
+        .showcase-card .stack {
+            margin-top: 0.85rem; font-size: 0.75rem; color: var(--muted);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
     <a href="#main" style="position:absolute;left:-9999px;top:0;padding:0.5rem;background:var(--accent);color:#fff;z-index:100;" onfocus="this.style.left='0';" onblur="this.style.left='-9999px';">Zum Inhalt springen</a>
 
     <header class="header">
-        <h1>10 Demo Business Websites</h1>
-        <p>Premium-Vorlagen für kleine Unternehmen in Deutschland. Statisch, schnell, mobilfreundlich und DSGVO-ready. Keine externen Abhängigkeiten.</p>
+        <h1>Demo-Websites</h1>
+        <p>Fünf Schaustücke mit je eigener Gestaltungswelt, drei Framework-Projekte und zehn Vorlagen für kleine Unternehmen. Statisch, schnell, mobilfreundlich, ohne externe Abhängigkeiten.</p>
         <div class="lang-switch">
             <span>Sprache:</span>
             <strong>DE</strong>
@@ -203,6 +213,64 @@
             <span>EN (see individual demos)</span>
         </div>
     </header>
+
+    <section class="featured-section" aria-label="Schaustücke">
+        <h2>Schaustücke — fünf eigenständige Gestaltungswelten</h2>
+        <p style="font-size:0.9rem;color:var(--muted);margin:-0.5rem 0 1.1rem;max-width:70ch">
+            Fünf Demo-Websites aus fünf Branchen. Jede hat eine eigene visuelle Welt,
+            eine eigene CSS-Architektur und ein eigenes Seitengerüst – keine geteilten
+            Bausteine, keine wiederkehrende Handschrift. Schriften lokal gehostet,
+            keine Cookies, keine Tracker.
+        </p>
+        <div class="featured-grid">
+            <a class="featured-card showcase-card" href="./showcase/haertl-praezision/"
+               style="--sig:#a08000;--sig-bg:#fdf6d9">
+                <span class="badge">Industrie</span>
+                <h3>HÄRTL Präzisionstechnik</h3>
+                <p>Lohnfertigung, gebaut als technisches Zeichnungsblatt nach DIN 6771:
+                   Blattrahmen mit Zonenmarken, bemaßtes Bauteil im SVG, Schriftfeld als
+                   Kontaktbereich.</p>
+                <p class="stack">Archivo · Azeret Mono · Zinkpapier &amp; Maschinengelb</p>
+                <p class="arrow">Ansehen &rarr;</p>
+            </a>
+            <a class="featured-card showcase-card" href="./showcase/hochofen-festival/"
+               style="--sig:#c4340f;--sig-bg:#fdeae4">
+                <span class="badge">Kultur</span>
+                <h3>HOCHOFEN Festival</h3>
+                <p>Musikfestival als Siebdruck-Plakat im Zweifarben-Überdruck. Das Line-up
+                   ist echter Plakatsatz, die Passerdifferenz fährt beim Laden ein.</p>
+                <p class="stack">Anton · Barlow Semi Condensed · Riso-Duplex</p>
+                <p class="arrow">Ansehen &rarr;</p>
+            </a>
+            <a class="featured-card showcase-card" href="./showcase/weingut-steinhalde/"
+               style="--sig:#5f7d17;--sig-bg:#f0f6e0">
+                <span class="badge">Landwirtschaft</span>
+                <h3>Weingut Steinhalde</h3>
+                <p>Man scrollt durch die Keuper-Schichten des Remstals. Links läuft ein
+                   Tiefenlineal mit, die Weine stehen als Analysetafel statt als Karten.</p>
+                <p class="stack">Vollkorn · Jost · Bodenprofil auf dunklem Grund</p>
+                <p class="arrow">Ansehen &rarr;</p>
+            </a>
+            <a class="featured-card showcase-card" href="./showcase/brandt-ostermann/"
+               style="--sig:#0f5563;--sig-bg:#e2f1f4">
+                <span class="badge">Recht</span>
+                <h3>Brandt Ostermann Rechtsanwälte</h3>
+                <p>Kanzlei als Aktenregister: Navigation über farbige Registerreiter,
+                   Inhalte gesetzt wie ein Schriftsatz mit Randziffern und Aktenzeichen.</p>
+                <p class="stack">Spectral · Libre Franklin · Aktenpapier &amp; Registerfarben</p>
+                <p class="arrow">Ansehen &rarr;</p>
+            </a>
+            <a class="featured-card showcase-card" href="./showcase/blockwerk-boulder/"
+               style="--sig:#8a6b00;--sig-bg:#fdf3d4">
+                <span class="badge">Sport</span>
+                <h3>BLOCKWERK Boulderhalle</h3>
+                <p>Routenboard statt Werbeseite: Sektorplan als SVG, filterbare Routenliste
+                   nach Griffkartenfarbe, Öffnungsstatus und Auslastung in Echtzeit.</p>
+                <p class="stack">Bricolage Grotesque · Hanken Grotesk · Griffkartenfarben</p>
+                <p class="arrow">Ansehen &rarr;</p>
+            </a>
+        </div>
+    </section>
 
     <section class="featured-section" aria-label="Featured demo sites">
         <h2>Featured — Live on GitHub Pages</h2>

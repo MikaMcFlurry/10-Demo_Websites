@@ -131,6 +131,8 @@ a { color: var(--reg-1); }
   background: var(--akte-3); color: var(--tinte);
   text-decoration: none;
   font: 500 12.5px/1.3 var(--f-mark); letter-spacing: .02em;
+  /* Ein Registerreiter IST eine farbige Kante: Grammatik der Form, kein Akzent an einer Karte. */
+  /* impeccable-disable-next-line side-tab */
   border-left: 6px solid var(--c, var(--tinte-3));
   transition: transform .22s cubic-bezier(.16, 1, .3, 1), background .22s;
 }
@@ -296,9 +298,10 @@ p:last-child { margin-bottom: 0; }
   gap: clamp(14px, 2vw, 30px); align-items: baseline;
   padding: 20px 0 22px;
   text-decoration: none; color: inherit;
-  transition: padding-left .22s cubic-bezier(.16,1,.3,1), background .22s;
+  /* transform statt padding: kein Layout-Umbruch beim Überfahren */
+  transition: transform .22s cubic-bezier(.16, 1, .3, 1), background .22s;
 }
-.gebiete a:hover { background: var(--akte-2); padding-left: 12px; }
+.gebiete a:hover { background: var(--akte-2); transform: translateX(10px); }
 .gebiete .nr {
   font: 500 12px/1.6 var(--f-mark); letter-spacing: .1em; color: var(--tinte-3);
   font-variant-numeric: tabular-nums; white-space: nowrap;
@@ -424,11 +427,32 @@ p:last-child { margin-bottom: 0; }
 .pruef input { width: 18px; height: 18px; margin-top: 3px; flex: none; accent-color: var(--reg-1); }
 .pruef label { font: 400 .9rem/1.5 var(--f-satz); color: var(--tinte-2); text-transform: none; letter-spacing: 0; margin: 0; }
 
-.quittung {
-  display: none; margin-bottom: 22px; padding: 15px 18px;
-  border-left: 6px solid var(--reg-4); background: var(--akte-2);
-  font-size: .96rem;
+/* ── Vermerk ──────────────────────────────────────────────────────────
+   Ein Hinweis in der Akte ist ein gestempelter Kopf über dem Text, keine
+   farbige Kante am Kasten. */
+
+.vermerk {
+  max-width: 72ch; margin-bottom: 38px;
+  border: 1px solid var(--tinte);
+  background: var(--akte-2);
 }
+.vermerk .kopf {
+  display: block; padding: 7px 15px;
+  background: var(--tinte); color: var(--akte);
+  font: 600 10px/1.5 var(--f-mark); letter-spacing: .2em; text-transform: uppercase;
+}
+.vermerk p { margin: 0; padding: 15px 18px; font-size: .95rem; max-width: none; }
+
+.quittung {
+  display: none; margin-bottom: 22px;
+  border: 1px solid var(--reg-4); background: var(--akte-2);
+}
+.quittung .kopf {
+  display: block; padding: 7px 15px;
+  background: var(--reg-4); color: #fff;
+  font: 600 10px/1.5 var(--f-mark); letter-spacing: .2em; text-transform: uppercase;
+}
+.quittung p { margin: 0; padding: 15px 18px; font-size: .96rem; max-width: none; }
 .quittung.an { display: block; }
 
 /* ── Fuß ──────────────────────────────────────────────────────────────── */
@@ -464,3 +488,9 @@ p:last-child { margin-bottom: 0; }
 .text dd { margin: .25em 0 0; color: var(--tinte-2); }
 
 @media (prefers-reduced-motion: reduce) { * { transition-duration: .01ms !important; } }
+
+/* ── Deutsche Komposita ───────────────────────────────────────────────
+   „Berufshaftpflichtversicherung" ist in einer schmalen Spalte breiter als
+   der Kasten. Mit lang="de" trennt der Browser korrekt statt zu überlaufen. */
+h1, h2, h3, h4 { hyphens: auto; overflow-wrap: break-word; }
+p, li, dd, dt, th, td, summary, figcaption { overflow-wrap: break-word; }

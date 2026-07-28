@@ -46,7 +46,7 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
-body {
+body { /* impeccable-disable-line codex-grid-background -- die Fläche IST ein Zeichenblatt; die Regel nimmt Mess- und Blueprint-Flächen ausdrücklich aus */
   margin: 0;
   background: var(--paper);
   color: var(--ink);
@@ -55,7 +55,9 @@ body {
   line-height: 1.55;
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
-  /* Millimeterraster des Zeichenpapiers */
+  /* Millimeterraster des Zeichenpapiers.
+     impeccable-disable-next-line codex-grid-background -- die Fläche IST
+     ein Zeichenblatt; die Regel nimmt Mess- und Blueprint-Flächen aus. */
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
@@ -614,3 +616,23 @@ table.data td b { font-weight: 700; }
   .is-ready .draw-line, .is-ready .draw-fade { animation: none; }
   * { transition-duration: .01ms !important; }
 }
+
+/* ── Hinweiskasten der Rechtstexte ────────────────────────────────────
+   Als Vermerk auf dem Blatt gesetzt, mit Maschinengelb als Vollfläche. */
+.hinweis {
+  border: var(--frame) solid var(--rule);
+  background: var(--yellow);
+  padding: 16px 18px;
+  margin-bottom: 38px;
+  max-width: 74ch;
+}
+.hinweis p {
+  margin: 0; max-width: none;
+  font-family: var(--f-mono); font-size: .86rem; line-height: 1.65;
+}
+
+/* ── Deutsche Komposita ───────────────────────────────────────────────
+   „Berufshaftpflichtversicherung" ist in einer schmalen Spalte breiter als
+   der Kasten. Mit lang="de" trennt der Browser korrekt statt zu überlaufen. */
+h1, h2, h3, h4 { hyphens: auto; overflow-wrap: break-word; }
+p, li, dd, dt, th, td, summary, figcaption { overflow-wrap: break-word; }

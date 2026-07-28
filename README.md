@@ -1,6 +1,34 @@
-# 10 Demo Business Websites (DE/EU-Ready)
+# Demo-Websites
 
-A collection of 10 premium, minimal business website templates — static HTML/CSS/JS, ready for GitHub Pages deployment. Each demo includes German (default) and English versions, EU/DE legal placeholders, and mobile-first responsive design.
+Ein Portfolio aus drei Teilen: fünf **Schaustücke** mit je eigener
+Gestaltungswelt, drei Framework-Projekte und zehn schlanke Vorlagen für kleine
+Unternehmen. Alles statisch, DSGVO-freundlich und ohne externe Abhängigkeiten.
+
+## Schaustücke
+
+Fünf Demo-Websites, die sich bewusst **nichts** teilen: kein Framework, keine
+gemeinsame CSS-Datei, keine wiederkehrenden Bausteine. Jede hat ein Seitengerüst,
+das aus ihrem Gegenstand kommt. Details in [`showcase/README.md`](showcase/README.md).
+
+| Slug | Branche | Form |
+|---|---|---|
+| [`haertl-praezision`](showcase/haertl-praezision/) | Zerspanung | Technisches Zeichnungsblatt nach DIN 6771 |
+| [`hochofen-festival`](showcase/hochofen-festival/) | Musikfestival | Siebdruck-Plakat im Zweifarben-Überdruck |
+| [`weingut-steinhalde`](showcase/weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil |
+| [`brandt-ostermann`](showcase/brandt-ostermann/) | Wirtschaftskanzlei | Aktenregister und Schriftsatz |
+| [`blockwerk-boulder`](showcase/blockwerk-boulder/) | Boulderhalle | Routenboard und Sektorplan |
+
+Schriften liegen lokal (SIL OFL 1.1), es gibt keine Cookies, kein Tracking und
+keine Anfragen an Dritte. Alle Unternehmen sind erfunden und auf jeder Seite als
+Demo gekennzeichnet.
+
+## Framework-Projekte
+
+| Ordner | Stack |
+|---|---|
+| [`sites/greencart-nuxt`](sites/greencart-nuxt/) | Nuxt 3 |
+| [`sites/aurorametrics-nextjs`](sites/aurorametrics-nextjs/) | Next.js |
+| [`sites/lumen-atelier-astro`](sites/lumen-atelier-astro/) | Astro |
 
 ## Demos
 

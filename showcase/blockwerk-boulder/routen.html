@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Routenboard – BLOCKWERK Boulderhalle</title>
+<meta name="description" content="Alle aktuellen Boulder mit Sektor, Schwierigkeitsfarbe, Schrauber und Datum. Nach Farbe filterbar. BLOCKWERK Bochum.">
+<meta name="theme-color" content="#1a1917">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="wortmarke" href="index.html" aria-label="BLOCKWERK, zur Startseite">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="9" height="9" rx="2" fill="#f2c53d"/>
+      <rect x="13" y="2" width="9" height="9" rx="2" fill="#3f8fd8"/>
+      <rect x="2" y="13" width="9" height="9" rx="2" fill="#ea5a4e"/>
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="#4fb96a"/>
+    </svg>
+    Blockwerk
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Halle</a>
+    <a href="routen.html" aria-current="page">Routen</a>
+    <a href="kurse.html">Kurse</a>
+    <a href="preise.html">Preise</a>
+  </nav>
+  <p class="status" data-status style="margin:0"><i aria-hidden="true"></i><span class="status-text">Öffnungszeiten prüfen</span></p>
+</header>
+
+<main id="inhalt">
+  <section class="seitenkopf">
+    <h1>Routenboard</h1>
+    <p>
+      Alle Boulder, die gerade hängen. Neue kommen mittwochs früh dazu, alte
+      verschwinden am Dienstag darauf – das Board zeigt beides.
+    </p>
+  </section>
+
+  <section class="teil">
+    <div class="filter" data-filter role="group" aria-label="Nach Schwierigkeitsfarbe filtern">
+      <button type="button" data-grad="gelb"    aria-pressed="false" style="--c:var(--g1)"><i></i> Gelb 3–4</button>
+      <button type="button" data-grad="gruen"   aria-pressed="false" style="--c:var(--g2)"><i></i> Grün 4–5</button>
+      <button type="button" data-grad="blau"    aria-pressed="false" style="--c:var(--g3)"><i></i> Blau 5–6A</button>
+      <button type="button" data-grad="rot"     aria-pressed="false" style="--c:var(--g4)"><i></i> Rot 6A–6C</button>
+      <button type="button" data-grad="violett" aria-pressed="false" style="--c:var(--g5)"><i></i> Violett 6C–7B</button>
+      <button type="button" data-grad="weiss"   aria-pressed="false" style="--c:var(--g6)"><i></i> Weiß 7B+</button>
+      <button type="button" data-alle class="taste taste--leer zuruck">Alle zeigen</button>
+    </div>
+
+    <p class="trefferzahl" data-treffer role="status">–</p>
+
+    <div class="boardwrap">
+      <table class="board" data-board>
+        <caption>Aktuell hängende Boulder · Auszug aus 320, Stand 14.07.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Boulder</th><th scope="col">Sektor</th><th scope="col">Farbe</th>
+            <th scope="col">Geschraubt von</th><th scope="col">Datum</th><th scope="col">Stand</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-grad="violett" data-sektor="Kante"><th scope="row">Kaltverformung</th><td class="sek">Kante</td><td><span class="grad" style="--c:var(--g5)"><i></i>6C+</span></td><td class="schr">Nane K.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="rot" data-sektor="Dach"><th scope="row">Schwerlast</th><td class="sek">Dach</td><td><span class="grad" style="--c:var(--g4)"><i></i>6B</span></td><td class="schr">Tobi R.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="rot" data-sektor="Dach"><th scope="row">Zwischenruf</th><td class="sek">Dach</td><td><span class="grad" style="--c:var(--g4)"><i></i>6A+</span></td><td class="schr">Tobi R.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="weiss" data-sektor="Dach"><th scope="row">Reststrom</th><td class="sek">Dach</td><td><span class="grad" style="--c:var(--g6)"><i></i>7B+</span></td><td class="schr">Nane K.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="gruen" data-sektor="Dach"><th scope="row">Kurzschluss</th><td class="sek">Dach</td><td><span class="grad" style="--c:var(--g2)"><i></i>4+</span></td><td class="schr">Ilyas D.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="gelb" data-sektor="Dach"><th scope="row">Anlauf</th><td class="sek">Dach</td><td><span class="grad" style="--c:var(--g1)"><i></i>3+</span></td><td class="schr">Ilyas D.</td><td class="dat">12.07.</td><td><span class="merk merk--neu">Neu</span></td></tr>
+          <tr data-grad="blau" data-sektor="Welle"><th scope="row">Flachwasser</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g3)"><i></i>5+</span></td><td class="schr">Marit S.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="blau" data-sektor="Welle"><th scope="row">Querschläger</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g3)"><i></i>6A</span></td><td class="schr">Marit S.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="violett" data-sektor="Welle"><th scope="row">Seitenwind</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g5)"><i></i>7A</span></td><td class="schr">Jonas P.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="gruen" data-sektor="Platte"><th scope="row">Erster Zug</th><td class="sek">Platte</td><td><span class="grad" style="--c:var(--g2)"><i></i>4</span></td><td class="schr">Ilyas D.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="gruen" data-sektor="Platte"><th scope="row">Reibungsverlust</th><td class="sek">Platte</td><td><span class="grad" style="--c:var(--g2)"><i></i>5</span></td><td class="schr">Ferdi W.</td><td class="dat">05.07.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="weiss" data-sektor="Kante"><th scope="row">Nullserie</th><td class="sek">Kante</td><td><span class="grad" style="--c:var(--g6)"><i></i>7C</span></td><td class="schr">Nane K.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="rot" data-sektor="Kante"><th scope="row">Kaltstart</th><td class="sek">Kante</td><td><span class="grad" style="--c:var(--g4)"><i></i>6B+</span></td><td class="schr">Jonas P.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="blau" data-sektor="Kante"><th scope="row">Fugenlos</th><td class="sek">Kante</td><td><span class="grad" style="--c:var(--g3)"><i></i>5+</span></td><td class="schr">Marit S.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="gelb" data-sektor="Platte"><th scope="row">Warmlaufen</th><td class="sek">Platte</td><td><span class="grad" style="--c:var(--g1)"><i></i>3</span></td><td class="schr">Ilyas D.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="gelb" data-sektor="Platte"><th scope="row">Trittfest</th><td class="sek">Platte</td><td><span class="grad" style="--c:var(--g1)"><i></i>4</span></td><td class="schr">Ferdi W.</td><td class="dat">28.06.</td><td><span class="merk merk--bald">Läuft</span></td></tr>
+          <tr data-grad="rot" data-sektor="Zirkel"><th scope="row">Doppelschicht</th><td class="sek">Zirkel</td><td><span class="grad" style="--c:var(--g4)"><i></i>6C</span></td><td class="schr">Tobi R.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="blau" data-sektor="Zirkel"><th scope="row">Handbetrieb</th><td class="sek">Zirkel</td><td><span class="grad" style="--c:var(--g3)"><i></i>6A</span></td><td class="schr">Ferdi W.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="violett" data-sektor="Welle"><th scope="row">Blindgänger</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g5)"><i></i>7A</span></td><td class="schr">Jonas P.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="gruen" data-sektor="Zirkel"><th scope="row">Grundlast</th><td class="sek">Zirkel</td><td><span class="grad" style="--c:var(--g2)"><i></i>4+</span></td><td class="schr">Ilyas D.</td><td class="dat">21.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="weiss" data-sektor="Welle"><th scope="row">Restposten</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g6)"><i></i>8A</span></td><td class="schr">Nane K.</td><td class="dat">14.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="gelb" data-sektor="Welle"><th scope="row">Leichtlauf</th><td class="sek">Welle</td><td><span class="grad" style="--c:var(--g1)"><i></i>4</span></td><td class="schr">Marit S.</td><td class="dat">14.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="violett" data-sektor="Zirkel"><th scope="row">Umlaufbahn</th><td class="sek">Zirkel</td><td><span class="grad" style="--c:var(--g5)"><i></i>6C+</span></td><td class="schr">Tobi R.</td><td class="dat">14.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-grad="rot" data-sektor="Platte"><th scope="row">Zehenspitzen</th><td class="sek">Platte</td><td><span class="grad" style="--c:var(--g4)"><i></i>6A+</span></td><td class="schr">Ferdi W.</td><td class="dat">14.06.</td><td><span class="merk merk--weg">Ab 26.07.</span></td></tr>
+          <tr data-leer hidden><td colspan="6" class="leer">In dieser Farbe hängt gerade nichts. Am Mittwoch sieht das wieder anders aus.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="teil">
+    <p class="marke">So lesen Sie das Board</p>
+    <h2>Farben statt Zahlen</h2>
+    <div class="spalten">
+      <div>
+        <h3>Warum Farben?</h3>
+        <p>Ein Grad ist eine Meinung, keine Messung. Die Farbe sagt einen
+           Bereich – und wer sich zwischen zwei Farben bewegt, hat ohnehin mehr
+           verstanden als jede Zahl ausdrückt.</p>
+      </div>
+      <div>
+        <h3>Fb-Angabe daneben</h3>
+        <p>Wer trotzdem eine Zahl will, findet die Fontainebleau-Einschätzung des
+           Schraubers neben der Farbe. Sie ist bewusst als Schätzung markiert und
+           wird nicht nachträglich korrigiert.</p>
+      </div>
+      <div>
+        <h3>Stand</h3>
+        <p><b>Neu</b> heißt: diese Woche geschraubt. <b>Läuft</b> heißt: hängt
+           noch. <b>Ab Datum</b> heißt: wird an diesem Tag abgeschraubt – wer
+           dranbleiben will, sollte sich beeilen.</p>
+      </div>
+      <div>
+        <h3>Feedback</h3>
+        <p>Neben jedem Sektor hängt ein Block mit Stift. Zu leicht, zu schwer,
+           Griff dreht – schreiben Sie es auf. Das Team liest es dienstags,
+           bevor geschraubt wird.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div><h4>Halle</h4><ul>
+      <li><a href="routen.html">Routenboard</a></li>
+      <li><a href="kurse.html">Kurse und Training</a></li>
+      <li><a href="preise.html">Preise und Abos</a></li></ul></div>
+    <div><h4>Rechtliches</h4><ul>
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+    <div><h4>Adresse</h4><p>Alleestraße 118<br>44793 Bochum<br>Halle 4</p></div>
+    <div><h4>Kontakt</h4><p><a href="tel:+49234900000">+49 234 900000</a><br><a href="mailto:hallo@blockwerk.example">hallo@blockwerk.example</a></p></div>
+  </div>
+  <p class="unten">
+    <span class="kz">Demo</span>
+    <span>Fiktive Halle · Beispielprojekt</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/board.js" defer></script>
+</body>
+</html>

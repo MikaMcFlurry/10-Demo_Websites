@@ -1,0 +1,418 @@
+@import url("fonts/fonts.css");
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BLOCKWERK BOULDERHALLE — Richtungsvertrag
+
+   THESIS       Die Seite ist ein Routenboard. Wer herkommt, will wissen, was
+                neu geschraubt ist, wie voll es ist und wann offen ist.
+                Abgelehnt: dunkler Fotohero mit Person an der Wand, drei
+                Preiskarten, „Finde deinen Flow".
+   OWN-WORLD    Hallenlicht am Abend: warmes Anthrazit, Kreideweiß, und die
+                sechs Griffkartenfarben der Schwierigkeitsgrade als ganzes
+                Farbsystem statt als Akzent. Höhenlinien im Grund, Sektorplan
+                als SVG, jede Route eine Datenzeile mit Schrauber und Datum.
+                Bricolage Grotesque für Marken, Hanken Grotesk für Gelesenes.
+   STORY        In fünfzehn Sekunden: welche Sektoren neu sind, wie voll es
+                ist, was es kostet — und ob heute noch offen ist.
+   1. VIEWPORT  Links der Sektorplan der Halle mit Farbfeldern, rechts Name,
+                Auslastungsbalken und die Öffnungszeit von heute.
+   FORM         Routenboard und Topo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --grund:  #1a1917;
+  --grund-2:#232120;
+  --grund-3:#2f2c2a;
+  --kreide: #ece8e0;
+  --kreide-2: #a8a29a;
+  --linie:  #3b3735;
+
+  /* Griffkartenfarben der Schwierigkeitsgrade */
+  --g1: #f2c53d;  /* gelb    · 1—2 */
+  --g2: #4fb96a;  /* grün    · 3—4 */
+  --g3: #3f8fd8;  /* blau    · 5—6 */
+  --g4: #ea5a4e;  /* rot     · 6—7 */
+  --g5: #ac74dd;  /* violett · 7—8 */
+  --g6: #e9e6df;  /* weiß    · 8+  */
+
+  --f-mark: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
+  --f-text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  --pad: clamp(18px, 3.4vw, 58px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--kreide);
+  font-family: var(--f-text);
+  font-size: 17px;
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
+  /* Höhenlinien: die Signatur einer Topo-Karte, sehr leise im Grund */
+  background-image:
+    repeating-radial-gradient(circle at 12% -10%, transparent 0 38px, rgba(236,232,224,.028) 38px 39px),
+    repeating-radial-gradient(circle at 92% 108%, transparent 0 44px, rgba(236,232,224,.024) 44px 45px);
+}
+
+img, svg { max-width: 100%; }
+::selection { background: var(--g1); color: var(--grund); }
+a { color: var(--g1); }
+:focus-visible { outline: 3px solid var(--g1); outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--g1); color: var(--grund);
+  padding: .8rem 1.2rem; font: 700 .9rem/1 var(--f-mark);
+}
+.skip:focus { left: 0; }
+
+/* ── Kopf ─────────────────────────────────────────────────────────────── */
+
+.kopf {
+  position: sticky; top: 0; z-index: 80;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;
+  padding: 13px var(--pad);
+  background: rgba(26, 25, 23, .94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linie);
+}
+
+.wortmarke {
+  display: flex; align-items: center; gap: 11px;
+  text-decoration: none; color: var(--kreide);
+  font-family: var(--f-mark); font-weight: 800;
+  font-size: 21px; letter-spacing: -.035em; line-height: 1;
+  text-transform: uppercase;
+}
+.wortmarke svg { width: 25px; height: 25px; flex: none; }
+
+.menue { display: flex; gap: clamp(12px, 1.8vw, 26px); margin-left: auto; }
+.menue a {
+  font: 600 13.5px/1 var(--f-text); letter-spacing: .01em;
+  color: var(--kreide-2); text-decoration: none;
+  padding: 8px 0; border-bottom: 2px solid transparent;
+  transition: color .18s cubic-bezier(.16,1,.3,1), border-color .18s cubic-bezier(.16,1,.3,1);
+}
+.menue a:hover { color: var(--kreide); border-bottom-color: var(--kreide-2); }
+.menue a[aria-current="page"] { color: var(--kreide); border-bottom-color: var(--g1); }
+
+/* Der Statuschip zeigt an, ob gerade offen ist */
+.status {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--grund-3);
+  font: 600 12.5px/1 var(--f-text); letter-spacing: .02em;
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--kreide-2); }
+.status.offen i { background: var(--g2); box-shadow: 0 0 0 4px rgba(79,185,106,.2); }
+.status.zu i { background: var(--g4); }
+
+.menuetaste {
+  display: none; margin-left: auto;
+  background: none; border: 1px solid var(--linie); color: var(--kreide);
+  padding: 9px 14px; cursor: pointer; border-radius: 8px;
+  font: 600 13px/1 var(--f-text);
+}
+
+@media (max-width: 820px) {
+  .menuetaste { display: block; }
+  .menue {
+    display: none; order: 4; flex-basis: 100%; flex-direction: column; gap: 0;
+    margin: 4px 0 0; padding-top: 8px; border-top: 1px solid var(--linie);
+  }
+  .menue.auf { display: flex; }
+  .menue a { padding: 12px 0; }
+  .status { order: 3; }
+}
+
+/* ── Aufmacher ────────────────────────────────────────────────────────── */
+
+.auf {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding: clamp(28px, 4.6vw, 76px) var(--pad);
+  border-bottom: 1px solid var(--linie);
+}
+@media (max-width: 900px) { .auf { grid-template-columns: 1fr; } .auf .plan { order: 2; } }
+
+.plan {
+  background: var(--grund-2);
+  border: 1px solid var(--linie);
+  border-radius: 14px;
+  padding: clamp(14px, 2vw, 24px);
+}
+.plan svg { width: 100%; height: auto; display: block; }
+.plan figcaption {
+  margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--linie);
+  display: flex; flex-wrap: wrap; gap: 8px 16px;
+  font: 600 11.5px/1 var(--f-text); color: var(--kreide-2);
+}
+.plan figcaption span { display: inline-flex; align-items: center; gap: 7px; }
+.plan figcaption i { width: 11px; height: 11px; border-radius: 3px; }
+
+h1 {
+  margin: 0 0 20px;
+  font-family: var(--f-mark); font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: .94; letter-spacing: -.045em;
+  text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--g1); }
+
+.auf .satz { margin: 0 0 26px; max-width: 44ch; font-size: clamp(1.04rem, 1.4vw, 1.18rem); color: var(--kreide-2); }
+
+/* Auslastung */
+.last { margin: 0 0 26px; max-width: 380px; }
+.last-kopf {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font: 600 12px/1 var(--f-text); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--kreide-2); margin-bottom: 10px;
+}
+.last-kopf b { color: var(--kreide); font-size: 15px; letter-spacing: 0; text-transform: none; }
+.last-bar { height: 10px; border-radius: 999px; background: var(--grund-3); overflow: hidden; }
+.last-bar span { display: block; height: 100%; border-radius: 999px; background: var(--g2); }
+.last small { display: block; margin-top: 9px; font-size: 12.5px; color: var(--kreide-2); }
+
+.tasten { display: flex; flex-wrap: wrap; gap: 11px; }
+
+/* ── Knöpfe ───────────────────────────────────────────────────────────── */
+
+.taste {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 22px; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--g1); color: var(--grund);
+  font: 700 13.5px/1 var(--f-mark); letter-spacing: -.01em;
+  text-decoration: none;
+  transition: transform .18s cubic-bezier(.16,1,.3,1), background .18s;
+}
+.taste:hover { background: #ffd759; transform: translateY(-2px); }
+.taste:active { transform: translateY(0); }
+.taste--leer {
+  background: transparent; color: var(--kreide);
+  box-shadow: inset 0 0 0 1px var(--linie);
+}
+.taste--leer:hover { background: var(--grund-2); box-shadow: inset 0 0 0 1px var(--kreide-2); }
+
+/* ── Abschnitte ───────────────────────────────────────────────────────── */
+
+.teil { padding: clamp(34px, 4.6vw, 78px) var(--pad); border-bottom: 1px solid var(--linie); }
+.teil:last-child { border-bottom: 0; }
+
+.marke {
+  display: flex; align-items: center; gap: 13px;
+  margin: 0 0 16px; max-width: none;
+  font: 700 11.5px/1 var(--f-mark); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--kreide-2);
+}
+.marke::after { content: ""; flex: 1; height: 1px; background: var(--linie); }
+
+h2 {
+  margin: 0 0 18px;
+  font-family: var(--f-mark); font-weight: 800;
+  font-size: clamp(1.7rem, 3.4vw, 2.8rem); line-height: 1.02; letter-spacing: -.04em;
+  text-wrap: balance;
+}
+h3 {
+  margin: 0 0 9px;
+  font-family: var(--f-mark); font-weight: 700;
+  font-size: 1.06rem; line-height: 1.3; letter-spacing: -.02em;
+}
+p { margin: 0 0 1em; max-width: 66ch; }
+p:last-child { margin-bottom: 0; }
+.gross { font-size: clamp(1.04rem, 1.4vw, 1.16rem); color: var(--kreide-2); }
+
+/* ── Gradfilter ───────────────────────────────────────────────────────── */
+
+.filter {
+  display: flex; flex-wrap: wrap; gap: 9px;
+  margin: 0 0 22px;
+}
+.filter button {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 15px; border-radius: 999px; cursor: pointer;
+  background: var(--grund-2); color: var(--kreide);
+  border: 1px solid var(--linie);
+  font: 600 13px/1 var(--f-text);
+  transition: background .16s cubic-bezier(.16,1,.3,1), border-color .16s, color .16s;
+}
+.filter button i { width: 12px; height: 12px; border-radius: 4px; background: var(--c, var(--kreide-2)); }
+.filter button:hover { border-color: var(--kreide-2); }
+.filter button[aria-pressed="true"] {
+  background: var(--c, var(--kreide)); color: var(--grund); border-color: transparent; font-weight: 700;
+}
+.filter button[aria-pressed="true"] i { background: rgba(26,25,23,.42); }
+
+/* Rücksetzer sitzt in derselben Chipzeile, nur ohne Farbe */
+.filter .zuruck {
+  padding: 9px 15px; border-radius: 999px;
+  font-family: var(--f-text); font-weight: 600; font-size: 13px;
+}
+
+.trefferzahl { margin: 0 0 18px; font-size: 13.5px; color: var(--kreide-2); }
+
+/* ── Routenboard ──────────────────────────────────────────────────────── */
+
+.boardwrap { overflow-x: auto; border: 1px solid var(--linie); border-radius: 14px; background: var(--grund-2); }
+.board { width: 100%; border-collapse: collapse; min-width: 680px; }
+.board caption {
+  text-align: left; padding: 15px 18px;
+  border-bottom: 1px solid var(--linie);
+  font: 600 11.5px/1 var(--f-text); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--kreide-2);
+}
+.board th, .board td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--linie); }
+.board thead th {
+  padding-top: 11px; padding-bottom: 11px;
+  font: 600 10.5px/1.3 var(--f-text); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--kreide-2); white-space: nowrap;
+}
+.board tbody tr { transition: background .16s cubic-bezier(.16,1,.3,1); }
+.board tbody tr:hover { background: var(--grund-3); }
+.board tbody tr:last-child td, .board tbody tr:last-child th { border-bottom: 0; }
+.board tbody th { font-weight: 600; font-size: 1rem; }
+
+.grad {
+  display: inline-flex; align-items: center; gap: 9px;
+  font: 700 13px/1 var(--f-mark); white-space: nowrap;
+}
+.grad i { width: 14px; height: 14px; border-radius: 4px; background: var(--c); flex: none; }
+
+.board .sek { font-weight: 600; white-space: nowrap; }
+.board .dat { font-size: 13.5px; color: var(--kreide-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.board .schr { font-size: 13.5px; color: var(--kreide-2); white-space: nowrap; }
+
+.merk {
+  display: inline-block; padding: 4px 9px; border-radius: 6px;
+  font: 700 10.5px/1.3 var(--f-text); letter-spacing: .08em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.merk--neu { background: var(--g2); color: var(--grund); }
+.merk--bald { background: var(--grund-3); color: var(--kreide-2); box-shadow: inset 0 0 0 1px var(--linie); }
+.merk--weg { background: transparent; color: var(--kreide-2); box-shadow: inset 0 0 0 1px var(--linie); }
+
+.leer { padding: 30px 18px; color: var(--kreide-2); font-size: .96rem; }
+
+/* ── Schraubplan ──────────────────────────────────────────────────────── */
+
+.plan-wochen { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 12px; margin-top: 22px; }
+.woche {
+  padding: 16px 16px 18px; border-radius: 12px;
+  background: var(--grund-2); border: 1px solid var(--linie);
+}
+/* Die Sektorfarbe steht als Griffkartenplättchen im Kasten, nicht als
+   Akzentkante an der abgerundeten Ecke. */
+.woche dt {
+  display: flex; align-items: center; gap: 9px;
+  font: 600 11px/1 var(--f-text); letter-spacing: .12em; text-transform: uppercase; color: var(--kreide-2);
+}
+.woche dt::before {
+  content: ""; flex: none;
+  width: 13px; height: 13px; border-radius: 4px;
+  background: var(--c, var(--kreide-2));
+}
+.woche dd { margin: 11px 0 0; font-family: var(--f-mark); font-weight: 700; font-size: 1.05rem; letter-spacing: -.02em; }
+.woche dd small { display: block; margin-top: 7px; font-family: var(--f-text); font-weight: 500; font-size: 12.5px; color: var(--kreide-2); letter-spacing: 0; }
+
+/* ── Preistafel ───────────────────────────────────────────────────────── */
+
+.tafel { list-style: none; margin: 22px 0 0; padding: 0; max-width: 760px; }
+.tafel li {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px 22px; align-items: baseline;
+  padding: 17px 0; border-bottom: 1px solid var(--linie);
+}
+.tafel li:first-child { border-top: 1px solid var(--linie); }
+.tafel .was { font-family: var(--f-mark); font-weight: 700; font-size: 1.08rem; letter-spacing: -.02em; }
+.tafel .was small { display: block; margin-top: 6px; font-family: var(--f-text); font-weight: 400; font-size: 13.5px; color: var(--kreide-2); letter-spacing: 0; }
+.tafel .eur {
+  font-family: var(--f-mark); font-weight: 800;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem); letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.tafel .eur span { font-size: .6em; font-weight: 600; color: var(--kreide-2); margin-left: 5px; }
+
+/* ── Zeiten ───────────────────────────────────────────────────────────── */
+
+.zeiten { list-style: none; margin: 20px 0 0; padding: 0; max-width: 420px; }
+.zeiten li {
+  display: flex; gap: 16px; align-items: baseline;
+  padding: 11px 0; border-bottom: 1px solid var(--linie);
+  font-size: .98rem;
+}
+.zeiten li b { font-weight: 600; min-width: 8em; }
+.zeiten li .z { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--kreide-2); }
+.zeiten li.heute { color: var(--kreide); }
+.zeiten li.heute .z { color: var(--g1); font-weight: 600; }
+.zeiten li.heute b::after { content: " · heute"; font-weight: 400; color: var(--g1); font-size: .85em; }
+
+/* ── Spalten ──────────────────────────────────────────────────────────── */
+
+.spalten { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: clamp(22px, 3vw, 44px); margin-top: 26px; }
+.spalten p { font-size: .97rem; color: var(--kreide-2); }
+
+/* ── Fragen ───────────────────────────────────────────────────────────── */
+
+.fragen { max-width: 800px; margin-top: 20px; border-top: 1px solid var(--linie); }
+.fragen details { border-bottom: 1px solid var(--linie); }
+.fragen summary {
+  list-style: none; cursor: pointer; position: relative;
+  padding: 17px 42px 17px 0;
+  font-family: var(--f-mark); font-weight: 700; font-size: 1.04rem; letter-spacing: -.02em;
+}
+.fragen summary::-webkit-details-marker { display: none; }
+.fragen summary::after {
+  content: ""; position: absolute; right: 8px; top: 50%; width: 11px; height: 11px;
+  border-right: 2px solid var(--kreide-2); border-bottom: 2px solid var(--kreide-2);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform .22s cubic-bezier(.16,1,.3,1);
+}
+.fragen details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+.fragen .a { padding: 0 0 20px; color: var(--kreide-2); max-width: 66ch; }
+
+/* ── Fuß ──────────────────────────────────────────────────────────────── */
+
+.fuss { padding: clamp(34px, 4.4vw, 64px) var(--pad) 24px; background: var(--grund-2); border-top: 1px solid var(--linie); }
+.fuss-raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 30px; }
+.fuss h4 { margin: 0 0 14px; font: 700 10.5px/1 var(--f-mark); letter-spacing: .18em; text-transform: uppercase; color: var(--g1); }
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { margin-bottom: 9px; }
+.fuss a { color: var(--kreide); text-decoration: none; font-size: .96rem; border-bottom: 1px solid transparent; }
+.fuss a:hover { border-bottom-color: var(--kreide-2); }
+.fuss p { font-size: .96rem; color: var(--kreide-2); }
+.fuss .unten {
+  margin-top: clamp(28px, 3.2vw, 46px); padding-top: 20px; border-top: 1px solid var(--linie);
+  display: flex; flex-wrap: wrap; gap: 8px 24px; max-width: none;
+  font: 600 11px/1.7 var(--f-text); letter-spacing: .1em; text-transform: uppercase; color: var(--kreide-2);
+}
+.fuss .unten .kz { background: var(--g1); color: var(--grund); padding: 3px 9px; border-radius: 5px; }
+
+/* ── Innenseiten ──────────────────────────────────────────────────────── */
+
+.seitenkopf { padding: clamp(30px, 4.4vw, 62px) var(--pad) clamp(22px, 3vw, 38px); border-bottom: 1px solid var(--linie); }
+.seitenkopf h1 { margin-bottom: 16px; }
+.seitenkopf p { max-width: 52ch; font-size: clamp(1.02rem, 1.4vw, 1.16rem); color: var(--kreide-2); }
+
+.fliess h2 { margin-top: 1.9em; font-size: clamp(1.4rem, 2.4vw, 1.95rem); }
+.fliess h2:first-child { margin-top: 0; }
+.fliess h3 { margin-top: 1.6em; }
+.fliess ul, .fliess ol { max-width: 66ch; padding-left: 1.2em; margin: 0 0 1em; }
+.fliess li { margin-bottom: .4em; }
+.fliess dt { font-family: var(--f-mark); font-weight: 700; margin-top: 1.2em; }
+.fliess dd { margin: .25em 0 0; color: var(--kreide-2); }
+
+@media (prefers-reduced-motion: reduce) { * { transition-duration: .01ms !important; } }
+
+/* Sprungziele bleiben unter der klebenden Kopfleiste sichtbar. */
+[id] { scroll-margin-top: 84px; }
+
+/* ── Deutsche Komposita ───────────────────────────────────────────────
+   „Berufshaftpflichtversicherung" ist in einer schmalen Spalte breiter als
+   der Kasten. Mit lang="de" trennt der Browser korrekt statt zu überlaufen. */
+h1, h2, h3, h4 { hyphens: auto; overflow-wrap: break-word; }
+p, li, dd, dt, th, td, summary, figcaption { overflow-wrap: break-word; }

@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/create-three-demo-sites-T1HN9]
+    branches: [master, claude/create-three-demo-sites-T1HN9, claude/portfolio-websites-five-qda4ge]
   workflow_dispatch:
 
 permissions:
@@ -70,6 +70,10 @@ jobs:
         run: |
           cp index.html ./pages-dist/index.html
           cp -r demos ./pages-dist/demos
+
+      # ── Schaustücke (statisch, kein Build) ────────────────────────────────
+      - name: Copy showcase sites
+        run: cp -r showcase ./pages-dist/showcase
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

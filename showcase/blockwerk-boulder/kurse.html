@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurse und Training – BLOCKWERK Boulderhalle</title>
+<meta name="description" content="Einsteigerkurs, Technikkurs, Kindertraining und Athletik in der Boulderhalle BLOCKWERK Bochum. Termine, Preise und Anmeldung.">
+<meta name="theme-color" content="#1a1917">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="wortmarke" href="index.html" aria-label="BLOCKWERK, zur Startseite">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="9" height="9" rx="2" fill="#f2c53d"/>
+      <rect x="13" y="2" width="9" height="9" rx="2" fill="#3f8fd8"/>
+      <rect x="2" y="13" width="9" height="9" rx="2" fill="#ea5a4e"/>
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="#4fb96a"/>
+    </svg>
+    Blockwerk
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Halle</a><a href="routen.html">Routen</a>
+    <a href="kurse.html" aria-current="page">Kurse</a><a href="preise.html">Preise</a>
+  </nav>
+  <p class="status" data-status style="margin:0"><i aria-hidden="true"></i><span class="status-text">Öffnungszeiten prüfen</span></p>
+</header>
+
+<main id="inhalt">
+  <section class="seitenkopf">
+    <h1>Kurse</h1>
+    <p>
+      Kleine Gruppen, feste Trainerinnen und Trainer, keine Verträge. Wer
+      merkt, dass es nicht passt, bekommt den Rest zurück.
+    </p>
+  </section>
+
+  <section class="teil">
+    <p class="marke">Wochenplan</p>
+    <h2>Was wann läuft</h2>
+
+    <div class="boardwrap">
+      <table class="board">
+        <caption>Feste Termine · Sommerhalbjahr 2026</caption>
+        <thead>
+          <tr>
+            <th scope="col">Kurs</th><th scope="col">Tag</th><th scope="col">Zeit</th>
+            <th scope="col">Für wen</th><th scope="col">Leitung</th><th scope="col">Preis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Einsteigerkurs</th><td class="sek">Montag</td><td class="dat">18:00–20:00</td>
+            <td>Ohne Vorerfahrung</td><td class="schr">Marit S.</td><td class="dat">39 €</td></tr>
+          <tr><th scope="row">Einsteigerkurs</th><td class="sek">Samstag</td><td class="dat">11:00–13:00</td>
+            <td>Ohne Vorerfahrung</td><td class="schr">Ferdi W.</td><td class="dat">39 €</td></tr>
+          <tr><th scope="row">Technik I – Fußarbeit</th><td class="sek">Dienstag</td><td class="dat">19:00–21:00</td>
+            <td>Ab Grün sicher</td><td class="schr">Nane K.</td><td class="dat">45 €</td></tr>
+          <tr><th scope="row">Technik II – Dynamik</th><td class="sek">Donnerstag</td><td class="dat">19:00–21:00</td>
+            <td>Ab Blau sicher</td><td class="schr">Nane K.</td><td class="dat">45 €</td></tr>
+          <tr><th scope="row">Kindertraining 6–9</th><td class="sek">Mittwoch</td><td class="dat">15:30–16:45</td>
+            <td>Kinder</td><td class="schr">Ilyas D.</td><td class="dat">32 € / Monat</td></tr>
+          <tr><th scope="row">Kindertraining 10–13</th><td class="sek">Mittwoch</td><td class="dat">17:00–18:30</td>
+            <td>Kinder</td><td class="schr">Ilyas D.</td><td class="dat">36 € / Monat</td></tr>
+          <tr><th scope="row">Jugendkader</th><td class="sek">Mo &amp; Fr</td><td class="dat">17:00–19:30</td>
+            <td>Nach Sichtung</td><td class="schr">Tobi R.</td><td class="dat">58 € / Monat</td></tr>
+          <tr><th scope="row">Athletik &amp; Prävention</th><td class="sek">Freitag</td><td class="dat">18:00–19:15</td>
+            <td>Alle</td><td class="schr">Jonas P.</td><td class="dat">18 €</td></tr>
+          <tr><th scope="row">Frauen bouldern</th><td class="sek">Sonntag</td><td class="dat">10:00–12:00</td>
+            <td>Alle Niveaus</td><td class="schr">Marit S.</td><td class="dat">kostenfrei</td></tr>
+          <tr><th scope="row">Paraclimbing offen</th><td class="sek">Samstag</td><td class="dat">14:00–16:00</td>
+            <td>Nach Absprache</td><td class="schr">Ferdi W.</td><td class="dat">kostenfrei</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:22px;font-size:.92rem;color:var(--kreide-2)">
+      Beispielangebot einer fiktiven Halle. Eintritt ist in allen Kursen enthalten.
+    </p>
+  </section>
+
+  <section class="teil">
+    <p class="marke">Im Einzelnen</p>
+    <h2>Vier Wege, besser zu werden</h2>
+
+    <div class="plan-wochen" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+      <div class="woche" style="--c:var(--g1)">
+        <dt>Einsteigerkurs</dt>
+        <dd>Zwei Stunden, einmalig
+          <small>Fallen und Abklettern, Griffarten, Hallenregeln, erste eigene
+          Boulder. Danach können Sie allein weitermachen – das ist das Ziel,
+          nicht der Anschlusskurs.</small></dd>
+      </div>
+      <div class="woche" style="--c:var(--g3)">
+        <dt>Technikkurse</dt>
+        <dd>Zwei Stufen, je zwei Stunden
+          <small>Fußarbeit, Körperschwerpunkt, Hüftposition – dann Dynamik,
+          Sprünge und Halten von Schwung. Maximal acht Personen, damit jeder
+          drankommt.</small></dd>
+      </div>
+      <div class="woche" style="--c:var(--g2)">
+        <dt>Kinder und Jugend</dt>
+        <dd>Feste Gruppen, monatlich
+          <small>Spielerisch bis 9, technischer ab 10, Wettkampf im Kader.
+          Anmeldung immer für einen Monat, Kündigung jederzeit zum Monatsende.</small></dd>
+      </div>
+      <div class="woche" style="--c:var(--g4)">
+        <dt>Athletik</dt>
+        <dd>Wöchentlich, 75 Minuten
+          <small>Rumpf, Schulter, Finger – vor allem aber Prävention.
+          Fingerverletzungen sind der häufigste Grund, warum Leute aufhören.
+          Das lässt sich zum großen Teil vermeiden.</small></dd>
+      </div>
+    </div>
+  </section>
+
+  <section class="teil">
+    <p class="marke">Anmeldung</p>
+    <h2>Wie Sie reinkommen</h2>
+    <div class="spalten">
+      <div>
+        <h3>Kurse</h3>
+        <p>An der Theke oder telefonisch unter
+           <a href="tel:+49234900000">+49 234 900000</a>. Wir führen keine
+           Online-Buchung, weil bei uns regelmäßig jemand kurzfristig absagt und
+           wir Plätze dann direkt weitergeben.</p>
+      </div>
+      <div>
+        <h3>Offene Termine</h3>
+        <p>Frauen bouldern und Paraclimbing brauchen keine Anmeldung. Einfach
+           kommen, der reguläre Eintritt gilt.</p>
+      </div>
+      <div>
+        <h3>Gruppen und Firmen</h3>
+        <p>Ab acht Personen mit eigener Betreuung, zwei Stunden, 24 € pro Person
+           inklusive Eintritt und Leihschuhen. Termine nur werktags vor 17 Uhr.</p>
+      </div>
+      <div>
+        <h3>Rückgabe</h3>
+        <p>Bis 48 Stunden vor Kursbeginn erstatten wir vollständig. Danach nur,
+           wenn wir den Platz nachbesetzen können – das klappt fast immer.</p>
+      </div>
+    </div>
+    <p style="margin-top:28px">
+      <a class="taste" href="tel:+49234900000">Anrufen und Platz sichern</a>
+      <a class="taste taste--leer" href="preise.html" style="margin-left:10px">Preise ansehen</a>
+    </p>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-raster">
+    <div><h4>Halle</h4><ul>
+      <li><a href="routen.html">Routenboard</a></li>
+      <li><a href="kurse.html">Kurse und Training</a></li>
+      <li><a href="preise.html">Preise und Abos</a></li></ul></div>
+    <div><h4>Rechtliches</h4><ul>
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+    <div><h4>Adresse</h4><p>Alleestraße 118<br>44793 Bochum<br>Halle 4</p></div>
+    <div><h4>Kontakt</h4><p><a href="tel:+49234900000">+49 234 900000</a><br><a href="mailto:hallo@blockwerk.example">hallo@blockwerk.example</a></p></div>
+  </div>
+  <p class="unten">
+    <span class="kz">Demo</span>
+    <span>Fiktive Halle · Beispielprojekt</span>
+    <span>Schriften lokal gehostet</span>
+    <span>Keine Tracker, keine Cookies</span>
+  </p>
+</footer>
+
+<script src="assets/board.js" defer></script>
+</body>
+</html>

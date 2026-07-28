@@ -127,7 +127,10 @@ a { color: var(--blue); text-underline-offset: .18em; text-decoration-thickness:
 
 .toggle {
   display: none; margin-left: auto; align-items: center; gap: 10px;
-  padding: 0 20px; background: none; border: 0; border-left: 4px solid var(--ink);
+  padding: 0 20px; background: none; border: 0;
+  /* Trennregel der Plakatleiste: im Blocksatz dieser Welt hat jede Kante dieselbe Stärke. */
+  /* impeccable-disable-next-line side-tab */
+  border-left: 4px solid var(--ink);
   font: 600 14px/1 var(--f-text); letter-spacing: .14em; text-transform: uppercase;
   color: var(--ink); cursor: pointer;
 }
@@ -335,6 +338,8 @@ p:last-child { margin-bottom: 0; }
 .prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; border: 4px solid var(--ink); }
 .prices > div {
   padding: clamp(18px, 2.4vw, 28px);
+  /* Spaltentrenner der Preistafel, nicht Akzent an einer Karte. */
+  /* impeccable-disable-next-line side-tab */
   border-right: 3px solid var(--ink);
   display: flex; flex-direction: column;
 }
@@ -440,3 +445,12 @@ p:last-child { margin-bottom: 0; }
   body.printed .wordmark span::before { animation: none; }
   * { transition-duration: .01ms !important; }
 }
+
+/* Sprungziele bleiben unter der klebenden Kopfleiste sichtbar. */
+[id] { scroll-margin-top: 96px; }
+
+/* ── Deutsche Komposita ───────────────────────────────────────────────
+   „Berufshaftpflichtversicherung" ist in einer schmalen Spalte breiter als
+   der Kasten. Mit lang="de" trennt der Browser korrekt statt zu überlaufen. */
+h1, h2, h3, h4 { hyphens: auto; overflow-wrap: break-word; }
+p, li, dd, dt, th, td, summary, figcaption { overflow-wrap: break-word; }
