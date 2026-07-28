@@ -130,9 +130,15 @@ summary:focus-visible {
 .masthead__nav {
   display: flex;
   gap: clamp(14px, 2.4vw, 34px);
+  align-items: center;
 }
 
+/* Die Textzeile war 18px hoch und verfehlte damit die Mindestzielgröße.
+   Die Fläche wächst, die Typografie bleibt unverändert. */
 .masthead__nav a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-underline-offset: 4px;
 }
 
@@ -1419,6 +1425,9 @@ summary:focus-visible {
 }
 
 .site-footer__meta a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-underline-offset: 4px;
 }
 
