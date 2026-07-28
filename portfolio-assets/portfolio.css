@@ -83,6 +83,14 @@ summary:focus-visible {
   transform: translateY(0);
 }
 
+/* Icon sheet: referenced by <use>, never rendered on its own. */
+.glyph-sheet {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .masthead {
   overflow: hidden;
   min-height: 100svh;
@@ -347,20 +355,87 @@ summary:focus-visible {
   font-weight: 800;
 }
 
-.work__arrow {
-  display: inline-grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  background: currentColor;
-  color: var(--surface);
-  font-size: 1.25rem;
-  transition: transform 220ms cubic-bezier(.2, .8, .2, 1);
+.work__cta {
+  position: relative;
+  padding-bottom: 4px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
-.work:hover .work__arrow,
-.work:focus-visible .work__arrow {
-  transform: translate(5px, -5px);
+.work__cta::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: currentColor;
+  transition: transform 420ms cubic-bezier(.16, 1, .3, 1);
+  content: "";
+}
+
+.work__arrow {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid currentColor;
+  isolation: isolate;
+}
+
+/* Signal fill wipes up from the baseline the moment the plate is engaged. */
+.work__arrow::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  transform: translateY(100%);
+  background: var(--acid);
+  transition: transform 300ms cubic-bezier(.4, 0, .2, 1);
+  content: "";
+}
+
+.work__arrow-glyph {
+  grid-area: 1 / 1;
+  width: 19px;
+  height: 19px;
+  transition:
+    transform 460ms cubic-bezier(.16, 1, .3, 1),
+    color 180ms linear 90ms;
+}
+
+/* The trailing copy waits off-plate and takes the leader's place on hover. */
+.work__arrow-glyph--trail {
+  transform: translate(-150%, 150%);
+}
+
+.work:hover .work__cta::after,
+.work:focus-visible .work__cta::after,
+.work:active .work__cta::after {
+  transform: scaleX(1);
+}
+
+.work:hover .work__arrow::before,
+.work:focus-visible .work__arrow::before,
+.work:active .work__arrow::before {
+  transform: translateY(0);
+}
+
+.work:hover .work__arrow-glyph,
+.work:focus-visible .work__arrow-glyph,
+.work:active .work__arrow-glyph {
+  transform: translate(150%, -150%);
+  color: var(--carbon);
+}
+
+.work:hover .work__arrow-glyph--trail,
+.work:focus-visible .work__arrow-glyph--trail,
+.work:active .work__arrow-glyph--trail {
+  transform: translate(0, 0);
 }
 
 .work__visual {

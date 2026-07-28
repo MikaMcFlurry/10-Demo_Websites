@@ -2,7 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/create-three-demo-sites-T1HN9, claude/portfolio-websites-five-qda4ge]
+    branches:
+      - claude/github-pages-business-demos-ZhnfF
+      - claude/create-three-demo-sites-T1HN9
+      - claude/portfolio-websites-five-qda4ge
+      - claude/portfolio-ux-library-pkj4xy
   workflow_dispatch:
 
 permissions:
