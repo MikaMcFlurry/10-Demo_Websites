@@ -1,0 +1,549 @@
+/*
+  NEREUS — Tiefseeforschung
+  Mika UX Library: MXL-040 „The Monolith Project“ — Interactive sci-fi artifact
+  (rein, keine Mischung)
+
+  Die Vorlage verlangt eine choreografierte Szene mit stabilem
+  Interaktionsanker, dauerhaft sichtbarem Fortschritt, einer Tonsteuerung im
+  Opt-in und einem stillen Textpfad für Tastatur und Screenreader — und
+  ausdrücklich kein Scroll-Jacking.
+
+  Übersetzt in einen Tauchgang: Die Seite ist die Wassersäule. Gescrollt wird
+  ganz normal; die Szene reagiert darauf, statt den Scroll zu übernehmen.
+  Die Tiefenschiene links ist der Anker und bleibt immer sichtbar.
+*/
+
+@import url("fonts/fonts.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* MXL-040 Farbrollen */
+  --canvas: #080908;
+  --surface: #151715;
+  --ink: #f4f1e9;
+  --muted: #959b90;
+  --signal: #8d73ff;
+
+  --hair: rgba(244, 241, 233, .14);
+  --hair-stark: rgba(244, 241, 233, .32);
+
+  /* Die Wassersäule: fünf Stufen von Sonnenlicht bis Abyssal. Sie sind
+     Kulisse, nie Informationsträger — jede Zone steht zusätzlich als Text. */
+  --zone-1: #123f52;
+  --zone-2: #0d2b3d;
+  --zone-3: #081726;
+  --zone-4: #050c14;
+  --zone-5: #030608;
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+  --sp-11: 160px;
+
+  --r-s: 8px; --r-m: 12px; --r-l: 16px; --r-pill: 999px;
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; background: var(--canvas); }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+
+/* ── Typografie ───────────────────────────────────────────────────────── */
+
+.szene-titel {
+  margin: 0;
+  font-size: clamp(52px, 11vw, 168px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: .88;
+  text-wrap: balance;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.h2 { margin: 0; font-size: clamp(30px, 4.2vw, 58px); font-weight: 700; letter-spacing: -.03em; line-height: 1.04; hyphens: auto; overflow-wrap: break-word; }
+.h3 { margin: 0; font-size: clamp(19px, 1.9vw, 24px); font-weight: 600; letter-spacing: -.015em; line-height: 1.22; }
+
+.lead { max-width: 42ch; margin: 0; font-size: clamp(19px, 1.9vw, 23px); line-height: 1.5; }
+.prose { max-width: 64ch; }
+.prose p { margin: 0 0 var(--sp-4); color: #d3d0c8; }
+.muted { color: var(--muted); }
+
+/* Mono trägt jede technische Angabe: Tiefe, Druck, Kapitel, Zustand. */
+.meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.zahl { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+a { color: inherit; text-underline-offset: 4px; }
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip {
+  position: fixed;
+  z-index: 120;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  transform: translateY(-160%);
+  border-radius: var(--r-pill);
+  background: var(--signal);
+  color: #0a0620;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip:focus { transform: translateY(0); }
+
+/* ── Kopf ─────────────────────────────────────────────────────────────── */
+
+.kopf {
+  position: sticky;
+  z-index: 80;
+  top: 0;
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) clamp(var(--sp-4), 4vw, var(--sp-7));
+  border-bottom: 1px solid var(--hair);
+  background: rgba(8, 9, 8, .78);
+  backdrop-filter: blur(14px);
+}
+
+.marke {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-3);
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.marke svg { width: 24px; height: 24px; flex: none; }
+
+.menue { display: flex; gap: var(--sp-1); align-items: center; }
+
+.menue a {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 220ms var(--ease);
+}
+
+.menue a:hover { color: var(--ink); }
+.menue a[aria-current="page"] { color: var(--ink); }
+.menue a[aria-current="page"]::before {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--signal);
+  content: "";
+}
+
+.menuetaste {
+  display: none;
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--hair-stark);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ── Aktionen ─────────────────────────────────────────────────────────── */
+
+.taste {
+  display: inline-flex;
+  min-height: 48px;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: 0 var(--sp-6);
+  border: 1px solid var(--hair-stark);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease);
+}
+
+.taste:hover { border-color: var(--ink); background: rgba(244, 241, 233, .07); }
+
+.taste--haupt { border-color: var(--signal); background: var(--signal); color: #0a0620; font-weight: 700; }
+.taste--haupt:hover { border-color: var(--signal); background: #a48eff; color: #0a0620; }
+
+/* ── Die Wassersäule ──────────────────────────────────────────────────── */
+
+/*
+  --tiefe läuft von 0 bis 1 und wird beim Scrollen gesetzt. Die Fläche liegt
+  fest hinter allem und wechselt die Farbe; sie trägt keine Information.
+*/
+.wasser {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--zone-1), var(--zone-5) calc(var(--tiefe, 0) * 100%)),
+      color-mix(in oklab, var(--zone-2), var(--zone-5) calc(var(--tiefe, 0) * 100%)));
+  transition: background 600ms linear;
+  pointer-events: none;
+}
+
+/* Schwebeteilchen: Meeresschnee. Sehr wenige, sehr langsam, nur Kulisse. */
+.schnee { position: fixed; z-index: 1; inset: 0; overflow: hidden; pointer-events: none; }
+
+.schnee i {
+  position: absolute;
+  top: -6px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(244, 241, 233, .5);
+  animation: sinken var(--dauer, 22s) linear infinite;
+}
+
+@keyframes sinken {
+  from { transform: translateY(-10vh); opacity: 0; }
+  12%  { opacity: .55; }
+  88%  { opacity: .55; }
+  to   { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ── Die Tiefenschiene: der Anker, immer sichtbar ─────────────────────── */
+
+.schiene {
+  position: fixed;
+  z-index: 70;
+  top: 50%;
+  left: clamp(var(--sp-4), 2.4vw, var(--sp-6));
+  translate: 0 -50%;
+  display: grid;
+  gap: var(--sp-4);
+  width: 168px;
+  padding: var(--sp-5) var(--sp-4);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-l);
+  background: rgba(8, 9, 8, .74);
+  backdrop-filter: blur(10px);
+}
+
+.schiene__wert { font-family: var(--font-mono); font-size: 27px; font-weight: 700; letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.schiene__wert small { font-size: 13px; font-weight: 400; }
+
+.schiene__balken { position: relative; height: 132px; border-radius: var(--r-pill); background: rgba(244, 241, 233, .1); }
+
+.schiene__zeiger {
+  position: absolute;
+  right: -3px;
+  left: -3px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--signal);
+  transition: top 320ms var(--ease);
+}
+
+/* Kapitelmarken auf der Schiene — als echte Sprungziele, nicht als Dekor. */
+.schiene__liste { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+
+.schiene__liste a {
+  display: block;
+  padding: 7px var(--sp-2);
+  border-radius: var(--r-s);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 200ms var(--ease), background-color 200ms var(--ease);
+}
+
+.schiene__liste a:hover { color: var(--ink); background: rgba(244, 241, 233, .08); }
+.schiene__liste a[aria-current="true"] { color: var(--ink); background: rgba(141, 115, 255, .2); }
+
+/* ── Tonsteuerung: Opt-in, Zustand als Text und Symbol ────────────────── */
+
+.ton {
+  position: fixed;
+  z-index: 75;
+  right: clamp(var(--sp-4), 2.4vw, var(--sp-6));
+  bottom: clamp(var(--sp-4), 2.4vw, var(--sp-6));
+  display: inline-flex;
+  min-height: 48px;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: 0 var(--sp-5);
+  border: 1px solid var(--hair-stark);
+  border-radius: var(--r-pill);
+  background: rgba(8, 9, 8, .82);
+  backdrop-filter: blur(10px);
+  color: var(--ink);
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ton:hover { border-color: var(--ink); }
+.ton[aria-pressed="true"] { border-color: var(--signal); }
+
+.ton__symbol { display: inline-grid; width: 18px; height: 18px; place-items: center; }
+.ton__symbol svg { width: 18px; height: 18px; }
+.ton__aus { display: block; }
+.ton__an { display: none; }
+.ton[aria-pressed="true"] .ton__aus { display: none; }
+.ton[aria-pressed="true"] .ton__an { display: block; }
+
+/* ── Szenen ───────────────────────────────────────────────────────────── */
+
+main { position: relative; z-index: 2; }
+
+.szene {
+  display: grid;
+  /* minmax(0, 1fr) statt auto: sonst misst die auto-Spalte den max-content
+     der Wertezeile, deren auto-fit-Raster daraufhin vier Spalten behält —
+     und die Szene wird auf schmalen Viewports breiter als der Bildschirm. */
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  min-height: 92svh;
+  padding: clamp(var(--sp-9), 10vw, var(--sp-11)) clamp(var(--sp-4), 4vw, var(--sp-7));
+}
+
+/*
+  Ab 1101px steht die Schiene senkrecht am linken Rand und ist 168px breit.
+  Der Text muss an ihr vorbei — mit einem clamp auf 4vw tut er das bei 1440px
+  gerade nicht, deshalb hier ein fester Wert: Randabstand plus Breite plus Luft.
+*/
+@media (min-width: 1101px) {
+  .szene { padding-left: 248px; }
+}
+
+.szene__mitte { max-width: 1320px; margin-inline: auto; width: 100%; }
+.szene__kicker { margin-bottom: var(--sp-5); }
+.szene__text { margin-top: clamp(var(--sp-5), 3vw, var(--sp-7)); }
+.szene__tat { display: flex; gap: var(--sp-3); margin-top: var(--sp-7); flex-wrap: wrap; }
+
+/* Datenzeile einer Zone: die Werte, die die Tiefe wirklich bestimmen. */
+.werte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin-top: clamp(var(--sp-6), 4vw, var(--sp-8));
+  max-width: 820px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-m);
+  overflow: hidden;
+}
+
+.werte > * { min-width: 0; }
+
+.wert { padding: var(--sp-4) var(--sp-5); background: rgba(8, 9, 8, .72); }
+.wert b { display: block; font-family: var(--font-mono); font-size: clamp(19px, 2vw, 25px); font-weight: 700; letter-spacing: -.01em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.wert span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
+
+/* ── Flächen für die ruhigen Seiten ───────────────────────────────────── */
+
+.bahn { position: relative; z-index: 2; padding: clamp(var(--sp-8), 8vw, var(--sp-10)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.bahn--flaeche { background: var(--surface); border-block: 1px solid var(--hair); }
+.mitte { max-width: 1320px; margin-inline: auto; }
+.schmal { max-width: 880px; }
+
+.kopfzeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: end;
+  margin-bottom: clamp(var(--sp-7), 5vw, var(--sp-8));
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--hair);
+}
+
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(262px, 1fr)); gap: var(--sp-4); }
+.karten > * { min-width: 0; }
+.karte { display: grid; gap: var(--sp-3); align-content: start; padding: var(--sp-5); border: 1px solid var(--hair); border-radius: var(--r-l); background: rgba(8, 9, 8, .6); }
+.karte p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.rolle { overflow-x: auto; }
+.rolle .tafel { min-width: 34rem; }
+
+.tafel { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tafel caption { margin-bottom: var(--sp-4); color: var(--muted); font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-align: left; text-transform: uppercase; }
+.tafel th, .tafel td { padding: var(--sp-4); border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
+.tafel thead th { color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
+.tafel td.num, .tafel th.num { font-family: var(--font-mono); font-size: 14px; text-align: right; }
+
+/* ── Druckrechner ─────────────────────────────────────────────────────── */
+
+.rechner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(290px, 400px); gap: clamp(var(--sp-6), 4vw, var(--sp-8)); align-items: start; }
+.rechner > * { min-width: 0; }
+
+.feld { display: grid; gap: var(--sp-3); margin-bottom: var(--sp-6); }
+.feld label { font-weight: 600; }
+.feld input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--signal); }
+.feld .hinweis { margin: 0; color: var(--muted); font-size: 14px; }
+
+.anzeige { display: grid; gap: var(--sp-4); padding: var(--sp-6); border: 1px solid var(--hair); border-radius: var(--r-l); background: rgba(8, 9, 8, .72); }
+.anzeige dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3) var(--sp-5); margin: 0; }
+.anzeige dt { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.anzeige dd { margin: 0; font-family: var(--font-mono); font-size: 16px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+
+.flotte { display: grid; gap: var(--sp-2); margin: 0; padding: 0; list-style: none; }
+.flotte li { display: flex; gap: var(--sp-3); justify-content: space-between; padding: var(--sp-2) 0; border-bottom: 1px solid var(--hair); color: var(--muted); font-family: var(--font-mono); font-size: 13px; }
+.flotte li:last-child { border-bottom: 0; }
+.flotte li[data-reicht] { color: var(--ink); }
+.flotte li[data-reicht] b { color: var(--signal); }
+
+.merk { padding: var(--sp-5); border: 1px solid var(--hair); border-left: 3px solid var(--signal); border-radius: 0 var(--r-m) var(--r-m) 0; background: rgba(21, 23, 21, .8); }
+.merk p { margin: 0 0 var(--sp-3); }
+.merk p:last-child { margin-bottom: 0; }
+
+/* ── Fuß ──────────────────────────────────────────────────────────────── */
+
+.fuss { position: relative; z-index: 2; padding: var(--sp-9) clamp(var(--sp-4), 4vw, var(--sp-7)) var(--sp-7); border-top: 1px solid var(--hair); background: var(--canvas); }
+.fuss__mitte { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--sp-7); max-width: 1320px; margin-inline: auto; }
+.fuss h2 { margin: 0 0 var(--sp-4); color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
+.fuss ul { margin: 0; padding: 0; list-style: none; }
+.fuss li { margin-bottom: var(--sp-2); }
+.fuss address { font-style: normal; }
+.fuss__demo { max-width: 1320px; margin: var(--sp-8) auto 0; padding-top: var(--sp-5); border-top: 1px solid var(--hair); color: var(--muted); font-size: 14px; }
+
+/* ── Rechtsseiten ─────────────────────────────────────────────────────── */
+
+.recht { max-width: 72ch; margin-inline: auto; }
+.recht h2 { margin: var(--sp-8) 0 var(--sp-3); font-size: clamp(21px, 2.2vw, 27px); font-weight: 700; }
+.recht h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: 17px; }
+.recht p, .recht li { color: #cdcac2; }
+.recht ul { padding-left: var(--sp-5); }
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  /* Unter 1100px wird die Schiene zur Leiste am oberen Rand: derselbe
+     Inhalt, dieselben Sprungziele, nur waagerecht und ohne Balken. */
+  .schiene {
+    top: 61px;
+    right: clamp(var(--sp-4), 4vw, var(--sp-7));
+    left: clamp(var(--sp-4), 4vw, var(--sp-7));
+    translate: 0;
+    display: flex;
+    gap: var(--sp-4);
+    align-items: center;
+    width: auto;
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .schiene__balken { display: none; }
+  .schiene__wert { font-size: 20px; }
+
+  /* Der Tiefenblock behält seine Breite, die Kapitelliste rollt in sich
+     selbst. Ohne min-width: 0 zwingt sie die feste Leiste über den
+     Viewport hinaus — und eine fixe Leiste lässt sich nicht wegscrollen. */
+  .schiene > div:first-child { flex: none; }
+  .schiene > nav { min-width: 0; flex: 1; }
+  .schiene__liste { display: flex; overflow-x: auto; gap: var(--sp-1); min-width: 0; }
+  .schiene__liste a { white-space: nowrap; }
+
+  .szene { padding-top: clamp(var(--sp-10), 14vw, 200px); }
+}
+
+@media (max-width: 940px) {
+  .rechner, .kopfzeile { grid-template-columns: 1fr; }
+
+  .menuetaste { display: inline-flex; align-items: center; }
+
+  .menue {
+    position: absolute;
+    top: 100%;
+    right: clamp(var(--sp-4), 4vw, var(--sp-7));
+    left: clamp(var(--sp-4), 4vw, var(--sp-7));
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-3);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-l);
+    background: #0d0f0d;
+  }
+
+  .menue[data-offen] { display: flex; }
+  .menue a { padding: var(--sp-3) var(--sp-4); }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  /* Mobil bleibt der Abstieg, aber ohne Kulisse, die Leistung kostet:
+     der Meeresschnee entfällt, die Szenen werden kürzer. */
+  .schnee { display: none; }
+  .szene { min-height: auto; padding-block: var(--sp-9); }
+  .karte, .anzeige { padding: var(--sp-4); }
+  .ton { right: var(--sp-3); bottom: var(--sp-3); }
+}
+
+/*
+  Reduced Motion ersetzt die Choreografie durch harte Zustandswechsel:
+  kein Sinken, keine Farbüberblendung, kein weiches Scrollen.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .schnee { display: none; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -28,6 +28,7 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 | 12 | [`vehring-orgelbau`](vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Unbounded, Instrument Sans, Spline Sans Mono | `MXL-007` |
 | 13 | [`saatgutarchiv`](saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Public Sans, IBM Plex Mono | `MXL-118` + `MXL-090` + `MXL-113` |
 | 14 | [`geburtshaus-uferwiese`](geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Cormorant Garamond, Karla | `MXL-068` + `MXL-079` + `MXL-050` |
+| 15 | [`nereus-tiefsee`](nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Space Grotesk, Space Mono | `MXL-040` |
 
 ### 11 — SPRUDELWERK
 
@@ -115,6 +116,38 @@ ersetzt. Die Eingaben des Rechners sind Gesundheitsdaten nach Art. 9 DSGVO —
 deshalb hat er keinen Absenden-Knopf und verarbeitet ausschließlich im Browser.
 
 Fünf Seiten: Das Haus, Begleitung, Termin, Impressum, Datenschutz.
+
+### 15 — NEREUS Tiefseeforschung
+
+`MXL-040` („The Monolith Project“, *Interactive sci-fi artifact*) verlangt eine
+choreografierte Szene mit stabilem Interaktionsanker, dauerhaft sichtbarem
+Fortschritt, einer Tonsteuerung im Opt-in, einem stillen Textpfad für Tastatur
+und Screenreader — und ausdrücklich **kein Scroll-Jacking**.
+
+Übersetzt in einen Tauchgang: Die Seite ist die Wassersäule. Gescrollt wird
+ganz normal; ein IntersectionObserver liest, welche Zone im Blick ist, und die
+Szene reagiert darauf, statt den Scroll zu übernehmen.
+
+- **Der Anker** ist die Tiefenschiene links: Tiefe in Metern, Zonenname und
+  fünf Sprungziele, immer sichtbar. Unter 1101px wird sie zur waagerechten
+  Leiste; der Inhalt bleibt derselbe.
+- **Die Kulisse** ist eine feste Fläche, deren Farbe über `--tiefe` von der
+  Lichtzone bis ins Abyssal wandert. Sie trägt nie Information — jede Zone
+  steht zusätzlich als Text und als Zahlenzeile.
+- **Der Ton** wird im Browser erzeugt: zwei Sinusgeneratoren durch ein
+  Tiefpassfilter, keine Audiodatei, keine Netzwerkanfrage. Standardmäßig aus,
+  nur per Klick anschaltbar, Zustand als Text neben dem Symbol. Mit
+  wachsender Tiefe wird der Ton dumpfer.
+- **Reduced Motion** entfernt Meeresschnee, Farbüberblendung und weiches
+  Scrollen; die Tiefenanzeige springt dann hart auf ihren Wert.
+
+Der **Druckrechner** auf `fahrzeug.html` rechnet für 0 bis 11.000 Meter
+Umgebungsdruck (rund 1 bar je 9,9 m Seewasser), eine Näherung der Temperatur
+und die Lichtabnahme (etwa eine Zehnerpotenz je 75 m) — und zeigt, welches der
+fünf Fahrzeuge die eingestellte Tiefe noch erreicht. Auf 8.200 Metern ist das
+nur noch der Lander.
+
+Fünf Seiten: Abstieg, Fahrzeuge, Fahrtenbuch, Impressum, Datenschutz.
 
 ## Technische Leitplanken
 

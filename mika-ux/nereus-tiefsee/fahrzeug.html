@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fahrzeuge und Druckrechner – NEREUS Tiefseeforschung</title>
+<meta name="description" content="Fünf Fahrzeuge von der Schleppsonde bis zum Lander, mit Einsatztiefen. Dazu ein Rechner für Druck, Temperatur und Restlicht in jeder Tiefe.">
+<meta name="theme-color" content="#080908">
+<meta property="og:title" content="Fahrzeuge und Druckrechner – NEREUS Tiefseeforschung">
+<meta property="og:description" content="Fünf Fahrzeuge von der Schleppsonde bis zum Lander, mit Einsatztiefen. Dazu ein Rechner für Druck, Temperatur und Restlicht in jeder Tiefe.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/space-grotesk-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tauchgang.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Nereus Tiefseeforschung, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 3v26" stroke="#8d73ff" stroke-width="2"/>
+      <path d="M11 9h10M12 16h8M13 23h6" stroke="#f4f1e9" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    Nereus
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Abstieg</a>
+    <a href="fahrzeug.html" aria-current="page">Fahrzeuge</a>
+    <a href="fahrten.html">Fahrtenbuch</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+
+  <section class="bahn" aria-labelledby="titel">
+    <div class="mitte schmal">
+      <p class="meta">Flotte · Stand 2026</p>
+      <h1 class="h2" id="titel" style="margin: var(--sp-4) 0 var(--sp-5)">Fünf Fahrzeuge,<br>eine Grenze je Gerät</h1>
+      <p class="lead">
+        Jedes Fahrzeug hat eine Einsatztiefe, und die ist keine Verhandlungssache.
+        Sie folgt aus dem Druckkörper — und der Druck folgt aus der Tiefe.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Druckrechner ───────────────────────────────────────────────── -->
+  <section class="bahn bahn--flaeche" aria-labelledby="rech-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="meta">Rechner</p>
+          <h2 class="h2" id="rech-t">Was in der Tiefe herrscht</h2>
+        </div>
+        <p class="muted" style="margin:0; align-self:end">
+          Seewasser legt je 9,9 Meter etwa ein bar zu. Alles andere — Kälte,
+          Dunkelheit — folgt weniger geradlinig, aber ebenso zuverlässig.
+        </p>
+      </div>
+
+      <div class="rechner" data-rechner>
+        <div>
+          <div class="feld">
+            <label for="tiefe">Tiefe: <span class="zahl" data-r-tiefe>2.000 m</span></label>
+            <input type="range" id="tiefe" min="0" max="11000" step="50" value="2000">
+            <p class="hinweis">0 bis 11.000 Meter — von der Oberfläche bis zur tiefsten bekannten Stelle des Ozeans.</p>
+          </div>
+
+          <div class="prose">
+            <p>
+              <b>Druck.</b> An der Oberfläche drückt die Luft mit einem bar. Je
+              9,9 Meter Seewasser kommt ein weiteres dazu. Auf 6.000 Metern sind
+              das rund 607 bar — auf jedem Quadratzentimeter des Druckkörpers
+              lastet gut eine halbe Tonne.
+            </p>
+            <p>
+              <b>Temperatur.</b> Unterhalb von etwa tausend Metern ist das
+              Wasser fast überall zwischen 1 und 4 Grad kalt, unabhängig davon,
+              ob darüber die Arktis oder die Karibik liegt.
+            </p>
+            <p>
+              <b>Licht.</b> Klares Wasser schluckt je rund 75 Meter eine
+              Zehnerpotenz. Bei 200 Metern ist noch ein Bruchteil eines Prozents
+              übrig, bei 1.000 Metern nichts mehr, was ein Messgerät von
+              Dunkelheit unterscheiden könnte.
+            </p>
+          </div>
+        </div>
+
+        <div class="anzeige">
+          <p class="meta">Bedingungen</p>
+
+          <dl>
+            <dt>Zone</dt><dd data-r-zone style="font-size:13px">—</dd>
+            <dt>Druck</dt><dd data-r-druck>—</dd>
+            <dt>Temperatur</dt><dd data-r-temp>—</dd>
+            <dt>Restlicht</dt><dd data-r-licht>—</dd>
+          </dl>
+
+          <div>
+            <p class="meta" style="margin-bottom: var(--sp-3)">Welches Fahrzeug reicht hin</p>
+            <ul class="flotte">
+              <li data-max="1000"><span>NEREUS 1 · Schleppsonde</span><b>1.000 m</b></li>
+              <li data-max="3000"><span>NEREUS 2 · ROV</span><b>3.000 m</b></li>
+              <li data-max="4500"><span>NEREUS 3 · AUV</span><b>4.500 m</b></li>
+              <li data-max="6000"><span>NEREUS 4 · bemannt</span><b>6.000 m</b></li>
+              <li data-max="11000"><span>HADES · Lander</span><b>11.000 m</b></li>
+            </ul>
+          </div>
+
+          <p data-r-stand role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Die Flotte ─────────────────────────────────────────────────── -->
+  <section class="bahn" aria-labelledby="flotte-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="meta">Technische Daten</p>
+          <h2 class="h2" id="flotte-t">Die Flotte</h2>
+        </div>
+        <p class="muted" style="margin:0; align-self:end">
+          Nur ein Fahrzeug nimmt Menschen mit. Es ist zugleich das langsamste
+          und das teuerste — und das einzige, bei dem jemand entscheidet,
+          während er hinsieht.
+        </p>
+      </div>
+
+      <div class="rolle">
+        <table class="tafel">
+          <caption>Einsatzdaten, gerundet</caption>
+          <thead>
+            <tr>
+              <th scope="col">Fahrzeug</th>
+              <th scope="col">Art</th>
+              <th scope="col" class="num">Einsatztiefe</th>
+              <th scope="col" class="num">Einsatzdauer</th>
+              <th scope="col" class="num">Nutzlast</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">NEREUS 1</th><td>Schleppsonde, kabelgeführt</td><td class="num">1.000 m</td><td class="num">24 h</td><td class="num">40 kg</td></tr>
+            <tr><th scope="row">NEREUS 2</th><td>ROV, ferngesteuert</td><td class="num">3.000 m</td><td class="num">18 h</td><td class="num">120 kg</td></tr>
+            <tr><th scope="row">NEREUS 3</th><td>AUV, autonom</td><td class="num">4.500 m</td><td class="num">32 h</td><td class="num">65 kg</td></tr>
+            <tr><th scope="row">NEREUS 4</th><td>bemannt, drei Personen</td><td class="num">6.000 m</td><td class="num">9 h</td><td class="num">180 kg</td></tr>
+            <tr><th scope="row">HADES</th><td>Lander, freifallend</td><td class="num">11.000 m</td><td class="num">72 h</td><td class="num">90 kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="karten" style="margin-top: var(--sp-8)">
+        <div class="karte">
+          <p class="meta">Druckkörper</p>
+          <h3 class="h3">Eine Kugel aus Titan</h3>
+          <p>2,10 Meter Innendurchmesser, 92 Millimeter Wandstärke. Eine Kugel, weil jede andere Form eine Kante hätte, an der der Druck angreift.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Auftrieb</p>
+          <h3 class="h3">Ballast statt Motor</h3>
+          <p>Der Abstieg geschieht mit Eisengewichten und ohne Antrieb. Zum Auftauchen werden sie abgeworfen — auch bei Stromausfall, rein mechanisch.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Sicht</p>
+          <h3 class="h3">Drei Fenster, 18 cm</h3>
+          <p>Kegelstumpf aus Acryl, im Druck dichter als im Leerlauf. Das Fenster wird bei jedem Tauchgang minimal kleiner und danach wieder größer.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Reserve</p>
+          <h3 class="h3">96 Stunden</h3>
+          <p>Atemluft und Wärme für vier Tage, obwohl ein Tauchgang neun Stunden dauert. Die Reserve ist nie gebraucht worden und wird nie gekürzt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Nereus Tiefseeforschung</h2>
+      <address class="muted">
+        Am Alten Hafen 26<br>
+        27568 Bremerhaven<br>
+        <a href="tel:+494719000">+49 471 9000</a><br>
+        <a href="mailto:leitstand@nereus-tiefsee.example">leitstand@nereus-tiefsee.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Leitstand</h2>
+      <p class="muted" style="margin:0">
+        Während einer Fahrt durchgehend besetzt.<br>
+        Anfragen zu Fahrtzeiten schriftlich,<br>
+        Vorlauf mindestens zwölf Monate.
+      </p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="fahrzeug.html">Fahrzeuge und Druckrechner</a></li>
+        <li><a href="fahrten.html">Fahrtenbuch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Institut, Personen, Adressen, Fahrzeuge und Fahrten
+    sind frei erfunden. Tiefenzonen, Druck- und Lichtwerte folgen der
+    ozeanografischen Literatur und sind gerundete Näherungen.
+    Gestaltung nach Mika UX Library <b>MXL-040</b>.
+  </p>
+</footer>
+
+<script src="assets/tauchgang.js" defer></script>
+</body>
+</html>

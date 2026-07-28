@@ -1295,6 +1295,66 @@ summary:focus-visible {
   background: #fa7864;
 }
 
+/* 15 — the water column (MXL-040) */
+.spec-tiefe {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: space-between;
+  padding: clamp(22px, 3vw, 44px) clamp(20px, 2.6vw, 40px);
+  background: linear-gradient(180deg, #123f52, #0d2b3d 26%, #081726 58%, #030608);
+  color: #f4f1e9;
+  font-family: "Courier New", monospace;
+}
+
+.tiefe-zone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(244, 241, 233, .22);
+  font-size: clamp(.66rem, .82vw, .78rem);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.tiefe-zone b { font-weight: 700; }
+.tiefe-zone i { color: rgba(244, 241, 233, .55); font-style: normal; }
+
+/* Die Einsatzgrenze ist der einzige Ort mit Signalfarbe. */
+.tiefe-marke {
+  position: relative;
+  z-index: 2;
+  padding-top: 10px;
+  border-top: 2px solid #8d73ff;
+  color: #8d73ff;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.tiefe-schnee { position: absolute; inset: 0; z-index: 1; }
+
+.tiefe-schnee i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(244, 241, 233, .45);
+}
+
+.tiefe-schnee i:nth-child(1) { top: 12%; left: 22%; }
+.tiefe-schnee i:nth-child(2) { top: 28%; left: 68%; }
+.tiefe-schnee i:nth-child(3) { top: 41%; left: 39%; }
+.tiefe-schnee i:nth-child(4) { top: 53%; left: 81%; }
+.tiefe-schnee i:nth-child(5) { top: 64%; left: 14%; }
+.tiefe-schnee i:nth-child(6) { top: 72%; left: 57%; }
+.tiefe-schnee i:nth-child(7) { top: 84%; left: 33%; }
+.tiefe-schnee i:nth-child(8) { top: 91%; left: 74%; }
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);
