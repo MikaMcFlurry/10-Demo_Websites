@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marmorierbad – WOLKENKAMM Werkstatt für Marmorpapier</title>
+<meta name="description" content="Das Marmorierbad im Browser: Farben streuen, Kämme ziehen, Bogen abnehmen. Jeder Arbeitsschritt steht auf dem Werkstattzettel — und der fertige Bogen lässt sich als PNG mitnehmen.">
+<meta name="theme-color" content="#F7F5EF">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/lexend-exa-normal-700-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/familjen-grotesk-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fragment-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/werkstatt.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Wolkenkamm, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M3.5 19c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#2E4076" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path d="M3.5 24.5c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#D2799F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="21.5" cy="9" r="4.6" fill="#11130F"/>
+    </svg>
+    <span aria-hidden="true"><b>Wolkenkamm</b><span>Werkstatt für Marmorpapier · Aschaffenburg</span></span>
+  </a>
+  <button class="menuetaste" data-menuetaste aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Werkstatt</a>
+    <a href="bad.html" aria-current="page">Marmorierbad</a>
+    <a href="muster.html">Musterbuch</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+  <div class="blatt">
+    <span class="mono">Die Wanne steht bereit</span>
+    <h1 class="h2">Das Marmorierbad</h1>
+    <p class="lead">Hier gelten die Handgriffe der Werkstatt: Farbe streuen,
+      Stift und Kamm ziehen, zuletzt den Bogen abnehmen. Jeder Schritt wird
+      auf dem Werkstattzettel notiert — und lässt sich zurücknehmen, solange
+      der Bogen noch schwimmt. Ein Tipp oder Klick in die Wanne setzt einen
+      einzelnen Tropfen.</p>
+  </div>
+
+  <section class="bahn bahn--eng" aria-label="Marmorierbad, Werkzeug">
+    <div class="mitte">
+
+      <p data-bad-ohne><strong>Das Bad braucht JavaScript.</strong> Ohne
+        Skript bleibt die Wanne trocken — die Handgriffe, Muster und Rezepte
+        stehen trotzdem im <a href="muster.html">Musterbuch</a>.</p>
+
+      <div class="bad" data-bad hidden>
+        <div>
+          <figure class="bad__wanne" style="margin:0">
+            <canvas role="img" aria-label="Leeres Marmorierbad, der Kleistergrund ist angesetzt."></canvas>
+            <figcaption class="zettelchen">Wanne 74 × 54 cm · Bogen quer</figcaption>
+          </figure>
+          <div class="bad__status">
+            <p role="status" data-meldung>Der Kleistergrund steht. Streuen Sie die erste Farbe.</p>
+            <span class="mono" data-zaehler></span>
+          </div>
+        </div>
+
+        <div class="pult">
+          <fieldset>
+            <legend>Farbe auf dem Pinsel</legend>
+            <div class="farbwahl">
+              <label style="--ton:#2E4076">
+                <input type="radio" name="farbe" value="1" checked>
+                <span><i aria-hidden="true"></i>Indigo</span>
+              </label>
+              <label style="--ton:#D2799F">
+                <input type="radio" name="farbe" value="2">
+                <span><i aria-hidden="true"></i>Krapprosa</span>
+              </label>
+              <label style="--ton:#D9B94A">
+                <input type="radio" name="farbe" value="3">
+                <span><i aria-hidden="true"></i>Reseda</span>
+              </label>
+              <label style="--ton:#587F63">
+                <input type="radio" name="farbe" value="4">
+                <span><i aria-hidden="true"></i>Grünspan</span>
+              </label>
+              <label style="--ton:#23241F">
+                <input type="radio" name="farbe" value="5">
+                <span><i aria-hidden="true"></i>Ruß</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <span class="pult__titel">Streuen</span>
+          <div class="pult__reihe">
+            <button type="button" class="werkzeug" data-op="streuen">Farbe streuen</button>
+            <button type="button" class="werkzeug" data-op="tropfen">Ein Tropfen</button>
+            <button type="button" class="werkzeug" data-op="galle">Gallwasser</button>
+          </div>
+
+          <span class="pult__titel">Ziehen</span>
+          <div class="pult__reihe">
+            <button type="button" class="werkzeug" data-op="kammquer">Kamm quer</button>
+            <button type="button" class="werkzeug" data-op="kammlaengs">Kamm längs</button>
+            <button type="button" class="werkzeug" data-op="fein">Feinkamm</button>
+            <button type="button" class="werkzeug" data-op="welle">Wellenzug</button>
+            <button type="button" class="werkzeug" data-op="schnecke">Schnecke</button>
+          </div>
+
+          <span class="pult__titel">Bogen</span>
+          <div class="pult__reihe" style="margin-bottom:0">
+            <button type="button" class="werkzeug werkzeug--leise" data-op="zurueck">Zurück</button>
+            <button type="button" class="werkzeug werkzeug--leise" data-op="abraeumen">Abräumen</button>
+            <button type="button" class="taste taste--haupt" data-abnehmen>Bogen abnehmen (PNG)</button>
+          </div>
+
+          <div class="zettel">
+            <span class="pult__titel" id="zettel-t">Werkstattzettel</span>
+            <ol data-zettel aria-labelledby="zettel-t"></ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bahn" aria-labelledby="rechner-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <span class="mono">Für die eigene Wanne</span>
+          <h2 class="h2" id="rechner-t">Der Badrechner</h2>
+        </div>
+        <p>Wie viel Carragheen braucht ein Bad, wie viel Alaun die Beize?
+          Gerechnet wird mit den Werkstattwerten: 20 g Carragheenmoos je
+          Liter, 30 g Alaun je Liter Streichlösung, rund 40 ml je Bogen.
+          Näherungen — das letzte Wort hat das Bad.</p>
+      </div>
+
+      <form class="rechner" data-rechner>
+        <div>
+          <label for="format">Bogenformat</label>
+          <select id="format" name="format">
+            <option value="50x70" selected>50 × 70 cm (ganzer Bogen)</option>
+            <option value="35x50">35 × 50 cm (halber Bogen)</option>
+            <option value="25x35">25 × 35 cm (Viertelbogen)</option>
+          </select>
+
+          <label for="tiefe">Badtiefe in Zentimetern</label>
+          <input id="tiefe" name="tiefe" type="number" min="3" max="10" step="0.5" value="6" inputmode="decimal">
+
+          <p class="still" style="margin:0">Die Wanne rechnet je Seite 2 cm
+            Griffrand zum Bogen hinzu. Flacher als 3 cm reißt der Grund beim
+            Kämmen auf.</p>
+        </div>
+
+        <dl class="rechner__aus">
+          <div><dt>Wanne innen</dt><dd data-aus-wanne>—</dd></div>
+          <div><dt>Kleistergrund</dt><dd data-aus-volumen>—</dd></div>
+          <div><dt>Carragheenmoos</dt><dd data-aus-moos>—</dd></div>
+          <div><dt>Alaunbeize</dt><dd data-aus-alaun>—</dd></div>
+        </dl>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Wolkenkamm</h2>
+      <address>
+        Werkstatt für Marmorpapier<br>
+        Fabrikgasse 11<br>
+        63739 Aschaffenburg<br>
+        <a href="mailto:bad@wolkenkamm.example">bad@wolkenkamm.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Werkstattverkauf</h2>
+      <p>Freitags 14–18 Uhr,<br>solange der Stapel reicht.<br>
+        Kurse samstags nach Ankündigung.</p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="index.html">Werkstatt</a></li>
+        <li><a href="muster.html">Musterbuch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Werkstatt, Personen, Adressen und Preise sind frei
+    erfunden; Rezeptwerte sind vereinfachte Literaturwerte. Das Bad rechnet
+    vollständig im Browser; der abgenommene Bogen verlässt Ihr Gerät nicht.
+    Gestaltung nach Mika UX Library <b>MXL-022</b> + <b>MXL-040</b>.
+  </p>
+</footer>
+
+<script src="assets/marmor.js" defer></script>
+</body>
+</html>

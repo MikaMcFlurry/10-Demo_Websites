@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WOLKENKAMM – Werkstatt für Marmorpapier, Aschaffenburg</title>
+<meta name="description" content="Handmarmorierte Buntpapiere auf Carragheen-Grund. Diese Website marmoriert wirklich: Jeder Besuch rechnet einen Bogen, den es kein zweites Mal gibt.">
+<meta name="theme-color" content="#F7F5EF">
+<meta property="og:title" content="WOLKENKAMM – Werkstatt für Marmorpapier">
+<meta property="og:description" content="Kein Bogen zweimal: eine Werkstatt für Tunkpapier — und eine Website, die im Browser wirklich marmoriert.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/lexend-exa-normal-700-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/familjen-grotesk-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fragment-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/werkstatt.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "WOLKENKAMM Werkstatt für Marmorpapier",
+  "description": "Handmarmorierte Buntpapiere: Vorsatz-, Überzugs- und Restaurierungspapiere auf Carragheen-Grund.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Fabrikgasse 11",
+    "postalCode": "63739",
+    "addressLocality": "Aschaffenburg",
+    "addressRegion": "Bayern",
+    "addressCountry": "DE"
+  },
+  "email": "bad@wolkenkamm.example",
+  "disambiguatingDescription": "Fiktive Werkstatt. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Wolkenkamm, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M3.5 19c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#2E4076" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path d="M3.5 24.5c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#D2799F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="21.5" cy="9" r="4.6" fill="#11130F"/>
+    </svg>
+    <span aria-hidden="true"><b>Wolkenkamm</b><span>Werkstatt für Marmorpapier · Aschaffenburg</span></span>
+  </a>
+  <button class="menuetaste" data-menuetaste aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html" aria-current="page">Werkstatt</a>
+    <a href="bad.html">Marmorierbad</a>
+    <a href="muster.html">Musterbuch</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+
+  <!-- ── Das Plakat: ein wirklich gerechneter Bogen ─────────────────── -->
+  <section class="plakat" aria-labelledby="titel">
+    <div class="plakat__platte" data-hero>
+      <canvas role="img" aria-label="Frisch marmorierter Bogen — bei jedem Besuch neu gerechnet."></canvas>
+      <div class="plakat__poster" aria-hidden="true"></div>
+
+      <div class="plakat__inhalt">
+        <div class="plakat__oben">
+          <p class="zettelchen" style="margin:0">Handmarmor auf Carragheen-Grund · seit 1998</p>
+          <p class="zettelchen" style="margin:0" data-bogen-nummer>Bogen Nr. —</p>
+        </div>
+
+        <h1 class="riesig plakat__titel" id="titel">
+          <span data-wort="Kein">Kein</span>
+          <span data-wort="Bogen">Bogen</span>
+          <span data-wort="zweimal">zweimal</span>
+        </h1>
+
+        <div class="plakat__unten">
+          <p class="zettelchen plakat__zeile" style="margin:0" data-bogen-zeile>
+            Ohne JavaScript ruht das Bad — der Druck oben ist eine Vorschau.
+          </p>
+          <div class="plakat__aktionen">
+            <button type="button" class="taste taste--haupt" data-neu hidden>Neu schöpfen</button>
+            <a class="taste" href="bad.html">Zum Marmorierbad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="beweis">
+    <p class="lead" style="max-width:46ch"><strong>Diese Fläche ist keine Fotografie.</strong>
+      Ihr Browser hat sie eben gerechnet — Tropfen für Tropfen, Zug für Zug.</p>
+    <p class="mono still" style="margin:0">Verdrängungsmodell · exakt invertierbare Züge · <a href="#verfahren">Wie ein Bogen entsteht</a></p>
+  </div>
+
+  <!-- ── Verfahren ──────────────────────────────────────────────────── -->
+  <section class="bahn" id="verfahren" aria-labelledby="verfahren-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <span class="mono">Das Verfahren</span>
+          <h2 class="h2" id="verfahren-t">Farbe schwimmt.<br>Papier nimmt.</h2>
+        </div>
+        <p>Marmorieren heißt: Farben schwimmen auf einem eingedickten Bad,
+          werden gezogen und gekämmt — und ein Bogen nimmt in einer Sekunde ab,
+          was sich nie wieder genau so legt. Die vier Kacheln unten rechnet
+          Ihr Browser mit denselben Handgriffen.</p>
+      </div>
+
+      <div class="schritte">
+        <div class="schritt">
+          <figure>
+            <canvas data-muster="stein" data-saat="411" data-stufe="0" aria-label="Stufe 1: das leere Bad, nur der helle Kleistergrund."></canvas>
+            <figcaption class="zettelchen">01 · Grund</figcaption>
+          </figure>
+          <h3 class="h3">Grund ansetzen</h3>
+          <p>Carragheenmoos wird aufgekocht und über Nacht abgesetzt. Das Bad
+            steht dann wie dünner Kleister — tragfähig, aber zäh genug, dass
+            nichts verläuft.</p>
+        </div>
+        <div class="schritt">
+          <figure>
+            <canvas data-muster="stein" data-saat="411" data-stufe="1" aria-label="Stufe 2: gestreute Farbtropfen verdrängen einander zu Steinen."></canvas>
+            <figcaption class="zettelchen">02 · Streuen</figcaption>
+          </figure>
+          <h3 class="h3">Farbe streuen</h3>
+          <p>Jeder Tropfen verdrängt die vorigen, ohne sich zu mischen. Zuletzt
+            gestreutes Gallwasser drückt die Farben zu Adern auseinander —
+            der Steinmarmor.</p>
+        </div>
+        <div class="schritt">
+          <figure>
+            <canvas data-muster="gelgit" data-saat="411" aria-label="Stufe 3: Kammzüge ziehen die Steine zu Bahnen."></canvas>
+            <figcaption class="zettelchen">03 · Ziehen</figcaption>
+          </figure>
+          <h3 class="h3">Kämme ziehen</h3>
+          <p>Stift und Kamm schleppen die Grenzen mit: quer, längs, fein.
+            Aus Steinen werden Bahnen, aus Bahnen Federn. Jeder Zug ist
+            unumkehrbar — im Bad wie im Rechenweg.</p>
+        </div>
+        <div class="schritt schritt--abgenommen">
+          <figure>
+            <canvas data-muster="wellen" data-saat="411" aria-label="Stufe 4: der abgenommene Bogen mit Wellenzug."></canvas>
+            <figcaption class="zettelchen">04 · Abnehmen</figcaption>
+          </figure>
+          <h3 class="h3">Bogen abnehmen</h3>
+          <p>Der alaungebeizte Bogen wird aufgelegt und in einem Zug wieder
+            abgehoben. Was auf dem Bad schwamm, sitzt jetzt im Papier.
+            Das Bad ist danach leer — bereit für den nächsten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Werkstatt ──────────────────────────────────────────────────── -->
+  <section class="bahn" aria-labelledby="werkstatt-t">
+    <div class="mitte erzaehlung">
+      <div>
+        <span class="mono still" style="display:block; margin-bottom: var(--sp-3)">Die Werkstatt</span>
+        <h2 class="h2" id="werkstatt-t" style="margin-bottom: var(--sp-4)">Buntpapier ist hier zu Hause</h2>
+        <p class="lead">Aschaffenburg war anderthalb Jahrhunderte lang die Stadt
+          des Buntpapiers — bis die letzte Fabrik 1972 schloss. Wir haben 1998
+          eine Wanne, dreißig Kämme und die Rezeptbücher zweier pensionierter
+          Marmoriererinnen übernommen und machen seither weiter, im Kleinen.</p>
+        <p>Gearbeitet wird ausschließlich von Hand: Ein Bad trägt etwa
+          fünfundzwanzig Bögen, dann wird abgeräumt und neu angesetzt. Wir
+          marmorieren Vorsatz- und Überzugspapiere für Buchbindereien, ergänzen
+          fehlende Papiere für die Restaurierung nach Vorlage — und verkaufen
+          freitags ab Werkstatt, solange der Stapel reicht.</p>
+        <p style="margin-bottom:0">Was Sie auf dieser Website sehen, folgt derselben Ordnung:
+          Die Flächen sind keine Fotografien unserer Bögen, sondern werden mit
+          den Handgriffen der Werkstatt in Ihrem Browser gerechnet — gestreut,
+          gekämmt, abgenommen. Deshalb sieht diese Seite bei jedem Besuch
+          anders aus. Wie bei uns: kein Bogen zweimal.</p>
+      </div>
+      <dl class="merkliste">
+        <div><dt>Gegründet</dt><dd>1998</dd></div>
+        <div><dt>Wanne</dt><dd>74 × 54 cm, Zinkblech</dd></div>
+        <div><dt>Grund</dt><dd>Carragheen, 20 g je Liter</dd></div>
+        <div><dt>Beize</dt><dd>Alaun, 30 g je Liter</dd></div>
+        <div><dt>Farben</dt><dd>fünf, aus Pflanze und Ruß</dd></div>
+        <div><dt>Bögen je Bad</dt><dd>etwa 25</dd></div>
+        <div><dt>Werkstattverkauf</dt><dd>freitags 14–18 Uhr</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── Farben ─────────────────────────────────────────────────────── -->
+  <section class="bahn" aria-labelledby="farben-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <span class="mono">Die Palette</span>
+          <h2 class="h2" id="farben-t">Fünf Farben, ein Ruß</h2>
+        </div>
+        <p>Wir reiben unsere Farben selbst an und halten die Palette bewusst
+          knapp. Genau diese fünf Werte — und keinen anderen — rechnet auch
+          das Bad auf dieser Website.</p>
+      </div>
+
+      <div class="farben">
+        <div class="farbe" style="--ton:#2E4076">
+          <i aria-hidden="true"></i>
+          <h3 class="h3">Indigo</h3>
+          <p>Küpenfarbstoff aus Färberwaid; trägt die Tiefe fast jedes Musters.</p>
+          <span class="mono">#2E4076</span>
+        </div>
+        <div class="farbe" style="--ton:#D2799F">
+          <i aria-hidden="true"></i>
+          <h3 class="h3">Krapprosa</h3>
+          <p>Aus der Krappwurzel gezogen; im hellen Auszug unser Rosa.</p>
+          <span class="mono">#D2799F</span>
+        </div>
+        <div class="farbe" style="--ton:#D9B94A">
+          <i aria-hidden="true"></i>
+          <h3 class="h3">Reseda</h3>
+          <p>Wau, der älteste Gelbfarbstoff Europas; warm, aber nicht süß.</p>
+          <span class="mono">#D9B94A</span>
+        </div>
+        <div class="farbe" style="--ton:#587F63">
+          <i aria-hidden="true"></i>
+          <h3 class="h3">Grünspan</h3>
+          <p>Kupfergrün, sparsam eingesetzt; kippt jedes Muster ins Kühle.</p>
+          <span class="mono">#587F63</span>
+        </div>
+        <div class="farbe" style="--ton:#23241F">
+          <i aria-hidden="true"></i>
+          <h3 class="h3">Ruß</h3>
+          <p>Lampenschwarz, mit Ochsengalle gebrochen; zeichnet die Adern.</p>
+          <span class="mono">#23241F</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Angebot ────────────────────────────────────────────────────── -->
+  <section class="bahn" aria-labelledby="angebot-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <span class="mono">Bögen und Kurse</span>
+          <h2 class="h2" id="angebot-t">Was die Wanne hergibt</h2>
+        </div>
+        <p>Richtpreise für Handmarmor; Auflagen ab zehn Bögen nach Absprache.
+          Jeder Bogen ist signiert und trägt seine Nummer im Abklatsch.</p>
+      </div>
+
+      <div class="angebot">
+        <div class="angebot__zeile">
+          <h3 class="h3">Ganzer Bogen, 50 × 70 cm</h3>
+          <p>Vorsatz- und Überzugspapier, 110 g/m², alaungebeizt und geglättet.</p>
+          <span class="angebot__preis">24 € je Bogen</span>
+        </div>
+        <div class="angebot__zeile">
+          <h3 class="h3">Halber Bogen, 35 × 50 cm</h3>
+          <p>Für Broschuren, Schachteln und kleinere Einbände.</p>
+          <span class="angebot__preis">14 € je Bogen</span>
+        </div>
+        <div class="angebot__zeile">
+          <h3 class="h3">Restaurierungspapier nach Vorlage</h3>
+          <p>Wir marmorieren fehlende Vorsätze nach — Muster, Teilung und
+            Farbstand nach dem erhaltenen Original.</p>
+          <span class="angebot__preis">nach Aufwand</span>
+        </div>
+        <div class="angebot__zeile">
+          <h3 class="h3">Samstagskurs, 4 Stunden</h3>
+          <p>Grund ansetzen, streuen, ziehen, abnehmen: sechs eigene Bögen,
+            Material inbegriffen. Höchstens fünf Plätze.</p>
+          <span class="angebot__preis">95 € je Platz</span>
+        </div>
+      </div>
+
+      <div class="nachsatz">
+        <a class="taste taste--haupt" href="mailto:bad@wolkenkamm.example">Anfrage an die Werkstatt</a>
+        <a class="taste" href="muster.html">Erst ins Musterbuch schauen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Wolkenkamm</h2>
+      <address>
+        Werkstatt für Marmorpapier<br>
+        Fabrikgasse 11<br>
+        63739 Aschaffenburg<br>
+        <a href="mailto:bad@wolkenkamm.example">bad@wolkenkamm.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Werkstattverkauf</h2>
+      <p>Freitags 14–18 Uhr,<br>solange der Stapel reicht.<br>
+        Kurse samstags nach Ankündigung.</p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="bad.html">Marmorierbad</a></li>
+        <li><a href="muster.html">Musterbuch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Werkstatt, Personen, Adressen und Preise sind frei
+    erfunden; Verfahren, Materialien und die Aschaffenburger
+    Buntpapiergeschichte folgen der Literatur und sind vereinfacht. Die
+    Marmorflächen werden im Browser gerechnet (Verdrängungsmodell) und sind
+    bei jedem Besuch einmalig. Gestaltung nach Mika UX Library
+    <b>MXL-022</b> + <b>MXL-040</b>.
+  </p>
+</footer>
+
+<script src="assets/marmor.js" defer></script>
+</body>
+</html>
