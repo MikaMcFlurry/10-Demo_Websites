@@ -96,7 +96,13 @@ jobs:
         with:
           path: ./pages-dist
 
+  # Die Pages-Umgebung nimmt Deployments nur vom Default-Branch an. Auf
+  # Arbeitsbranches läuft deshalb nur der Build — der prüft Framework-Builds
+  # und Validator und ist genau das, was dort gebraucht wird. Ohne diese
+  # Bedingung scheiterte der Deploy-Job dort nach einer Sekunde und färbte
+  # jeden Push rot, obwohl nichts kaputt war.
   deploy:
+    if: github.ref == 'refs/heads/claude/github-pages-business-demos-ZhnfF'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
