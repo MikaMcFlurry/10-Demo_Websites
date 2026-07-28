@@ -1,7 +1,8 @@
 # Sammlung C — Ableitungen aus der Mika UX Library
 
 Websites, deren Gestaltung aus der **Mika UX Library** abgeleitet ist: einem
-Bestand aus 121 kuratierten Referenzen (`MXL-001` bis `MXL-120` sowie `MXL-145`).
+Bestand kuratierter Referenzen (`MXL-001` bis `MXL-120`, `MXL-145` sowie später
+nachgelieferte Einträge wie `MXL-147`).
 Jede Referenz ist ein Vertrag über Farbrollen, Typografie, Raster, Form,
 Bewegung, Responsive-Verhalten und Zugänglichkeit — nicht über Inhalt, Marke
 oder Komposition der Quelle.
@@ -29,6 +30,7 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 | 13 | [`saatgutarchiv`](saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Public Sans, IBM Plex Mono | `MXL-118` + `MXL-090` + `MXL-113` |
 | 14 | [`geburtshaus-uferwiese`](geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Cormorant Garamond, Karla | `MXL-068` + `MXL-079` + `MXL-050` |
 | 15 | [`nereus-tiefsee`](nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Space Grotesk, Space Mono | `MXL-040` |
+| 16 | [`schwarzwerk-presswerk`](schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Baloo 2, Inter Tight | `MXL-147` |
 
 ### 11 — SPRUDELWERK
 
@@ -148,6 +150,39 @@ fünf Fahrzeuge die eingestellte Tiefe noch erreicht. Auf 8.200 Metern ist das
 nur noch der Lander.
 
 Fünf Seiten: Abstieg, Fahrzeuge, Fahrtenbuch, Impressum, Datenschutz.
+
+### 16 — SCHWARZWERK Presswerk
+
+`MXL-147` („The Monolith Project“, *Choreographed interactive experience*) ist
+der einzige Eintrag der Sammlung, der per CSS-/DOM-Forensik erhoben wurde
+(Methode `css-dom`, Confidence 94) und deshalb ungewöhnlich konkrete Werte
+mitbringt. Genau die tragen diese Seite, unverändert übernommen:
+
+| Token | Wert | Verwendung hier |
+|---|---|---|
+| Canvas | `#000000` | die Fläche — reines Schwarz, nicht fast-schwarz |
+| Surface | `#383A3E` | Panels und Datenblöcke |
+| Ink | `#FFFFFF` | Text |
+| Signal | `#FF002F` | genau ein Rot: aktive Station, Hauptaktion, Fokus |
+| Support | `#FFF6DF`, `#FFEBBC` | Label und Messwerte |
+| Display | Baloo 2 | jede Überschrift, nie der Fließtext |
+| Container | 975px | die schmale Spalte, auch der Umbruchpunkt |
+| Radius | 0 · .25rem · 4px | sonst nichts |
+| Schatten | `0 4px 74px #7e2d2d87` | die einzige Tiefe der Seite |
+
+Übersetzt in ein Presswerk für Schallplatten: Schwarz ist die Platte, Creme das
+Label, Rot der Aufdruck. Die Vorlage verlangt **Bewegung als strukturelles
+Navigationsmittel** — hier dreht sich die Platte deshalb nicht dauerhaft,
+sondern macht bei jedem Stationswechsel genau eine Umdrehung und steht danach
+wieder still. Das markiert den Sprung durch die Fertigung, hält das Label
+lesbar und braucht keine Pause-Steuerung, weil nichts dauerhaft läuft.
+
+Der **Laufzeitrechner** beantwortet die häufigste Frage an ein Presswerk: Passt
+diese Seite? Aus Format (12″/10″/7″), Drehzahl (33⅓/45) und Spielzeit folgen die
+komfortable und die harte Grenze sowie die Pegelreserve — über der harten Grenze
+nennt er bewusst keine Zahl mehr, weil dann nicht geschnitten wird.
+
+Fünf Seiten: Werk, Laufzeit, Auflage, Impressum, Datenschutz.
 
 ## Technische Leitplanken
 

@@ -1355,6 +1355,67 @@ summary:focus-visible {
 .tiefe-schnee i:nth-child(7) { top: 84%; left: 33%; }
 .tiefe-schnee i:nth-child(8) { top: 91%; left: 74%; }
 
+/* 16 — record on pure black (MXL-147) */
+.spec-platte {
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 3.4vw, 56px);
+  background: #000;
+}
+
+.platte-scheibe {
+  position: relative;
+  display: grid;
+  width: min(80%, 380px);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, #0b0b0b 0, #0b0b0b 2px, #161616 2px, #161616 4px),
+    #0b0b0b;
+  /* Der eine Schatten der Vorlage: 0 4px 74px #7e2d2d87 */
+  box-shadow: 0 4px 74px #7e2d2d87;
+}
+
+.platte-scheibe::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 66%, rgba(255, 255, 255, .1) 88%, rgba(255, 255, 255, 0));
+  content: "";
+}
+
+/* Das Mittelloch sitzt in der Mitte — der Text muss ihm ausweichen,
+   sonst steht das Loch mitten im Wort. */
+.platte-label {
+  position: relative;
+  display: grid;
+  width: 38%;
+  aspect-ratio: 1;
+  place-content: center;
+  gap: 26%;
+  border-radius: 50%;
+  background: #fff6df;
+  color: #16120c;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.platte-label b { font-size: clamp(.72rem, 1.1vw, 1rem); font-weight: 900; letter-spacing: -.01em; line-height: 1.02; }
+.platte-label i { color: #ff002f; font-size: clamp(.56rem, .8vw, .7rem); font-style: normal; font-weight: 700; letter-spacing: .1em; }
+
+.platte-label::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #000;
+  content: "";
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);

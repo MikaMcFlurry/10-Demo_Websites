@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCHWARZWERK Presswerk Leipzig – Schnitt, Galvanik, Presse</title>
+<meta name="description" content="Presswerk für Schallplatten in Leipzig: eigener Schnitt, eigene Galvanik, drei Pressen. Fünf Stationen von der Datei bis zur Testpressung.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="SCHWARZWERK Presswerk Leipzig – Schnitt, Galvanik, Presse">
+<meta property="og:description" content="Presswerk für Schallplatten in Leipzig: eigener Schnitt, eigene Galvanik, drei Pressen. Fünf Stationen von der Datei bis zur Testpressung.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/baloo-2-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-tight-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/presswerk.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "SCHWARZWERK Presswerk",
+  "description": "Presswerk für Schallplatten mit eigenem Schnitt, eigener Galvanik und drei Pressen.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Karl-Heine-Straße 84",
+    "postalCode": "04229",
+    "addressLocality": "Leipzig",
+    "addressRegion": "Sachsen",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 341 9000",
+  "email": "werk@schwarzwerk-presswerk.example",
+  "disambiguatingDescription": "Fiktives Presswerk. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="kopf__reihe">
+    <a class="marke" href="index.html" aria-label="Schwarzwerk Presswerk, zur Startseite">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" fill="#0b0b0b"/>
+        <circle cx="16" cy="16" r="11" fill="none" stroke="#2a2c2f"/>
+        <circle cx="16" cy="16" r="8" fill="none" stroke="#2a2c2f"/>
+        <circle cx="16" cy="16" r="5" fill="#fff6df"/>
+        <circle cx="16" cy="16" r="1.4" fill="#000"/>
+      </svg>
+      Schwarzwerk
+    </a>
+
+    <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+
+    <nav class="menue" id="menue" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Werk</a>
+      <a href="rechner.html">Laufzeit</a>
+      <a href="auflage.html">Auflage</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <section class="spalte">
+    <div class="auf">
+      <div>
+        <p class="label">Presswerk · Leipzig-Plagwitz · seit 2014</p>
+        <h1 class="h1" style="margin: var(--sp-3) 0">Schwarz wird<br>hier gemacht</h1>
+        <p class="lead">
+          Schnitt, Galvanik und Presse unter einem Dach. Drei Pressen, eine
+          Schneidemaschine, kein Zwischenhändler — und niemand, der Ihnen sagt,
+          dass zweiundzwanzig Minuten pro Seite kein Problem sind.
+        </p>
+
+        <div class="auf__tat">
+          <a class="taste" href="rechner.html">Passt meine Seite?</a>
+          <a class="taste taste--still" href="auflage.html">Auflage und Vorlauf</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="platte" data-platte role="img" aria-label="Eine schwarze Schallplatte mit cremefarbenem Label und rotem Aufdruck.">
+          <span class="platte__label">
+            <b>SCHWARZ<br>WERK</b>
+            <span>Leipzig · 33⅓</span>
+          </span>
+          <span class="platte__loch"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bahn bahn--linie" aria-labelledby="stat-t">
+    <div class="spalte">
+      <p class="label">Der Weg durch das Werk</p>
+      <h2 class="h2" id="stat-t" style="margin: var(--sp-2) 0 var(--sp-4)">Fünf Stationen</h2>
+
+      <p class="muted" data-stationen-fallback style="margin: 0 0 var(--sp-4)">
+        Die Stationsauswahl braucht JavaScript. Alle fünf Stationen stehen
+        unabhängig davon vollständig untereinander.
+      </p>
+
+      <div class="stationen" data-stationen>
+        <div class="stationen__wahl" role="tablist" aria-label="Stationen der Fertigung" hidden>
+          <button type="button" role="tab" id="reiter-0" aria-controls="station-0" aria-selected="true" tabindex="0" data-name="Schnitt"><b>1</b>Schnitt</button>
+          <button type="button" role="tab" id="reiter-1" aria-controls="station-1" aria-selected="false" tabindex="-1" data-name="Galvanik"><b>2</b>Galvanik</button>
+          <button type="button" role="tab" id="reiter-2" aria-controls="station-2" aria-selected="false" tabindex="-1" data-name="Presse"><b>3</b>Presse</button>
+          <button type="button" role="tab" id="reiter-3" aria-controls="station-3" aria-selected="false" tabindex="-1" data-name="Label"><b>4</b>Label</button>
+          <button type="button" role="tab" id="reiter-4" aria-controls="station-4" aria-selected="false" tabindex="-1" data-name="Prüfung"><b>5</b>Prüfung</button>
+        </div>
+
+        <div class="station" role="tabpanel" id="station-0" aria-labelledby="reiter-0">
+          <div>
+            <p class="label">Station 1 — Schnitt</p>
+            <h3 class="h2" style="margin-top: var(--sp-2)">Von der Datei in den Lack</h3>
+            <p>Der Schnitt ist die einzige Station, die in Echtzeit läuft: Eine Seite von achtzehn Minuten dauert achtzehn Minuten. Der Stichel schneidet heiß in eine Lackfolie, und was dabei schiefgeht, ist unwiderruflich — es gibt kein Rückwärts in eine Rille.</p>
+          </div>
+          <div class="station__daten">
+              <div><span>Drehzahl</span><b>33⅓ U/min</b></div>
+              <div><span>Rillenabstand</span><b>0,04–0,12 mm</b></div>
+              <div><span>Sticheltemperatur</span><b>180 °C</b></div>
+              <div><span>Folie</span><b>Aluminium, lackiert</b></div>
+          </div>
+        </div>
+
+        <div class="station" role="tabpanel" id="station-1" aria-labelledby="reiter-1" hidden>
+          <div>
+            <p class="label">Station 2 — Galvanik</p>
+            <h3 class="h2" style="margin-top: var(--sp-2)">Vater, Mutter, Sohn</h3>
+            <p>Die Lackfolie wird versilbert und im Nickelbad abgeformt. Aus dem Vater entsteht die Mutter, aus der Mutter der Sohn — und erst der Sohn geht als Stamper in die Presse. Drei Schritte, weil jede Abformung ein Negativ ist und die Presse ein Negativ braucht.</p>
+          </div>
+          <div class="station__daten">
+              <div><span>Bäder</span><b>3 Stufen</b></div>
+              <div><span>Dauer je Bad</span><b>8–12 h</b></div>
+              <div><span>Stamperdicke</span><b>0,3 mm</b></div>
+              <div><span>Standzeit</span><b>ca. 1.000 Stück</b></div>
+          </div>
+        </div>
+
+        <div class="station" role="tabpanel" id="station-2" aria-labelledby="reiter-2" hidden>
+          <div>
+            <p class="label">Station 3 — Presse</p>
+            <h3 class="h2" style="margin-top: var(--sp-2)">Sechsundzwanzig Sekunden</h3>
+            <p>Ein Klumpen PVC — im Werk heißt er Biskuit — kommt zwischen die beiden Stamper, dazu die Labels. Dann Hitze, Druck, Kühlung, Abtrennen des Grats. Danach muss die Platte zwei Tage flach liegen, bevor sie in die Hülle darf.</p>
+          </div>
+          <div class="station__daten">
+              <div><span>Biskuit 12″</span><b>140 g</b></div>
+              <div><span>Temperatur</span><b>160 °C</b></div>
+              <div><span>Pressdruck</span><b>120 bar</b></div>
+              <div><span>Zyklus</span><b>26 s</b></div>
+          </div>
+        </div>
+
+        <div class="station" role="tabpanel" id="station-3" aria-labelledby="reiter-3" hidden>
+          <div>
+            <p class="label">Station 4 — Label</p>
+            <h3 class="h2" style="margin-top: var(--sp-2)">Das Papier muss trocken sein</h3>
+            <p>Labels werden vor dem Pressen gebacken. Papier, das Feuchtigkeit mitbringt, wirft in der Presse Blasen und drückt sie in die erste Rille. Deshalb liegt das Label 24 Stunden im Trockenschrank, bevor es die Platte je sieht.</p>
+          </div>
+          <div class="station__daten">
+              <div><span>Papier</span><b>120 g/m², ungestrichen</b></div>
+              <div><span>Trocknung</span><b>24 h bei 60 °C</b></div>
+              <div><span>Farben</span><b>bis 4, Offset</b></div>
+              <div><span>Mittelloch</span><b>7,24 mm</b></div>
+          </div>
+        </div>
+
+        <div class="station" role="tabpanel" id="station-4" aria-labelledby="reiter-4" hidden>
+          <div>
+            <p class="label">Station 5 — Prüfung</p>
+            <h3 class="h2" style="margin-top: var(--sp-2)">Zehn Testpressungen</h3>
+            <p>Aus jeder Auflage gehen zehn Exemplare als Testpressung heraus, und ohne Freigabe läuft die Presse nicht weiter. Wir hören die erste, dritte und letzte selbst ab — Vollausschlag, Innenrille, Störgeräusche. Der Rest geht zum Kunden.</p>
+          </div>
+          <div class="station__daten">
+              <div><span>Testpressungen</span><b>10 Stück</b></div>
+              <div><span>Abhörsystem</span><b>Ortofon SPU</b></div>
+              <div><span>Freigabefrist</span><b>14 Tage</b></div>
+              <div><span>Ausschussquote</span><b>1,8 %</b></div>
+          </div>
+        </div>
+
+        <p data-stationsstand role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bahn bahn--linie" aria-labelledby="nicht-t">
+    <div class="spalte">
+      <p class="label">Klartext</p>
+      <h2 class="h2" id="nicht-t" style="margin: var(--sp-2) 0 var(--sp-4)">Vier Dinge, die wir nicht tun</h2>
+
+      <div class="karten">
+        <div class="karte">
+          <h3 class="h3">Keine Datei ungehört pressen</h3>
+          <p>Jedes Master wird vor dem Schnitt abgehört. Wenn etwas nicht schneidbar ist, sagen wir es vorher — nicht nach der Testpressung.</p>
+        </div>
+        <div class="karte">
+          <h3 class="h3">Keine Laufzeit schönreden</h3>
+          <p>Über der komfortablen Grenze wird die Platte leiser. Das ist Physik, keine Verhandlungssache, und steht im Laufzeitrechner.</p>
+        </div>
+        <div class="karte">
+          <h3 class="h3">Kein Recyclat in der Auflage</h3>
+          <p>Ausschuss wird gemahlen und wiederverwendet — aber nur für interne Testläufe, nie für eine Auflage, die verkauft wird.</p>
+        </div>
+        <div class="karte">
+          <h3 class="h3">Keine Freigabe ohne Unterschrift</h3>
+          <p>Ohne schriftliche Freigabe der Testpressung läuft die Auflage nicht an. Auch nicht, wenn der Termin drückt.</p>
+        </div>
+      </div>
+
+      <div class="merk" style="margin-top: var(--sp-5)">
+        <p>
+          <b>Der häufigste Rückläufer ist zu lange Spielzeit.</b> Etwa jede
+          fünfte Anfrage bringt eine Seite mit, die über der Grenze liegt.
+          Meistens hilft eine andere Reihenfolge der Stücke — der lauteste
+          Titel gehört nach außen, wo die Rille am schnellsten läuft.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="spalte">
+    <div class="fuss__mitte">
+      <div>
+        <h2>Schwarzwerk</h2>
+        <address class="muted">
+          Karl-Heine-Straße 84<br>
+          04229 Leipzig<br>
+          <a href="tel:+493419000">+49 341 9000</a><br>
+          <a href="mailto:werk@schwarzwerk-presswerk.example">werk@schwarzwerk-presswerk.example</a>
+        </address>
+      </div>
+      <div>
+        <h2>Annahme</h2>
+        <p class="muted" style="margin:0">
+          Montag bis Donnerstag 8–16 Uhr<br>
+          Freitag 8–12 Uhr<br>
+          Testpressungen nur persönlich
+        </p>
+      </div>
+      <div>
+        <h2>Seiten</h2>
+        <ul>
+          <li><a href="rechner.html">Laufzeitrechner</a></li>
+          <li><a href="auflage.html">Auflage und Vorlauf</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fuss__demo">
+      Demonstrationsseite. Werk, Personen, Adressen, Preise und Vorlaufzeiten
+      sind frei erfunden. Die Angaben zu Schnitt, Galvanik und Presse folgen
+      dem üblichen Verfahren und sind gerundet. Gestaltung nach Mika UX Library
+      <b>MXL-147</b>.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/presswerk.js" defer></script>
+</body>
+</html>
