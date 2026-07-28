@@ -1,0 +1,8 @@
+# Playwright für scripts/pruefe-seiten.mjs wird lokal installiert und
+# gehört nicht ins Repository.
+node_modules/
+package.json
+package-lock.json
+
+# Bauverzeichnis der Pages-Auslieferung
+pages-dist/

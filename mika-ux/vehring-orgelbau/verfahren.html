@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verfahren und Mensur – Vehring Orgelbau</title>
+<meta name="description" content="Wie eine Orgel entsteht: Aufmaß, Windladen, Pfeifenwerk, Aufbau, Intonation, Stimmung. Dazu ein Rechner für die klingende Länge einer Pfeife.">
+<meta name="theme-color" content="#080908">
+<meta property="og:title" content="Verfahren und Mensur – Vehring Orgelbau">
+<meta property="og:description" content="Sechs Schritte vom Aufmaß zur Stimmung, plus Mensurrechner.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-normal-300-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/prospekt.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Vehring Orgelbau, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="6"  y="14" width="5" height="14" rx="2.5" fill="#8b959d"/>
+      <rect x="13" y="7"  width="6" height="21" rx="3"   fill="#cfd8de"/>
+      <rect x="21" y="12" width="5" height="16" rx="2.5" fill="#8b959d"/>
+    </svg>
+    Vehring
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Werkstatt</a>
+    <a href="disposition.html">Disposition</a>
+    <a href="verfahren.html" aria-current="page">Verfahren</a>
+    <a href="werkverzeichnis.html">Werkverzeichnis</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+
+  <section class="bahn bahn--eng" aria-labelledby="titel">
+    <div class="mitte">
+      <p class="meta">Vom Aufmaß bis zur Stimmung</p>
+      <h1 class="h1" id="titel" style="margin-top: var(--sp-4)">Sechs Schritte,<br>drei Jahre</h1>
+      <p class="lead" style="margin-top: var(--sp-5)">
+        Zwischen dem ersten Besuch in der Kirche und dem letzten gestimmten Ton
+        liegen bei einem Neubau rund dreißig Monate. Der längste Teil davon ist
+        nicht der Bau.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Die Schritte ───────────────────────────────────────────────── -->
+  <section class="bahn bahn--flaeche" aria-labelledby="schritt-t">
+    <div class="mitte">
+      <h2 class="h2" id="schritt-t" style="margin-bottom: clamp(var(--sp-7), 5vw, var(--sp-9))">Der Weg eines Instruments</h2>
+
+      <div class="stufen">
+        <article class="stufe">
+          <p class="stufe__nr">01 — Aufmaß</p>
+          <h3 class="h3">Eine Woche im Raum</h3>
+          <p>
+            Nachhallzeit, Grundriss, Emporenmaße, Fensterachsen, Heizung. Wir
+            messen die Nachhallzeit bei besetzter und bei leerer Kirche — der
+            Unterschied entscheidet über die Mensuren.
+          </p>
+        </article>
+
+        <article class="stufe">
+          <p class="stufe__nr">02 — Entwurf</p>
+          <h3 class="h3">Disposition und Prospekt</h3>
+          <p>
+            Erst die Disposition, dann das Gehäuse. Der Prospekt ist keine
+            Fassade: Die sichtbaren Pfeifen gehören zu einem klingenden
+            Register und stehen dort, wo sie akustisch hingehören.
+          </p>
+        </article>
+
+        <article class="stufe">
+          <p class="stufe__nr">03 — Windladen</p>
+          <h3 class="h3">Schleifen aus Eiche</h3>
+          <p>
+            Schleifladen aus zwanzig Jahre gelagerter Eiche. Jede Schleife wird
+            von Hand eingepasst, bis sie ohne Filz dicht läuft und trotzdem
+            leichtgängig bleibt.
+          </p>
+        </article>
+
+        <article class="stufe">
+          <p class="stufe__nr">04 — Pfeifenwerk</p>
+          <h3 class="h3">Gegossen und gehobelt</h3>
+          <p>
+            Zinn und Blei gießen wir auf dem Sandtisch. Prinzipale bekommen
+            hohes Zinn, Gedackte dürfen bleireicher sein. Danach hobeln,
+            runden, löten, Kern und Labium einrichten.
+          </p>
+        </article>
+
+        <article class="stufe">
+          <p class="stufe__nr">05 — Aufbau</p>
+          <h3 class="h3">Zweimal aufgestellt</h3>
+          <p>
+            Einmal in der Werkstatt zur Probe, einmal endgültig in der Kirche.
+            Was in der Werkstatt nicht vollständig gestanden hat, geht nicht
+            aus dem Haus.
+          </p>
+        </article>
+
+        <article class="stufe">
+          <p class="stufe__nr">06 — Intonation</p>
+          <h3 class="h3">Nachts, über Wochen</h3>
+          <p>
+            Jede einzelne Pfeife wird im Raum eingerichtet: Kernstich,
+            Aufschnitthöhe, Fußöffnung. Sechs bis zehn Wochen, meist zwischen
+            22 und 4 Uhr, weil es dann still genug ist.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mensurrechner ──────────────────────────────────────────────── -->
+  <section class="bahn" aria-labelledby="mensur-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="meta">Rechner</p>
+          <h2 class="h2" id="mensur-t">Wie lang wird die Pfeife?</h2>
+        </div>
+        <p class="muted" style="margin:0; align-self:end">
+          In einer offenen Labialpfeife steht die halbe Wellenlänge. Aus dem
+          Ton folgt damit die Länge — und aus der Länge der Name des Registers.
+        </p>
+      </div>
+
+      <div class="mensur" data-mensur>
+        <div>
+          <div class="feld">
+            <label for="taste">Gedrückte Taste</label>
+            <select id="taste">
+              <option value="0">C — großes C, unterste Taste</option>
+              <option value="1">c — kleines c</option>
+              <option value="2" selected>c¹ — eingestrichenes c</option>
+              <option value="3">c² — zweigestrichenes c</option>
+              <option value="4">c³ — dreigestrichenes c</option>
+            </select>
+          </div>
+
+          <div class="feld">
+            <span id="lage-t" style="font-weight:600">Fußtonlage des Registers</span>
+            <div class="fusslage" role="group" aria-labelledby="lage-t">
+              <button type="button" aria-pressed="false" data-faktor="0.5">16′</button>
+              <button type="button" aria-pressed="true"  data-faktor="1">8′</button>
+              <button type="button" aria-pressed="false" data-faktor="2">4′</button>
+              <button type="button" aria-pressed="false" data-faktor="4">2′</button>
+            </div>
+            <p class="hinweis">
+              8′ klingt so hoch, wie die Taste heißt. 16′ eine Oktave tiefer,
+              4′ eine höher, 2′ zwei höher.
+            </p>
+          </div>
+
+          <div class="prose">
+            <p>
+              Die theoretische Länge ist die halbe Wellenlänge bei 20 °C
+              Lufttemperatur. Gebaut wird kürzer: An der Mündung schwingt Luft
+              über die Pfeife hinaus mit, sodass sie tiefer klingt, als ihre
+              Länge vermuten lässt. Wie viel kürzer, hängt vom Durchmesser ab —
+              bei unseren Prinzipalmensuren rund ein Zehntel.
+            </p>
+            <p>
+              Deshalb ist der Registername eine gerundete Angabe. Ein „8-Fuß“
+              misst tatsächlich etwa 2,4 Meter, nicht 2,44 — und die tiefste
+              Pfeife des Prinzipalbass 16′ steht mit knapp fünf Metern
+              schon deshalb im Prospekt, weil sie nirgendwo sonst hinpasst.
+            </p>
+          </div>
+        </div>
+
+        <div class="probe">
+          <p class="meta">Ergebnis</p>
+
+          <div class="probe__buehne" aria-hidden="true">
+            <div class="probe__pfeife" data-pfeife></div>
+          </div>
+
+          <dl>
+            <dt>Klingt als</dt><dd data-ton>c¹</dd>
+            <dt>Frequenz</dt><dd data-hz>261,6 Hz</dd>
+            <dt>Theoretisch</dt><dd data-laenge>65,5 cm</dd>
+            <dt>Gebaut</dt><dd data-korrektur>59,0 cm</dd>
+          </dl>
+
+          <p data-mensur-stand role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pflege ─────────────────────────────────────────────────────── -->
+  <section class="bahn bahn--flaeche" aria-labelledby="pflege-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="meta">Danach</p>
+          <h2 class="h2" id="pflege-t">Was eine Orgel<br>im Jahr braucht</h2>
+        </div>
+        <p class="muted" style="margin:0; align-self:end">
+          Der häufigste Schaden ist keine Störung im Instrument, sondern ein
+          zu schnell geheizter Kirchenraum.
+        </p>
+      </div>
+
+      <div class="rolle">
+        <table class="tafel">
+          <caption>Pflegevertrag, Richtwerte je Instrument</caption>
+          <thead>
+            <tr><th scope="col">Arbeit</th><th scope="col">Rhythmus</th><th scope="col">Dauer</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Stimmung Zungen</th><td>zweimal jährlich</td><td>1 Tag</td></tr>
+            <tr><th scope="row">Stimmung Labialen</th><td>jährlich</td><td>2 Tage</td></tr>
+            <tr><th scope="row">Durchsicht Traktur</th><td>jährlich</td><td>1 Tag</td></tr>
+            <tr><th scope="row">Reinigung Pfeifenwerk</th><td>alle 25 Jahre</td><td>6–10 Wochen</td></tr>
+            <tr><th scope="row">Lederung Bälge</th><td>alle 40 Jahre</td><td>3 Wochen</td></tr>
+            <tr><th scope="row">Heizung: Anstieg</th><td>dauerhaft</td><td>max. 1 K je Stunde</td></tr>
+            <tr><th scope="row">Raumluftfeuchte</th><td>dauerhaft</td><td>45–65 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Werkstatt</h2>
+      <address class="muted">
+        Vehring Orgelbau<br>
+        Mühlenkamp 7<br>
+        49610 Quakenbrück<br>
+        <a href="tel:+4954319000">+49 5431 9000</a><br>
+        <a href="mailto:werkstatt@vehring-orgelbau.example">werkstatt@vehring-orgelbau.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Besuch</h2>
+      <p class="muted" style="margin:0">
+        Die Werkstatt ist keine Ausstellung.<br>
+        Besichtigung nach Absprache,<br>
+        meist freitags am Vormittag.
+      </p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="index.html">Werkstatt</a></li>
+        <li><a href="disposition.html">Disposition und Registerzug</a></li>
+        <li><a href="werkverzeichnis.html">Werkverzeichnis</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Werkstatt, Personen, Adressen, Instrumente und alle
+    Zahlen sind frei erfunden. Gestaltung nach Mika UX Library <b>MXL-007</b>.
+  </p>
+</footer>
+
+<script src="assets/prospekt.js" defer></script>
+</body>
+</html>

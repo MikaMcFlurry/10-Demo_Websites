@@ -19,6 +19,14 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 | 08 | [`krawumm-labor`](showcase/krawumm-labor/) | Bildung | Interaktives Experimentierheft | Codex |
 | 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Codex |
 | 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | Codex |
+| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Mika UX Library |
+| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Mika UX Library |
+| 13 | [`saatgutarchiv`](mika-ux/saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Mika UX Library |
+| 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Mika UX Library |
+| 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Mika UX Library |
+| 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Mika UX Library |
+| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Mika UX Library |
+| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Gerechnetes Chrom, harter Schnitt in weiße Galerie | Mika UX Library |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -36,12 +44,27 @@ Folgende ältere Arbeiten liegen im nativen Archiv-Disclosure:
 
 ## Mika UX Library
 
-Im Zielbranch war keine eindeutig benannte Mika-UX-Library und keine
-Badge-Konvention vorhanden. Für die fünf neuen Schaustücke wurde daher **keine
-Library-Nutzung behauptet und kein Mika-UX-Icon gesetzt**. Wenn später eine
-konkrete Vorlage eingebunden wird, muss ihre Karte sichtbar und
-screenreader-lesbar mit `Mika UX` markiert und die Quelle hier dokumentiert
-werden.
+Sammlung C auf der Startseite versammelt Websites, deren Gestaltung aus der
+**Mika UX Library** abgeleitet ist — einem Bestand aus 121 kuratierten
+Referenzen (`MXL-001`–`MXL-120`, `MXL-145`). Jede dieser Websites nennt auf
+ihrer Karte die MXL-Nummern, aus denen sie entstanden ist: eine einzige Nummer
+bedeutet eine reine Vorlage ohne Mischung, mehrere Nummern listen alle
+Vorlagen, die das Ergebnis beeinflusst haben.
+
+| # | Projekt | Branche | Gestalterische Form | Herkunft |
+|---:|---|---|---|---|
+| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen | `MXL-051` |
+| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale | `MXL-007` |
+| 13 | [`saatgutarchiv`](mika-ux/saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | `MXL-118` + `MXL-090` + `MXL-113` |
+| 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | `MXL-068` + `MXL-079` + `MXL-050` |
+| 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg | `MXL-040` |
+| 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot | `MXL-147` |
+| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad | `MXL-022` + `MXL-040` |
+| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Chrom auf Nacht, weiße Galerie | `MXL-045` |
+
+Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
+wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter
+`mika-ux/` geprüft.
 
 ## Technische Leitplanken
 

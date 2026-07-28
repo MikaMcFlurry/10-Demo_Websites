@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--
+THESIS: Chrom ist hier nicht Dekor, sondern das Produkt — die Wortmarke wird
+als gerechnete Chromfläche gezeigt, dann schneidet die Seite hart in eine
+weiße Galerie. Verweigert wird der übliche Handwerker-Hero mit Foto und Claim.
+OWN-WORLD: Nacht #0A0B0A und Papier #F4F1E9 als zwei Welten mit Schnitt statt
+Übergang; Archivo expandiert, Fragment Mono für Messwerte; 1px-Hairlines;
+Signalrot nur als Fokus, eine Aktion, ein Reflexstreifen im Chrom.
+STORY: Wer kommt, sieht das Material im ersten Viewport bewiesen, versteht in
+der Galerie den Schichtaufbau von innen nach außen und erfährt ehrlich, was
+das Werk kann und was nicht.
+FIRST VIEWPORT: Full-bleed-WebGL-Chrom „BLANK" auf Nacht; oben Marke und
+Navigation, unten links Kicker und Claim, unten rechts die Hauptaktion
+„Zur Galerie" mit Statuszeile der Fläche.
+FORM: MXL-045 „Chrome monolith gallery", brief-gepinnt nach eigener Prüfung
+der Primärquellen; kein Seed-Wurf, Begründung in EINBINDUNG.md.
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLANK Oberflächentechnik Solingen – Galvanik, Hartchrom, Chemisch Nickel</title>
+<meta name="description" content="Galvanische Beschichtung in Solingen: Glanzchrom aus Chrom(III), Hartchrom bis 500 µm, Chemisch Nickel. Mit Schichtaufbau im wahren Maßstab und offenen Grenzen.">
+<meta name="theme-color" content="#0a0b0a">
+<meta property="og:title" content="BLANK Oberflächentechnik">
+<meta property="og:description" content="Chrom ist die dünnste Schicht des Systems, das nach ihm benannt ist. Galvanik in Solingen, seit 1962.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fragment-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/blank.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "BLANK Oberflächentechnik",
+  "description": "Galvanische Beschichtung: dekorative Verchromung, Hartchrom, Chemisch Nickel, Elektropolieren.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gleiterweg 14",
+    "postalCode": "42655",
+    "addressLocality": "Solingen",
+    "addressRegion": "Nordrhein-Westfalen",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 212 380000",
+  "email": "bad@blank-oberflaechen.example",
+  "disambiguatingDescription": "Fiktives Unternehmen. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<section class="buehne" data-buehne aria-label="Eröffnungsszene mit gerechneter Chromfläche">
+  <canvas aria-hidden="true"></canvas>
+
+  <header class="kopf kopf--nacht">
+    <a class="marke" href="index.html" aria-label="BLANK Oberflächentechnik, zur Startseite">
+      BLANK <small>Oberflächentechnik</small>
+    </a>
+    <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+    <nav class="menue" id="menue" aria-label="Hauptnavigation">
+      <a href="index.html" aria-current="page">Oberfläche</a>
+      <a href="verfahren.html">Verfahren</a>
+      <a href="betrieb.html">Betrieb</a>
+    </nav>
+  </header>
+
+  <h1 class="sr-only">BLANK Oberflächentechnik — Galvanik in Solingen</h1>
+  <div class="buehne__poster" aria-hidden="true"><span>Blank</span></div>
+
+  <div class="buehne__fuss">
+    <div class="buehne__claim">
+      <p class="meta">Galvanik · Solingen · seit 1962</p>
+      <p class="lead">Wir machen keine Oberflächen schöner. Wir machen sie
+      haltbar — und ehrlich glänzend ist nur, was vorher ehrlich
+      geschliffen wurde.</p>
+    </div>
+    <div class="buehne__aktionen">
+      <a class="taste taste--voll" href="#galerie">Zur Galerie der Verfahren</a>
+      <button class="taste taste--kontur" type="button" data-bewegung aria-pressed="false" hidden>Bewegung anhalten</button>
+      <p class="buehne__status" data-flaeche-status aria-live="polite">Fläche: Poster, lädt</p>
+    </div>
+  </div>
+</section>
+
+<main id="inhalt" class="halle">
+
+  <section class="abschnitt mitte" id="galerie" aria-labelledby="galerie-t">
+    <div class="kicker">
+      <h2 class="h2" id="galerie-t">Die Galerie der Verfahren</h2>
+      <p class="meta">Geordnet als Schichtaufbau,<br>von innen nach außen</p>
+    </div>
+
+    <p class="lead" style="max-width:56ch">Eine dekorative Verchromung ist kein
+    Anstrich, sondern ein System aus drei Metallen übereinander. Die Galerie
+    folgt diesem Aufbau: erst die Vorarbeit, dann Kupfer, Nickel, Chrom —
+    danach die zwei Solitäre, die direkt auf den Grundwerkstoff gehen.</p>
+
+    <article class="exponat" style="margin-top: clamp(32px, 5vw, 64px)">
+      <p class="exponat__lage"><b>00</b> Vor dem Bad</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#schleifen">Schleifen und Polieren</a></h3>
+        <p>Chrom verdeckt nichts. Jede Riefe, die vor dem Bad da ist, ist nach
+        dem Bad noch da — nur glänzender. Deshalb beginnt jede Beschichtung
+        an der Schwabbelscheibe, nicht am Gleichrichter.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Erreichbar</dt><dd>Ra 0,1 µm auf Stahl</dd></div>
+        <div><dt>Werkzeug</dt><dd>Band, Scheibe, Handarbeit</dd></div>
+        <div><dt>Anteil an der Zeit</dt><dd>oft über die Hälfte</dd></div>
+      </dl>
+    </article>
+
+    <article class="exponat">
+      <p class="exponat__lage"><b>01</b> Erste Schicht</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#kupfer">Verkupfern</a></h3>
+        <p>Die Ausgleichsschicht: Kupfer lässt sich dicht und duktil
+        abscheiden und nimmt dem Grundwerkstoff die letzte Unruhe. Auf
+        Zinkdruckguss ist es Pflicht, auf Stahl eine Empfehlung.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Schichtdicke</dt><dd>10 – 30 µm</dd></div>
+        <div><dt>Rolle</dt><dd>Haftung, Ausgleich</dd></div>
+        <div><dt>Norm</dt><dd>DIN EN ISO 1456</dd></div>
+      </dl>
+    </article>
+
+    <article class="exponat">
+      <p class="exponat__lage"><b>02</b> Zweite Schicht</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#nickel">Glanzvernickeln</a></h3>
+        <p>Nickel trägt den Korrosionsschutz und den Glanzgrad. Was am Ende
+        wie Chrom aussieht, ist zum größten Teil Nickel — das Chrom darüber
+        ist nur die harte, anlaufbeständige Haut.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Schichtdicke</dt><dd>15 – 25 µm</dd></div>
+        <div><dt>Rolle</dt><dd>Korrosionsschutz, Glanz</dd></div>
+        <div><dt>Norm</dt><dd>DIN EN ISO 1456</dd></div>
+      </dl>
+    </article>
+
+    <article class="exponat">
+      <p class="exponat__lage"><b>03</b> Finish</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#glanzchrom">Glanzverchromen</a></h3>
+        <p>0,3 µm aus dem Chrom(III)-Elektrolyt: die dünnste Schicht des
+        Systems, das nach ihr benannt ist. Sie hält Anlauf und Fingerabdrücke
+        ab und entscheidet über nichts anderes.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Schichtdicke</dt><dd>0,3 µm</dd></div>
+        <div><dt>Elektrolyt</dt><dd>Chrom(III), seit 2022</dd></div>
+        <div><dt>Norm</dt><dd>DIN EN ISO 1456</dd></div>
+      </dl>
+    </article>
+
+    <article class="exponat">
+      <p class="exponat__lage"><b>S1</b> Solitär</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#hartchrom">Hartverchromen</a></h3>
+        <p>Direkt auf Stahl, 20 bis 500 µm, für Verschleiß statt für Ansehen:
+        Kolbenstangen, Walzen, Werkzeuge. Läuft bei uns unter
+        REACH-Autorisierung — was das heißt, steht offen auf der
+        Betriebsseite.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Schichtdicke</dt><dd>20 – 500 µm</dd></div>
+        <div><dt>Härte</dt><dd>850 – 1.050 HV 0,1</dd></div>
+        <div><dt>Norm</dt><dd>DIN EN ISO 6158</dd></div>
+      </dl>
+    </article>
+
+    <article class="exponat">
+      <p class="exponat__lage"><b>S2</b> Solitär</p>
+      <div>
+        <h3 class="h3 exponat__titel"><a href="verfahren.html#nickel-chemisch">Chemisch Nickel</a></h3>
+        <p>Ohne Strom, dafür konturtreu: Die Nickel-Phosphor-Schicht wächst
+        in Bohrungen und Hinterschnitten genauso schnell wie auf der Fläche.
+        Wo Geometrie zählt, schlägt NiP jedes Chrombad.</p>
+      </div>
+      <dl class="exponat__daten">
+        <div><dt>Schichtdicke</dt><dd>8 – 50 µm</dd></div>
+        <div><dt>Härte</dt><dd>≈ 500, wärmebehandelt bis 950 HV 0,1</dd></div>
+        <div><dt>Norm</dt><dd>DIN EN ISO 4527</dd></div>
+      </dl>
+    </article>
+
+    <p style="margin-top: clamp(28px, 4vw, 44px)">
+      <a class="taste taste--kontur-hell" href="verfahren.html">Alle Daten und der Schichtzeitrechner</a>
+    </p>
+  </section>
+
+  <section class="abschnitt mitte" aria-labelledby="aufbau-t">
+    <div class="kicker">
+      <h2 class="h2" id="aufbau-t">Der Aufbau, maßstabsgetreu</h2>
+      <p class="meta">Dekorative Verchromung<br>im Querschnitt</p>
+    </div>
+
+    <div class="aufbau" data-aufbau data-modus="wahr">
+      <p style="max-width:56ch">So sieht eine Glanzverchromung im Schnitt aus.
+      Im wahren Maßstab ist die Chromschicht kaum zu finden — genau das ist
+      die Aussage. Wer „dick verchromt“ verspricht, meint Nickel.</p>
+
+      <div class="aufbau__leiste" role="img" aria-label="Querschnitt einer dekorativen Verchromung: Grundwerkstoff, darüber 15 Mikrometer Kupfer, 20 Mikrometer Nickel und 0,3 Mikrometer Chrom.">
+        <div class="aufbau__schicht aufbau__schicht--stahl" style="flex-basis:30%"></div>
+        <div class="aufbau__schicht aufbau__schicht--kupfer" data-schicht="kupfer"></div>
+        <div class="aufbau__schicht aufbau__schicht--nickel" data-schicht="nickel"></div>
+        <div class="aufbau__schicht aufbau__schicht--chrom" data-schicht="chrom"></div>
+      </div>
+
+      <div class="aufbau__legende">
+        <span><span class="punkt" style="background:#494b47"></span>Grundwerkstoff <b>Stahl</b></span>
+        <span><span class="punkt" style="background:#b0724a"></span>Kupfer <b>15 µm</b></span>
+        <span><span class="punkt" style="background:#a8aaa2"></span>Nickel <b>20 µm</b></span>
+        <span><span class="punkt" style="background:linear-gradient(180deg,#f2f3f0,#9fa19b)"></span>Chrom <b>0,3 µm</b></span>
+      </div>
+
+      <div class="aufbau__fuss">
+        <button class="taste taste--kontur-hell" type="button" data-aufbau-schalter aria-pressed="true" hidden>Maßstab: wahr — auf lesbar umschalten</button>
+        <p class="meta" data-aufbau-ansage aria-live="polite" style="margin:0">Wahrer Maßstab: Chrom ist mit 0,3 µm weniger als ein Hundertstel des Aufbaus.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt mitte" aria-labelledby="werk-t">
+    <div class="kicker">
+      <h2 class="h2" id="werk-t">Das Werk in Zahlen</h2>
+      <p class="meta">Stand 07/2026 ·<br>gerundete Betriebswerte</p>
+    </div>
+
+    <div class="duo">
+      <div>
+        <div class="reihe"><span>Hartchrombad, nutzbares Warenfenster</span><b>3.400 × 800 × 1.100 mm</b></div>
+        <div class="reihe"><span>Maximales Stückgewicht am Kran</span><b>1.200 kg</b></div>
+        <div class="reihe"><span>Gestellware dekorativ, maximal</span><b>900 × 500 × 400 mm</b></div>
+        <div class="reihe"><span>Beschäftigte, davon vier in der Schleiferei</span><b>28</b></div>
+      </div>
+      <div>
+        <div class="reihe"><span>Werksdurchlaufzeit, Richtwert</span><b>5 Arbeitstage</b></div>
+        <div class="reihe"><span>Schichtdickenmessung</span><b>ISO 2178 / ISO 3497</b></div>
+        <div class="reihe"><span>Abwasser-Eigenkontrolle</span><b>wöchentlich</b></div>
+        <div class="reihe"><span>Chrom(VI) im Ablauf, Grenzwert</span><b>0,1 mg/l</b></div>
+      </div>
+    </div>
+
+    <p class="gedeckt" style="margin-top:24px; max-width:60ch">Was wir nicht
+    machen, steht nicht im Kleingedruckten, sondern auf der
+    <a href="betrieb.html#grenzen">Betriebsseite unter „Grenzen“</a>:
+    kein Aluminium, keine Kunststoffgalvanik, keine Altteile ohne Befund,
+    keine Eilaufträge unter fünf Arbeitstagen.</p>
+  </section>
+
+</main>
+
+<footer class="fuss">
+  <div class="mitte">
+    <div class="fuss__raster">
+      <div>
+        <h2>BLANK Oberflächentechnik</h2>
+        <address>
+          Gleiterweg 14<br>
+          42655 Solingen<br>
+          <a href="tel:+49212380000">+49 212 380000</a><br>
+          <a href="mailto:bad@blank-oberflaechen.example">bad@blank-oberflaechen.example</a>
+        </address>
+      </div>
+      <div>
+        <h2>Annahme</h2>
+        <p>Montag bis Donnerstag 7–16 Uhr,<br>
+        Freitag 7–12 Uhr.<br>
+        Anlieferung nur mit Begleitschein.</p>
+      </div>
+      <div>
+        <h2>Seiten</h2>
+        <ul>
+          <li><a href="verfahren.html">Verfahren und Schichtzeitrechner</a></li>
+          <li><a href="betrieb.html">Betrieb, REACH und Grenzen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fuss__demo">
+      Demonstrationsseite. Unternehmen, Personen, Adressen und Betriebswerte
+      sind frei erfunden. Schichtdicken, Härten, Normbezüge und die
+      Faraday-Rechnung folgen der galvanotechnischen Literatur und sind
+      gerundete Näherungen. Gestaltung nach Mika UX Library <b>MXL-045</b>.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/blank.js" defer></script>
+<script src="assets/chrom.js" defer></script>
+</body>
+</html>

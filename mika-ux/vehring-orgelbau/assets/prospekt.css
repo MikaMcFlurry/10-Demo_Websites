@@ -1,0 +1,649 @@
+/*
+  VEHRING Orgelbau
+  Mika UX Library: MXL-007 „Datalands“ — Black cathedral (rein, keine Mischung)
+
+  Die Website ist ein Kirchenraum nach Einbruch der Dunkelheit. Aus dem
+  zweistufigen Schwarz steigt ein Prospekt aus Zinnpfeifen; alles andere —
+  Navigation, Metadaten, Register — bleibt Hairline, Mono und Kapsel.
+  Das Rosa der Referenz ist der einzige Akzent und bleibt rationiert:
+  Fokus, gezogenes Register, aktive Seite, eine Hauptaktion.
+
+  Die Pfeifen sind kein Bild. Jede ist ein Element mit einem
+  Zylinder-Verlauf über die Breite, einem Spekularstrich und einem
+  Labium — die Höhe kommt aus --h, die Breite aus --w.
+*/
+
+@import url("fonts/fonts.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* MXL-007 Farbrollen */
+  --canvas: #080908;
+  --surface: #151715;
+  --ink: #f4f1e9;
+  --muted: #959b90;
+  --signal: #fc74dd;
+
+  /* Zweistufiges Schwarz plus eine dritte, noch tiefere Stufe für den Raum */
+  --void: #030403;
+  --hair: rgba(244, 241, 233, .14);
+  --hair-strong: rgba(244, 241, 233, .3);
+
+  /* Zinn */
+  --zinn-dunkel: #14171a;
+  --zinn-mittel: #6f7a84;
+  --zinn-licht: #cfd8de;
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+  --sp-11: 160px;
+
+  --r-s: 8px; --r-m: 12px; --r-l: 16px; --r-pill: 999px;
+
+  --font-display: 'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; background: var(--canvas); }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+
+/* ── Typografie ───────────────────────────────────────────────────────── */
+
+.wort {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 12.2vw, 178px);
+  font-weight: 900;
+  letter-spacing: -.045em;
+  line-height: .84;
+  text-transform: uppercase;
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6.5vw, 92px);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: .98;
+  text-wrap: balance;
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -.028em;
+  line-height: 1.06;
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 23px);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  line-height: 1.2;
+}
+
+/*
+  Unbounded ist breit und lange deutsche Komposita passen auf schmalen
+  Viewports nicht in eine Zeile. Silbentrennung zuerst, harter Umbruch nur
+  als Notnagel — sonst schiebt ein einziges Wort die ganze Seite auf.
+*/
+.wort, .h1, .h2, .h3 {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.lead { max-width: 40ch; margin: 0; color: var(--ink); font-size: clamp(20px, 2vw, 24px); line-height: 1.45; }
+.prose { max-width: 64ch; }
+.prose p { margin: 0 0 var(--sp-4); color: #d6d3ca; }
+.muted { color: var(--muted); }
+
+/* Mono trägt alles Technische: Navigation, Status, Registerdaten, Opuszahlen. */
+.meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: var(--sp-1);
+}
+
+.skip {
+  position: fixed;
+  z-index: 90;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  transform: translateY(-160%);
+  border-radius: var(--r-pill);
+  background: var(--signal);
+  color: var(--void);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip:focus { transform: translateY(0); }
+
+/* ── Kopf: Ghost Controls, keine Fläche ──────────────────────────────── */
+
+.kopf {
+  position: sticky;
+  z-index: 60;
+  top: 0;
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) clamp(var(--sp-4), 4vw, var(--sp-7));
+  border-bottom: 1px solid var(--hair);
+  background: rgba(8, 9, 8, .72);
+  backdrop-filter: blur(14px);
+}
+
+.marke {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-3);
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.marke svg { width: 22px; height: 26px; flex: none; }
+
+.menue { display: flex; gap: var(--sp-1); align-items: center; }
+
+.menue a {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 260ms var(--ease);
+}
+
+.menue a:hover { color: var(--ink); }
+
+/* Aktive Seite: Lichtwert plus Signalpunkt, nicht nur Farbe. */
+.menue a[aria-current="page"] { color: var(--ink); }
+
+.menue a[aria-current="page"]::before {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--signal);
+  content: "";
+}
+
+.menuetaste {
+  display: none;
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ── Kapselaktionen ──────────────────────────────────────────────────── */
+
+.kapsel {
+  display: inline-flex;
+  min-height: 48px;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: 0 var(--sp-6);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease), color 300ms var(--ease);
+}
+
+.kapsel:hover { border-color: var(--ink); background: rgba(244, 241, 233, .07); }
+
+.kapsel--haupt {
+  border-color: var(--signal);
+  background: var(--signal);
+  color: var(--void);
+  font-weight: 700;
+}
+
+.kapsel--haupt:hover { border-color: var(--signal); background: #fd8ce3; }
+
+/* ── Rhythmus: 96–160px zwischen Hauptszenen ─────────────────────────── */
+
+.bahn { padding: clamp(var(--sp-9), 11vw, var(--sp-11)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.bahn--eng { padding-block: clamp(var(--sp-8), 8vw, var(--sp-9)); }
+.bahn--flaeche { background: var(--void); }
+.mitte { max-width: 1320px; margin-inline: auto; }
+
+.kopfzeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: end;
+  margin-bottom: clamp(var(--sp-7), 5vw, var(--sp-9));
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--hair);
+}
+
+/* ── Aufmacher: eine filmische Aussage ───────────────────────────────── */
+
+.auf {
+  position: relative;
+  overflow: hidden;
+  /* Der klebende Kopf zehrt vom Viewport — sonst reicht der Prospekt
+     unter die Falz und wird mitten in der Pfeife abgeschnitten. */
+  min-height: min(calc(100svh - 78px), 830px);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(var(--sp-6), 4.5vw, var(--sp-8)) clamp(var(--sp-4), 4vw, var(--sp-7)) 0;
+}
+
+/* Das Licht: ein einziger, weicher Kegel über dem Prospekt. */
+.auf::before {
+  position: absolute;
+  z-index: 0;
+  inset: -20% -10% auto;
+  height: 90%;
+  background: radial-gradient(58% 70% at 50% 8%, rgba(244, 241, 233, .13), rgba(244, 241, 233, 0) 68%);
+  content: "";
+  pointer-events: none;
+}
+
+.auf__kopf { position: relative; z-index: 3; max-width: 1320px; margin-inline: auto; width: 100%; align-self: start; }
+
+.auf__wort { color: var(--ink); }
+.auf__wort span { display: block; color: var(--muted); font-size: .27em; font-weight: 400; letter-spacing: .18em; }
+
+.auf__zeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: var(--sp-7);
+  align-items: end;
+  margin-top: clamp(var(--sp-5), 3vw, var(--sp-7));
+}
+
+.auf__tat { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+
+/* ── Der Prospekt ────────────────────────────────────────────────────── */
+
+.prospekt {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: clamp(190px, 23vw, 312px);
+  gap: clamp(3px, .5vw, 7px);
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: clamp(var(--sp-6), 4vw, var(--sp-8));
+  /* Die Pfeifen tauchen unten ins Schwarz ab, statt abgeschnitten zu enden. */
+  mask-image: linear-gradient(180deg, #000 76%, rgba(0, 0, 0, .25) 96%, transparent 100%);
+}
+
+/*
+  Eine Pfeife: Zylinder über die Breite, Lichtstrich links der Mitte,
+  runder Labienkörper unten. --h ist die Höhe in Prozent des Prospekts,
+  --w die Breite in Pixel.
+*/
+.pfeife {
+  position: relative;
+  /* --wb ist die tatsächliche Breite: Sollbreite mal Skala des Prospekts. */
+  --wb: calc(var(--w, 26px) * var(--pfeifen-skala, 1));
+  width: var(--wb);
+  height: var(--h, 60%);
+  flex: none;
+  border-radius: calc(var(--wb) / 2) calc(var(--wb) / 2) 2px 2px;
+  background:
+    linear-gradient(90deg,
+      var(--zinn-dunkel) 0%,
+      #39424a 16%,
+      var(--zinn-mittel) 33%,
+      var(--zinn-licht) 46%,
+      #97a3ad 58%,
+      #414a52 78%,
+      var(--zinn-dunkel) 100%);
+  box-shadow: 0 0 var(--sp-5) rgba(0, 0, 0, .8);
+  transition: filter 520ms var(--ease);
+}
+
+/* Der Aufschnitt: Oberlabium, Kernspalte, Unterlabium. */
+.pfeife::after {
+  position: absolute;
+  right: 14%;
+  bottom: 12%;
+  left: 14%;
+  height: clamp(9px, 1.2vw, 15px);
+  border-top: 1px solid rgba(0, 0, 0, .75);
+  border-radius: 40% 40% 12% 12%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .82), rgba(0, 0, 0, .3));
+  content: "";
+}
+
+/* Angeblasene Pfeifen bekommen Licht — die einzige Farbaussage im Prospekt. */
+.pfeife[data-klingt] {
+  filter: brightness(1.5) saturate(.7);
+}
+
+.pfeife[data-klingt]::before {
+  position: absolute;
+  inset: -18px -10px 20% -10px;
+  border-radius: 50%;
+  background: radial-gradient(50% 60% at 50% 40%, rgba(252, 116, 221, .34), rgba(252, 116, 221, 0) 70%);
+  content: "";
+  pointer-events: none;
+}
+
+/* ── Registerzug ─────────────────────────────────────────────────────── */
+
+.werk { margin-bottom: clamp(var(--sp-7), 5vw, var(--sp-8)); }
+
+.werk__kopf {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--hair);
+  flex-wrap: wrap;
+}
+
+/* Breit genug, dass „16′ · 56 Pfeifen · 2,1 m³“ in eine Zeile passt. */
+.zuege { display: grid; grid-template-columns: repeat(auto-fill, minmax(252px, 1fr)); gap: var(--sp-3); }
+
+/*
+  Ein Registerzug ist ein gedrechselter Knopf mit Schild. Gezogen heißt:
+  der Knopf kommt heraus (Schatten kippt), das Schild leuchtet, und der
+  Zustand steht zusätzlich als Text da — nie nur als Farbe.
+*/
+.zug {
+  display: flex;
+  min-height: 56px;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: var(--sp-2) var(--sp-4) var(--sp-2) var(--sp-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 300ms var(--ease), background-color 300ms var(--ease);
+}
+
+.zug:hover { border-color: var(--hair-strong); }
+
+.zug__knopf {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(64% 64% at 34% 28%, #6b5236, #3a2b1a 62%, #1d150c);
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, .7), inset 0 2px 3px rgba(255, 226, 178, .3);
+  transition: transform 320ms var(--ease), box-shadow 320ms var(--ease);
+}
+
+.zug__name { display: block; font-size: 15px; font-weight: 600; line-height: 1.2; }
+.zug__fuss { display: block; color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; }
+
+.zug[aria-pressed="true"] {
+  border-color: var(--signal);
+  background: #22131f;
+}
+
+.zug[aria-pressed="true"] .zug__knopf {
+  transform: translateX(5px) scale(1.06);
+  box-shadow:
+    inset 0 -3px 5px rgba(0, 0, 0, .7),
+    inset 0 2px 3px rgba(255, 226, 178, .35),
+    0 0 0 3px rgba(252, 116, 221, .28);
+}
+
+.zug[aria-pressed="true"] .zug__fuss { color: var(--signal); }
+
+/* ── Windtafel: Ergebnis des Registerzugs ────────────────────────────── */
+
+.windtafel {
+  position: sticky;
+  top: 92px;
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-l);
+  background: var(--surface);
+}
+
+.windtafel dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3) var(--sp-5); margin: 0; }
+.windtafel dt { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.windtafel dd { margin: 0; font-family: var(--font-mono); font-size: 15px; font-weight: 600; text-align: right; }
+
+.windtafel__liste { margin: 0; padding: 0; color: var(--muted); font-size: 14px; list-style: none; }
+.windtafel__liste li { padding: 6px 0; border-bottom: 1px solid var(--hair); }
+.windtafel__liste li:last-child { border-bottom: 0; }
+
+/* Der Balg: füllt sich mit dem Windbedarf der gezogenen Register. */
+.balg { height: 8px; overflow: hidden; border-radius: var(--r-pill); background: rgba(244, 241, 233, .1); }
+.balg span { display: block; width: 0; height: 100%; border-radius: var(--r-pill); background: var(--signal); transition: width 520ms var(--ease); }
+
+.pult { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: clamp(var(--sp-6), 4vw, var(--sp-8)); align-items: start; }
+.pult > * { min-width: 0; }
+
+/* ── Mensurrechner ───────────────────────────────────────────────────── */
+
+.mensur { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: clamp(var(--sp-6), 4vw, var(--sp-8)); align-items: start; }
+.mensur > * { min-width: 0; }
+
+.feld { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+.feld > label { font-weight: 600; }
+.feld select {
+  min-height: 48px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+.feld .hinweis { margin: 0; color: var(--muted); font-size: 14px; }
+
+.fusslage { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+
+.fusslage button {
+  min-width: 64px;
+  min-height: 48px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 260ms var(--ease), background-color 260ms var(--ease), color 260ms var(--ease);
+}
+
+.fusslage button[aria-pressed="true"] { border-color: var(--signal); background: var(--signal); color: var(--void); font-weight: 600; }
+
+/* Die Pfeife im Maßstab: wächst mit der berechneten Länge. */
+.probe {
+  display: grid;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-l);
+  background: var(--surface);
+}
+
+.probe__buehne { display: flex; height: 240px; align-items: flex-end; justify-content: center; }
+
+.probe__pfeife {
+  width: 40px;
+  height: 30%;
+  border-radius: 20px 20px 2px 2px;
+  background: linear-gradient(90deg, var(--zinn-dunkel), var(--zinn-mittel) 34%, var(--zinn-licht) 47%, #414a52 76%, var(--zinn-dunkel));
+  transition: height 620ms var(--ease);
+}
+
+.probe dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3) var(--sp-5); margin: 0; }
+.probe dt { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.probe dd { margin: 0; font-family: var(--font-mono); font-size: 17px; font-weight: 600; text-align: right; }
+
+/* ── Tafeln und Listen ───────────────────────────────────────────────── */
+
+.rolle { overflow-x: auto; }
+.rolle .tafel { min-width: 34rem; }
+
+.tafel { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tafel caption { margin-bottom: var(--sp-4); color: var(--muted); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
+.tafel th, .tafel td { padding: var(--sp-4) var(--sp-4); border-bottom: 1px solid var(--hair); text-align: left; }
+.tafel thead th { color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
+.tafel tbody th { font-weight: 600; }
+.tafel td:last-child, .tafel th:last-child { text-align: right; }
+.tafel .opus { color: var(--muted); font-family: var(--font-mono); font-size: 13px; }
+
+.stufen { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--hair); }
+.stufen > * { min-width: 0; }
+
+.stufe { display: grid; gap: var(--sp-4); align-content: start; padding: clamp(var(--sp-5), 3vw, var(--sp-7)); background: var(--canvas); }
+.stufe p { margin: 0; color: var(--muted); font-size: 15px; }
+.stufe__nr { color: var(--signal); font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; }
+
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: var(--sp-5); }
+.karten > * { min-width: 0; }
+.karte { display: grid; gap: var(--sp-3); align-content: start; padding: var(--sp-6); border: 1px solid var(--hair); border-radius: var(--r-l); background: var(--surface); }
+.karte p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* ── Fuß ─────────────────────────────────────────────────────────────── */
+
+.fuss { padding: var(--sp-9) clamp(var(--sp-4), 4vw, var(--sp-7)) var(--sp-7); border-top: 1px solid var(--hair); background: var(--void); }
+.fuss__mitte { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--sp-7); max-width: 1320px; margin-inline: auto; }
+.fuss h2 { margin: 0 0 var(--sp-4); color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; }
+.fuss ul { margin: 0; padding: 0; list-style: none; }
+.fuss li { margin-bottom: var(--sp-2); }
+.fuss a { text-underline-offset: 4px; }
+.fuss address { font-style: normal; }
+.fuss__demo { max-width: 1320px; margin: var(--sp-8) auto 0; padding-top: var(--sp-5); border-top: 1px solid var(--hair); color: var(--muted); font-size: 14px; }
+
+/* ── Rechtsseiten ────────────────────────────────────────────────────── */
+
+.recht { max-width: 72ch; margin-inline: auto; }
+.recht h2 { margin: var(--sp-8) 0 var(--sp-3); font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 27px); font-weight: 600; }
+.recht h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: 17px; }
+.recht p, .recht li { color: #cdcac2; }
+.recht ul { padding-left: var(--sp-5); }
+
+.warnung { padding: var(--sp-5); border: 1px solid var(--hair); border-left: 3px solid var(--signal); border-radius: var(--r-m); background: var(--surface); }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+  .pult, .mensur, .auf__zeile { grid-template-columns: 1fr; }
+  .windtafel { position: static; }
+  .kopfzeile { grid-template-columns: 1fr; }
+
+  .menuetaste { display: inline-flex; align-items: center; }
+
+  .menue {
+    position: absolute;
+    top: 100%;
+    right: clamp(var(--sp-4), 4vw, var(--sp-7));
+    left: clamp(var(--sp-4), 4vw, var(--sp-7));
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-3);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-l);
+    background: #0d0f0d;
+  }
+
+  .menue[data-offen] { display: flex; }
+  .menue a { padding: var(--sp-3) var(--sp-4); }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  /*
+    Mobil bleibt der Prospekt die Aussage, wird aber schmaler und niedriger.
+    Die äußeren Pfeifen weichen ganz, die übrigen werden über --pfeifen-skala
+    proportional verkleinert — sonst läuft die zentrierte Reihe links wie
+    rechts aus dem Viewport, und links ist das nicht einmal scrollbar.
+  */
+  .prospekt { height: clamp(180px, 46vw, 260px); gap: 3px; --pfeifen-skala: .56; }
+  .pfeife[data-rand] { display: none; }
+
+  .auf { min-height: auto; padding-bottom: var(--sp-7); }
+  .probe__buehne { height: 190px; }
+  .zuege { grid-template-columns: 1fr; }
+  .karte, .windtafel, .probe { padding: var(--sp-5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

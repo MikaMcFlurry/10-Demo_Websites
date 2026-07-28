@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEREUS Tiefseeforschung Bremerhaven – Abstieg auf 6.000 Meter</title>
+<meta name="description" content="Fünf Tiefenzonen von der Lichtzone bis zum Abyssal: Druck, Temperatur und Restlicht. Mit Tiefenschiene, Druckrechner und Fahrtenbuch.">
+<meta name="theme-color" content="#080908">
+<meta property="og:title" content="NEREUS Tiefseeforschung">
+<meta property="og:description" content="Ein Abstieg durch fünf Tiefenzonen bis auf 6.000 Meter.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/space-grotesk-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tauchgang.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "NEREUS Tiefseeforschung",
+  "description": "Institut für Tiefseeforschung mit bemannten und unbemannten Tauchfahrzeugen.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Am Alten Hafen 26",
+    "postalCode": "27568",
+    "addressLocality": "Bremerhaven",
+    "addressRegion": "Bremen",
+    "addressCountry": "DE"
+  },
+  "telephone": "+49 471 9000",
+  "email": "leitstand@nereus-tiefsee.example",
+  "disambiguatingDescription": "Fiktives Institut. Diese Website ist eine Demonstration."
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="wasser" aria-hidden="true"></div>
+<div class="schnee" aria-hidden="true"></div>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Nereus Tiefseeforschung, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 3v26" stroke="#8d73ff" stroke-width="2"/>
+      <path d="M11 9h10M12 16h8M13 23h6" stroke="#f4f1e9" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    Nereus
+  </a>
+  <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html" aria-current="page">Abstieg</a>
+    <a href="fahrzeug.html">Fahrzeuge</a>
+    <a href="fahrten.html">Fahrtenbuch</a>
+  </nav>
+</header>
+
+<div class="schiene" data-schiene hidden>
+  <div>
+    <p class="meta" style="margin-bottom:4px">Tiefe</p>
+    <p class="schiene__wert"><span data-tiefenwert>0</span> <small>m</small></p>
+    <p class="meta" data-zonenname style="margin-top:6px">Oberfläche</p>
+  </div>
+
+  <div class="schiene__balken" aria-hidden="true">
+    <span class="schiene__zeiger" data-zeiger style="top:0%"></span>
+  </div>
+
+  <nav aria-label="Tiefenzonen">
+    <ul class="schiene__liste">
+        <li><a href="#start">Oberfläche</a></li>
+        <li><a href="#epipelagial">Epipelagial</a></li>
+        <li><a href="#mesopelagial">Mesopelagial</a></li>
+        <li><a href="#bathypelagial">Bathypelagial</a></li>
+        <li><a href="#abyssopelagial">Abyssopelagial</a></li>
+    </ul>
+  </nav>
+
+  <p data-stand role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)"></p>
+</div>
+
+<main id="inhalt">
+
+  <section class="szene" id="start" data-tiefe="0" data-zone="Oberfläche" aria-labelledby="start-t">
+    <div class="szene__mitte">
+      <p class="meta szene__kicker">Position 47° 12′ N, 27° 41′ W</p>
+      <h1 class="szene-titel" id="start-t">Der Abstieg</h1>
+      <p class="lead szene__text">Ein Tauchgang der NEREUS 4 dauert neun Stunden. Zwei davon sind Abstieg, zwei sind Aufstieg, fünf bleiben für Arbeit am Grund. Was dazwischen liegt, wird selten gezeigt — deshalb steht es hier.</p>
+
+      <div class="werte">
+          <div class="wert"><b>1,0 bar</b><span>Umgebungsdruck</span></div>
+          <div class="wert"><b>18,0 °C</b><span>Wassertemperatur</span></div>
+          <div class="wert"><b>100 %</b><span>Restlicht</span></div>
+          <div class="wert"><b>0 m</b><span>Tiefe</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="szene" id="epipelagial" data-tiefe="200" data-zone="Epipelagial" aria-labelledby="epipelagial-t">
+    <div class="szene__mitte">
+      <p class="meta szene__kicker">Zone 1 · 0 bis 200 Meter</p>
+      <h2 class="szene-titel" id="epipelagial-t">Lichtzone</h2>
+        <p class="lead szene__text muted" style="max-width:30ch">Wo Photosynthese endet</p>
+      <p class="lead szene__text">Bis hierher reicht genug Sonnenlicht für Algen. Die Grenze ist keine Linie, sondern ein Verlöschen: Bei 200 Metern ist noch etwa ein Fünftausendstel des Oberflächenlichts übrig — zu wenig für Pflanzen, genug für Augen.</p>
+
+      <div class="werte">
+          <div class="wert"><b>21,2 bar</b><span>Umgebungsdruck</span></div>
+          <div class="wert"><b>12,0 °C</b><span>Wassertemperatur</span></div>
+          <div class="wert"><b>0,2 %</b><span>Restlicht</span></div>
+          <div class="wert"><b>200 m</b><span>Zonengrenze</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="szene" id="mesopelagial" data-tiefe="1000" data-zone="Mesopelagial" aria-labelledby="mesopelagial-t">
+    <div class="szene__mitte">
+      <p class="meta szene__kicker">Zone 2 · 200 bis 1.000 Meter</p>
+      <h2 class="szene-titel" id="mesopelagial-t">Dämmerzone</h2>
+        <p class="lead szene__text muted" style="max-width:30ch">Das größte Wanderungsereignis der Erde</p>
+      <p class="lead szene__text">Jede Nacht steigen hier Milliarden Tiere zum Fressen nach oben und kehren vor Sonnenaufgang zurück. Auf dem Echolot sieht das aus wie ein zweiter Meeresboden, der sich hebt und senkt — die Deep Scattering Layer.</p>
+
+      <div class="werte">
+          <div class="wert"><b>102,0 bar</b><span>Umgebungsdruck</span></div>
+          <div class="wert"><b>4,5 °C</b><span>Wassertemperatur</span></div>
+          <div class="wert"><b>unter 10⁻⁴ %</b><span>Restlicht</span></div>
+          <div class="wert"><b>1.000 m</b><span>Zonengrenze</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="szene" id="bathypelagial" data-tiefe="4000" data-zone="Bathypelagial" aria-labelledby="bathypelagial-t">
+    <div class="szene__mitte">
+      <p class="meta szene__kicker">Zone 3 · 1.000 bis 4.000 Meter</p>
+      <h2 class="szene-titel" id="bathypelagial-t">Mitternacht</h2>
+        <p class="lead szene__text muted" style="max-width:30ch">Kein Sonnenlicht mehr, aber nicht dunkel</p>
+      <p class="lead szene__text">Ab hier kommt alles Licht aus Lebewesen. Schätzungen zufolge leuchten drei von vier Tieren dieser Zone selbst. Wir fahren die Scheinwerfer deshalb nur an, wenn wir müssen — und protokollieren jede Minute, in der sie brannten.</p>
+
+      <div class="werte">
+          <div class="wert"><b>405,0 bar</b><span>Umgebungsdruck</span></div>
+          <div class="wert"><b>2,4 °C</b><span>Wassertemperatur</span></div>
+          <div class="wert"><b>0 %</b><span>Sonnenlicht</span></div>
+          <div class="wert"><b>4.000 m</b><span>Zonengrenze</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="szene" id="abyssopelagial" data-tiefe="6000" data-zone="Abyssopelagial" aria-labelledby="abyssopelagial-t">
+    <div class="szene__mitte">
+      <p class="meta szene__kicker">Zone 4 · 4.000 bis 6.000 Meter</p>
+      <h2 class="szene-titel" id="abyssopelagial-t">Einsatzgrenze</h2>
+        <p class="lead szene__text muted" style="max-width:30ch">Wo die NEREUS 4 aufhört</p>
+      <p class="lead szene__text">Auf 6.000 Metern drückt das Wasser mit rund 607 bar auf den Titan-Druckkörper — das Gewicht eines Kleinwagens auf jedem Quadratzentimeter. Tiefer fährt bei uns nur noch der Lander HADES, und der fährt ohne Menschen.</p>
+
+      <div class="werte">
+          <div class="wert"><b>607,1 bar</b><span>Umgebungsdruck</span></div>
+          <div class="wert"><b>1,8 °C</b><span>Wassertemperatur</span></div>
+          <div class="wert"><b>0 %</b><span>Sonnenlicht</span></div>
+          <div class="wert"><b>6.000 m</b><span>Einsatzgrenze</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Nach dem Abstieg ───────────────────────────────────────────── -->
+  <section class="bahn bahn--flaeche" aria-labelledby="danach-t">
+    <div class="mitte">
+      <div class="kopfzeile">
+        <div>
+          <p class="meta">Nach dem Auftauchen</p>
+          <h2 class="h2" id="danach-t">Was von einer Fahrt bleibt</h2>
+        </div>
+        <p class="muted" style="margin:0; align-self:end">
+          Neun Stunden unter Wasser ergeben rund vierzig Gigabyte Rohdaten und
+          im Mittel elf Proben. Die Auswertung dauert Monate.
+        </p>
+      </div>
+
+      <div class="karten">
+        <div class="karte">
+          <p class="meta">Sediment</p>
+          <h3 class="h3">Kerne aus dem Grund</h3>
+          <p>Bis zu sechs Stechrohre je Tauchgang. Ein Zentimeter Sediment entspricht in dieser Tiefe grob tausend Jahren.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Wasser</p>
+          <h3 class="h3">Schöpfer in vier Höhen</h3>
+          <p>Proben aus 6.000, 4.000, 1.000 und 200 Metern — dieselben Marken, die auch die Zonen dieser Seite gliedern.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Bild</p>
+          <h3 class="h3">Vier Kameras, eine Regel</h3>
+          <p>Aufnahmen nur mit laufendem Protokoll. Jede Scheinwerferminute wird notiert, weil Licht in dieser Zone ein Eingriff ist.</p>
+        </div>
+        <div class="karte">
+          <p class="meta">Ton</p>
+          <h3 class="h3">Hydrophon durchgehend</h3>
+          <p>Die einzige Messung, die auch beim Abstieg läuft. Sie kostet nichts und hat schon zweimal erklärt, was die Kameras nicht sahen.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: var(--sp-7); display:flex; gap: var(--sp-3); flex-wrap: wrap">
+        <a class="taste taste--haupt" href="fahrzeug.html">Fahrzeuge und Druckrechner</a>
+        <a class="taste" href="fahrten.html">Fahrtenbuch</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<button type="button" class="ton" data-ton aria-pressed="false" hidden>
+  <span class="ton__symbol" aria-hidden="true">
+    <svg class="ton__aus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m17 9 4 6M21 9l-4 6"/>
+    </svg>
+    <svg class="ton__an" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 8.5a5 5 0 0 1 0 7M19.5 6a8.5 8.5 0 0 1 0 12"/>
+    </svg>
+  </span>
+  <span data-ton-text>Ton aus</span>
+</button>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Nereus Tiefseeforschung</h2>
+      <address class="muted">
+        Am Alten Hafen 26<br>
+        27568 Bremerhaven<br>
+        <a href="tel:+494719000">+49 471 9000</a><br>
+        <a href="mailto:leitstand@nereus-tiefsee.example">leitstand@nereus-tiefsee.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Leitstand</h2>
+      <p class="muted" style="margin:0">
+        Während einer Fahrt durchgehend besetzt.<br>
+        Anfragen zu Fahrtzeiten schriftlich,<br>
+        Vorlauf mindestens zwölf Monate.
+      </p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="fahrzeug.html">Fahrzeuge und Druckrechner</a></li>
+        <li><a href="fahrten.html">Fahrtenbuch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Institut, Personen, Adressen, Fahrzeuge und Fahrten
+    sind frei erfunden. Tiefenzonen, Druck- und Lichtwerte folgen der
+    ozeanografischen Literatur und sind gerundete Näherungen.
+    Gestaltung nach Mika UX Library <b>MXL-040</b>.
+  </p>
+</footer>
+
+<script src="assets/tauchgang.js" defer></script>
+</body>
+</html>

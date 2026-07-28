@@ -1,0 +1,467 @@
+/*
+  Saatgutarchiv Zollernalb
+  Mika UX Library — Mischung aus drei Vorlagen, jede mit eigener Aufgabe:
+
+    MXL-118  GOV.UK Design System — Accessible public-service system
+             Trägt die Dienstarchitektur: dauerhaft sichtbare Suche, Filter und
+             Ergebniszahl, ausformulierte Leer- und Fehlerzustände, an jedem
+             Datensatz Herkunft, Nutzungshinweis und Stand. Blau ist die
+             Interaktions- und Fokusfarbe.
+
+    MXL-090  Ventriloc — Warm-paper data observatory
+             Trägt die Datenkarte: monospaced Werte, asymmetrische Radien und
+             genau einen orangefarbenen Ember als Zustandssignal.
+
+    MXL-113  Fonts In Use — Applied typography archive
+             Trägt das Katalogrückgrat: kompakte Dichte, stabile Taxonomie,
+             Schwarz auf warmem Papier als eigentliche Aussage. Der Datensatz
+             ist die Gestaltung, nicht ihr Träger.
+
+  Gemeinsam ist allen dreien dieselbe warme Papierfläche — deshalb lassen sie
+  sich überhaupt mischen, ohne dass ein viertes System entsteht.
+*/
+
+@import url("fonts/fonts.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* Gemeinsame Rollen aller drei Vorlagen */
+  --canvas: #f7f5ef;
+  --surface: #ffffff;
+  --ink: #11130f;
+  --muted: #72776d;
+
+  /* MXL-118: Interaktion und Fokus */
+  --signal: #1d70b8;
+  --signal-dunkel: #14538a;
+
+  /* MXL-090: der eine Ember, ausschließlich für Zustand */
+  --ember: #ff6a2b;
+  --ember-flaeche: #fff1e9;
+  --ember-ink: #8a3208;
+
+  --hair: #ddd9cd;
+  --hair-stark: #b9b4a5;
+
+  /* Spacing-Basis 8, gemeinsame Skala */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 88px;
+
+  --font-ui: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+html { background: var(--canvas); }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+
+/* ── Typografie ───────────────────────────────────────────────────────── */
+
+.h1 { margin: 0; font-size: clamp(34px, 5vw, 60px); font-weight: 700; letter-spacing: -.022em; line-height: 1.04; text-wrap: balance; hyphens: auto; overflow-wrap: break-word; }
+.h2 { margin: 0; font-size: clamp(25px, 3vw, 36px); font-weight: 700; letter-spacing: -.016em; line-height: 1.12; hyphens: auto; overflow-wrap: break-word; }
+.h3 { margin: 0; font-size: clamp(18px, 1.7vw, 21px); font-weight: 600; line-height: 1.25; hyphens: auto; overflow-wrap: break-word; }
+
+.lead { max-width: 46ch; margin: 0; font-size: clamp(19px, 1.9vw, 23px); line-height: 1.45; }
+.prose { max-width: 66ch; }
+.prose p { margin: 0 0 var(--sp-4); }
+.muted { color: var(--muted); }
+
+/* Mono trägt jede Zahl, jede Nummer, jeden Filterwert. */
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+.label {
+  display: inline-block;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+a { color: var(--signal); text-underline-offset: 3px; }
+a:hover { color: var(--signal-dunkel); }
+
+/* MXL-118: Fokus muss unter allen Umständen auffallen. */
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: fixed;
+  z-index: 90;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  transform: translateY(-160%);
+  background: var(--ink);
+  color: var(--canvas);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip:focus { transform: translateY(0); }
+
+/* ── Kopf ─────────────────────────────────────────────────────────────── */
+
+.kopf {
+  border-bottom: 1px solid var(--hair);
+  background: var(--surface);
+}
+
+.kopf__reihe {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: var(--sp-3) clamp(var(--sp-4), 4vw, var(--sp-7));
+}
+
+.marke {
+  display: inline-flex;
+  min-height: 44px;
+  gap: var(--sp-3);
+  align-items: center;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+
+.marke svg { width: 26px; height: 26px; flex: none; }
+.marke small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; letter-spacing: 0; }
+
+.menue { display: flex; gap: var(--sp-1); align-items: center; }
+
+.menue a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  border-bottom: 3px solid transparent;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.menue a:hover { border-bottom-color: var(--hair-stark); }
+.menue a[aria-current="page"] { border-bottom-color: var(--signal); font-weight: 700; }
+
+.menuetaste {
+  display: none;
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border: 2px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── Aktionen ─────────────────────────────────────────────────────────── */
+
+.knopf {
+  display: inline-flex;
+  min-height: 48px;
+  gap: var(--sp-2);
+  align-items: center;
+  padding: 0 var(--sp-5);
+  border: 2px solid var(--signal);
+  border-radius: 4px;
+  background: var(--signal);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.knopf:hover { border-color: var(--signal-dunkel); background: var(--signal-dunkel); color: #fff; }
+
+.knopf--still { border-color: var(--ink); background: transparent; color: var(--ink); }
+.knopf--still:hover { background: rgba(17, 19, 15, .06); border-color: var(--ink); color: var(--ink); }
+
+/* ── Rhythmus: 64–88px zwischen Abschnitten (118/113, kompakt) ───────── */
+
+.bahn { padding: clamp(var(--sp-8), 7vw, var(--sp-9)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.bahn--eng { padding-block: clamp(var(--sp-7), 5vw, var(--sp-8)); }
+.bahn--flaeche { background: var(--surface); border-block: 1px solid var(--hair); }
+.mitte { max-width: 1320px; margin-inline: auto; }
+.schmal { max-width: 900px; }
+
+.kopfzeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: end;
+  margin-bottom: var(--sp-7);
+  padding-bottom: var(--sp-4);
+  border-bottom: 2px solid var(--ink);
+}
+
+/* ── Aufmacher ────────────────────────────────────────────────────────── */
+
+.auf { padding: clamp(var(--sp-7), 6vw, var(--sp-9)) clamp(var(--sp-4), 4vw, var(--sp-7)); }
+.auf__gitter { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: clamp(var(--sp-6), 5vw, var(--sp-8)); align-items: start; max-width: 1320px; margin-inline: auto; }
+.auf__gitter > * { min-width: 0; }
+.auf__tat { display: flex; gap: var(--sp-3); margin-top: var(--sp-6); flex-wrap: wrap; }
+
+/* Kennzahlenblock: die vier Zahlen, die das Archiv ausmachen. */
+.kennzahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
+.kennzahl { padding: var(--sp-5); background: var(--surface); }
+.kennzahl b { display: block; font-family: var(--font-mono); font-size: clamp(28px, 3.4vw, 40px); font-weight: 600; letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.kennzahl span { display: block; margin-top: var(--sp-2); color: var(--muted); font-size: 14px; }
+
+/* ── Filterleiste (MXL-118: dauerhaft sichtbar) ──────────────────────── */
+
+.filter {
+  position: sticky;
+  z-index: 40;
+  top: 0;
+  padding: var(--sp-4) clamp(var(--sp-4), 4vw, var(--sp-7));
+  border-bottom: 1px solid var(--hair);
+  background: var(--surface);
+}
+
+.filter__mitte { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; gap: var(--sp-4); align-items: end; max-width: 1320px; margin-inline: auto; }
+.filter__mitte > * { min-width: 0; }
+
+.feld { display: grid; gap: var(--sp-2); }
+.feld label { font-size: 14px; font-weight: 600; }
+
+.feld input[type="search"],
+.feld select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--sp-3);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.chips { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+
+.chip {
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border: 2px solid var(--hair-stark);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease);
+}
+
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { border-color: var(--signal); background: var(--signal); color: #fff; }
+
+.filter__stand {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 1320px;
+  margin: var(--sp-4) auto 0;
+  flex-wrap: wrap;
+}
+
+.filter__zahl { margin: 0; font-family: var(--font-mono); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* ── Datensätze (MXL-090: monospaced Karten, asymmetrische Radien) ───── */
+
+.satzliste { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: var(--sp-4); margin: 0; padding: 0; list-style: none; }
+.satzliste > * { min-width: 0; }
+
+.satz {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  padding: var(--sp-5);
+  /* Der asymmetrische Radius ist die Signatur von MXL-090. */
+  border: 1px solid var(--hair);
+  border-radius: 16px 16px 16px 3px;
+  background: var(--surface);
+}
+
+.satz__kopf { display: flex; gap: var(--sp-3); align-items: baseline; justify-content: space-between; }
+.satz__nr { color: var(--muted); font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: .02em; }
+.satz__art { color: var(--muted); font-size: 13px; }
+
+.satz__sorte { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -.012em; line-height: 1.2; }
+
+.satz__werte { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-2) var(--sp-4); margin: 0; padding-top: var(--sp-3); border-top: 1px solid var(--hair); }
+.satz__werte dt { color: var(--muted); font-size: 13px; }
+.satz__werte dd { margin: 0; font-family: var(--font-mono); font-size: 14px; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Keimbalken: der Wert ist auch ohne Zahl ablesbar, aber nie nur als Farbe. */
+.keim { height: 6px; overflow: hidden; border-radius: 999px; background: #e8e5da; }
+.keim span { display: block; height: 100%; border-radius: 999px; background: var(--ink); }
+.satz[data-nachbau] .keim span { background: var(--ember); }
+
+/* MXL-118: Herkunft, Nutzungshinweis und Stand hängen am Datensatz. */
+.satz__quelle {
+  margin: 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hair);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.marker {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 3px var(--sp-3);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.marker--frei { background: #eceade; color: #2f3626; }
+.marker--vermehrung { background: #e7eff7; color: #14538a; }
+.marker--gesperrt { background: #ececea; color: #4a4d46; }
+
+/* Der einzige Ember im ganzen System. */
+.marker--nachbau { background: var(--ember-flaeche); color: var(--ember-ink); }
+.marker--nachbau::before { width: 7px; height: 7px; border-radius: 50%; background: var(--ember); content: ""; }
+
+/* MXL-118: der Leerzustand ist ausformuliert, nicht weggelassen. */
+.leer {
+  display: none;
+  padding: var(--sp-7);
+  border: 2px dashed var(--hair-stark);
+  border-radius: 16px 16px 16px 3px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.leer[data-sichtbar] { display: block; }
+.leer h2 { margin: 0 0 var(--sp-3); font-size: 21px; }
+.leer p { max-width: 52ch; margin: 0 auto var(--sp-5); color: var(--muted); }
+
+/* ── Tafeln ───────────────────────────────────────────────────────────── */
+
+.rolle { overflow-x: auto; }
+.rolle .tafel { min-width: 32rem; }
+
+.tafel { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tafel caption { margin-bottom: var(--sp-4); color: var(--muted); font-size: 14px; text-align: left; }
+.tafel th, .tafel td { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--hair); text-align: left; vertical-align: top; }
+.tafel thead th { border-bottom: 2px solid var(--ink); font-size: 14px; }
+.tafel tbody th { font-weight: 600; }
+.tafel td:last-child, .tafel th:last-child { text-align: right; }
+.tafel .num { font-family: var(--font-mono); font-size: 14px; }
+
+/* ── Karten und Schritte ──────────────────────────────────────────────── */
+
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-4); }
+.karten > * { min-width: 0; }
+.karte { display: grid; gap: var(--sp-3); align-content: start; padding: var(--sp-5); border: 1px solid var(--hair); border-radius: 16px 16px 16px 3px; background: var(--surface); }
+.karte p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.schritte { margin: 0; padding: 0; list-style: none; counter-reset: schritt; }
+.schritt { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: var(--sp-4); padding: var(--sp-5) 0; border-bottom: 1px solid var(--hair); counter-increment: schritt; }
+.schritt:first-child { border-top: 1px solid var(--hair); }
+.schritt::before { display: grid; width: 44px; height: 44px; place-items: center; border: 2px solid var(--ink); border-radius: 50%; content: counter(schritt); font-family: var(--font-mono); font-size: 16px; font-weight: 600; }
+.schritt p { margin: var(--sp-2) 0 0; color: var(--muted); }
+
+/* Hinweiskasten in der Sprache eines Dienstes, nicht einer Marke. */
+.hinweis {
+  padding: var(--sp-5);
+  border-left: 8px solid var(--signal);
+  background: var(--surface);
+}
+
+.hinweis--warnung { border-left-color: var(--ember); }
+.hinweis p:last-child { margin-bottom: 0; }
+.hinweis p:first-child { margin-top: 0; }
+
+/* ── Fuß ──────────────────────────────────────────────────────────────── */
+
+.fuss { padding: var(--sp-8) clamp(var(--sp-4), 4vw, var(--sp-7)) var(--sp-7); border-top: 2px solid var(--ink); background: var(--surface); }
+.fuss__mitte { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--sp-6); max-width: 1320px; margin-inline: auto; }
+.fuss h2 { margin: 0 0 var(--sp-3); font-size: 14px; font-weight: 700; letter-spacing: .02em; }
+.fuss ul { margin: 0; padding: 0; list-style: none; }
+.fuss li { margin-bottom: var(--sp-2); }
+.fuss address { font-style: normal; }
+.fuss__demo { max-width: 1320px; margin: var(--sp-7) auto 0; padding-top: var(--sp-4); border-top: 1px solid var(--hair); color: var(--muted); font-size: 14px; }
+
+/* ── Rechtsseiten ─────────────────────────────────────────────────────── */
+
+.recht { max-width: 72ch; margin-inline: auto; }
+.recht h2 { margin: var(--sp-7) 0 var(--sp-3); font-size: clamp(21px, 2.2vw, 26px); font-weight: 700; }
+.recht h3 { margin: var(--sp-5) 0 var(--sp-2); font-size: 17px; }
+.recht ul { padding-left: var(--sp-5); }
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 940px) {
+  .auf__gitter, .kopfzeile { grid-template-columns: 1fr; }
+  .filter__mitte { grid-template-columns: 1fr; align-items: stretch; }
+
+  .menuetaste { display: inline-flex; align-items: center; }
+
+  .menue {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding-bottom: var(--sp-3);
+  }
+
+  .kopf__reihe { flex-wrap: wrap; }
+  .menue[data-offen] { display: flex; }
+  .menue a { border-bottom: 1px solid var(--hair); border-left: 3px solid transparent; }
+  .menue a[aria-current="page"] { border-left-color: var(--signal); }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  /* Kompakte Dichte ist auf dem Telefon keine Tugend: die Karten werden
+     einspaltig, die Filterleiste löst sich vom Rand und bleibt bedienbar. */
+  .satzliste { grid-template-columns: 1fr; }
+  .kennzahlen { grid-template-columns: 1fr; }
+  .filter { position: static; }
+  .satz, .karte { padding: var(--sp-4); }
+  .schritt { grid-template-columns: 36px minmax(0, 1fr); gap: var(--sp-3); }
+  .schritt::before { width: 36px; height: 36px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}

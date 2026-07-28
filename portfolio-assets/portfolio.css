@@ -83,6 +83,14 @@ summary:focus-visible {
   transform: translateY(0);
 }
 
+/* Icon sheet: referenced by <use>, never rendered on its own. */
+.glyph-sheet {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .masthead {
   overflow: hidden;
   min-height: 100svh;
@@ -122,9 +130,15 @@ summary:focus-visible {
 .masthead__nav {
   display: flex;
   gap: clamp(14px, 2.4vw, 34px);
+  align-items: center;
 }
 
+/* Die Textzeile war 18px hoch und verfehlte damit die Mindestzielgröße.
+   Die Fläche wächst, die Typografie bleibt unverändert. */
 .masthead__nav a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-underline-offset: 4px;
 }
 
@@ -218,6 +232,12 @@ summary:focus-visible {
   --ink: var(--chalk);
 }
 
+/* Sammlung C teilt die helle Fläche mit A und unterscheidet sich über den
+   Akzent — dieselbe Logik, mit der A und B bereits getrennt werden. */
+.collection--mika {
+  --accent: var(--vermilion);
+}
+
 .collection__head {
   min-height: 44svh;
   display: grid;
@@ -266,6 +286,51 @@ summary:focus-visible {
 
 .collection--codex .collection__title i {
   color: var(--acid);
+}
+
+.collection--mika .collection__title i {
+  color: var(--vermilion);
+}
+
+/* Einleitung der Sammlung: erklärt die Herkunftsangabe, bevor die erste
+   Karte sie zeigt. */
+.collection__note {
+  max-width: 62ch;
+  margin: 0;
+  padding: clamp(28px, 4vw, 46px) clamp(20px, 4vw, 64px) 0;
+  color: var(--muted-dark);
+  font-size: clamp(.98rem, 1.3vw, 1.16rem);
+}
+
+.collection__note abbr {
+  text-decoration: none;
+}
+
+/* Herkunftsangabe auf der Karte: welche MXL-Nummern das Ergebnis getragen
+   haben. Eine Nummer bedeutet eine reine Vorlage, mehrere eine Mischung. */
+.work__source {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: clamp(18px, 2.4vw, 26px) 0 0;
+  flex-wrap: wrap;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.work__source-kind {
+  padding: 5px 9px;
+  border: 1px solid currentColor;
+  color: var(--vermilion);
+}
+
+.work__source-ids {
+  color: var(--muted-dark);
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: .06em;
 }
 
 .work {
@@ -347,20 +412,87 @@ summary:focus-visible {
   font-weight: 800;
 }
 
-.work__arrow {
-  display: inline-grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  background: currentColor;
-  color: var(--surface);
-  font-size: 1.25rem;
-  transition: transform 220ms cubic-bezier(.2, .8, .2, 1);
+.work__cta {
+  position: relative;
+  padding-bottom: 4px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
-.work:hover .work__arrow,
-.work:focus-visible .work__arrow {
-  transform: translate(5px, -5px);
+.work__cta::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: currentColor;
+  transition: transform 420ms cubic-bezier(.16, 1, .3, 1);
+  content: "";
+}
+
+.work__arrow {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid currentColor;
+  isolation: isolate;
+}
+
+/* Signal fill wipes up from the baseline the moment the plate is engaged. */
+.work__arrow::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  transform: translateY(100%);
+  background: var(--acid);
+  transition: transform 300ms cubic-bezier(.4, 0, .2, 1);
+  content: "";
+}
+
+.work__arrow-glyph {
+  grid-area: 1 / 1;
+  width: 19px;
+  height: 19px;
+  transition:
+    transform 460ms cubic-bezier(.16, 1, .3, 1),
+    color 180ms linear 90ms;
+}
+
+/* The trailing copy waits off-plate and takes the leader's place on hover. */
+.work__arrow-glyph--trail {
+  transform: translate(-150%, 150%);
+}
+
+.work:hover .work__cta::after,
+.work:focus-visible .work__cta::after,
+.work:active .work__cta::after {
+  transform: scaleX(1);
+}
+
+.work:hover .work__arrow::before,
+.work:focus-visible .work__arrow::before,
+.work:active .work__arrow::before {
+  transform: translateY(0);
+}
+
+.work:hover .work__arrow-glyph,
+.work:focus-visible .work__arrow-glyph,
+.work:active .work__arrow-glyph {
+  transform: translate(150%, -150%);
+  color: var(--carbon);
+}
+
+.work:hover .work__arrow-glyph--trail,
+.work:focus-visible .work__arrow-glyph--trail,
+.work:active .work__arrow-glyph--trail {
+  transform: translate(0, 0);
 }
 
 .work__visual {
@@ -954,6 +1086,465 @@ summary:focus-visible {
   background: #f7f7f2;
 }
 
+/* 11 — inflatable sticker sheet (MXL-051) */
+.spec-puff {
+  position: relative;
+  overflow: hidden;
+  background: #f7f5ef;
+}
+
+.puff-band {
+  position: absolute;
+  top: 42%;
+  left: -6%;
+  width: 112%;
+  height: 26%;
+  transform: rotate(-4deg);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, .72) 18%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(180deg, rgba(17, 19, 15, 0) 56%, rgba(17, 19, 15, .32) 100%),
+    linear-gradient(97deg, #ff87b5 0%, #ffc933 26%, #c6e04f 48%, #4fd39b 68%, #ff8f38 85%, #b98cff 100%);
+}
+
+.puff-dot {
+  position: absolute;
+  display: grid;
+  width: 22%;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background:
+    radial-gradient(120% 90% at 32% 14%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 56%),
+    var(--dot);
+  box-shadow: 0 18px 26px -20px rgba(17, 19, 15, .7);
+  color: var(--dot-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.9rem);
+  font-style: normal;
+  font-weight: 900;
+}
+
+.puff-dot--a { --dot: #ff87b5; --dot-ink: #4a0f26; top: 9%;  left: 11%; }
+.puff-dot--b { --dot: #ffc933; --dot-ink: #422f05; top: 20%; right: 14%; }
+.puff-dot--c { --dot: #b98cff; --dot-ink: #260f47; bottom: 8%; left: 34%; }
+
+/* 12 — organ facade in the dark (MXL-007) */
+.spec-orgel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+  background: #080908;
+}
+
+.orgel-licht {
+  position: absolute;
+  inset: -30% -10% auto;
+  height: 100%;
+  background: radial-gradient(56% 66% at 50% 12%, rgba(244, 241, 233, .16), rgba(244, 241, 233, 0) 68%);
+}
+
+.orgel-reihe {
+  display: flex;
+  width: min(78%, 460px);
+  height: 78%;
+  gap: clamp(4px, .8vw, 10px);
+  align-items: flex-end;
+  justify-content: center;
+  mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+}
+
+.orgel-reihe i {
+  width: clamp(16px, 3vw, 34px);
+  height: var(--h);
+  border-radius: 999px 999px 2px 2px;
+  background: linear-gradient(90deg, #14171a, #39424a 17%, #6f7a84 34%, #cfd8de 47%, #414a52 78%, #14171a);
+}
+
+/* Die drei Turmpfeifen klingen: dieselbe Signalfarbe wie im Projekt selbst. */
+.orgel-reihe i[data-hell] {
+  filter: brightness(1.45);
+  box-shadow: 0 0 26px rgba(252, 116, 221, .3);
+}
+
+/* 13 — accession records on warm paper (MXL-118 + MXL-090 + MXL-113) */
+.spec-saat {
+  display: grid;
+  align-content: center;
+  gap: clamp(14px, 1.8vw, 24px);
+  padding: clamp(22px, 3.4vw, 48px);
+  background: #f7f5ef;
+  color: #11130f;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.saat-satz {
+  display: grid;
+  gap: 8px;
+  padding: clamp(14px, 1.8vw, 22px);
+  /* Der asymmetrische Radius ist die Signatur von MXL-090. */
+  border: 1px solid #ddd9cd;
+  border-radius: 16px 16px 16px 3px;
+  background: #fff;
+}
+
+.saat-satz b {
+  color: #72776d;
+  font-family: "Courier New", monospace;
+  font-size: clamp(.66rem, .82vw, .78rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.saat-satz > span {
+  font-size: clamp(.94rem, 1.35vw, 1.24rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.saat-balken {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff6a2b var(--k), #e8e5da var(--k));
+}
+
+.saat-balken--gut {
+  background: linear-gradient(90deg, #11130f var(--k), #e8e5da var(--k));
+}
+
+.saat-satz em {
+  color: #72776d;
+  font-family: "Courier New", monospace;
+  font-size: clamp(.62rem, .78vw, .74rem);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Der eine Ember des Systems — sonst nirgends. */
+.saat-marker {
+  justify-self: start;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #fff1e9;
+  color: #8a3208;
+}
+
+/* 14 — pastel sky and a forty-week arc (MXL-068 + MXL-079 + MXL-050) */
+.spec-ufer {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(26px, 4vw, 56px);
+  background: linear-gradient(168deg, #dbe6ff 0%, #eef1e8 52%, #ffe9e2 100%);
+  color: #11130f;
+}
+
+.ufer-form {
+  position: absolute;
+  border-radius: 48% 52% 44% 56% / 52% 44% 56% 48%;
+  background: rgba(255, 255, 255, .5);
+}
+
+.ufer-form--a { top: -12%; right: 8%; width: 42%; aspect-ratio: 1; }
+.ufer-form--b { bottom: -16%; left: 4%; width: 34%; aspect-ratio: 1; background: rgba(255, 255, 255, .3); }
+
+.ufer-wort {
+  position: relative;
+  z-index: 2;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.4rem, 8vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: .9;
+}
+
+.ufer-wort i {
+  display: block;
+  font-size: .26em;
+  font-style: normal;
+  letter-spacing: .01em;
+}
+
+/* Vierzig Wochen, drei Trimester, ein Korallzeiger — wie im Projekt. */
+.ufer-bogen {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: clamp(30px, 4vw, 46px);
+  gap: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.ufer-bogen i { flex: 1; background: rgba(255, 255, 255, .82); }
+.ufer-bogen i:nth-child(n+14) { background: rgba(255, 255, 255, .55); }
+.ufer-bogen i:nth-child(n+28) { background: rgba(255, 255, 255, .34); }
+.ufer-bogen i:nth-child(-n+24) { filter: saturate(.4) brightness(.97); }
+
+.ufer-bogen b {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60%;
+  width: 3px;
+  border-radius: 999px;
+  background: #fa7864;
+}
+
+/* 15 — the water column (MXL-040) */
+.spec-tiefe {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-content: space-between;
+  padding: clamp(22px, 3vw, 44px) clamp(20px, 2.6vw, 40px);
+  background: linear-gradient(180deg, #123f52, #0d2b3d 26%, #081726 58%, #030608);
+  color: #f4f1e9;
+  font-family: "Courier New", monospace;
+}
+
+.tiefe-zone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(244, 241, 233, .22);
+  font-size: clamp(.66rem, .82vw, .78rem);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.tiefe-zone b { font-weight: 700; }
+.tiefe-zone i { color: rgba(244, 241, 233, .55); font-style: normal; }
+
+/* Die Einsatzgrenze ist der einzige Ort mit Signalfarbe. */
+.tiefe-marke {
+  position: relative;
+  z-index: 2;
+  padding-top: 10px;
+  border-top: 2px solid #8d73ff;
+  color: #8d73ff;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.tiefe-schnee { position: absolute; inset: 0; z-index: 1; }
+
+.tiefe-schnee i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(244, 241, 233, .45);
+}
+
+.tiefe-schnee i:nth-child(1) { top: 12%; left: 22%; }
+.tiefe-schnee i:nth-child(2) { top: 28%; left: 68%; }
+.tiefe-schnee i:nth-child(3) { top: 41%; left: 39%; }
+.tiefe-schnee i:nth-child(4) { top: 53%; left: 81%; }
+.tiefe-schnee i:nth-child(5) { top: 64%; left: 14%; }
+.tiefe-schnee i:nth-child(6) { top: 72%; left: 57%; }
+.tiefe-schnee i:nth-child(7) { top: 84%; left: 33%; }
+.tiefe-schnee i:nth-child(8) { top: 91%; left: 74%; }
+
+/* 16 — record on pure black (MXL-147) */
+.spec-platte {
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 3.4vw, 56px);
+  background: #000;
+}
+
+.platte-scheibe {
+  position: relative;
+  display: grid;
+  width: min(80%, 380px);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, #0b0b0b 0, #0b0b0b 2px, #161616 2px, #161616 4px),
+    #0b0b0b;
+  /* Der eine Schatten der Vorlage: 0 4px 74px #7e2d2d87 */
+  box-shadow: 0 4px 74px #7e2d2d87;
+}
+
+.platte-scheibe::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 66%, rgba(255, 255, 255, .1) 88%, rgba(255, 255, 255, 0));
+  content: "";
+}
+
+/* Das Mittelloch sitzt in der Mitte — der Text muss ihm ausweichen,
+   sonst steht das Loch mitten im Wort. */
+.platte-label {
+  position: relative;
+  display: grid;
+  width: 38%;
+  aspect-ratio: 1;
+  place-content: center;
+  gap: 26%;
+  border-radius: 50%;
+  background: #fff6df;
+  color: #16120c;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.platte-label b { font-size: clamp(.72rem, 1.1vw, 1rem); font-weight: 900; letter-spacing: -.01em; line-height: 1.02; }
+.platte-label i { color: #ff002f; font-size: clamp(.56rem, .8vw, .7rem); font-style: normal; font-weight: 700; letter-spacing: .1em; }
+
+.platte-label::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #000;
+  content: "";
+}
+
+/* 17 — a marbling bath under poster type (MXL-022 + MXL-040) */
+.spec-marmor {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #ece6d4;
+  color: #11130f;
+}
+
+/* Tropfen verdrängen einander: harte Ränder, keine Verläufe — wie im
+   Verdrängungsmodell der Website. Die Kleisterstreifen darüber sind die
+   Spur des Kamms. */
+.marmor-bad {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(236, 230, 212, 0) 0 24px, rgba(236, 230, 212, .5) 24px 27px),
+    radial-gradient(26% 30% at 76% 16%, #ece6d4 0 34%, #2e4076 34% 99%, transparent 100%),
+    radial-gradient(21% 24% at 20% 24%, #587f63 0 99%, transparent 100%),
+    radial-gradient(24% 27% at 46% 64%, #23241f 0 30%, #d2799f 30% 99%, transparent 100%),
+    radial-gradient(19% 22% at 84% 68%, #d9b94a 0 99%, transparent 100%),
+    radial-gradient(11% 13% at 32% 84%, #23241f 0 99%, transparent 100%),
+    radial-gradient(14% 16% at 60% 26%, #d9b94a 0 99%, transparent 100%),
+    radial-gradient(16% 18% at 10% 62%, #2e4076 0 99%, transparent 100%),
+    radial-gradient(12% 14% at 90% 38%, #d2799f 0 99%, transparent 100%);
+}
+
+/* Die Papierkontur hinter der Tusche — derselbe Griff wie auf dem Plakat. */
+.marmor-wort {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.4vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: .92;
+  text-transform: uppercase;
+}
+
+.marmor-wort b {
+  display: block;
+  -webkit-text-stroke: 6px #f7f5ef;
+  font-weight: 900;
+  paint-order: stroke fill;
+}
+
+.marmor-wort b:nth-child(2) { margin-left: .55em; }
+.marmor-wort b:nth-child(3) { margin-left: .18em; }
+
+.marmor-zettel {
+  position: absolute;
+  z-index: 2;
+  bottom: 9%;
+  left: 8%;
+  padding: 6px 10px;
+  border: 1px solid rgba(17, 19, 15, .16);
+  border-radius: 8px;
+  background: #f7f5ef;
+  font-family: "Courier New", monospace;
+  font-size: clamp(.6rem, .76vw, .72rem);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* 18 — BLANK Oberflächentechnik: Chrom auf Nacht, harter Schnitt in Papier. */
+.spec-chromschnitt {
+  display: grid;
+  grid-template-rows: 1.6fr 1fr;
+  width: 100%;
+  min-height: 100%;
+}
+
+.spec-chromschnitt .chromschnitt-wort {
+  display: grid;
+  place-items: center;
+  background: #0a0b0a;
+  padding: clamp(24px, 3vw, 48px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.04em;
+  /* Poster-Chrom der Website: Verlauf als stehende Vertretung der
+     gerechneten WebGL-Fläche. Der Verlauf wird auf die Höhe der Zeile
+     gestaucht — über die ganze Platte gespannt träfe die Schrift nur das
+     dunkle Mittelstück und bliebe ein Fleck. */
+  background-image: linear-gradient(177deg,
+    #2c2d2b 0%, #babcb4 20%, #fdfdfa 33%, #6f716b 46%,
+    #191a18 55%, #8d8f88 68%, #dfe0da 82%, #3a3b38 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 1.05em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-color: #0a0b0a;
+}
+
+.spec-chromschnitt .chromschnitt-galerie {
+  display: grid;
+  align-content: space-evenly;
+  gap: 0;
+  background: #f4f1e9;
+  padding: clamp(12px, 1.6vw, 24px) clamp(24px, 3vw, 48px);
+}
+
+.spec-chromschnitt .chromschnitt-galerie i {
+  display: block;
+  height: 1px;
+  background: #d9d5c9;
+  position: relative;
+}
+
+.spec-chromschnitt .chromschnitt-galerie i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 22%;
+  height: 5px;
+  background: #11130f;
+}
+
+.spec-chromschnitt .chromschnitt-galerie i:last-child::after {
+  background: #ff342e;
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);
@@ -1084,6 +1675,9 @@ summary:focus-visible {
 }
 
 .site-footer__meta a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-underline-offset: 4px;
 }
 

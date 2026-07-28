@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musterbuch – WOLKENKAMM Werkstatt für Marmorpapier</title>
+<meta name="description" content="Sechs klassische Marmormuster von Steinmarmor bis Bukett — jedes mit seiner Schrittfolge, im Browser aus denselben Handgriffen gerechnet.">
+<meta name="theme-color" content="#F7F5EF">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/lexend-exa-normal-700-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/familjen-grotesk-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fragment-mono-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/werkstatt.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <a class="marke" href="index.html" aria-label="Wolkenkamm, zur Startseite">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M3.5 19c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#2E4076" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path d="M3.5 24.5c4.2-3.2 8.3 3.2 12.5 0s8.3 3.2 12.5 0" stroke="#D2799F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="21.5" cy="9" r="4.6" fill="#11130F"/>
+    </svg>
+    <span aria-hidden="true"><b>Wolkenkamm</b><span>Werkstatt für Marmorpapier · Aschaffenburg</span></span>
+  </a>
+  <button class="menuetaste" data-menuetaste aria-expanded="false" aria-controls="menue">Menü</button>
+  <nav class="menue" id="menue" aria-label="Hauptnavigation">
+    <a href="index.html">Werkstatt</a>
+    <a href="bad.html">Marmorierbad</a>
+    <a href="muster.html" aria-current="page">Musterbuch</a>
+  </nav>
+</header>
+
+<main id="inhalt">
+  <div class="blatt">
+    <span class="mono">Sechs Klassiker, eine Wanne</span>
+    <h1 class="h2">Das Musterbuch</h1>
+    <p class="lead">Marmormuster sind Schrittfolgen: dieselben Tropfen,
+      andere Züge. Die sechs Bögen unten rechnet Ihr Browser mit einer
+      festgehaltenen Folge — die Schritte stehen unter jedem Bogen. In der
+      Wanne der Werkstatt entsteht daraus je Bad eine Auflage von etwa
+      fünfundzwanzig Bögen, keiner wie der andere.</p>
+  </div>
+
+  <section class="bahn bahn--eng" aria-label="Musterübersicht">
+    <div class="mitte">
+      <div class="musterliste">
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="stein" data-saat="103" aria-label="Musterbogen Steinmarmor: gesprenkelte Steine mit hellen Adern."></canvas>
+            <figcaption class="zettelchen">Nur gestreut</figcaption>
+          </figure>
+          <h3 class="h3">Steinmarmor</h3>
+          <p>Das älteste Muster des Buchbinderhandwerks: Farbe auf Farbe
+            gestreut, bis das Bad voll steht, zuletzt Gallwasser — es drängt
+            die Tropfen zu Steinen mit hellen Adern auseinander. Standard für
+            Vorsätze des 18. und 19. Jahrhunderts.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=stein">Im Bad weiterziehen</a>
+        </article>
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="gelgit" data-saat="221" aria-label="Musterbogen Gel-Git: gegeneinander gekämmte Bahnen."></canvas>
+            <figcaption class="zettelchen">Kamm quer + längs</figcaption>
+          </figure>
+          <h3 class="h3">Gel-Git</h3>
+          <p>Türkisch für „komm — geh“: Der Kamm fährt einmal quer und einmal
+            längs durchs Bad. Aus Steinen werden gegeneinander laufende
+            Spitzen — die Grundlage fast aller weiteren Züge und das
+            Alphabet jeder Marmoriererin.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=gelgit">Im Bad weiterziehen</a>
+        </article>
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="nonpareille" data-saat="317" aria-label="Musterbogen Nonpareille: feine, gefiederte Säulen."></canvas>
+            <figcaption class="zettelchen">Feinkamm, 16 mm</figcaption>
+          </figure>
+          <h3 class="h3">Nonpareille</h3>
+          <p>„Ohnegleichen“: Nach dem Gel-Git zieht ein enger Kamm alle
+            Bahnen in gefiederte Säulen. Das Muster der Amtsstuben —
+            unzählige Akten des 19. Jahrhunderts tragen es auf dem
+            Schnitt, weil jede Fälschung die Federn bricht.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=nonpareille">Im Bad weiterziehen</a>
+        </article>
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="wellen" data-saat="433" aria-label="Musterbogen Wellenkamm: Nonpareille mit schwingender Welle."></canvas>
+            <figcaption class="zettelchen">Welle über Nonpareille</figcaption>
+          </figure>
+          <h3 class="h3">Wellenkamm</h3>
+          <p>Eine breite Welle legt sich über die Nonpareille-Säulen und
+            bringt den ganzen Bogen zum Schwingen. In alten Musterbüchern
+            auch „Ondé“ — beliebt für Überzüge, weil das Muster jede
+            Buchkante weich umläuft.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=wellen">Im Bad weiterziehen</a>
+        </article>
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="schnecke" data-saat="1291" aria-label="Musterbogen Schneckenmarmor: eingedrehte Wirbel."></canvas>
+            <figcaption class="zettelchen">Wirbel im Raster</figcaption>
+          </figure>
+          <h3 class="h3">Schneckenmarmor</h3>
+          <p>Der Stift dreht das gekämmte Bad Wirbel für Wirbel ein — in
+            Frankreich „Tourniquet“. Jede Schnecke braucht eine ruhige
+            Hand: Wer zu schnell dreht, reißt den Grund und die Mitte
+            läuft leer.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=schnecke">Im Bad weiterziehen</a>
+        </article>
+
+        <article class="muster" data-muster-halter>
+          <figure>
+            <canvas data-muster="bouquet" data-saat="659" aria-label="Musterbogen Bukett: gebogte Säulen wie Blumensträuße."></canvas>
+            <figcaption class="zettelchen">Bogenwurf, fein</figcaption>
+          </figure>
+          <h3 class="h3">Bukett</h3>
+          <p>Ein feiner Bogenwurf gegen die Kammrichtung staucht die Säulen
+            zu kleinen Sträußen — im Englischen „Bouquet“. Das
+            anspruchsvollste unserer Muster: Die Werkstatt rechnet mit
+            jedem fünften Bogen als Ausschuss.</p>
+          <details>
+            <summary>Schrittfolge lesen</summary>
+            <ol data-muster-zettel></ol>
+          </details>
+          <a class="taste" href="bad.html?muster=bouquet">Im Bad weiterziehen</a>
+        </article>
+
+      </div>
+
+      <div class="nachsatz">
+        <p class="still" style="margin:0; max-width: 60ch">Die Musterbögen oben sind
+          gerechnete Lehrstücke mit festgehaltener Saat — deshalb sehen sie bei
+          jedem Besuch gleich aus. Was die Wanne wirklich hergibt, zeigt die
+          <a href="index.html">Werkstattseite</a>: Dort wird bei jedem Aufruf
+          neu geschöpft.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss__mitte">
+    <div>
+      <h2>Wolkenkamm</h2>
+      <address>
+        Werkstatt für Marmorpapier<br>
+        Fabrikgasse 11<br>
+        63739 Aschaffenburg<br>
+        <a href="mailto:bad@wolkenkamm.example">bad@wolkenkamm.example</a>
+      </address>
+    </div>
+    <div>
+      <h2>Werkstattverkauf</h2>
+      <p>Freitags 14–18 Uhr,<br>solange der Stapel reicht.<br>
+        Kurse samstags nach Ankündigung.</p>
+    </div>
+    <div>
+      <h2>Seiten</h2>
+      <ul>
+        <li><a href="index.html">Werkstatt</a></li>
+        <li><a href="bad.html">Marmorierbad</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Rechtliches</h2>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fuss__demo">
+    Demonstrationsseite. Werkstatt, Personen, Adressen und Preise sind frei
+    erfunden; Musternamen und Handgriffe folgen der Literatur zum
+    Buchbinderhandwerk und sind vereinfacht. Gestaltung nach Mika UX Library
+    <b>MXL-022</b> + <b>MXL-040</b>.
+  </p>
+</footer>
+
+<script src="assets/marmor.js" defer></script>
+</body>
+</html>

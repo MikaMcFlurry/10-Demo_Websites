@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laufzeitrechner – SCHWARZWERK Presswerk</title>
+<meta name="description" content="Passt eine Seite auf Ihr Format? Der Rechner sagt für 12″, 10″ und 7″ bei 33⅓ und 45 U/min, wo die Grenze liegt und was Länge an Pegel kostet.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Laufzeitrechner – SCHWARZWERK Presswerk">
+<meta property="og:description" content="Passt eine Seite auf Ihr Format? Der Rechner sagt für 12″, 10″ und 7″ bei 33⅓ und 45 U/min, wo die Grenze liegt und was Länge an Pegel kostet.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/baloo-2-normal-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/presswerk.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="kopf__reihe">
+    <a class="marke" href="index.html" aria-label="Schwarzwerk Presswerk, zur Startseite">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" fill="#0b0b0b"/>
+        <circle cx="16" cy="16" r="11" fill="none" stroke="#2a2c2f"/>
+        <circle cx="16" cy="16" r="8" fill="none" stroke="#2a2c2f"/>
+        <circle cx="16" cy="16" r="5" fill="#fff6df"/>
+        <circle cx="16" cy="16" r="1.4" fill="#000"/>
+      </svg>
+      Schwarzwerk
+    </a>
+
+    <button class="menuetaste" aria-expanded="false" aria-controls="menue">Menü</button>
+
+    <nav class="menue" id="menue" aria-label="Hauptnavigation">
+      <a href="index.html">Werk</a>
+      <a href="rechner.html" aria-current="page">Laufzeit</a>
+      <a href="auflage.html">Auflage</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <section class="bahn bahn--eng">
+    <div class="spalte">
+      <p class="label">Laufzeitrechner</p>
+      <h1 class="h1" style="margin: var(--sp-3) 0">Passt meine Seite?</h1>
+      <p class="lead">
+        Die häufigste Frage, und sie hat eine Antwort. Je länger eine Seite,
+        desto enger muss die Rille laufen — und desto leiser wird die Platte.
+      </p>
+    </div>
+  </section>
+
+  <section class="bahn bahn--linie" aria-labelledby="rech-t">
+    <div class="spalte">
+      <h2 class="h2" id="rech-t" style="margin-bottom: var(--sp-4)">Rechnen</h2>
+
+      <div class="rechner" data-rechner>
+        <div>
+          <div class="feld">
+            <label for="format">Format</label>
+            <select id="format">
+              <option value="12" selected>12 Zoll</option>
+              <option value="10">10 Zoll</option>
+              <option value="7">7 Zoll</option>
+            </select>
+          </div>
+
+          <div class="feld">
+            <span id="rpm-t">Drehzahl</span>
+            <div class="knopfreihe" role="group" aria-labelledby="rpm-t">
+              <button type="button" aria-pressed="true" data-rpm="33">33⅓ U/min</button>
+              <button type="button" aria-pressed="false" data-rpm="45">45 U/min</button>
+            </div>
+          </div>
+
+          <div class="feld">
+            <label for="minuten">Spielzeit dieser Seite</label>
+            <div style="display:flex; gap: var(--sp-2); align-items:center">
+              <input type="number" id="minuten" min="0" max="30" step="1" value="19" inputmode="numeric" aria-label="Minuten">
+              <span aria-hidden="true">:</span>
+              <input type="number" id="sekunden" min="0" max="59" step="1" value="30" inputmode="numeric" aria-label="Sekunden">
+            </div>
+            <p class="hinweis">Eine Seite, nicht das ganze Album. Bei zwei Seiten rechnen Sie zweimal.</p>
+          </div>
+
+          <div class="prose">
+            <p>
+              <b>Warum die Länge Pegel kostet.</b> Auf einer Plattenseite ist
+              der Platz fest. Wer mehr Zeit unterbringen will, muss die Rillen
+              enger legen. Enge Rillen vertragen weniger Auslenkung, und
+              Auslenkung ist Lautstärke — vor allem im Bass, der die breitesten
+              Bewegungen macht.
+            </p>
+            <p>
+              <b>Warum die Reihenfolge zählt.</b> Außen läuft die Rille schneller
+              am Abtaster vorbei als innen. Deshalb klingt der letzte Titel einer
+              Seite grundsätzlich etwas schlechter als der erste. Wer einen
+              lauten, dichten Titel hat, setzt ihn nach außen.
+            </p>
+            <p>
+              <b>Was der Rechner nicht kann.</b> Er kennt Ihr Material nicht.
+              Ein dichtes, bassbetontes Mastering braucht mehr Platz als eine
+              Solostimme. Die Zahlen hier sind Erfahrungswerte unseres Schnitts,
+              keine Zusage.
+            </p>
+          </div>
+        </div>
+
+        <div class="befund" data-befund data-lage="gut">
+          <p class="label" style="color:#5c554a">Befund</p>
+          <p class="befund__stand" data-stand>—</p>
+
+          <div class="rille" aria-hidden="true"><span data-rille></span></div>
+
+          <dl>
+            <dt>Spielzeit</dt><dd data-spielzeit>—</dd>
+            <dt>Komfortabel / hart</dt><dd data-grenze>—</dd>
+            <dt>Pegelreserve</dt><dd data-pegel>—</dd>
+          </dl>
+
+          <p data-satz>—</p>
+
+          <p data-live role="status" aria-live="polite" style="position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%)"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bahn bahn--linie" aria-labelledby="tab-t">
+    <div class="spalte">
+      <p class="label">Zum Nachschlagen</p>
+      <h2 class="h2" id="tab-t" style="margin: var(--sp-2) 0 var(--sp-4)">Grenzen je Format</h2>
+
+      <div class="rolle">
+        <table class="tafel">
+          <caption>Spielzeit je Seite. „Komfortabel“ heißt volle Rillenbreite ohne Pegelverzicht.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Format</th>
+              <th scope="col">Drehzahl</th>
+              <th scope="col">Komfortabel</th>
+              <th scope="col">Nach Rücksprache</th>
+              <th scope="col">Harte Grenze</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">12 Zoll</th><td>33⅓</td><td class="hell">18:00</td><td>22:00</td><td>26:00</td></tr>
+            <tr><th scope="row">12 Zoll</th><td>45</td><td class="hell">12:00</td><td>15:00</td><td>18:00</td></tr>
+            <tr><th scope="row">10 Zoll</th><td>33⅓</td><td class="hell">13:00</td><td>16:00</td><td>19:00</td></tr>
+            <tr><th scope="row">10 Zoll</th><td>45</td><td class="hell">9:00</td><td>11:00</td><td>13:00</td></tr>
+            <tr><th scope="row">7 Zoll</th><td>33⅓</td><td class="hell">6:00</td><td>7:30</td><td>9:00</td></tr>
+            <tr><th scope="row">7 Zoll</th><td>45</td><td class="hell">4:30</td><td>5:30</td><td>7:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="merk" style="margin-top: var(--sp-5)">
+        <p>
+          <b>45 U/min klingt besser und passt weniger.</b> Bei höherer Drehzahl
+          läuft mehr Rille je Sekunde am Abtaster vorbei — das hebt die
+          Auflösung und kostet Platz. Eine 12″ bei 45 ist deshalb der übliche
+          Weg für Maxi-Singles und der falsche für ein Album.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="spalte">
+    <div class="fuss__mitte">
+      <div>
+        <h2>Schwarzwerk</h2>
+        <address class="muted">
+          Karl-Heine-Straße 84<br>
+          04229 Leipzig<br>
+          <a href="tel:+493419000">+49 341 9000</a><br>
+          <a href="mailto:werk@schwarzwerk-presswerk.example">werk@schwarzwerk-presswerk.example</a>
+        </address>
+      </div>
+      <div>
+        <h2>Annahme</h2>
+        <p class="muted" style="margin:0">
+          Montag bis Donnerstag 8–16 Uhr<br>
+          Freitag 8–12 Uhr<br>
+          Testpressungen nur persönlich
+        </p>
+      </div>
+      <div>
+        <h2>Seiten</h2>
+        <ul>
+          <li><a href="rechner.html">Laufzeitrechner</a></li>
+          <li><a href="auflage.html">Auflage und Vorlauf</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Rechtliches</h2>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fuss__demo">
+      Demonstrationsseite. Werk, Personen, Adressen, Preise und Vorlaufzeiten
+      sind frei erfunden. Die Angaben zu Schnitt, Galvanik und Presse folgen
+      dem üblichen Verfahren und sind gerundet. Gestaltung nach Mika UX Library
+      <b>MXL-147</b>.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/presswerk.js" defer></script>
+</body>
+</html>

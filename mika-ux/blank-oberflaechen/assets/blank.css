@@ -1,0 +1,721 @@
+/* BLANK Oberflächentechnik — Stylesheet nach MXL-045 „Chrome monolith gallery“.
+   Zwei Welten: Nacht-Canvas #0A0B0A für die Chromszene und den Fuß,
+   Papier-Canvas #F4F1E9 für die Galerie. Der Wechsel ist ein Schnitt,
+   kein Übergang. Signalrot streng rationiert. */
+
+@import url("fonts/fonts.css");
+
+:root {
+  --nacht: #0a0b0a;
+  --nacht-panel: #161715;
+  --papier: #f4f1e9;
+  --papier-panel: #fbf9f4;
+  --tinte: #11130f;
+  --licht: #f4f1e9;
+  --gedeckt: #5f5d54;
+  --gedeckt-nacht: #8b8d86;
+  --hairline: #d9d5c9;
+  --hairline-nacht: #262824;
+  --signal: #ff342e;
+
+  --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Fragment Mono", "Courier New", monospace;
+
+  --raster: 1260px;
+  --rand: clamp(20px, 4vw, 48px);
+  --takt: clamp(96px, 12vw, 160px);
+
+  --radius: 10px;
+  --pille: 999px;
+}
+
+* { box-sizing: border-box; }
+
+/* Autoren-Displays (.taste u. a.) dürfen das UA-[hidden] nicht schlagen. */
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection { background: var(--signal); color: var(--licht); }
+
+/* ---------- Grundtypen ---------- */
+
+h1, h2, h3 { margin: 0; font-weight: 640; line-height: 1.05; letter-spacing: -0.02em; }
+
+.display {
+  font-size: clamp(52px, 9vw, 132px);
+  font-weight: 700;
+  font-stretch: 118%;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-size: clamp(30px, 4.5vw, 58px);
+  font-weight: 660;
+  font-stretch: 112%;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.h3 {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 620;
+  font-stretch: 108%;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+p { margin: 0 0 1em; max-width: 68ch; }
+.lead { font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; }
+.gedeckt { color: var(--gedeckt); }
+
+.meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: var(--rand); top: 12px;
+  z-index: 40;
+  background: var(--tinte);
+  color: var(--licht);
+  padding: 12px 20px;
+  border-radius: var(--pille);
+  text-decoration: none;
+  font-size: 15px;
+  transform: translateY(-200%);
+}
+.skip:focus-visible { transform: none; }
+
+.mitte {
+  max-width: var(--raster);
+  margin-inline: auto;
+  padding-inline: var(--rand);
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px var(--rand);
+  max-width: calc(var(--raster) + 2 * var(--rand));
+  margin-inline: auto;
+}
+
+.kopf--nacht {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  color: var(--licht);
+}
+
+.marke {
+  font-weight: 800;
+  font-stretch: 122%;
+  font-size: 21px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.marke small {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  font-weight: 400;
+  color: var(--gedeckt);
+  text-transform: uppercase;
+}
+.kopf--nacht .marke small { color: var(--gedeckt-nacht); }
+
+.menue {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.menue a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--pille);
+  border: 1px solid transparent;
+}
+.menue a:hover { border-color: currentColor; }
+.menue a[aria-current="page"] {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+.kopf--nacht .menue a[aria-current="page"] { color: var(--signal); }
+
+.menuetaste {
+  display: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  border-radius: var(--pille);
+  padding: 10px 18px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .menuetaste { display: inline-flex; align-items: center; }
+  .menue {
+    display: none;
+    position: absolute;
+    top: calc(100% - 6px);
+    right: var(--rand);
+    z-index: 30;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--nacht-panel);
+    color: var(--licht);
+    border: 1px solid var(--hairline-nacht);
+    border-radius: var(--radius);
+    padding: 8px;
+    min-width: 200px;
+  }
+  .kopf:not(.kopf--nacht) { position: relative; }
+  .kopf:not(.kopf--nacht) .menue {
+    background: var(--papier-panel);
+    color: var(--tinte);
+    border-color: var(--hairline);
+  }
+  .menue.offen { display: flex; }
+}
+
+/* ---------- Die Chromszene ---------- */
+
+.buehne {
+  position: relative;
+  min-height: 100svh;
+  background: var(--nacht);
+  color: var(--licht);
+  display: grid;
+  overflow: hidden;
+}
+
+.buehne canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Poster: Ladezustand und Fallback in einem. Der CSS-Chromverlauf ist die
+   stehende Vertretung der gerechneten Fläche — bewusst Material, kein Dekor. */
+.buehne__poster {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-inline: var(--rand);
+  pointer-events: none;
+}
+.buehne__poster span {
+  font-size: clamp(64px, 17vw, 290px);
+  font-weight: 850;
+  font-stretch: 122%;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(
+    177deg,
+    #2c2d2b 0%,
+    #babcb4 20%,
+    #fdfdfa 33%,
+    #6f716b 46%,
+    #191a18 55%,
+    #8d8f88 68%,
+    #dfe0da 82%,
+    #3a3b38 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.buehne.ist-live .buehne__poster { visibility: hidden; }
+
+.buehne__fuss {
+  position: relative;
+  z-index: 10;
+  align-self: end;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 0 var(--rand) clamp(24px, 4vh, 48px);
+  max-width: calc(var(--raster) + 2 * var(--rand));
+  margin-inline: auto;
+  width: 100%;
+}
+
+.buehne__claim { max-width: 44ch; }
+.buehne__claim .lead { margin: 10px 0 0; color: var(--licht); }
+.buehne__claim .meta { color: var(--gedeckt-nacht); }
+
+.buehne__aktionen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.buehne__status {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gedeckt-nacht);
+}
+
+.taste {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border-radius: var(--pille);
+  font-size: 16px;
+  font-weight: 560;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.taste--voll { background: var(--signal); color: var(--tinte); }
+.taste--voll:hover { background: #ff544f; }
+.taste--kontur { border-color: var(--gedeckt-nacht); color: var(--licht); background: none; }
+.taste--kontur:hover { border-color: var(--licht); }
+.taste--kontur-hell { border-color: var(--gedeckt); color: var(--tinte); background: none; font: inherit; }
+.taste--kontur-hell:hover { border-color: var(--tinte); }
+
+@media (max-width: 760px) {
+  .buehne__aktionen { align-items: flex-start; }
+}
+
+/* ---------- Die helle Halle ---------- */
+
+.halle { background: var(--papier); }
+
+.abschnitt { padding-block: var(--takt); }
+.abschnitt + .abschnitt { padding-top: 0; }
+
+.kicker {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--tinte);
+  padding-top: 14px;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+.kicker .meta { color: var(--gedeckt); text-align: right; }
+@media (max-width: 640px) {
+  .kicker { flex-direction: column; gap: 10px; }
+  .kicker .meta { text-align: left; }
+  .kicker .meta br { display: none; }
+}
+
+/* Exponate: volle Zeilen mit Hairlines, keine Kartenraster. */
+
+.exponat {
+  display: grid;
+  grid-template-columns: minmax(72px, 130px) minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 48px);
+  border-top: 1px solid var(--hairline);
+  padding-block: clamp(28px, 4vw, 44px);
+}
+.exponat:last-of-type { border-bottom: 1px solid var(--hairline); }
+
+.exponat__lage {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gedeckt);
+  line-height: 1.5;
+}
+.exponat__lage b {
+  display: block;
+  font-size: 26px;
+  letter-spacing: 0;
+  color: var(--tinte);
+  font-weight: 400;
+}
+
+.exponat__titel { margin-bottom: 10px; }
+/* Trefferfläche ≥ 44px: Padding hebt, negativer Margin gleicht optisch aus. */
+.exponat__titel a {
+  text-decoration: none;
+  display: inline-block;
+  padding-block: 10px;
+  margin-block: -10px;
+}
+.exponat__titel a:hover { color: var(--signal); }
+.exponat p { margin-bottom: 0; }
+
+.exponat__daten {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.exponat__daten div {
+  display: grid;
+  grid-template-columns: minmax(110px, 40%) 1fr;
+  gap: 12px;
+  border-bottom: 1px dotted var(--hairline);
+  padding-bottom: 8px;
+}
+.exponat__daten dt, .exponat__daten span:first-child { color: var(--gedeckt); }
+
+@media (max-width: 860px) {
+  .exponat { grid-template-columns: 1fr; gap: 14px; }
+  .exponat__lage b { display: inline; margin-right: 8px; }
+}
+
+/* ---------- Schichtaufbau ---------- */
+
+.aufbau {
+  background: var(--papier-panel);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.aufbau__leiste {
+  display: flex;
+  width: 100%;
+  height: 96px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-block: 24px 8px;
+}
+.aufbau__schicht {
+  min-width: 2px;
+  display: grid;
+  place-items: center;
+  transition: flex-basis 640ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.aufbau__schicht--stahl { background: #494b47; }
+.aufbau__schicht--kupfer { background: #b0724a; }
+.aufbau__schicht--nickel { background: #a8aaa2; }
+.aufbau__schicht--chrom {
+  background: linear-gradient(180deg, #f2f3f0 0%, #9fa19b 45%, #e8e9e5 100%);
+}
+
+.aufbau__legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--gedeckt);
+  margin-bottom: 24px;
+}
+.aufbau__legende b { color: var(--tinte); font-weight: 400; }
+.aufbau__legende .punkt {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  margin-right: 7px;
+  vertical-align: baseline;
+}
+
+.aufbau__fuss {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+/* Keine Versalien für die Ansage: aus „µm“ würde sonst „MM“ —
+   eine falsche Einheit. */
+.aufbau__fuss .meta {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 12.5px;
+  max-width: 44ch;
+}
+
+/* ---------- Datenreihen (Zahlen ohne Heldenkarten) ---------- */
+
+.reihe {
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  padding-block: 14px;
+  align-items: baseline;
+}
+.reihe:last-child { border-bottom: 1px solid var(--hairline); }
+.reihe b {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 15px;
+  white-space: nowrap;
+  text-align: right;
+}
+.reihe span { color: var(--gedeckt); }
+@media (max-width: 640px) {
+  .reihe b { white-space: normal; max-width: 55vw; }
+}
+
+/* ---------- Tabellen ---------- */
+
+.tafel { width: 100%; border-collapse: collapse; font-size: 15px; }
+.tafel caption {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gedeckt);
+  padding-bottom: 12px;
+}
+.tafel th {
+  text-align: left;
+  font-weight: 560;
+  border-bottom: 1px solid var(--tinte);
+  padding: 8px 16px 8px 0;
+}
+.tafel td {
+  border-bottom: 1px solid var(--hairline);
+  padding: 10px 16px 10px 0;
+  vertical-align: top;
+}
+.tafel td.zahl, .tafel th.zahl { font-family: var(--mono); font-size: 13.5px; white-space: nowrap; }
+
+.tafel-rolle { overflow-x: auto; }
+.tafel-rolle .tafel { min-width: 640px; }
+
+/* ---------- Rechner ---------- */
+
+.rechner {
+  background: var(--nacht);
+  color: var(--licht);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 48px);
+}
+.rechner h3 { color: var(--licht); }
+.rechner .gedeckt { color: var(--gedeckt-nacht); }
+
+.rechner__raster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+  margin-block: 28px;
+}
+@media (max-width: 760px) {
+  .rechner__raster { grid-template-columns: 1fr; }
+}
+
+.feld label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gedeckt-nacht);
+  margin-bottom: 8px;
+}
+.feld input {
+  width: 100%;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 20px;
+  background: var(--nacht-panel);
+  color: var(--licht);
+  border: 1px solid var(--hairline-nacht);
+  border-radius: 8px;
+  padding: 12px 14px;
+  min-height: 48px;
+}
+.feld input:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.feld .spanne {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gedeckt-nacht);
+  display: block;
+  margin-top: 6px;
+}
+
+.rechner__ergebnis {
+  border-top: 1px solid var(--hairline-nacht);
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.rechner__ergebnis .meta { color: var(--gedeckt-nacht); margin-bottom: 6px; }
+.rechner__wert {
+  font-family: var(--mono);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.1;
+}
+.rechner__wert small { font-size: 0.55em; color: var(--gedeckt-nacht); }
+.rechner__hinweis {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border: 1px solid var(--hairline-nacht);
+  border-radius: 8px;
+  color: var(--gedeckt-nacht);
+  max-width: none;
+}
+.rechner__hinweis.ist-grenze { border-color: var(--signal); color: var(--licht); }
+
+/* ---------- Merkkasten / Grenzen ---------- */
+
+.merk {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--papier-panel);
+  padding: 20px 24px;
+  margin-block: 24px;
+}
+.merk p:last-child { margin-bottom: 0; }
+
+.grenzen { list-style: none; margin: 0; padding: 0; }
+.grenzen li {
+  border-top: 1px solid var(--hairline);
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 16px;
+}
+.grenzen li:last-child { border-bottom: 1px solid var(--hairline); }
+/* Keine Versalien: aus „500 µm“ würde „500 MM“ — eine falsche Einheit. */
+.grenzen b {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: var(--gedeckt);
+}
+.grenzen p { margin: 0; }
+@media (max-width: 640px) {
+  .grenzen li { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* ---------- Zweispalter ---------- */
+
+.duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+@media (max-width: 860px) { .duo { grid-template-columns: 1fr; } }
+
+/* ---------- Fuß ---------- */
+
+.fuss {
+  background: var(--nacht);
+  color: var(--licht);
+  margin-top: var(--takt);
+  padding-block: clamp(48px, 8vw, 96px) 32px;
+}
+.fuss a { color: inherit; }
+.fuss h2 {
+  font-size: 15px;
+  font-weight: 560;
+  margin-bottom: 14px;
+}
+.fuss__raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { margin-bottom: 8px; }
+.fuss address { font-style: normal; color: var(--gedeckt-nacht); }
+.fuss .gedeckt, .fuss p { color: var(--gedeckt-nacht); }
+.fuss__demo {
+  max-width: none;
+  margin: 48px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline-nacht);
+  font-size: 13.5px;
+  color: var(--gedeckt-nacht);
+}
+.fuss__demo b { color: var(--licht); font-weight: 500; }
+
+/* ---------- Unterseiten-Kopfzeile ---------- */
+
+.seitenkopf { padding-block: clamp(48px, 8vw, 96px) 0; }
+.seitenkopf .meta { color: var(--gedeckt); margin-bottom: 16px; }
+.seitenkopf .lead { margin-top: 20px; }
+
+/* ---------- Rechtsseiten ---------- */
+
+.recht { max-width: 68ch; }
+.recht h2 { margin: 52px 0 10px; }
+.recht h3 { margin: 26px 0 6px; font-size: 19px; }
+.recht p { margin-bottom: 14px; }
+.recht ul { margin: 0 0 14px; padding-left: 22px; }
+.recht li { margin-bottom: 6px; }
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -2,7 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master, claude/create-three-demo-sites-T1HN9, claude/portfolio-websites-five-qda4ge]
+    branches:
+      - claude/github-pages-business-demos-ZhnfF
+      - claude/create-three-demo-sites-T1HN9
+      - claude/portfolio-websites-five-qda4ge
+      - claude/portfolio-ux-library-pkj4xy
   workflow_dispatch:
 
 permissions:
@@ -77,6 +81,10 @@ jobs:
       - name: Copy showcase sites
         run: cp -r showcase ./pages-dist/showcase
 
+      # ── Sammlung C: Ableitungen aus der Mika UX Library ───────────────────
+      - name: Copy Mika UX Library sites
+        run: cp -r mika-ux ./pages-dist/mika-ux
+
       - name: Validate static showcase
         run: node scripts/validate-static-showcase.mjs ./pages-dist
 
@@ -88,7 +96,13 @@ jobs:
         with:
           path: ./pages-dist
 
+  # Die Pages-Umgebung nimmt Deployments nur vom Default-Branch an. Auf
+  # Arbeitsbranches läuft deshalb nur der Build — der prüft Framework-Builds
+  # und Validator und ist genau das, was dort gebraucht wird. Ohne diese
+  # Bedingung scheiterte der Deploy-Job dort nach einer Sekunde und färbte
+  # jeden Push rot, obwohl nichts kaputt war.
   deploy:
+    if: github.ref == 'refs/heads/claude/github-pages-business-demos-ZhnfF'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
