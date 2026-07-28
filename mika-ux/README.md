@@ -25,6 +25,7 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 | # | Site | Branche | Form | Schriften | Herkunft |
 |---:|---|---|---|---|---|
 | 11 | [`sprudelwerk`](sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Anybody, Figtree | `MXL-051` |
+| 12 | [`vehring-orgelbau`](vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Unbounded, Instrument Sans, Spline Sans Mono | `MXL-007` |
 
 ### 11 — SPRUDELWERK
 
@@ -42,6 +43,27 @@ Sechs Seiten: Bogen, Sorten (mit Mischpult für die fünfzehn abgefüllten Paare
 Manufaktur, Kiosk (mit Kistenrechner für Ware und Pfand), Impressum,
 Datenschutz. Mischpult und Rechner laufen ausschließlich im Browser und haben
 einen Fallback ohne JavaScript.
+
+### 12 — VEHRING Orgelbau
+
+`MXL-007` („Datalands“, *Black cathedral*) verlangt eine monumentale Wortmarke,
+Mono-Metadaten und weiche Kapselkontrollen auf einem zweistufigen Schwarzsystem,
+mit einem einzigen, streng rationierten Akzent.
+
+Übersetzt in eine Orgelbauwerkstatt: Die Seite ist ein Kirchenraum nach
+Einbruch der Dunkelheit. Der Prospekt aus 25 Zinnpfeifen ist kein Bild —
+jede Pfeife ist ein Element mit Zylinderverlauf über die Breite, Spekularstrich
+und Labium; Höhe und Breite kommen aus `--h` und `--w`. Das Rosa der Referenz
+erscheint nur an vier Stellen: Fokus, aktive Seite, eine Hauptaktion und die
+Pfeifen, die gerade klingen.
+
+Sechs Seiten. Der **Registerzug** auf `disposition.html` schaltet 24 Register
+und rechnet Pfeifenzahl und Windbedarf mit: Volles Werk verlangt 45,6 m³/min,
+das Gebläse liefert 42 — die Tafel sagt das auch. Gezogene Prospektregister
+lassen die zugehörigen Pfeifen im Prospekt aufleuchten. Der **Mensurrechner**
+auf `verfahren.html` rechnet aus Taste und Fußtonlage die klingende Frequenz
+und die Länge der offenen Labialpfeife (halbe Wellenlänge bei 20 °C) samt
+Mündungskorrektur.
 
 ## Technische Leitplanken
 

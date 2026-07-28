@@ -20,6 +20,7 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 | 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Codex |
 | 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | Codex |
 | 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Mika UX Library |
+| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Mika UX Library |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -47,6 +48,7 @@ Vorlagen, die das Ergebnis beeinflusst haben.
 | # | Projekt | Branche | Gestalterische Form | Herkunft |
 |---:|---|---|---|---|
 | 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen | `MXL-051` |
+| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale | `MXL-007` |
 
 Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
 wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter

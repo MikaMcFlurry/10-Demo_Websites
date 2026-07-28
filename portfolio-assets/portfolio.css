@@ -1124,6 +1124,45 @@ summary:focus-visible {
 .puff-dot--b { --dot: #ffc933; --dot-ink: #422f05; top: 20%; right: 14%; }
 .puff-dot--c { --dot: #b98cff; --dot-ink: #260f47; bottom: 8%; left: 34%; }
 
+/* 12 — organ facade in the dark (MXL-007) */
+.spec-orgel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+  background: #080908;
+}
+
+.orgel-licht {
+  position: absolute;
+  inset: -30% -10% auto;
+  height: 100%;
+  background: radial-gradient(56% 66% at 50% 12%, rgba(244, 241, 233, .16), rgba(244, 241, 233, 0) 68%);
+}
+
+.orgel-reihe {
+  display: flex;
+  width: min(78%, 460px);
+  height: 78%;
+  gap: clamp(4px, .8vw, 10px);
+  align-items: flex-end;
+  justify-content: center;
+  mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+}
+
+.orgel-reihe i {
+  width: clamp(16px, 3vw, 34px);
+  height: var(--h);
+  border-radius: 999px 999px 2px 2px;
+  background: linear-gradient(90deg, #14171a, #39424a 17%, #6f7a84 34%, #cfd8de 47%, #414a52 78%, #14171a);
+}
+
+/* Die drei Turmpfeifen klingen: dieselbe Signalfarbe wie im Projekt selbst. */
+.orgel-reihe i[data-hell] {
+  filter: brightness(1.45);
+  box-shadow: 0 0 26px rgba(252, 116, 221, .3);
+}
+
 .archive {
   padding: clamp(70px, 10vw, 150px) clamp(20px, 4vw, 64px);
   background: var(--cobalt);
