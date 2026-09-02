@@ -66,6 +66,25 @@ Details stehen in [`mika-ux/README.md`](mika-ux/README.md). Die Herkunftsangabe
 wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter
 `mika-ux/` geprüft.
 
+## Steckbriefe
+
+Jede der 18 Websites trägt in ihrem Ordner einen maschinenlesbaren Steckbrief
+`showcase.json` (Schema `mika.showcase-card.v1`):
+
+| Feld | Inhalt |
+|---|---|
+| `slug`, `title`, `number`, `collection` | Ordnername, Kartentitel, Hub-Nummer `01`–`18`, Sammlung `A`/`B`/`C` |
+| `industry`, `form`, `description` | Branche, gestalterische Form und Beschreibungstext der Hub-Karte |
+| `origin` | `Claude Code`, `Codex` oder `Mika UX Library` |
+| `library_inputs`, `mode` | MXL-Nummern der Karte; `PURE` bei genau einer, `MIXED` bei mehreren, `null` ohne |
+| `pages`, `path`, `live_url` | HTML-Seiten des Ordners, Repository-Pfad und Adresse auf GitHub Pages |
+| `status`, `notes` | `published`; Anmerkungen, etwa der Hinweis auf den unvalidierten Analysefall `MXL-147` |
+
+Die Dateien werden nicht von Hand gepflegt, sondern mit
+`node scripts/build-showcase-cards.mjs` aus der Startseite erzeugt (siehe
+„Lokale Prüfung“). Sie werden mit den Projektordnern nach GitHub Pages
+ausgeliefert und sind dort unter `<live_url>showcase.json` abrufbar.
+
 ## Technische Leitplanken
 
 - Statische Multipage-Sites aus HTML, CSS und JavaScript
@@ -79,9 +98,10 @@ wird von `scripts/validate-static-showcase.mjs` gegen den Bestand unter
 
 ## GitHub Pages
 
-`.github/workflows/deploy-pages.yml` baut die drei Framework-Projekte, sammelt
-den Portfolio-Hub, `showcase/`, `demos/` und `stimmzettel/` in einem
-Pages-Artefakt und veröffentlicht es über GitHub Actions.
+`.github/workflows/deploy-pages.yml` baut die drei Framework-Projekte (`npm ci`
+aus den Lockfiles), sammelt den Portfolio-Hub samt Impressum und Datenschutz,
+`showcase/`, `mika-ux/`, `demos/` und `stimmzettel/` in einem Pages-Artefakt,
+lässt den Validator darüber laufen und veröffentlicht es über GitHub Actions.
 
 Der Workflow läuft bei Push auf dem Portfolio-Branch und kann zusätzlich über
 `workflow_dispatch` gestartet werden.
@@ -97,7 +117,9 @@ node .github/skills/impeccable/scripts/detector/detect-antipatterns.mjs showcase
 
 Vor Veröffentlichung werden zusätzlich interne Links und Assets, HTML-Struktur,
 Konsolenfehler, horizontales Overflow sowie die wichtigsten Interaktionen bei
-390, 768 und 1440 Pixel Breite geprüft.
+390, 768 und 1440 Pixel Breite geprüft: `scripts/validate-static-showcase.mjs`
+liest das Pages-Verzeichnis, `scripts/pruefe-seiten.mjs` die Seiten im Browser
+(Aufruf siehe [`mika-ux/README.md`](mika-ux/README.md)).
 
 Die Steckbriefe `showcase.json` in den Projektordnern werden aus der
 Startseite erzeugt — nach jeder Änderung an einer Hub-Karte:
@@ -107,9 +129,15 @@ node scripts/build-showcase-cards.mjs          # schreibt alle Steckbriefe
 node scripts/build-showcase-cards.mjs --check  # meldet veraltete Steckbriefe
 ```
 
-## Rechtlicher Hinweis
+## Rechtliches
 
-Alle Marken, Personen, Adressen, Preise, Kennzahlen und Referenzen sind
-Demonstrationsmaterial. Die enthaltenen Rechtstexte sind Muster ohne
+Der Hub selbst hat ein echtes Impressum und eine echte Datenschutzerklärung:
+[`impressum.html`](impressum.html) und [`datenschutz.html`](datenschutz.html),
+im Hub-Design, ohne Fremdanfragen. Beide sind als Rechtstext-Entwurf
+gekennzeichnet und vor Nutzung juristisch zu prüfen; offene Angaben
+(Telefonnummer, USt-IdNr.) stehen sichtbar im Markerstift.
+
+Alle Marken, Personen, Adressen, Preise, Kennzahlen und Referenzen der
+Demo-Websites sind Demonstrationsmaterial. Deren Rechtstexte sind Muster ohne
 Rechtswirkung und müssen vor einer realen Veröffentlichung vollständig ersetzt
 und fachlich geprüft werden. Siehe [`LEGAL_TEMPLATE.md`](LEGAL_TEMPLATE.md).
