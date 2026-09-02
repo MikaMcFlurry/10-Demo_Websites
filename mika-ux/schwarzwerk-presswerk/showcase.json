@@ -1,0 +1,26 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "schwarzwerk-presswerk",
+  "title": "Schwarzwerk",
+  "number": "16",
+  "collection": "C",
+  "industry": "Fertigung",
+  "form": "Schwarz, Rot, Creme",
+  "description": "Ein Presswerk in reinem Schwarz mit einem einzigen Rot. Bewegung ist hier Navigation: jede Station dreht die Platte um genau eine Umdrehung.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-147"
+  ],
+  "mode": "PURE",
+  "pages": [
+    "auflage.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "rechner.html"
+  ],
+  "path": "mika-ux/schwarzwerk-presswerk",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/schwarzwerk-presswerk/",
+  "status": "published",
+  "notes": "Basiert auf MXL-147, einem dokumentierten, noch unvalidierten Analysefall."
+}

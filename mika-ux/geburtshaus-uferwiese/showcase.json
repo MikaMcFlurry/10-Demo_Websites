@@ -1,0 +1,28 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "geburtshaus-uferwiese",
+  "title": "Uferwiese",
+  "number": "14",
+  "collection": "C",
+  "industry": "Gesundheit",
+  "form": "Pastellhimmel",
+  "description": "Ein Geburtshaus als geflüsterte Serif über einem Pastellhimmel. Der Terminrechner sagt die Rechnung — und was sie nicht kann.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-068",
+    "MXL-079",
+    "MXL-050"
+  ],
+  "mode": "MIXED",
+  "pages": [
+    "begleitung.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "termin.html"
+  ],
+  "path": "mika-ux/geburtshaus-uferwiese",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/geburtshaus-uferwiese/",
+  "status": "published",
+  "notes": null
+}

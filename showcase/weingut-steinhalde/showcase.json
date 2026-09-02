@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "weingut-steinhalde",
+  "title": "Weingut Steinhalde",
+  "number": "03",
+  "collection": "A",
+  "industry": "Weinbau",
+  "form": "Geologisches Profil",
+  "description": "Der Scrollweg führt durch Keuper, Mergel und Stubensandstein. Weine erscheinen als Analysewerte — nicht als Produktkacheln.",
+  "origin": "Claude Code",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "besuch.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "lage.html",
+    "weine.html"
+  ],
+  "path": "showcase/weingut-steinhalde",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/weingut-steinhalde/",
+  "status": "published",
+  "notes": null
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "krawumm-labor",
+  "title": "Krawumm Labor",
+  "number": "08",
+  "collection": "B",
+  "industry": "Bildung",
+  "form": "Experimentierheft",
+  "description": "Ein Machmuseum zum Anfassen: Magnetfeld, additive Farben und Klangwelle sind echte kleine Experimente in einer lebhaften Heftwelt.",
+  "origin": "Codex",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "besuch.html",
+    "datenschutz.html",
+    "experimente.html",
+    "gruppen.html",
+    "impressum.html",
+    "index.html"
+  ],
+  "path": "showcase/krawumm-labor",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/krawumm-labor/",
+  "status": "published",
+  "notes": null
+}

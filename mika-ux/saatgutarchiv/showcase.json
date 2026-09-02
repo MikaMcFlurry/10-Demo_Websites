@@ -1,0 +1,29 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "saatgutarchiv",
+  "title": "Saatgutarchiv",
+  "number": "13",
+  "collection": "C",
+  "industry": "Landwirtschaft",
+  "form": "Bestandskatalog",
+  "description": "24 Akzessionen als öffentlicher Dienst: filterbar, mit Keimprüfung, Herkunft und einem einzigen Ember für „Nachbau fällig“.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-118",
+    "MXL-090",
+    "MXL-113"
+  ],
+  "mode": "MIXED",
+  "pages": [
+    "abgabe.html",
+    "bestand.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "vermehrung.html"
+  ],
+  "path": "mika-ux/saatgutarchiv",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/saatgutarchiv/",
+  "status": "published",
+  "notes": null
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "kantine-klee",
+  "title": "Kantine Klee",
+  "number": "06",
+  "collection": "B",
+  "industry": "Gastronomie",
+  "form": "Küchenjournal",
+  "description": "Saisonale Nachbarschaftsküche als zerrissenes Magazin: Menü, Kassenbon und Reservierungsschublade statt glatter Restaurantvorlage.",
+  "origin": "Codex",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "besuch.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "speisekarte.html",
+    "ueber-uns.html"
+  ],
+  "path": "showcase/kantine-klee",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/kantine-klee/",
+  "status": "published",
+  "notes": null
+}

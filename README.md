@@ -99,6 +99,14 @@ Vor Veröffentlichung werden zusätzlich interne Links und Assets, HTML-Struktur
 Konsolenfehler, horizontales Overflow sowie die wichtigsten Interaktionen bei
 390, 768 und 1440 Pixel Breite geprüft.
 
+Die Steckbriefe `showcase.json` in den Projektordnern werden aus der
+Startseite erzeugt — nach jeder Änderung an einer Hub-Karte:
+
+```bash
+node scripts/build-showcase-cards.mjs          # schreibt alle Steckbriefe
+node scripts/build-showcase-cards.mjs --check  # meldet veraltete Steckbriefe
+```
+
 ## Rechtlicher Hinweis
 
 Alle Marken, Personen, Adressen, Preise, Kennzahlen und Referenzen sind

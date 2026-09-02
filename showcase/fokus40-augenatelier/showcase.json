@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "fokus40-augenatelier",
+  "title": "Fokus 40 Augenatelier",
+  "number": "10",
+  "collection": "B",
+  "industry": "Optometrie",
+  "form": "Sehprobe und Linsen",
+  "description": "Sehzeichen, Farbfilter und Linsenfassungen werden zur Boutique: Ein zugänglicher Fokusvergleich erklärt, statt Diagnosen zu versprechen.",
+  "origin": "Codex",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "atelier.html",
+    "brillen.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "sehtest.html"
+  ],
+  "path": "showcase/fokus40-augenatelier",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/fokus40-augenatelier/",
+  "status": "published",
+  "notes": null
+}

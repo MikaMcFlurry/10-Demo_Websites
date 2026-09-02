@@ -1,0 +1,26 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "nereus-tiefsee",
+  "title": "Nereus",
+  "number": "15",
+  "collection": "C",
+  "industry": "Forschung",
+  "form": "Choreografierter Abstieg",
+  "description": "Die Seite ist die Wassersäule. Beim Scrollen fällt die Tiefenanzeige, das Wasser verdunkelt sich — und der Ton kommt nur, wenn man ihn holt.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-040"
+  ],
+  "mode": "PURE",
+  "pages": [
+    "datenschutz.html",
+    "fahrten.html",
+    "fahrzeug.html",
+    "impressum.html",
+    "index.html"
+  ],
+  "path": "mika-ux/nereus-tiefsee",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/nereus-tiefsee/",
+  "status": "published",
+  "notes": null
+}

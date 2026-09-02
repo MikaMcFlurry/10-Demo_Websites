@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "blockwerk-boulder",
+  "title": "Blockwerk Boulder",
+  "number": "05",
+  "collection": "A",
+  "industry": "Sport",
+  "form": "Routenboard",
+  "description": "Sektorplan und Griffkartenfarbe stehen vor Werbung: filterbare Routen, Schraubplan und echte Öffnungslogik machen die Halle greifbar.",
+  "origin": "Claude Code",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "kurse.html",
+    "preise.html",
+    "routen.html"
+  ],
+  "path": "showcase/blockwerk-boulder",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/blockwerk-boulder/",
+  "status": "published",
+  "notes": null
+}

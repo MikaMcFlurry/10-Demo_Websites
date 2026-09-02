@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "nachhall-radio",
+  "title": "Nachhall Radio",
+  "number": "07",
+  "collection": "B",
+  "industry": "Audio",
+  "form": "Sendepult",
+  "description": "Community-Radio als physischer Tuner: Frequenzskala, Programmtasten und Kassettenarchiv — ohne die Gesten einer Streaming-App.",
+  "origin": "Codex",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "archiv.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "programm.html",
+    "studio.html"
+  ],
+  "path": "showcase/nachhall-radio",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/nachhall-radio/",
+  "status": "published",
+  "notes": null
+}

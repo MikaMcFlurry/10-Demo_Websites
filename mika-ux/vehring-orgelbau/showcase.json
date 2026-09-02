@@ -1,0 +1,27 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "vehring-orgelbau",
+  "title": "Vehring Orgelbau",
+  "number": "12",
+  "collection": "C",
+  "industry": "Handwerk",
+  "form": "Schwarze Kathedrale",
+  "description": "Ein Prospekt aus Zinnpfeifen steigt aus dem Schwarz. Register lassen sich ziehen — bis der Wind nicht mehr für alle reicht.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-007"
+  ],
+  "mode": "PURE",
+  "pages": [
+    "datenschutz.html",
+    "disposition.html",
+    "impressum.html",
+    "index.html",
+    "verfahren.html",
+    "werkverzeichnis.html"
+  ],
+  "path": "mika-ux/vehring-orgelbau",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/vehring-orgelbau/",
+  "status": "published",
+  "notes": null
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "blank-oberflaechen",
+  "title": "Blank",
+  "number": "18",
+  "collection": "C",
+  "industry": "Galvanik",
+  "form": "Nacht, Chrom, Papier",
+  "description": "Eine Galvanik, deren Wortmarke als gerechnete Chromfläche im Browser entsteht — rohes WebGL, kein Bild. Danach schneidet die Seite hart in eine weiße Galerie, die den Schichtaufbau im wahren Maßstab zeigt.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-045"
+  ],
+  "mode": "PURE",
+  "pages": [
+    "betrieb.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "verfahren.html"
+  ],
+  "path": "mika-ux/blank-oberflaechen",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/blank-oberflaechen/",
+  "status": "published",
+  "notes": null
+}

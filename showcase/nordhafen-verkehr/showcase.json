@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "nordhafen-verkehr",
+  "title": "Nordhafen Verkehr",
+  "number": "09",
+  "collection": "B",
+  "industry": "Mobilität",
+  "form": "Leitsystem",
+  "description": "Die Website ist bereits die Haltestelle: Planer, Liniennetz, Abfahrtstafel und Störungsdetails bilden ein kommunales Betriebssystem.",
+  "origin": "Codex",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "abfahrten.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "netz.html",
+    "service.html"
+  ],
+  "path": "showcase/nordhafen-verkehr",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/nordhafen-verkehr/",
+  "status": "published",
+  "notes": null
+}

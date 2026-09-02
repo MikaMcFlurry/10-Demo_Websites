@@ -1,0 +1,27 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "sprudelwerk",
+  "title": "Sprudelwerk",
+  "number": "11",
+  "collection": "C",
+  "industry": "Getränke",
+  "form": "Aufkleberbogen",
+  "description": "Sechs Limonadensorten als gestanzte Sticker auf einem Bogen: aufgeblasene Bänder, ein Mischpult für Paare, Pfand als eigene Zeile.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-051"
+  ],
+  "mode": "PURE",
+  "pages": [
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "kiosk.html",
+    "manufaktur.html",
+    "sorten.html"
+  ],
+  "path": "mika-ux/sprudelwerk",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/sprudelwerk/",
+  "status": "published",
+  "notes": null
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "brandt-ostermann",
+  "title": "Brandt Ostermann",
+  "number": "04",
+  "collection": "A",
+  "industry": "Recht",
+  "form": "Akte und Register",
+  "description": "Eine Kanzlei als Registratur: Randziffern, Aktenzeichen und farbige Reiter führen durch Mandate, Honorar und Erstberatung.",
+  "origin": "Claude Code",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "datenschutz.html",
+    "erstberatung.html",
+    "honorar.html",
+    "impressum.html",
+    "index.html",
+    "kanzlei.html"
+  ],
+  "path": "showcase/brandt-ostermann",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/brandt-ostermann/",
+  "status": "published",
+  "notes": null
+}

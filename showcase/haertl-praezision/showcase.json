@@ -1,0 +1,25 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "haertl-praezision",
+  "title": "Härtl Präzision",
+  "number": "01",
+  "collection": "A",
+  "industry": "Industrie",
+  "form": "Technisches Zeichnungsblatt",
+  "description": "Lohnfertigung als DIN-Zeichnung: Maßketten, Blattrahmen und Schriftfeld bilden die Website, statt sie nur zu dekorieren.",
+  "origin": "Claude Code",
+  "library_inputs": [],
+  "mode": null,
+  "pages": [
+    "datenschutz.html",
+    "fertigung.html",
+    "impressum.html",
+    "index.html",
+    "maschinenpark.html",
+    "qualitaet.html"
+  ],
+  "path": "showcase/haertl-praezision",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/showcase/haertl-praezision/",
+  "status": "published",
+  "notes": null
+}

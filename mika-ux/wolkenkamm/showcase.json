@@ -1,0 +1,27 @@
+{
+  "schema": "mika.showcase-card.v1",
+  "slug": "wolkenkamm",
+  "title": "Wolkenkamm",
+  "number": "17",
+  "collection": "C",
+  "industry": "Buntpapier",
+  "form": "Gerechnetes Marmorierbad",
+  "description": "Eine Werkstatt für Marmorpapier — und die erste Seite marmoriert wirklich: Jeder Besuch schöpft einen nummerierten Bogen, exakt invertierbar im Browser gerechnet. Kein Bogen zweimal.",
+  "origin": "Mika UX Library",
+  "library_inputs": [
+    "MXL-022",
+    "MXL-040"
+  ],
+  "mode": "MIXED",
+  "pages": [
+    "bad.html",
+    "datenschutz.html",
+    "impressum.html",
+    "index.html",
+    "muster.html"
+  ],
+  "path": "mika-ux/wolkenkamm",
+  "live_url": "https://mikamcflurry.github.io/10-Demo_Websites/mika-ux/wolkenkamm/",
+  "status": "published",
+  "notes": null
+}
