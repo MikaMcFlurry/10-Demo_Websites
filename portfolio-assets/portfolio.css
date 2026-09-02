@@ -218,6 +218,28 @@ summary:focus-visible {
   line-height: 1.48;
 }
 
+/* Wer dahintersteht: eine Zeile unter dem Intro, abgesetzt durch eine
+   Haarlinie, mit dem einzigen Handlungslink des Aufmachers. */
+.masthead__byline {
+  max-width: 52ch;
+  margin: clamp(18px, 2.4vw, 28px) 0 0 auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 253, 247, .28);
+  color: var(--muted-light);
+  font-size: .95rem;
+}
+
+.masthead__byline a {
+  display: inline-block;
+  margin: -11px 0;
+  padding: 11px 0;
+  color: var(--acid);
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
 .masthead__ledger {
   display: flex;
   gap: 12px;
@@ -1937,7 +1959,8 @@ summary:focus-visible {
     z-index: 1;
   }
 
-  .masthead__intro {
+  .masthead__intro,
+  .masthead__byline {
     margin-left: 0;
   }
 
