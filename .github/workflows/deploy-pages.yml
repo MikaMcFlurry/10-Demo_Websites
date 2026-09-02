@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - claude/github-pages-business-demos-ZhnfF
-      - claude/create-three-demo-sites-T1HN9
-      - claude/portfolio-websites-five-qda4ge
-      - claude/portfolio-ux-library-pkj4xy
   workflow_dispatch:
 
 permissions:
@@ -29,6 +26,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            sites/greencart-nuxt/package-lock.json
+            sites/aurorametrics-nextjs/package-lock.json
+            sites/lumen-atelier-astro/package-lock.json
 
       - name: Create output directory
         run: mkdir -p ./pages-dist
@@ -36,7 +38,7 @@ jobs:
       # ── GreenCart (Nuxt 3) ─────────────────────────────────────────────────
       - name: Install GreenCart dependencies
         working-directory: sites/greencart-nuxt
-        run: npm install
+        run: npm ci
 
       - name: Build GreenCart
         working-directory: sites/greencart-nuxt
@@ -48,7 +50,7 @@ jobs:
       # ── AuroraMetrics (Next.js) ────────────────────────────────────────────
       - name: Install AuroraMetrics dependencies
         working-directory: sites/aurorametrics-nextjs
-        run: npm install
+        run: npm ci
 
       - name: Build AuroraMetrics
         working-directory: sites/aurorametrics-nextjs
@@ -60,7 +62,7 @@ jobs:
       # ── Lumen Atelier (Astro) ──────────────────────────────────────────────
       - name: Install Lumen Atelier dependencies
         working-directory: sites/lumen-atelier-astro
-        run: npm install
+        run: npm ci
 
       - name: Build Lumen Atelier
         working-directory: sites/lumen-atelier-astro
@@ -73,6 +75,8 @@ jobs:
       - name: Copy root index and demos
         run: |
           cp index.html ./pages-dist/index.html
+          cp impressum.html ./pages-dist/impressum.html
+          cp datenschutz.html ./pages-dist/datenschutz.html
           cp -r portfolio-assets ./pages-dist/portfolio-assets
           cp -r demos ./pages-dist/demos
           cp -r stimmzettel ./pages-dist/stimmzettel
