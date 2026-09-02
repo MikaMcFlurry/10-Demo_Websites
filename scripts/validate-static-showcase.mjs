@@ -51,8 +51,16 @@ function fragmentTarget(file, rawTarget) {
 
 const showcaseRoot = path.join(root, 'showcase');
 const mikaRoot = path.join(root, 'mika-ux');
+
+// Die Rechtsseiten des Hubs teilen Kopf und Fuß mit index.html und werden
+// mit denselben Strukturregeln geprüft.
+const rootPages = ['impressum.html', 'datenschutz.html']
+  .map((name) => path.join(root, name))
+  .filter((file) => fs.existsSync(file));
+
 const htmlFiles = [
   path.join(root, 'index.html'),
+  ...rootPages,
   ...walk(showcaseRoot).filter((file) => file.endsWith('.html')),
   ...(fs.existsSync(mikaRoot) ? walk(mikaRoot).filter((file) => file.endsWith('.html')) : [])
 ];

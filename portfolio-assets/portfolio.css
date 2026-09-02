@@ -127,6 +127,18 @@ summary:focus-visible {
   content: "";
 }
 
+/* Auf Unterseiten führt die Marke zurück zur Übersicht. */
+.masthead__brand[href] {
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.masthead__brand[href]:hover,
+.masthead__brand[href]:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .masthead__nav {
   display: flex;
   gap: clamp(14px, 2.4vw, 34px);
@@ -1665,7 +1677,7 @@ summary:focus-visible {
 }
 
 .site-footer__meta {
-  max-width: 42ch;
+  max-width: 46ch;
   text-align: right;
 }
 
@@ -1674,10 +1686,234 @@ summary:focus-visible {
   color: var(--muted-light);
 }
 
-.site-footer__meta a {
+/* Die Linkleiste spiegelt die Kopfnavigation: gleiche Versalien, gleiche
+   Zielhöhe. Externe Ziele tragen den Pfeil im Text. */
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  justify-content: flex-end;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.site-footer__nav a,
+.site-footer__admin {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
+  text-underline-offset: 4px;
+}
+
+.site-footer__nav a:hover,
+.site-footer__nav a:focus-visible,
+.site-footer__admin:hover,
+.site-footer__admin:focus-visible {
+  color: var(--acid);
+}
+
+/* Der Verwaltungszugang gehört nicht ins Schaufenster: klein, gedämpft,
+   ohne Gewicht für Suchmaschinen — aber als Ziel groß genug. */
+.site-footer__admin {
+  margin-top: 6px;
+  color: var(--muted-light);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+}
+
+/* ── Unterseiten: Impressum und Datenschutz ────────────────────────────
+   Dieselbe Kopf- und Fußzeile wie der Hub; statt der Plakatbühne eine
+   Lesespalte auf Ausstellungspapier mit Abschnittsregister links. */
+
+.masthead--page {
+  min-height: auto;
+  grid-template-rows: auto auto;
+}
+
+.masthead--page .masthead__stage {
+  grid-template-columns: 1fr;
+  align-items: start;
+  padding: clamp(54px, 8vw, 110px) 0 clamp(40px, 6vw, 84px);
+}
+
+.masthead--page .masthead__copy {
+  max-width: 880px;
+}
+
+.masthead--page h1 {
+  max-width: none;
+  font-size: clamp(3.4rem, 9vw, 9rem);
+}
+
+.masthead--page .masthead__intro {
+  margin-left: 0;
+}
+
+.legal {
+  padding: clamp(48px, 7vw, 110px) clamp(20px, 4vw, 64px) clamp(70px, 9vw, 130px);
+  background: var(--paper);
+  color: var(--carbon);
+}
+
+.legal__grid {
+  display: grid;
+  grid-template-columns: minmax(160px, .42fr) minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 82px);
+  align-items: start;
+}
+
+.legal__toc {
+  position: sticky;
+  top: 24px;
+  padding-top: 10px;
+  border-top: 5px solid currentColor;
+}
+
+.legal__toc-title {
+  margin: 0 0 10px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.legal__toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legal__toc a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  border-top: 1px solid rgba(17, 17, 15, .18);
+  color: var(--muted-dark);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.legal__toc a:hover,
+.legal__toc a:focus-visible {
+  color: var(--carbon);
+}
+
+.legal__body {
+  max-width: 66ch;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.legal__body .legal__lead {
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.45;
+}
+
+.legal__body h2 {
+  margin: clamp(44px, 6vw, 72px) 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -.045em;
+  line-height: .95;
+  text-wrap: balance;
+}
+
+.legal__lead + h2 {
+  margin-top: 0;
+}
+
+.legal__body h3 {
+  margin: 30px 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.legal__body p,
+.legal__body ul {
+  margin: 0 0 16px;
+}
+
+.legal__body ul {
+  padding-left: 1.15em;
+}
+
+.legal__body li {
+  margin-bottom: 6px;
+}
+
+.legal__body a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.legal__body a:hover {
+  color: var(--cobalt);
+}
+
+.legal__address {
+  margin: 0 0 16px;
+  padding: 20px 24px;
+  border: 1px solid currentColor;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.legal__address b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.15em;
+  letter-spacing: -.01em;
+}
+
+/* Offene Angaben stehen sichtbar im Markerstift, damit sie nicht
+   untergehen, bevor sie ersetzt sind. */
+.legal__placeholder {
+  padding: 1px 6px;
+  background: var(--acid);
+  color: var(--carbon);
+  font-weight: 700;
+}
+
+.legal__meta {
+  margin-top: clamp(30px, 4vw, 48px);
+  color: var(--muted-dark);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.legal__draft {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: clamp(40px, 6vw, 70px);
+  padding-top: 18px;
+  border-top: 1px solid currentColor;
+  color: var(--muted-dark);
+  font-size: .85rem;
+}
+
+.legal__draft p {
+  margin: 0;
+}
+
+.legal__draft a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--carbon);
+  font-weight: 800;
   text-underline-offset: 4px;
 }
 
@@ -1703,6 +1939,24 @@ summary:focus-visible {
 
   .masthead__intro {
     margin-left: 0;
+  }
+
+  .legal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal__toc {
+    position: static;
+  }
+
+  .legal__toc ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 22px;
+  }
+
+  .legal__toc a {
+    border-top: 0;
   }
 
   .work,
@@ -1804,6 +2058,10 @@ summary:focus-visible {
 
   .site-footer__meta {
     text-align: left;
+  }
+
+  .site-footer__nav {
+    justify-content: flex-start;
   }
 }
 
