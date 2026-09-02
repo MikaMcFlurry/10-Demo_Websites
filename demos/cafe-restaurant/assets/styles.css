@@ -471,7 +471,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .cookie-banner p { font-size: 0.85rem; color: var(--text-mid); flex: 1; min-width: 250px; }
 .cookie-banner a { color: var(--primary); text-decoration: underline; }
 .cookie-btn {
-    padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.85rem;
+    min-height: 44px; padding: 0.5rem 1.25rem; border-radius: var(--radius); font-size: 0.85rem;
     font-weight: 600; cursor: pointer; border: 1px solid var(--primary);
     background: var(--primary); color: #fff;
     transition: background 0.2s; font-family: var(--font-sans);

@@ -176,7 +176,10 @@ h3 {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: baseline;
   width: max-content;
+  padding-block: .4rem;
   font-family: var(--display);
   font-size: 1.35rem;
   font-weight: 700;
@@ -213,7 +216,9 @@ h3 {
 }
 
 .primary-nav a {
-  padding-block: .25rem;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   font-size: .9rem;
   font-weight: 700;
   text-decoration: none;
@@ -458,6 +463,14 @@ h3 {
   display: grid;
   grid-template-columns: minmax(12rem, .58fr) minmax(0, 1.42fr);
   gap: clamp(2rem, 7vw, 8rem);
+}
+
+/* Der Weiterlesen-Link steht allein in seiner Zeile; die Zielfläche
+   wächst auf Fingerbreite, ohne die Typografie zu ändern. */
+.journal-columns div > a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
 }
 
 .journal-columns .pullquote {
@@ -937,10 +950,13 @@ h3 {
 .footer-nav {
   display: grid;
   align-content: start;
-  gap: .55rem;
+  gap: .15rem;
 }
 
 .footer-nav a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   width: fit-content;
 }
 
