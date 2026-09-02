@@ -7,26 +7,26 @@ bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar
 
 ## Aktuelle Auswahl
 
-| # | Projekt | Branche | Gestalterische Form | Ursprung |
+| # | Projekt | Branche | Gestalterische Form | Sammlung |
 |---:|---|---|---|---|
-| 01 | [`haertl-praezision`](showcase/haertl-praezision/) | Industrie | Technisches Zeichnungsblatt nach DIN-Logik | Claude Code |
-| 02 | [`hochofen-festival`](showcase/hochofen-festival/) | Kultur | Zweifarben-Siebdruck-Plakat | Claude Code |
-| 03 | [`weingut-steinhalde`](showcase/weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Claude Code |
-| 04 | [`brandt-ostermann`](showcase/brandt-ostermann/) | Recht | Aktenregister und Schriftsatz | Claude Code |
-| 05 | [`blockwerk-boulder`](showcase/blockwerk-boulder/) | Sport | Routenboard und Sektorplan | Claude Code |
-| 06 | [`kantine-klee`](showcase/kantine-klee/) | Gastronomie | Analoges Küchenjournal | Codex |
-| 07 | [`nachhall-radio`](showcase/nachhall-radio/) | Audio / Kultur | Tunerfront und Kassettenarchiv | Codex |
-| 08 | [`krawumm-labor`](showcase/krawumm-labor/) | Bildung | Interaktives Experimentierheft | Codex |
-| 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Codex |
-| 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | Codex |
-| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | Mika UX Library |
-| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | Mika UX Library |
-| 13 | [`saatgutarchiv`](mika-ux/saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | Mika UX Library |
-| 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | Mika UX Library |
-| 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | Mika UX Library |
-| 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | Mika UX Library |
-| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | Mika UX Library |
-| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Gerechnetes Chrom, harter Schnitt in weiße Galerie | Mika UX Library |
+| 01 | [`haertl-praezision`](showcase/haertl-praezision/) | Industrie | Technisches Zeichnungsblatt nach DIN-Logik | A |
+| 02 | [`hochofen-festival`](showcase/hochofen-festival/) | Kultur | Zweifarben-Siebdruck-Plakat | A |
+| 03 | [`weingut-steinhalde`](showcase/weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | A |
+| 04 | [`brandt-ostermann`](showcase/brandt-ostermann/) | Recht | Aktenregister und Schriftsatz | A |
+| 05 | [`blockwerk-boulder`](showcase/blockwerk-boulder/) | Sport | Routenboard und Sektorplan | A |
+| 06 | [`kantine-klee`](showcase/kantine-klee/) | Gastronomie | Analoges Küchenjournal | B |
+| 07 | [`nachhall-radio`](showcase/nachhall-radio/) | Audio / Kultur | Tunerfront und Kassettenarchiv | B |
+| 08 | [`krawumm-labor`](showcase/krawumm-labor/) | Bildung | Interaktives Experimentierheft | B |
+| 09 | [`nordhafen-verkehr`](showcase/nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | B |
+| 10 | [`fokus40-augenatelier`](showcase/fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenvergleich | B |
+| 11 | [`sprudelwerk`](mika-ux/sprudelwerk/) | Getränke | Aufkleberbogen mit aufgeblasenen Bändern | C |
+| 12 | [`vehring-orgelbau`](mika-ux/vehring-orgelbau/) | Handwerk | Schwarze Kathedrale mit Zinnprospekt | C |
+| 13 | [`saatgutarchiv`](mika-ux/saatgutarchiv/) | Landwirtschaft | Bestandskatalog als öffentlicher Dienst | C |
+| 14 | [`geburtshaus-uferwiese`](mika-ux/geburtshaus-uferwiese/) | Gesundheit | Geflüsterte Serif über Pastellhimmel | C |
+| 15 | [`nereus-tiefsee`](mika-ux/nereus-tiefsee/) | Forschung | Choreografierter Abstieg durch die Wassersäule | C |
+| 16 | [`schwarzwerk-presswerk`](mika-ux/schwarzwerk-presswerk/) | Fertigung | Reines Schwarz, ein Rot, schmale Spalte | C |
+| 17 | [`wolkenkamm`](mika-ux/wolkenkamm/) | Buntpapier | Gerechnetes Marmorierbad unter Plakattype | C |
+| 18 | [`blank-oberflaechen`](mika-ux/blank-oberflaechen/) | Galvanik | Gerechnetes Chrom, harter Schnitt in weiße Galerie | C |
 
 Details zu Konzept, Seitenumfang und Interaktionen stehen in
 [`showcase/README.md`](showcase/README.md).
@@ -141,3 +141,20 @@ Alle Marken, Personen, Adressen, Preise, Kennzahlen und Referenzen der
 Demo-Websites sind Demonstrationsmaterial. Deren Rechtstexte sind Muster ohne
 Rechtswirkung und müssen vor einer realen Veröffentlichung vollständig ersetzt
 und fachlich geprüft werden. Siehe [`LEGAL_TEMPLATE.md`](LEGAL_TEMPLATE.md).
+
+## Bekannte Befunde (Browserprüfung 2026-09-02)
+
+`scripts/pruefe-seiten.mjs` über alle 18 Projekt-Startseiten sowie Hub, Impressum,
+Datenschutz und 404 bei 1440 px und 390 px. Behoben: kantine-klee,
+haertl-praezision, cafe-restaurant. Offen bleiben zu kleine Klickziele
+(unter 44 px Höhe) auf vier Startseiten:
+
+| Site | Viewport | Elemente |
+|---|---|---|
+| `showcase/weingut-steinhalde` | Desktop + Mobil | Wortmarke „Steinhalde Kerne“ (35 px), Navigation „Profil/Weine/Lage/Besuch“ (26 px), „Verkostung“ (34 px), Menü-Taste (32 px) |
+| `showcase/blockwerk-boulder` | Desktop + Mobil | Wortmarke (25 px), Navigation (32 px), Menü-Taste (33 px), Schwierigkeits-Filter „Gelb 3–4“ … „Rot 6A–6C“ (33 px) |
+| `showcase/nordhafen-verkehr` | Desktop + Mobil | Fußzeilenlinks Impressum/Datenschutz (20 px) |
+| `showcase/fokus40-augenatelier` | Desktop + Mobil | Fußzeilenlinks Impressum/Datenschutz (21 px) |
+
+Die zehn älteren `demos/` zeigen zudem sichtbare Platzhalter wie `[E-MAIL]`
+und `[TELEFON]`; sie sind Vorlagen, keine Vorzeigeprojekte.

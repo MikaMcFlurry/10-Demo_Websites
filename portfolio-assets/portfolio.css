@@ -1930,6 +1930,12 @@ summary:focus-visible {
   margin: 0;
 }
 
+.legal__draft-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
 .legal__draft a {
   display: inline-flex;
   min-height: 44px;

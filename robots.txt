@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mikamcflurry.github.io/10-Demo_Websites/sitemap.xml
