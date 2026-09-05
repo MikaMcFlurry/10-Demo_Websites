@@ -64,6 +64,7 @@ a { color: var(--reg-1); }
   position: absolute; left: -9999px; top: 0; z-index: 999;
   background: var(--tinte); color: var(--akte);
   padding: .8rem 1.2rem; font: 500 .9rem/1 var(--f-mark);
+  display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box;
 }
 .skip:focus { left: 0; }
 
@@ -217,6 +218,7 @@ h1 em { font-style: normal; display: block; color: var(--tinte-3); }
 
 .tat {
   display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; box-sizing: border-box;
   padding: 14px 24px; border: 0; cursor: pointer;
   background: var(--tinte); color: var(--akte);
   font: 500 12.5px/1 var(--f-mark); letter-spacing: .12em; text-transform: uppercase;

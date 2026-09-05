@@ -8,12 +8,24 @@
  *   python3 -m http.server 8099 --bind 127.0.0.1
  *
  * Aufruf:
- *   node scripts/pruefe-seiten.mjs <basis-url> <seite> [<seite> ...]
+ *   node scripts/pruefe-seiten.mjs [--fehlseite <404.html>] <basis-url> <seite> [<seite> ...]
  *
  * Beispiel:
  *   node scripts/pruefe-seiten.mjs http://127.0.0.1:8099/mika-ux/nereus-tiefsee/ \
  *     index.html fahrzeug.html fahrten.html impressum.html datenschutz.html
+ *
+ * Mit --fehlseite wird GitHub Pages nachgestellt: Jede Adresse, die der
+ * Server nicht kennt, erhält den Inhalt der angegebenen 404-Datei unter der
+ * angefragten Adresse. So lässt sich prüfen, ob die Fehlerseite auch tief
+ * unterhalb der Pages-Basis Stylesheet, Skript und Rücklinks findet:
+ *   node scripts/pruefe-seiten.mjs --fehlseite 404.html \
+ *     http://127.0.0.1:8099/10-Demo_Websites/ showcase/gibt-es-nicht/
+ *
+ * Zielgrößen: gemeldet werden Ziele unter 44 px Höhe (WCAG 2.5.5 / DESIGN.md)
+ * oder unter 24 px Breite; Inline-Links im Fließtext sind ausgenommen.
  */
+import fs from 'node:fs';
+
 let chromium;
 try {
   ({ chromium } = await import('playwright'));
@@ -24,12 +36,29 @@ try {
   process.exit(1);
 }
 
-const [basis, ...seiten] = process.argv.slice(2);
+const argumente = process.argv.slice(2);
+let fehlseite = null;
+const fehlseiteIndex = argumente.indexOf('--fehlseite');
+if (fehlseiteIndex !== -1) {
+  const datei = argumente[fehlseiteIndex + 1];
+  if (!datei || !fs.existsSync(datei)) {
+    console.error('--fehlseite braucht den Pfad zu einer vorhandenen 404-Datei.');
+    process.exit(1);
+  }
+  fehlseite = fs.readFileSync(datei, 'utf8');
+  argumente.splice(fehlseiteIndex, 2);
+}
+
+const [basis, ...seiten] = argumente;
 
 if (!basis || seiten.length === 0) {
-  console.error('Aufruf: node scripts/pruefe-seiten.mjs <basis-url> <seite> [...]');
+  console.error('Aufruf: node scripts/pruefe-seiten.mjs [--fehlseite <404.html>] <basis-url> <seite> [...]');
   process.exit(1);
 }
+
+// Ohne abschließenden Schrägstrich würde new URL() das letzte Segment der
+// Basis verwerfen und stillschweigend das Elternverzeichnis prüfen.
+const basisUrl = basis.endsWith('/') ? basis : `${basis}/`;
 
 const VIEWPORTS = [
   ['desktop', { width: 1440, height: 900 }],
@@ -47,12 +76,30 @@ for (const seite of seiten) {
     const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
     const fehler = [];
 
-    page.on('console', (m) => { if (m.type() === 'error') fehler.push(`Konsole: ${m.text()}`); });
+    const ziel = new URL(seite, basisUrl).href;
+    // Bei --fehlseite ist das 404 des Dokuments selbst erwartet; alles, was die
+    // Fehlerseite danach nachlädt, muss aber gefunden werden.
+    const erwartet404 = (r) => fehlseite !== null && r.status() === 404 && r.url() === ziel;
+
+    page.on('console', (m) => {
+      if (m.type() !== 'error') return;
+      if (fehlseite !== null && m.location()?.url === ziel && /status of 404/.test(m.text())) return;
+      fehler.push(`Konsole: ${m.text()}`);
+    });
     page.on('pageerror', (e) => fehler.push(`Skriptfehler: ${e.message}`));
     page.on('requestfailed', (r) => fehler.push(`Anfrage fehlgeschlagen: ${r.url()}`));
-    page.on('response', (r) => { if (r.status() >= 400) fehler.push(`HTTP ${r.status()}: ${r.url()}`); });
+    page.on('response', (r) => { if (r.status() >= 400 && !erwartet404(r)) fehler.push(`HTTP ${r.status()}: ${r.url()}`); });
 
-    await page.goto(new URL(seite, basis).href, { waitUntil: 'networkidle' });
+    if (fehlseite !== null) {
+      await page.route('**/*', async (route) => {
+        if (route.request().resourceType() !== 'document') return route.continue();
+        const antwort = await route.fetch();
+        if (antwort.status() !== 404) return route.fulfill({ response: antwort });
+        return route.fulfill({ status: 404, contentType: 'text/html; charset=utf-8', body: fehlseite });
+      });
+    }
+
+    await page.goto(ziel, { waitUntil: 'networkidle' });
     await page.waitForTimeout(400);
 
     const ueberlauf = await page.evaluate(() =>
@@ -65,7 +112,7 @@ for (const seite of seiten) {
         if (r.width === 0 && r.height === 0) continue;
         // Inline-Links im Fließtext sind von der Zielgrößenregel ausgenommen.
         if (el.tagName === 'A' && el.parentElement?.closest('p, li, address, td, th')) continue;
-        if (r.height < 40 || r.width < 24) {
+        if (r.height < 44 || r.width < 24) {
           out.push(`${el.tagName}.${el.className || '-'} ${Math.round(r.width)}×${Math.round(r.height)} „${(el.textContent || '').trim().slice(0, 24)}“`);
         }
       }

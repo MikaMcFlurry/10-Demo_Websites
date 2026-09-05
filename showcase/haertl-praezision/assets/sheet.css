@@ -308,6 +308,7 @@ p:last-child { margin-bottom: 0; }
 
 .btn {
   display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; box-sizing: border-box;
   padding: 13px 20px;
   border: var(--frame) solid var(--rule);
   background: var(--yellow); color: var(--ink);

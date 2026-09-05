@@ -182,6 +182,9 @@ a { color: inherit; }
 .menue { display: flex; gap: var(--sp-1); align-items: center; }
 
 .menue a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 9px var(--sp-4);
   border-radius: var(--r-pill);
   font-size: 15px;

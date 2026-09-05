@@ -819,12 +819,11 @@ summary {
   line-height: 0.95;
 }
 
-.workbench-visual {
+.workbench-visual { /* impeccable-disable-line codex-grid-background -- Messraster der interaktiven Optik-Werkbank, keine dekorative Seitenkulisse */
   min-height: 540px;
   display: grid;
   place-items: center;
   overflow: hidden;
-  /* impeccable-disable-next-line codex-grid-background -- Messraster der interaktiven Optik-Werkbank, keine dekorative Seitenkulisse */
   background-image:
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);

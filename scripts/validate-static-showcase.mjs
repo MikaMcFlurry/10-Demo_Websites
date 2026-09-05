@@ -4,6 +4,11 @@ import path from 'node:path';
 const root = path.resolve(process.argv[2] ?? '.');
 const errors = [];
 
+// Basis der Auslieferung auf GitHub Pages. 404.html verlinkt absolut mit
+// diesem Präfix, weil Pages die Seite unter jeder fehlenden Adresse ausliefert;
+// hier wird das Präfix auf das geprüfte Wurzelverzeichnis abgebildet.
+const PAGES_PREFIX = '/10-Demo_Websites/';
+
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const absolute = path.join(directory, entry.name);
@@ -27,7 +32,9 @@ function localTarget(file, rawTarget) {
     decoded = withoutFragment;
   }
 
-  const absolute = path.resolve(path.dirname(file), decoded);
+  const absolute = decoded.startsWith(PAGES_PREFIX)
+    ? path.join(root, decoded.slice(PAGES_PREFIX.length))
+    : path.resolve(path.dirname(file), decoded);
   if (decoded.endsWith('/') || (fs.existsSync(absolute) && fs.statSync(absolute).isDirectory())) {
     return path.join(absolute, 'index.html');
   }
@@ -52,9 +59,9 @@ function fragmentTarget(file, rawTarget) {
 const showcaseRoot = path.join(root, 'showcase');
 const mikaRoot = path.join(root, 'mika-ux');
 
-// Die Rechtsseiten des Hubs teilen Kopf und Fuß mit index.html und werden
-// mit denselben Strukturregeln geprüft.
-const rootPages = ['impressum.html', 'datenschutz.html']
+// Die Rechtsseiten und die Fehlerseite des Hubs teilen Kopf und Fuß mit
+// index.html und werden mit denselben Strukturregeln geprüft.
+const rootPages = ['impressum.html', 'datenschutz.html', '404.html']
   .map((name) => path.join(root, name))
   .filter((file) => fs.existsSync(file));
 
@@ -132,7 +139,7 @@ for (const slug of selectedSlugs) {
 
 const hub = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
-// Jedes Showcase der Zehner-Auswahl braucht genau eine Karte auf dem Hub.
+// Jedes Schaustück der Sammlungen A und B (showcase/) braucht genau eine Karte auf dem Hub.
 for (const slug of selectedSlugs) {
   if (count(hub, new RegExp(`class=["'][^"']*\\bwork\\b[^"']*["'][^>]*href=["']showcase/${slug}/`, 'gi'))
     + count(hub, new RegExp(`href=["']showcase/${slug}/["'][^>]*class=["'][^"']*\\bwork\\b`, 'gi')) !== 1) {
@@ -190,6 +197,13 @@ if (mikaSlugs.length > 0) {
 
 if (!/<details\b[^>]*data-archive/i.test(hub)) {
   errors.push('Portfolio-Hub benötigt ein natives, aufklappbares Archiv.');
+}
+
+// Der Hub ist ein öffentliches Schaufenster: Briefings, Übergabenotizen und
+// Gestaltungsverträge (Markdown) gehören nicht ins Pages-Artefakt.
+const markdown = walk(root).filter((file) => /\.md$/i.test(file));
+if (markdown.length > 0) {
+  errors.push(`Markdown-Dateien im Artefakt (${markdown.length}), zuerst: ${path.relative(root, markdown[0])}`);
 }
 
 if (errors.length > 0) {

@@ -19,6 +19,8 @@
   --acid: #d7ff37;
   --cobalt: #3f55ff;
   --vermilion: #ff5538;
+  /* Vermilion als Schriftfarbe auf Papier: 5,4:1 statt 2,8:1 (WCAG AA). */
+  --vermilion-ink: #b82c17;
   --muted-dark: #5d5d56;
   --muted-light: #a7a79e;
   --page-progress: 0;
@@ -64,6 +66,13 @@ a:focus-visible,
 summary:focus-visible {
   outline: 3px solid var(--acid);
   outline-offset: 5px;
+}
+
+/* Auf Ausstellungspapier ist Acid unsichtbar (1:1) — dort führt Carbon. */
+.collection--a a:focus-visible,
+.collection--mika a:focus-visible,
+.legal a:focus-visible {
+  outline-color: var(--carbon);
 }
 
 .skip-link {
@@ -246,6 +255,10 @@ summary:focus-visible {
   align-items: center;
 }
 
+.masthead__ledger span {
+  white-space: nowrap;
+}
+
 .masthead__ledger b {
   color: var(--acid);
 }
@@ -261,7 +274,7 @@ summary:focus-visible {
   color: var(--ink);
 }
 
-.collection--codex {
+.collection--b {
   --surface: var(--carbon);
   --ink: var(--chalk);
 }
@@ -299,7 +312,7 @@ summary:focus-visible {
   text-transform: none;
 }
 
-.collection--codex .collection__edition span {
+.collection--b .collection__edition span {
   color: var(--muted-light);
 }
 
@@ -318,12 +331,12 @@ summary:focus-visible {
   font-weight: 400;
 }
 
-.collection--codex .collection__title i {
+.collection--b .collection__title i {
   color: var(--acid);
 }
 
 .collection--mika .collection__title i {
-  color: var(--vermilion);
+  color: var(--vermilion-ink);
 }
 
 /* Einleitung der Sammlung: erklärt die Herkunftsangabe, bevor die erste
@@ -357,7 +370,7 @@ summary:focus-visible {
 .work__source-kind {
   padding: 5px 9px;
   border: 1px solid currentColor;
-  color: var(--vermilion);
+  color: var(--vermilion-ink);
 }
 
 .work__source-ids {
@@ -431,7 +444,7 @@ summary:focus-visible {
   font-size: clamp(.98rem, 1.3vw, 1.18rem);
 }
 
-.collection--codex .work__description {
+.collection--b .work__description {
   color: var(--muted-light);
 }
 
@@ -1671,7 +1684,7 @@ summary:focus-visible {
 }
 
 .archive__list small {
-  color: rgba(255, 255, 255, .7);
+  color: var(--chalk);
   font-size: .68rem;
   letter-spacing: .06em;
   text-align: right;
@@ -1721,8 +1734,7 @@ summary:focus-visible {
   text-transform: uppercase;
 }
 
-.site-footer__nav a,
-.site-footer__admin {
+.site-footer__nav a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -1730,22 +1742,8 @@ summary:focus-visible {
 }
 
 .site-footer__nav a:hover,
-.site-footer__nav a:focus-visible,
-.site-footer__admin:hover,
-.site-footer__admin:focus-visible {
+.site-footer__nav a:focus-visible {
   color: var(--acid);
-}
-
-/* Der Verwaltungszugang gehört nicht ins Schaufenster: klein, gedämpft,
-   ohne Gewicht für Suchmaschinen — aber als Ziel groß genug. */
-.site-footer__admin {
-  margin-top: 6px;
-  color: var(--muted-light);
-  font-size: .7rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 1px;
 }
 
 /* ── Unterseiten: Impressum und Datenschutz ────────────────────────────
@@ -2028,13 +2026,20 @@ summary:focus-visible {
   }
 
   .masthead__foot {
+    flex-wrap: wrap;
     align-items: end;
   }
 
+  /* Je zwei Einträge nebeneinander; Label und Zahl bleiben zusammen. */
   .masthead__ledger {
-    max-width: 18ch;
+    flex-shrink: 0;
+    max-width: 40ch;
     flex-wrap: wrap;
     gap: 4px 10px;
+  }
+
+  .masthead__clock {
+    margin-left: auto;
   }
 
   .collection__head {

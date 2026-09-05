@@ -23,7 +23,8 @@ MXL-Nummer, und die Auszeichnung muss zur Anzahl der genannten Nummern passen.
 
 `scripts/pruefe-seiten.mjs` prüft zusätzlich im Browser: Konsolenfehler,
 fehlende Ressourcen, horizontaler Überlauf und Zielgrößen unter 44 px — je
-Seite auf 1440 px und 390 px.
+Seite auf 1440 px und 390 px (Aufruf siehe „Lokale Prüfung“ im
+Wurzel-README).
 
 **Zur Belastbarkeit der Vorlagen.** Einträge mit `method: curated` beschreiben
 die gestalterische Idee einer Quelle. Einträge mit `method: css-dom` sind aus

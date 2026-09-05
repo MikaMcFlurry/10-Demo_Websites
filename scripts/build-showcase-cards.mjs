@@ -23,8 +23,8 @@ const LIVE_BASE = 'https://mikamcflurry.github.io/10-Demo_Websites/';
 const FOLDERS = ['showcase', 'mika-ux'];
 
 const COLLECTIONS = {
-  'collection--claude': { collection: 'A', origin: 'Claude Code' },
-  'collection--codex': { collection: 'B', origin: 'Codex' },
+  'collection--a': { collection: 'A', origin: 'Sammlung A' },
+  'collection--b': { collection: 'B', origin: 'Sammlung B' },
   'collection--mika': { collection: 'C', origin: 'Mika UX Library' }
 };
 
@@ -63,8 +63,16 @@ for (const section of hub.matchAll(/<section\b[^>]*class="([^"]*\bcollection\b[^
   if (!key) throw new Error(`Sammlung ohne bekannte Klasse: ${section[1]}`);
   const { collection, origin } = COLLECTIONS[key];
 
-  for (const match of section[0].matchAll(/<a\b[^>]*class="work"[^>]*href="(showcase|mika-ux)\/([a-z0-9-]+)\/"[\s\S]*?<\/a>/g)) {
-    const [card, folder, slug] = match;
+  // Karten sind Links mit der Klasse „work“ — unabhängig von weiteren
+  // Klassen und der Reihenfolge der Attribute (wie in validate-static-showcase.mjs).
+  for (const open of section[0].matchAll(/<a\b([^>]*)>/g)) {
+    const attrs = open[1];
+    if (!/\bclass="[^"]*\bwork\b[^"]*"/.test(attrs)) continue;
+    const href = attrs.match(/\bhref="(showcase|mika-ux)\/([a-z0-9-]+)\/"/);
+    if (!href) continue;
+    const end = section[0].indexOf('</a>', open.index);
+    const card = section[0].slice(open.index, end + 4);
+    const [, folder, slug] = href;
     const meta = field(card, /<p class="work__meta"><span>(\d{2}) \/ ([^<]+)<\/span><span>([^<]+)<\/span><\/p>/, 'work__meta', slug);
     const title = field(card, /<h3 class="work__title">([\s\S]*?)<\/h3>/, 'work__title', slug);
     const description = field(card, /<p class="work__description">([\s\S]*?)<\/p>/, 'work__description', slug);
@@ -90,10 +98,15 @@ const errors = [];
 const written = [];
 let stale = 0;
 
-const numbers = [...cards.values()].map((c) => c.number).sort();
-numbers.forEach((n, i) => {
-  if (Number(n) !== i + 1) errors.push(`Hub-Nummern sind nicht lückenlos: ${numbers.join(', ')}`);
-});
+const order = [...cards.values()].map((c) => c.number);
+const numbers = [...order].sort();
+if (numbers.some((n, i) => Number(n) !== i + 1)) {
+  errors.push(`Hub-Nummern sind nicht lückenlos: ${numbers.join(', ')}`);
+}
+// Besucher sehen die Karten in Dokumentreihenfolge — sie muss der Nummernfolge entsprechen.
+if (order.join() !== numbers.join()) {
+  errors.push(`Hub-Karten stehen nicht in Nummernfolge: ${order.join(', ')}`);
+}
 
 for (const folder of FOLDERS) {
   const dir = path.join(root, folder);

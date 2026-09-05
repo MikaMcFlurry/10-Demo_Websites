@@ -1,96 +1,96 @@
-# Legal Template & Placeholder Guide
+# Rechtliche Vorlage und Platzhalter-Leitfaden
 
-> **DISCLAIMER**: All legal texts in these demo websites are **placeholders only**. They do **not** constitute legal advice and are **not** legally binding. Every business operating in Germany/EU must have their legal pages reviewed and approved by a qualified legal professional (Rechtsanwalt) before publication.
+> **HINWEIS**: Alle Rechtstexte in diesen Demo-Websites sind **ausschließlich Platzhalter**. Sie sind **keine** Rechtsberatung und **nicht** rechtsverbindlich. Jedes Unternehmen, das in Deutschland/der EU tätig ist, muss seine Rechtsseiten vor der Veröffentlichung von einer qualifizierten Fachperson (Rechtsanwältin oder Rechtsanwalt) prüfen und freigeben lassen.
 
-## Required Legal Pages (Germany/EU)
+## Pflichtseiten (Deutschland/EU)
 
-### 1. Impressum (Legal Notice)
+### 1. Impressum (Anbieterkennzeichnung)
 
-**Required by**: § 5 TMG (Telemediengesetz), § 18 MStV
+**Rechtsgrundlage**: § 5 DDG (Digitale-Dienste-Gesetz, seit Mai 2024 anstelle des § 5 TMG), § 18 MStV
 
-**Must include**:
-- [ ] Full legal name of the business owner or company
-- [ ] Full postal address (no P.O. boxes)
-- [ ] Contact information (phone, email)
-- [ ] VAT identification number (Umsatzsteuer-ID) if applicable
-- [ ] Trade register entry (Handelsregistereintrag) if applicable
-- [ ] Professional chamber and title if applicable (e.g., Steuerberater, Physiotherapeut)
-- [ ] Responsible person for editorial content (§ 18 Abs. 2 MStV)
-- [ ] Professional liability insurance details if applicable
-- [ ] Supervisory authority if applicable
+**Muss enthalten**:
+- [ ] Vollständiger Name der Inhaberin/des Inhabers oder des Unternehmens
+- [ ] Vollständige Postanschrift (kein Postfach)
+- [ ] Kontaktdaten (Telefon, E-Mail)
+- [ ] Umsatzsteuer-Identifikationsnummer, sofern vorhanden
+- [ ] Handelsregistereintrag, sofern vorhanden
+- [ ] Berufskammer und Berufsbezeichnung, sofern zutreffend (z. B. Steuerberater, Physiotherapeut)
+- [ ] Verantwortliche Person für redaktionelle Inhalte (§ 18 Abs. 2 MStV)
+- [ ] Angaben zur Berufshaftpflichtversicherung, sofern zutreffend
+- [ ] Aufsichtsbehörde, sofern zutreffend
 
-### 2. Datenschutzerklärung (Privacy Policy)
+### 2. Datenschutzerklärung
 
-**Required by**: DSGVO (GDPR), BDSG, TTDSG
+**Rechtsgrundlage**: DSGVO, BDSG, TDDDG (früher TTDSG)
 
-**Must address**:
-- [ ] Name and contact of the data controller
-- [ ] Contact of the data protection officer (if required)
-- [ ] Types of personal data collected
-- [ ] Legal basis for processing (Art. 6 DSGVO)
-- [ ] Purpose of data processing
-- [ ] Data retention periods
-- [ ] Rights of data subjects (access, rectification, erasure, portability, objection)
-- [ ] Right to lodge a complaint with a supervisory authority
-- [ ] Third-party services used (analytics, maps, fonts, etc.)
-- [ ] Cookie usage and consent mechanisms
-- [ ] Contact form data processing
-- [ ] Newsletter processing (if applicable)
-- [ ] SSL/TLS encryption notice
+**Muss behandeln**:
+- [ ] Name und Kontakt der verantwortlichen Stelle
+- [ ] Kontakt der/des Datenschutzbeauftragten (falls erforderlich)
+- [ ] Arten der erhobenen personenbezogenen Daten
+- [ ] Rechtsgrundlage der Verarbeitung (Art. 6 DSGVO)
+- [ ] Zweck der Datenverarbeitung
+- [ ] Speicherdauer bzw. Kriterien für die Speicherdauer
+- [ ] Rechte der Betroffenen (Auskunft, Berichtigung, Löschung, Übertragbarkeit, Widerspruch)
+- [ ] Beschwerderecht bei einer Aufsichtsbehörde
+- [ ] Eingesetzte Drittdienste (Analyse, Karten, Schriften usw.)
+- [ ] Cookie-Nutzung und Einwilligungsmechanismen
+- [ ] Verarbeitung von Kontaktformulardaten
+- [ ] Newsletter-Verarbeitung (falls zutreffend)
+- [ ] Hinweis auf SSL/TLS-Verschlüsselung
 
-### 3. Cookie Consent
+### 3. Cookie-Einwilligung
 
-**Required by**: TTDSG § 25, DSGVO
+**Rechtsgrundlage**: § 25 TDDDG (früher TTDSG), DSGVO
 
-**Must include**:
-- [ ] Clear information about which cookies are used
-- [ ] Purpose of each cookie category
-- [ ] Option to accept or reject non-essential cookies
-- [ ] Link to full privacy policy
-- [ ] Ability to withdraw consent at any time
-- [ ] No pre-checked boxes for non-essential cookies
+**Muss enthalten**:
+- [ ] Klare Information, welche Cookies eingesetzt werden
+- [ ] Zweck jeder Cookie-Kategorie
+- [ ] Möglichkeit, nicht notwendige Cookies anzunehmen oder abzulehnen
+- [ ] Link zur vollständigen Datenschutzerklärung
+- [ ] Möglichkeit, die Einwilligung jederzeit zu widerrufen
+- [ ] Keine vorangekreuzten Kästchen für nicht notwendige Cookies
 
-## Client Checklist
+## Checkliste vor dem Kundeneinsatz
 
-Before launching any demo site for a real business, confirm the following:
+Vor dem Start einer Demo-Website für ein echtes Unternehmen ist Folgendes zu klären:
 
-### Tracking & Analytics
-- [ ] Will the site use Google Analytics or similar? → Requires consent banner and privacy policy update
-- [ ] Will the site use Google Maps embed? → Requires consent and privacy policy mention
-- [ ] Will the site use social media plugins? → Requires consent and privacy policy mention
+### Tracking und Analyse
+- [ ] Wird Google Analytics oder Ähnliches eingesetzt? → Einwilligungsbanner und Ergänzung der Datenschutzerklärung nötig
+- [ ] Wird Google Maps eingebettet? → Einwilligung und Nennung in der Datenschutzerklärung nötig
+- [ ] Werden Social-Media-Plugins eingesetzt? → Einwilligung und Nennung in der Datenschutzerklärung nötig
 
-### Newsletter & Marketing
-- [ ] Will the site collect email addresses? → Requires double opt-in (DOI) process
-- [ ] Will the site send marketing emails? → Requires explicit consent and unsubscribe option
-- [ ] Is a newsletter service provider used? → Must be listed in privacy policy with data processing agreement
+### Newsletter und Marketing
+- [ ] Werden E-Mail-Adressen erhoben? → Double-Opt-in-Verfahren (DOI) nötig
+- [ ] Werden Werbe-E-Mails versendet? → Ausdrückliche Einwilligung und Abmeldemöglichkeit nötig
+- [ ] Wird ein Newsletter-Dienstleister genutzt? → In der Datenschutzerklärung nennen, Auftragsverarbeitungsvertrag abschließen
 
-### Contact Forms
-- [ ] Does the contact form collect personal data? → Privacy notice at point of collection
-- [ ] Where is the form data stored/processed? → Must be documented in privacy policy
-- [ ] Is there a data processing agreement with the form handler? → Required if third-party
+### Kontaktformulare
+- [ ] Erhebt das Kontaktformular personenbezogene Daten? → Datenschutzhinweis am Ort der Erhebung
+- [ ] Wo werden die Formulardaten gespeichert/verarbeitet? → In der Datenschutzerklärung dokumentieren
+- [ ] Gibt es einen Auftragsverarbeitungsvertrag mit dem Formular-Dienstleister? → Bei Drittanbietern erforderlich
 
 ### Cookies
-- [ ] Essential cookies only? → No consent needed, but must be listed in privacy policy
-- [ ] Analytics/marketing cookies? → Consent required BEFORE setting cookies
-- [ ] Third-party cookies? → Consent required, listed in privacy policy
+- [ ] Nur notwendige Cookies? → Keine Einwilligung nötig, aber Nennung in der Datenschutzerklärung
+- [ ] Analyse-/Marketing-Cookies? → Einwilligung VOR dem Setzen der Cookies erforderlich
+- [ ] Cookies von Dritten? → Einwilligung erforderlich, Nennung in der Datenschutzerklärung
 
-### Professional Requirements
-- [ ] Steuerberater: Chamber affiliation, professional title, supervisory authority
-- [ ] Physiotherapeut: Professional title, licensing authority
-- [ ] Immobilienmakler: § 34c GewO permit, supervisory authority
-- [ ] Other regulated professions: Check specific disclosure requirements
+### Berufsrechtliche Anforderungen
+- [ ] Steuerberater: Kammerzugehörigkeit, Berufsbezeichnung, Aufsichtsbehörde
+- [ ] Physiotherapeut: Berufsbezeichnung, zulassende Behörde
+- [ ] Immobilienmakler: Erlaubnis nach § 34c GewO, Aufsichtsbehörde
+- [ ] Weitere reglementierte Berufe: spezifische Informationspflichten prüfen
 
-## Recommended Actions
+## Empfohlenes Vorgehen
 
-1. **Generate legal texts** using a reputable German legal text generator (e.g., eRecht24, IT-Recht Kanzlei, or similar)
-2. **Have a lawyer review** all generated texts for your specific business case
-3. **Keep legal texts updated** when adding new features (analytics, newsletter, etc.)
-4. **Test cookie consent** to ensure no non-essential cookies are set before consent
-5. **Document data processing** activities in a Verarbeitungsverzeichnis (Art. 30 DSGVO)
+1. **Rechtstexte erzeugen** mit einem seriösen deutschen Rechtstext-Generator (z. B. eRecht24, IT-Recht Kanzlei oder vergleichbar)
+2. **Anwaltliche Prüfung** aller erzeugten Texte für den konkreten Geschäftsfall
+3. **Rechtstexte aktuell halten**, sobald neue Funktionen hinzukommen (Analyse, Newsletter usw.)
+4. **Cookie-Einwilligung testen**: Vor der Einwilligung dürfen keine nicht notwendigen Cookies gesetzt werden
+5. **Datenverarbeitung dokumentieren** in einem Verarbeitungsverzeichnis (Art. 30 DSGVO)
 
-## Placeholder Markers
+## Platzhalter-Markierungen
 
-In the demo HTML files, legal placeholders are marked with:
+In den HTML-Dateien der Demos sind rechtliche Platzhalter so markiert:
 - `[FIRMENNAME]` — Company name
 - `[INHABER]` — Owner name
 - `[STRASSE HAUSNR]` — Street address
@@ -101,4 +101,4 @@ In the demo HTML files, legal placeholders are marked with:
 - `[HANDELSREGISTER]` — Trade register info
 - `[AUFSICHTSBEHÖRDE]` — Supervisory authority
 
-Replace all placeholders before going live.
+Alle Platzhalter vor der Veröffentlichung ersetzen.

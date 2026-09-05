@@ -7,48 +7,72 @@
   <meta name="theme-color" content="#11110f">
   <title>Seite nicht gefunden — Mika Webdesign Showcase</title>
   <meta name="description" content="Diese Adresse gibt es nicht. Zurück zur Übersicht der Vorzeige-Websites.">
-  <link rel="icon" href="portfolio-assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="portfolio-assets/portfolio.css">
+  <!-- GitHub Pages liefert diese Seite unter jeder fehlenden Adresse aus, meist
+       tief unterhalb von /10-Demo_Websites/<ordner>/. Relative Pfade würden dann
+       ins Leere laufen — deshalb sind alle Ziele absolut zur Pages-Basis. -->
+  <link rel="icon" href="/10-Demo_Websites/portfolio-assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/10-Demo_Websites/portfolio-assets/portfolio.css">
 </head>
 <body>
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
   <header class="masthead masthead--page" aria-labelledby="page-title">
     <div class="masthead__bar">
-      <a class="masthead__brand" href="./">Mika / Web Showcase</a>
+      <a class="masthead__brand" href="/10-Demo_Websites/">Mika / Web Showcase</a>
       <nav class="masthead__nav" aria-label="Seitennavigation">
-        <a href="./#arbeiten">Arbeiten</a>
-        <a href="./#mika-title">Mika UX</a>
-        <a href="./#archiv">Archiv</a>
+        <a href="/10-Demo_Websites/#arbeiten">Arbeiten</a>
+        <a href="/10-Demo_Websites/#mika-title">Mika UX</a>
+        <a href="/10-Demo_Websites/#archiv">Archiv</a>
       </nav>
     </div>
 
     <div class="masthead__stage">
       <div class="masthead__copy">
-        <p class="masthead__kicker">Rechtliches · Anbieterkennzeichnung</p>
-        <h1 id="page-title">Impressum</h1>
+        <p class="masthead__kicker">Fehler 404 · Seite nicht gefunden</p>
+        <h1 id="page-title">Diese Seite gibt es nicht.</h1>
         <p class="masthead__intro">
-          Wer hinter dieser Sammlung steht — und wer für die Demo-Websites
-          verantwortlich ist.
+          Vielleicht wurde ein Projekt umbenannt oder ins Archiv verschoben.
+          Alle aktuellen Vorzeige-Websites stehen auf der Übersicht.
         </p>
       </div>
     </div>
   </header>
 
-  <main id="main" class="legal" tabindex="-1">
-      <div class="legal__inner">
-        <header class="legal__head">
-          <p class="legal__eyebrow">404</p>
-          <h1 class="legal__title">Diese Seite gibt es nicht.</h1>
-          <p class="legal__lead">Vielleicht wurde ein Projekt umbenannt oder ins Archiv verschoben. Alle aktuellen Vorzeige-Websites stehen auf der Übersicht.</p>
-        </header>
-        <div class="legal__body">
-          <p><a href="./">← Zur Übersicht</a></p>
-          <p><a href="./#claude-title">Sammlung A</a> · <a href="./#codex-title">Sammlung B</a> · <a href="./#mika-ux">Mika UX</a></p>
+  <main id="inhalt" class="legal">
+    <div class="legal__grid">
+      <nav class="legal__toc" aria-label="Weiter zur Übersicht">
+        <p class="legal__toc-title">Weiter</p>
+        <ul>
+          <li><a href="/10-Demo_Websites/">Übersicht</a></li>
+          <li><a href="/10-Demo_Websites/#a-title">Sammlung A</a></li>
+          <li><a href="/10-Demo_Websites/#b-title">Sammlung B</a></li>
+          <li><a href="/10-Demo_Websites/#mika-title">Mika UX</a></li>
+          <li><a href="/10-Demo_Websites/#archiv">Archiv</a></li>
+        </ul>
+      </nav>
+
+      <div class="legal__body">
+        <p class="legal__lead">
+          Die aufgerufene Adresse führt zu keiner Seite dieses Portfolios.
+          Die Übersicht führt zu allen 18 Websites der drei Sammlungen und zum
+          Archiv der älteren Arbeiten.
+        </p>
+        <p>
+          Wenn ein Link hierher geführt hat, freue ich mich über einen kurzen
+          Hinweis per <a href="mailto:mikahertler@gmail.com">E-Mail</a>.
+        </p>
+
+        <div class="legal__draft">
+          <p>Fehler 404 — die Adresse ist unbekannt.</p>
+          <p class="legal__draft-links">
+            <a href="/10-Demo_Websites/">← Zur Übersicht</a>
+          </p>
         </div>
       </div>
-    </main>
-    <footer class="site-footer">
+    </div>
+  </main>
+
+  <footer class="site-footer">
     <p class="site-footer__statement">Gebaut, um verschieden zu sein.</p>
     <div class="site-footer__meta">
       <p>
@@ -56,16 +80,15 @@
         Die Websites dienen ausschließlich als Demonstrations- und Portfolioprojekte.
       </p>
       <nav class="site-footer__nav" aria-label="Rechtliches und Kontakt">
-        <a href="impressum.html" aria-current="page">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="/10-Demo_Websites/impressum.html">Impressum</a>
+        <a href="/10-Demo_Websites/datenschutz.html">Datenschutz</a>
         <a href="https://mikahertler.com/kontakt">Kontakt ↗</a>
         <a href="mailto:mikahertler@gmail.com">E-Mail</a>
         <a href="https://github.com/MikaMcFlurry/10-Demo_Websites">Quellcode auf GitHub ↗</a>
       </nav>
-      <a class="site-footer__admin" href="https://mikahertler.com/admin" rel="nofollow">Admin</a>
     </div>
   </footer>
 
-  <script src="portfolio-assets/portfolio.js" defer></script>
+  <script src="/10-Demo_Websites/portfolio-assets/portfolio.js" defer></script>
 </body>
 </html>

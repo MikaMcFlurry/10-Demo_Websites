@@ -66,6 +66,7 @@ a { color: var(--blue); text-underline-offset: .18em; text-decoration-thickness:
   position: absolute; left: -9999px; top: 0; z-index: 10000;
   background: var(--blue); color: var(--paper);
   padding: .8rem 1.2rem; font: 600 1rem/1 var(--f-text); letter-spacing: .06em;
+  display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box;
 }
 .skip:focus { left: 0; }
 

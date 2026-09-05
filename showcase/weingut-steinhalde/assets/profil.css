@@ -65,6 +65,7 @@ a { color: var(--rebe); text-underline-offset: .2em; }
   position: absolute; left: -9999px; top: 0; z-index: 999;
   background: var(--rebe); color: var(--grund);
   padding: .8rem 1.2rem; font: 500 .95rem/1 var(--f-mark);
+  display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box;
 }
 .skip:focus { left: 0; }
 

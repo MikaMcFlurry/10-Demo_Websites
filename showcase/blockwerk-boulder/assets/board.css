@@ -68,6 +68,7 @@ a { color: var(--g1); }
   position: absolute; left: -9999px; top: 0; z-index: 999;
   background: var(--g1); color: var(--grund);
   padding: .8rem 1.2rem; font: 700 .9rem/1 var(--f-mark);
+  display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box;
 }
 .skip:focus { left: 0; }
 
@@ -185,6 +186,7 @@ h1 em { font-style: normal; color: var(--g1); }
 
 .taste {
   display: inline-flex; align-items: center; gap: 9px;
+  min-height: 44px; box-sizing: border-box;
   padding: 14px 22px; border: 0; border-radius: 10px; cursor: pointer;
   background: var(--g1); color: var(--grund);
   font: 700 13.5px/1 var(--f-mark); letter-spacing: -.01em;

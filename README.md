@@ -1,9 +1,10 @@
 # Demo-Websites
 
-Ein kuratiertes Portfolio aus **zehn eigenständigen Vorzeige-Websites**. Die fünf
-Schaustücke der ersten Kollektion und die fünf neuen Gegenwelten teilen weder
-Template noch Komponenten, Raster, Farb- oder Bewegungslogik. Frühere Projekte
-bleiben auf der GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar.
+Ein kuratiertes Portfolio aus **18 eigenständigen Websites in drei Sammlungen**:
+fünf Schaustücke (A), fünf Gegenwelten (B) und acht Ableitungen aus der
+Mika UX Library (C). Sie teilen weder Template noch Komponenten, Raster,
+Farb- oder Bewegungslogik. Frühere Projekte bleiben auf der
+GitHub-Pages-Startseite in einem aufklappbaren Archiv erreichbar.
 
 ## Aktuelle Auswahl
 
@@ -33,7 +34,7 @@ Details zu Konzept, Seitenumfang und Interaktionen stehen in
 
 ## Archiv
 
-Die Hauptseite zeigt ausschließlich die zehn aktuellen Vorzeigeprojekte.
+Die Hauptseite zeigt die 18 aktuellen Projekte der Sammlungen A–C.
 Folgende ältere Arbeiten liegen im nativen Archiv-Disclosure:
 
 - `stimmzettel/` — Demokratie am Küchentisch
@@ -45,8 +46,9 @@ Folgende ältere Arbeiten liegen im nativen Archiv-Disclosure:
 ## Mika UX Library
 
 Sammlung C auf der Startseite versammelt Websites, deren Gestaltung aus der
-**Mika UX Library** abgeleitet ist — einem Bestand aus 121 kuratierten
-Referenzen (`MXL-001`–`MXL-120`, `MXL-145`). Jede dieser Websites nennt auf
+**Mika UX Library** abgeleitet ist — einem Bestand aus über 120 kuratierten
+Referenzen (`MXL-001`–`MXL-120`, `MXL-145` sowie nachgelieferte Einträge wie
+`MXL-147`). Jede dieser Websites nennt auf
 ihrer Karte die MXL-Nummern, aus denen sie entstanden ist: eine einzige Nummer
 bedeutet eine reine Vorlage ohne Mischung, mehrere Nummern listen alle
 Vorlagen, die das Ergebnis beeinflusst haben.
@@ -75,7 +77,7 @@ Jede der 18 Websites trägt in ihrem Ordner einen maschinenlesbaren Steckbrief
 |---|---|
 | `slug`, `title`, `number`, `collection` | Ordnername, Kartentitel, Hub-Nummer `01`–`18`, Sammlung `A`/`B`/`C` |
 | `industry`, `form`, `description` | Branche, gestalterische Form und Beschreibungstext der Hub-Karte |
-| `origin` | `Claude Code`, `Codex` oder `Mika UX Library` |
+| `origin` | `Sammlung A`, `Sammlung B` oder `Mika UX Library` |
 | `library_inputs`, `mode` | MXL-Nummern der Karte; `PURE` bei genau einer, `MIXED` bei mehreren, `null` ohne |
 | `pages`, `path`, `live_url` | HTML-Seiten des Ordners, Repository-Pfad und Adresse auf GitHub Pages |
 | `status`, `notes` | `published`; Anmerkungen, etwa der Hinweis auf den unvalidierten Analysefall `MXL-147` |
@@ -99,9 +101,13 @@ ausgeliefert und sind dort unter `<live_url>showcase.json` abrufbar.
 ## GitHub Pages
 
 `.github/workflows/deploy-pages.yml` baut die drei Framework-Projekte (`npm ci`
-aus den Lockfiles), sammelt den Portfolio-Hub samt Impressum und Datenschutz,
+aus den Lockfiles für AuroraMetrics/Next.js und Lumen Atelier/Astro; GreenCart
+vorerst mit `npm install`, weil sein Lockfile nicht zur `package.json` passt),
+sammelt den Portfolio-Hub samt Impressum, Datenschutz und 404-Seite,
 `showcase/`, `mika-ux/`, `demos/` und `stimmzettel/` in einem Pages-Artefakt,
-lässt den Validator darüber laufen und veröffentlicht es über GitHub Actions.
+entfernt Markdown-Notizen (Briefings, Gestaltungsverträge) und
+Hosting-Konfiguration aus dem Artefakt, lässt den Validator darüber laufen und
+veröffentlicht es über GitHub Actions.
 
 Der Workflow läuft bei Push auf dem Portfolio-Branch und kann zusätzlich über
 `workflow_dispatch` gestartet werden.
@@ -115,11 +121,26 @@ UI-Muster:
 node .github/skills/impeccable/scripts/detector/detect-antipatterns.mjs showcase
 ```
 
-Vor Veröffentlichung werden zusätzlich interne Links und Assets, HTML-Struktur,
-Konsolenfehler, horizontales Overflow sowie die wichtigsten Interaktionen bei
-390, 768 und 1440 Pixel Breite geprüft: `scripts/validate-static-showcase.mjs`
-liest das Pages-Verzeichnis, `scripts/pruefe-seiten.mjs` die Seiten im Browser
-(Aufruf siehe [`mika-ux/README.md`](mika-ux/README.md)).
+Vor Veröffentlichung prüfen zwei Skripte:
+`node scripts/validate-static-showcase.mjs <pages-verzeichnis>` liest den
+Quelltext des Pages-Verzeichnisses (Struktur, interne Links, Fragmentziele,
+Sammlungen, keine Markdown-Dateien im Artefakt);
+`node scripts/pruefe-seiten.mjs <basis-url> <seite> …` öffnet die Seiten in
+Chromium bei 1440 px und 390 px und meldet Konsolenfehler, fehlende
+Ressourcen, horizontalen Überlauf und Klickziele unter 44 px Höhe.
+Interaktionen werden von Hand geprüft.
+
+```bash
+# Worktree unter dem Pages-Pfad /10-Demo_Websites/ serven, damit die
+# absoluten Pfade der 404-Seite stimmen:
+mkdir -p /tmp/pages && ln -sfn "$PWD" /tmp/pages/10-Demo_Websites
+python3 -m http.server 8099 --bind 127.0.0.1 --directory /tmp/pages &
+node scripts/pruefe-seiten.mjs http://127.0.0.1:8099/10-Demo_Websites/ \
+  index.html impressum.html datenschutz.html showcase/kantine-klee/index.html
+# Fehlerseite wie auf GitHub Pages unter einer fehlenden Tiefadresse:
+node scripts/pruefe-seiten.mjs --fehlseite 404.html \
+  http://127.0.0.1:8099/10-Demo_Websites/ showcase/gibt-es-nicht/
+```
 
 Die Steckbriefe `showcase.json` in den Projektordnern werden aus der
 Startseite erzeugt — nach jeder Änderung an einer Hub-Karte:
@@ -145,8 +166,12 @@ und fachlich geprüft werden. Siehe [`LEGAL_TEMPLATE.md`](LEGAL_TEMPLATE.md).
 ## Bekannte Befunde (Browserprüfung 2026-09-02)
 
 `scripts/pruefe-seiten.mjs` über alle 18 Projekt-Startseiten sowie Hub, Impressum,
-Datenschutz und 404 bei 1440 px und 390 px. Behoben: kantine-klee,
-haertl-praezision, cafe-restaurant. Offen bleiben zu kleine Klickziele
+Datenschutz und 404 (auch unter einer fehlenden Tiefadresse) bei 1440 px und
+390 px; Schwelle des Skripts: 44 px Höhe. Behoben: kantine-klee,
+haertl-praezision (Schaltflächen 40 px), cafe-restaurant, brandt-ostermann
+(CTAs 41 px), sprudelwerk (Desktop-Navigation 42 px), blockwerk-boulder
+(`.taste` 42 px) sowie die Skip-Links von hochofen-festival, brandt-ostermann,
+blockwerk-boulder und weingut-steinhalde. Offen bleiben zu kleine Klickziele
 (unter 44 px Höhe) auf vier Startseiten:
 
 | Site | Viewport | Elemente |
@@ -158,3 +183,8 @@ haertl-praezision, cafe-restaurant. Offen bleiben zu kleine Klickziele
 
 Die zehn älteren `demos/` zeigen zudem sichtbare Platzhalter wie `[E-MAIL]`
 und `[TELEFON]`; sie sind Vorlagen, keine Vorzeigeprojekte.
+
+`sites/greencart-nuxt/package-lock.json` passt nicht zur `package.json`
+(`commander` 11 vs. 13); der Workflow installiert GreenCart deshalb mit
+`npm install`. Lockfile neu erzeugen (`npm install --package-lock-only`),
+committen und den Workflow-Schritt auf `npm ci` zurückstellen.

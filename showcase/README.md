@@ -5,18 +5,18 @@ Komponenten, Raster, Farb- oder Bewegungslogik. Jede Site hat sechs vollständig
 Seiten und ein Seitengerüst, das aus ihrem Gegenstand statt aus einer Vorlage
 entsteht.
 
-| # | Site | Branche | Form | Schriften | Kollektion |
+| # | Site | Branche | Form | Schriften | Sammlung |
 |---:|---|---|---|---|---|
-| 01 | [`haertl-praezision`](haertl-praezision/) | Zerspanung | Technisches Zeichnungsblatt | Archivo, Azeret Mono | Claude Code |
-| 02 | [`hochofen-festival`](hochofen-festival/) | Musikfestival | Zweifarbiger Siebdruck | Anton, Barlow Semi Condensed | Claude Code |
-| 03 | [`weingut-steinhalde`](weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Vollkorn, Jost | Claude Code |
-| 04 | [`brandt-ostermann`](brandt-ostermann/) | Wirtschaftsrecht | Aktenregister und Schriftsatz | Spectral, Libre Franklin | Claude Code |
-| 05 | [`blockwerk-boulder`](blockwerk-boulder/) | Bouldern | Routenboard und Sektorplan | Bricolage Grotesque, Hanken Grotesk | Claude Code |
-| 06 | [`kantine-klee`](kantine-klee/) | Gastronomie | Analoges Küchenjournal | Georgia, Arial Narrow | Codex |
-| 07 | [`nachhall-radio`](nachhall-radio/) | Kultur / Audio | Tunerfront und Kassettenarchiv | Antonio, Commissioner | Codex |
-| 08 | [`krawumm-labor`](krawumm-labor/) | Bildung | Interaktives Experimentierheft | Bowlby One SC, Atkinson Hyperlegible | Codex |
-| 09 | [`nordhafen-verkehr`](nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Chivo, Azeret Mono | Codex |
-| 10 | [`fokus40-augenatelier`](fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenwerkbank | Archivo, Jost | Codex |
+| 01 | [`haertl-praezision`](haertl-praezision/) | Zerspanung | Technisches Zeichnungsblatt | Archivo, Azeret Mono | A |
+| 02 | [`hochofen-festival`](hochofen-festival/) | Musikfestival | Zweifarbiger Siebdruck | Anton, Barlow Semi Condensed | A |
+| 03 | [`weingut-steinhalde`](weingut-steinhalde/) | Weinbau | Geologisches Bodenprofil | Vollkorn, Jost | A |
+| 04 | [`brandt-ostermann`](brandt-ostermann/) | Wirtschaftsrecht | Aktenregister und Schriftsatz | Spectral, Libre Franklin | A |
+| 05 | [`blockwerk-boulder`](blockwerk-boulder/) | Bouldern | Routenboard und Sektorplan | Bricolage Grotesque, Hanken Grotesk | A |
+| 06 | [`kantine-klee`](kantine-klee/) | Gastronomie | Analoges Küchenjournal | Georgia, Arial Narrow | B |
+| 07 | [`nachhall-radio`](nachhall-radio/) | Kultur / Audio | Tunerfront und Kassettenarchiv | Antonio, Commissioner | B |
+| 08 | [`krawumm-labor`](krawumm-labor/) | Bildung | Interaktives Experimentierheft | Bowlby One SC, Atkinson Hyperlegible | B |
+| 09 | [`nordhafen-verkehr`](nordhafen-verkehr/) | Mobilität | Kommunales Leitsystem | Chivo, Azeret Mono | B |
+| 10 | [`fokus40-augenatelier`](fokus40-augenatelier/) | Optometrie | Sehprobentafel und Linsenwerkbank | Archivo, Jost | B |
 
 ## Die zehn Richtungen
 
@@ -70,7 +70,7 @@ ohne einen medizinischen Test vorzutäuschen.
 
 ## Mika UX Library
 
-Für die fünf Codex-Schaustücke wurde keine Vorlage aus der Mika UX Library
+Für die fünf Schaustücke der Sammlung B wurde keine Vorlage aus der Mika UX Library
 übernommen. Deshalb tragen ihre Karten bewusst kein Mika-UX-Badge. Sobald eine
 konkrete Library-Vorlage verwendet wird, müssen Karte und Dokumentation ihre
 Quelle sichtbar und screenreader-lesbar ausweisen.
@@ -107,11 +107,19 @@ eine Site umbaut, sollte diesen Vertrag zuerst anpassen.
 ## Prüfen
 
 Der statische Validator prüft HTML-Struktur, Sprungziele, interne Links und
-Assets sowie die genaue Zehner-Auswahl:
+Assets sowie die genaue Auswahl der zehn Schaustücke. Er liest das Pages-Verzeichnis, wie es
+`.github/workflows/deploy-pages.yml` zusammenstellt (`index.html`, `404.html`,
+`impressum.html`, `datenschutz.html`, `portfolio-assets/`, `demos/`,
+`stimmzettel/`, `showcase/`, `mika-ux/`, ohne Markdown-Dateien; für
+`greencart/`, `aurorametrics/` und `lumen-atelier/` genügt lokal je eine
+Platzhalter-`index.html`):
 
 ```bash
-node scripts/validate-static-showcase.mjs .
+node scripts/validate-static-showcase.mjs ./pages-dist
 ```
+
+Auf dem Quellverzeichnis selbst meldet er die drei Framework-Ziele als fehlend,
+weil deren Builds erst im Workflow entstehen.
 
 Der mitgelieferte Impeccable-Detektor prüft wiederkehrende generische
 UI-Antimuster:

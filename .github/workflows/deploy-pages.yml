@@ -95,6 +95,11 @@ jobs:
       - name: Copy Mika UX Library sites
         run: cp -r mika-ux ./pages-dist/mika-ux
 
+      # Briefings, Übergabenotizen, Gestaltungsverträge und Hosting-Konfiguration
+      # gehören nicht ins öffentliche Schaufenster (der Validator prüft das).
+      - name: Interne Dokumente aus dem Artefakt entfernen
+        run: find ./pages-dist -type f \( -name '*.md' -o -name 'EINBINDUNG*' -o -name 'vercel.json' \) -delete
+
       - name: Validate static showcase
         run: node scripts/validate-static-showcase.mjs ./pages-dist
 
